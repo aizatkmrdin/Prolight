@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/input.css">
+    <script type="text/javascript" src="../cordova.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/framework7.js"></script>
+    <script type="text/javascript" src="../js/framework7.min.js"></script>
+    <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>ProLight</title>
+</head>
+
+
+<body onload="checkTemp()">
+        <header>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times"></i>
+                </div>
+                <nav class="sidebar">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a onclick="goHome()" class="nav-link current">
+                                <i class="fas fa-home"></i>Menu Utama
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                                <a onclick="goSenarai()" class="nav-link">
+                                    <i class="fas fa-address-card"></i>Senarai Tugas
+                                </a>
+                            </li>
+                        <li class="nav-item">
+                            <a onclick="goStatus()" class="nav-link">
+                                <i class="fas fa-briefcase"></i>Status Laporan
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                                <a onclick="goStatistik()" class="nav-link">
+                                    <i class="fas fa-blog"></i>Statistik Tugasan
+                                </a>
+                            </li>
+        
+                            <li class="nav-item">
+                                    <a onclick="goPapan()"class="nav-link">
+                                        <i class="fas fa-envelope"></i>Papan Skor
+                                    </a>
+
+                                </li>
+                    </ul>
+                </nav>
+            </header>
+        
+            <main>
+                <div class="zoom-content">
+                    <section>
+ 
+<div class="row position-stepper-high4s">
+    <div class="col-xs-12 col-md-8 offset-md-2 block border">
+        <div class="wrapper-progressBar">
+            <ul class="progressBar">
+                <li class="active">Jenis Kerja</li>
+                <li class="active" onclick="aduan()">Aduan</li>
+                <li class="active" onclick ="aduan2()">Aduan 2</li>
+                <li class="active" onclick ="aduan3()">Aduan 3</li>
+                <li>Hantar</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <form id="formaduan3">
+        <p class="position-text1-high">Ipc 120-185 Abc</p>
+        <div class="dropdown position-input1-ticket" id="ipc120185">
+            <select name="ipc120185" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+            </select>
+        </div>
+
+        <p class="position-text2-high">Ipc 16-95 ABC</p>
+        <div class="dropdown position-input2-ticket" id="ipc1695">
+            <select name="ipc1695" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+            </select>
+        </div>
+
+        <p class="position-text3-high">Ipc 70-185 Abc</p>
+        <div class="dropdown position-input3-ticket" id="ipc20185">
+            <select name="ipc20185" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+            </select>
+        </div>
+
+        <p class="position-text4-high">Ipc 16-70 ABC</p>
+        <div class="dropdown position-input4-ticket" id="ipc1670">
+            <select name="ipc1670" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+            </select>
+        </div>
+
+        <p class="position-text5-high">Ipc 25-50 to 16-70 BARE</p>
+        <div class="dropdown position-input5-ticket" id="ipc2550">
+            <select name="ipc2550" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+            </select>
+        </div>
+        <p class="position-text7-high">Catatan</p>
+        <textarea class="position-text7-high" style="background: #f2f2f2" rows="3" cols="45" name="catatan" id="catatan">
+        </textarea>
+       
+
+</form>
+<div class="footnoteticket2"></div>
+    <div onclick="save()" class="buttonSimpan position-button-simpan-aduan">Simpan</div>
+
+    <div onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-aduan">Hantar</div>
+</div>
+
+</section>
+</div>
+</main>
+</body>
+
+<script type="text/javascript" src="../js/script.js"></script>
+
+<script>
+
+    
+function checkTemp() {
+        var cond = localStorage.getItem("editaduan");
+        if (cond == 1) {
+            getItem();
+
+        } else {
+            startTime();
+            neaws();
+        }
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        // add a zero in front of numbers<10
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('time').value =yyyy + '-' + mm + '-' + dd +" "+ h + ":" + m + ":" + s  ;
+        /*t = setTimeout(function () {
+            startTime()
+        }, 500);*/
+    }
+
+
+    function neaws() {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        localStorage.setItem("dateT", dd + '/' + mm + '/' + yyyy);
+
+
+    }
+
+    function getItem() {
+        document.getElementById('ipc120185').value = localStorage.getItem("ipc120185");
+        document.getElementById('ipc1695').value = localStorage.getItem("ipc1695");
+        document.getElementById('ipc20185').value = localStorage.getItem("ipc20185");
+        document.getElementById('ipc1670').value = localStorage.getItem("ipc1670");
+        document.getElementById('ipc2550').value = localStorage.getItem("ipc2550");
+        document.getElementById('catatan').value = localStorage.getItem("catatan");
+
+    }
+    
+    
+    function aduan () {
+        window.location.href = "aduan.html";
+    }
+
+    function aduan2() {
+        window.location.href = "aduan2.html";
+    }
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+
+    function nextPage() {
+        var formData = app.form.convertToData('#formaduan3');
+        //alert(formData);
+
+    //store localstorage
+
+       // localStorage.setItem("ipc120185", formData.ipc120185);
+        localStorage.setItem("ipc120185", formData.ipc120185);
+        localStorage.setItem("ipc1695", formData.ipc1695);
+        localStorage.setItem("ipc20185", formData.ipc20185);
+        localStorage.setItem("pipc1670", formData.ipc1670);
+        localStorage.setItem("ipc2550", formData.ipc2550);
+        localStorage.setItem("catatan", formData.catatan);
+        localStorage.setItem("editaduan", "3");
+
+
+        var formreg = formData.ipc120185;
+        var formreg2 = formData.ipc1695;
+        var formreg3 = formData.ipc20185;
+        var formreg4 = formData.ipc1670;
+        var formreg5 = formData.ipc2550;
+        var formreg6 = formData.catatan;
+
+
+        //get from localstorage value from jeniskerja.html page
+    var drh= localStorage.getItem("daerah");
+    var kmpln= localStorage.getItem("kumpulan");
+    var jkerja= localStorage.getItem("jenisKerja");
+    var latitude= localStorage.getItem("latitude");
+    var longitude= localStorage.getItem("longitude");
+       
+
+        //get from localstorage value from 1st page senaraisemak.html
+        var a = localStorage.getItem("notiang");
+        var b = localStorage.getItem("types");
+        var c = localStorage.getItem("ipc");
+        var d = localStorage.getItem("pecu");
+        var e = localStorage.getItem("pecuqty");
+        var f = localStorage.getItem("ipclantern");
+        var g = localStorage.getItem("lantern");
+        var h = localStorage.getItem("fuse");
+        var i= localStorage.getItem("contactor");
+        var j = localStorage.getItem("link");
+        var k = localStorage.getItem("dawailampu");
+        var l = localStorage.getItem("dawaipanel");
+        var m = localStorage.getItem("cout");
+        var n = localStorage.getItem("rombaklampu");
+        var o= localStorage.getItem("bracket");
+        var p = localStorage.getItem("rombakpanel");
+        var z = localStorage.getItem("masa");
+        var q= localStorage.getItem("gambartiang");
+        var r = localStorage.getItem("gambarsebelum");
+
+//aduan2.html
+
+        var aa = localStorage.getItem("sclamp");
+        var bb= localStorage.getItem("rentis");
+        var cc = localStorage.getItem("dead");
+        var dd = localStorage.getItem("cable");
+        var ee = localStorage.getItem("mini");
+        var ff = localStorage.getItem("pusing");
+        var gg = localStorage.getItem("jumperlantern");
+        var hh = localStorage.getItem("jumperservice");
+        var jj = localStorage.getItem("hook");
+        var ii = localStorage.getItem("creepers");
+        var kk = localStorage.getItem("color");
+        var ll = localStorage.getItem("man");
+        var mm = localStorage.getItem("helper");
+        var nn = localStorage.getItem("driver");
+        var oo = localStorage.getItem("shift");
+        var pp = localStorage.getItem("category");
+        var qq = localStorage.getItem("jenislampu");
+        var rr = localStorage.getItem("gambarselepas");
+
+
+        var dataFormreg = {"daerah":drh,"kumpulan":kmpln,"jenisKerja":jkerja,
+                        "latitude":latitude,"longitude":longitude,
+            
+            "notiang": a,"types":b,"ipc":c,"pecu":d,"pecuqty": e,"ipclantern" : f,
+            "lantern":g , "fuse":h, "contactor":i, "link":j ,"dawailampu":k,
+            "dawaipanel":l,"cout": m,"rombaklampu" : n, "bracket":o ,
+            "rombakpanel":p,"masa":z, "gambartiang":q , "gambarsebelum":r, 
+
+            "sclamp": aa,"rentis": bb,"dead" : cc,
+            "cable":dd , "mini":ee, "pusing":ff, 
+            "jumperlantern":gg , "jumperservice":hh ,
+            "hook":ii,"creepers":jj , "color":kk ,
+            "man":ll,"helper":mm,"driver":nn,
+            "shift":oo,"category":pp,
+            "jenislampu":qq, "gambarselepas":rr,
+            
+            
+            
+        "ipc120185": formreg, "ipc1695":formreg2, "ipc20185":formreg3 ,
+        "ipc1670":formreg4,"ipc2550": formreg5, "catatan":formreg6};
+
+  
+        var dataString = JSON.stringify(dataFormreg);
+        $.ajax({
+                    url: 'http://1.32.96.10/ProLight/mimi/aduan3.php',
+                    data: {myData: dataString},
+                    type: 'POST',
+                    success: function(response){
+                        alert(response);
+                        window.location.replace("laporan3.html");
+        
+                        }
+                    });
+                   
+    }
+
+    function goHome() {
+        window.location.href = "home.html";
+    }
+
+    function goSenarai() {
+        window.location.href = "tugasan.html";
+    }
+
+    function goStatus() {
+        window.location.href = "laporan.html";
+    }
+
+    function goStatistik() {
+        window.location.href = "statistik1.html";
+    }
+
+    function goPapan() {
+        window.location.href = "papanskor.html";
+    }
+    function goCamera() {
+        window.location.href = "tiang.html";
+    }
+
+    function goCamera2() {
+        window.location.href = "tiangsebelum.html";
+    }
+
+    function post() {
+        window.location.href = "laporan3.html";
+    }
+
+    function save() {
+        var formData = app.form.convertToData('#formaduan');
+        //alert(formData);
+
+    //store localstorage
+        localStorage.setItem("ipc120185", formData.ipc120185);
+        localStorage.setItem("ipc1695", formData.ipc1695);
+        localStorage.setItem("ipc20185", formData.ipc20185);
+        localStorage.setItem("pipc1670", formData.ipc1670);
+        localStorage.setItem("ipc2550", formData.ipc2550);
+        localStorage.setItem("catatan", formData.catatan);
+        localStorage.setItem("editaduan", "3");
+
+                window.location.href = "laporan2.html";
+        }
+
+</script>
+
+
+
+
+
+</html>

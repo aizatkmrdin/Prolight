@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script type="text/javascript" src="../cordova.js"></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="../js/framework7.js"></script>
+        <script type="text/javascript" src="../js/framework7.min.js"></script>
+        <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
+        <script type="text/javascript" src="../js/index.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" type="text/css" href="../css/input.css">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>ProLight</title>
+</head>
+
+<body onload="checkTemp()">
+        <header>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times"></i>
+                </div>
+                <nav class="sidebar">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a onclick="goHome()" class="nav-link current">
+                                <i class="fas fa-home"></i>Menu Utama
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+
+                                <a onclick="goSenarai()" class="nav-link">
+                                    <i class="fas fa-address-card"></i>Senarai Tugas
+                                </a>
+                            </li>
+                        <li class="nav-item">
+                            <a onclick="goStatus()" class="nav-link">
+                                <i class="fas fa-briefcase"></i>Status Laporan
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                                <a onclick="goStatistik()" class="nav-link">
+                                    <i class="fas fa-blog"></i>Statistik Tugasan
+                                </a>
+                            </li>
+        
+                            <li class="nav-item">
+                                    <a onclick="goPapan()"class="nav-link">
+                                        <i class="fas fa-envelope"></i>Papan Skor
+                                    </a>
+                                </li>
+                    </ul>
+                </nav>
+            </header>
+        
+            <main>
+                <div class="zoom-content">
+                    <section>
+    <div class="row position-stepper-high4s">
+        <div class="col-xs-12 col-md-8 offset-md-2 block border">
+            <div class="wrapper-progressBar">
+                <ul class="progressBar">
+                    <li class="active">Jenis Kerja</li>
+                    <li class="active">Imbangan Barang</li>
+                    <li class="active">Imbangan Barang 2</li>
+                    <li>Hantar</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <form id="formimbangan2">
+
+    <p class="position-text1-high">Panel Kawalan</p>
+    <input class="input-box position-input1-ticket" type="number" id="panel" name="panel">
+
+    <p class="position-text2-high">FUSE SWITCH, LV, 160AMPS </p>
+    <input class="input-box position-input2-ticket" type="number" id="fuseswitch" name="fuseswitch">
+
+    <p class="position-text3-high">UNIVERSEL BEND</p>
+    <input class="input-box position-input3-ticket" type="number" id="bend" name="bend">
+
+    <p class="position-text4-high">COOPER ROD</p>
+    <input class="input-box position-input4-ticket" type="number" id="cooper" name="cooper">
+
+    <p class="position-text5-high">Wire 1C 35MMP (19/.064")</p>
+    <input class="input-box position-input5-ticket" type="number" id="wire1c" name="wire1c">
+
+    <p class="position-text6-high">Mini isolater</p>
+    <input class="input-box position-input6-ticket" type="number" id="mini" name="mini">
+
+  
+    <p class="position-text7-high">Nama Chargeman</p>
+    <input class="input-box position-input7-ticket" type="text" name="chargeman" id="chargeman">
+
+    <p class="position-text8-high">Nama Helper</p>
+    <input class="input-box position-input8-ticket" type="text" name="helper" id="helper">
+
+    <p class="position-text9-high">Nama Driver</p>
+    <input class="input-box position-input9-ticket" type="text" name="driver" id="driver">
+
+    <p class="position-text10-high">Shift</p>
+    <div class="dropdown position-input10-ticket" id="shift">
+        <select name="shift" class="dropdown-select">
+                <option value="pagi">Pagi</option>
+                <option value="petang">Petang</option>
+                <option value="weekend">Hari Minggu</option>
+        </select>
+    </div>
+
+    <p class="position-text12-high">Catatan</p>
+    <textarea class="position-text12-high" style="background: #f2f2f2" rows="3" cols="45" name="lainlain" id="lainlain">
+    </textarea>
+
+
+
+    </form>
+
+
+    <div onclick="getSave()" class="buttonSimpan position-button-simpan-input">Simpan</div>
+    <div onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-input">Seterusnya</div>
+    </a>
+    <footer id="footer"></footer>
+    <div class="input_container">
+    </div>
+
+</section>
+</div>
+</main>
+
+
+
+</body>
+
+<script type="text/javascript" src="../js/script.js"></script>
+
+<script>
+
+function nextPage() {
+    var formData = app.form.convertToData('#formimbangan2');
+          
+          var formreg = formData.panel;
+          var formreg6 = formData.fuseswitch;
+          var formreg7 = formData.bend;
+          var formreg8 = formData.cooper;
+          var formreg9 = formData.wire1c;
+          var formreg10 = formData.mini;
+          var formreg11 = formData.chargeman;
+          var formreg12 = formData.helper;
+          var formreg13 = formData.driver;
+          var formreg14 = formData.shift;
+          var formreg15 = formData.lainlain;
+  
+          localStorage.setItem("panel", formData.panel);
+          localStorage.setItem("fuseswitch", formData.fuseswitch);
+          localStorage.setItem("bend", formData.bend);
+          localStorage.setItem("cooper", formData.cooper);
+          localStorage.setItem("wire1c", formData.wire1c);
+          localStorage.setItem("mini", formData.mini);
+          localStorage.setItem("chargeman", formData.chargeman);
+          localStorage.setItem("helper", formData.helper);
+          localStorage.setItem("driver", formData.driver);
+          localStorage.setItem("shift", formData.shift);
+          localStorage.setItem("lainlain", formData.lainlain);
+          localStorage.setItem("edit", "2");
+  
+             //get from localstorage value from jeniskerja.html page
+      var drh= localStorage.getItem("daerah");
+      var kmpln= localStorage.getItem("kumpulan");
+      var jkerja= localStorage.getItem("jenisKerja");
+         
+  
+          //get from localstorage value from 1st page senaraisemak.html
+          var a = localStorage.getItem("lan100w");
+          var b = localStorage.getItem("lan150w");
+          var c = localStorage.getItem("lan250w");
+          var d = localStorage.getItem("pecu");
+          var e = localStorage.getItem("ipc120");
+          var f = localStorage.getItem("ipc16");
+          var g = localStorage.getItem("ipc70");
+          var h = localStorage.getItem("ipc25");
+          var i = localStorage.getItem("ipc169");
+          var j= localStorage.getItem("bracket");
+          var k= localStorage.getItem("wire25");
+          var l = localStorage.getItem("contactor");
+          var m = localStorage.getItem("fuse");
+  
+         
+          var dataFormreg = {"daerah":drh,"kumpulan":kmpln,"jenisKerja":jkerja,
+              
+          "lan100w": a,"lan150w":b,"lan250w":c,"pecu":d,"ipc120": e,"ipc16" : f,
+          "ipc70":g , "ipc25":h, "ipc169":i,"bracket":i, "wire25":i, "contactor":i,"fuse":j ,
+  
+          "panel": formreg,"fuseswitch": formreg6,"bend" : formreg7,
+          "cooper":formreg8 , "wire1c":formreg9, "mini":formreg10 ,
+           "chargeman":formreg11, "helper":formreg12 , "driver":formreg13, 
+          "shift":formreg14 , "lainlain":formreg15};
+  
+
+      var dataString = JSON.stringify(dataFormreg);
+        $.ajax({
+                    url: 'http://1.32.96.10/ProLight/mimi/imbangan.php',
+                    data: {myData: dataString},
+                    type: 'POST',
+                    success: function(response){
+                        alert(response);
+                        window.location.replace("laporan3.html");
+                        }
+                    });
+               
+    }
+
+function checkTemp() {
+        getItem();
+    }
+
+    function getItem() {
+        document.getElementById('panel').value = localStorage.getItem("panel");
+        document.getElementById('fuseswitch').value = localStorage.getItem("fuseswitch");
+        document.getElementById('bend').value = localStorage.getItem("bend");
+        document.getElementById('cooper').value = localStorage.getItem("cooper");
+        document.getElementById('wire1c').value = localStorage.getItem("wire1c");
+        document.getElementById('pusing').value = localStorage.getItem("pusing");
+        document.getElementById('mini').value = localStorage.getItem("mini");
+        document.getElementById('chargeman').value = localStorage.getItem("chargeman");
+        document.getElementById('helper').value = localStorage.getItem("helper");
+        document.getElementById('driver').value = localStorage.getItem("driver");
+        document.getElementById('shift').value = localStorage.getItem("shift");
+        document.getElementById('lainlain').value = localStorage.getItem("lainlain");
+        
+
+    }
+
+    function senaraisemak() {
+        window.location.href = "imbangan.html";
+    }
+    function senaraisemak2() {
+        window.location.href = "imbangan2.html";
+    }
+
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+
+    
+    function goHome() {
+        window.location.href = "home.html";
+    }
+
+    function goSenarai() {
+        window.location.href = "tugasan.html";
+    }
+
+    function goStatus() {
+        window.location.href = "laporan.html";
+    }
+
+    function goStatistik() {
+        window.location.href = "statistik1.html";
+    }
+
+    function goPapan() {
+        window.location.href = "papanskor.html";
+    }
+
+    function post() {
+        window.location.href = "laporan3.html";
+    }
+
+    function save() {
+
+        localStorage.setItem("editimbangan", "");
+        var formData = app.form.convertToData('#formimbangan2');
+
+        var formreg = formData.panel;
+        var formreg6 = formData.fuseswitch;
+        var formreg7 = formData.bend;
+        var formreg8 = formData.cooper;
+        var formreg9 = formData.wire1c;
+        var formreg10 = formData.mini;
+        var formreg11 = formData.chargeman;
+        var formreg12 = formData.helper;
+        var formreg13 = formData.driver;
+        var formreg14 = formData.shift;
+        var formreg15 = formData.lainlain;
+
+        localStorage.setItem("panel", formData.panel);
+        localStorage.setItem("fuseswitch", formData.fuseswitch);
+        localStorage.setItem("bend", formData.bend);
+        localStorage.setItem("cooper", formData.cooper);
+        localStorage.setItem("wire1c", formData.wire1c);
+        localStorage.setItem("mini", formData.mini);
+        localStorage.setItem("chargeman", formData.chargeman);
+        localStorage.setItem("helper", formData.helper);
+        localStorage.setItem("driver", formData.driver);
+        localStorage.setItem("shift", formData.shift);
+        localStorage.setItem("lainlain", formData.lainlain);
+        localStorage.setItem("edit", "2");
+       
+
+
+        window.location.href = "laporan2.html";
+    }
+</script>
+
+
+</html>

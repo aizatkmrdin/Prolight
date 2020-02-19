@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" type="text/css" href="../css/input.css">
+       
+        <title>ProLight</title>
+</head>
+<body >
+
+    
+      
+                <p class="position-text-high"> <h1>Gambar tiang Sebelum</h1></p>
+               <p class="position-gambar-high"><button id="cameraApp" name="cameraApp"  class="btnsscamera" >Camera<button></p>
+                <div style= "width:250px; min-height:300px; "> 
+                    <img style="max-width: 100%;" src="" id="gambarsebelum" name="gambarsebelum" >
+                </div>
+               <input type="file" class="btnssfile2"  />
+           
+               <div onclick="save()" class="buttonSimpan position-button-simpan-gambar">Simpan</div>
+               <div onclick="back()" class="buttonSeterusnya position-button-back-gambar">Back</div>
+  
+
+
+            <!--<div onclick="save()" class="buttonSimpan position-button-simpan-gambar">Simpan</div>
+            <div onclick="back()" class="buttonSeterusnya position-button-back-gambar">Back</div>-->
+
+<script type="text/javascript" src="../cordova.js"></script>
+<script type="text/javascript">
+document.getElementById('cameraApp').addEventListener('click',cameraApp);
+function cameraApp()
+{
+    navigator.camera.getPicture(onSuccess,onFail,{
+        quality:50,
+        saveToPhotoAlbum:true,
+        destinationType:Camera.DestinationType.FILE_URI
+
+    });
+    
+function onSuccess(imageURI) {
+    var image = document.getElementById('gambarsebelum');
+    image.src = "data:image/jpeg;base64," + imageURI;
+
+    
+}
+
+function onFail(message) {
+    alert('Failed because: ' + message);
+}
+}
+
+</script>
+</body>
+<script>
+    function checkTemp() {
+        getItem();
+    
+    }
+function getItem() {
+    document.getElementById('gambarsebelum').value = localStorage.getItem("gambarsebelum");
+}
+
+function back() {
+     //window.history.back();
+     window.location.href = "ticket.html";
+}
+
+function save() {
+    var formAset = app.form.convertToData('#formcamera');
+        //alert(formAset);
+
+    var formreg = formAset.gambarsebelum;
+    localStorage.setItem("gambarsebelum", formAset.gambarsebelum);
+    window.location.href = "laporan2.html";
+    }
+
+
+
+</script>
+</html>

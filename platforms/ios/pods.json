@@ -1,0 +1,12 @@
+{
+    "declarations": {},
+    "sources": {},
+    "libraries": {
+        "AFNetworking": {
+            "name": "AFNetworking",
+            "type": "podspec",
+            "spec": "~> 3.2.1",
+            "count": 1
+        }
+    }
+}

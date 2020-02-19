@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script type="text/javascript" src="../cordova.js"></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="../js/framework7.js"></script>
+        <script type="text/javascript" src="../js/framework7.min.js"></script>
+        <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
+        <script type="text/javascript" src="../js/index.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/table.css">
+        <link rel="stylesheet" type="text/css" href="../css/boot.css">
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" type="text/css" href="../css/input.css">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        $(document).ready(function(){
+        $('.count').prop('disabled', true);
+        $(document).on('click','.plus',function(){
+        $('.count').val(parseInt($('.count').val()) + 1 );
+        });
+        $(document).on('click','.minus',function(){
+        $('.count').val(parseInt($('.count').val()) - 1 );
+        if ($('.count').val() == 0) {
+            $('.count').val(1);
+        }
+        });
+        });
+</script>
+    <title>ProLight</title>
+</head>
+
+<body class="reg">
+        <header>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times"></i>
+                </div>
+                <nav class="sidebar">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a onclick="goHome()" class="nav-link current">
+                                <i class="fas fa-home"></i>Menu Utama
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                                <a onclick="goSenarai()" class="nav-link">
+                                    <i class="fas fa-address-card"></i>Senarai Tugas
+                                </a>
+                            </li>
+                        <li class="nav-item">
+                            <a onclick="goStatus()" class="nav-link">
+                                <i class="fas fa-briefcase"></i>Status Laporan
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                                <a onclick="goStatistik()" class="nav-link">
+                                    <i class="fas fa-blog"></i>Statistik Tugasan
+                                </a>
+                            </li>
+        
+                            <li class="nav-item">
+                                    <a onclick="goPapan()"class="nav-link">
+                                        <i class="fas fa-envelope"></i>Papan Skor
+                                    </a>
+                                </li>
+                    </ul>
+                </nav>
+            </header>
+        
+            <main>
+                <div class="zoom-content">
+                    <section>
+
+
+    <p class="titlereg-report">Menu Laporan</p>
+    <div class="container position-tab">
+        <ul class="nav nav-tabs ">
+            <li class="active"><a href="#">Selesai</a></li>
+            <li><a onclick="laporan2()">Belum Selesai</a></li>
+            <li><a onclick="laporan3()">Dalam Proses</a></li>
+        </ul>
+        <br>
+        <center>
+            <table>
+                <tr>
+                    <th>
+                        <p style="text-align: center">Bil</p>
+                    </th>
+                    <th>
+                        <p style="text-align: center">Tarikh</p>
+                    </th>
+                    <th>
+                        <p style="text-align: center">Jenis Kerja</p>
+                    </th>
+                    <th></th>
+                </tr>
+                <tr>
+                        <td style="padding: 10px 10px;">
+                            <div id="bil"></div>
+                        </td>
+                        <td>
+                            <div id="list"></div>
+                        </td>
+                        <td>
+                            <div id="listt"></div>
+                        </td>
+                    </tr>
+            </table>
+        </center>
+   
+    
+     
+  
+           
+</section>
+</div>
+</main>
+</body>
+
+<script type="text/javascript" src="../js/script.js"></script>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+
+    function goHome() {
+        window.location.href = "home.html";
+    }
+
+    function goSenarai() {
+        window.location.href = "tugasan.html";
+    }
+
+    function goStatus() {
+        window.location.href = "laporan.html";
+    }
+
+    function goStatistik() {
+        window.location.href = "statistik1.html";
+    }
+
+    function goPapan() {
+        window.location.href = "papanskor.html";
+    }
+
+     
+    function laporan() {
+        window.location.href = "laporan.html";
+    }
+
+    function laporan2() {
+        window.location.href = "laporan2.html";
+    }
+
+    function laporan3() {
+        window.location.href = "laporan3.html";
+    }
+
+    $(document).ready(function() {
+
+  $.ajax({    //create an ajax request to display.php
+    type: "GET",
+    url: "http://1.32.96.10/ProLight/mimi/laporanselesai2.php",             
+    //dataType: "html",   //expect html to be returned                
+    success: function(response){                    
+       // $("#jeniskerja").html(response); 
+       localStorage.setItem('myData', JSON.stringify(response));
+          var myData = JSON.parse(localStorage.getItem('myData'));
+          var i;
+          var inputs = "";
+          for (i = 0; i < myData.length; i = i + 1) {
+            $("#list").append( myData[i].masa +"<br>");
+            $("#listt").append( myData[i].kerja+"<br>");
+            $("#bil").append(i+1+"<br>");
+          }
+    }
+       
+});
+});
+
+</script>
+
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script type="text/javascript" src="../cordova.js"></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="../js/framework7.js"></script>
+        <script type="text/javascript" src="../js/framework7.min.js"></script>
+        <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
+        <script type="text/javascript" src="../js/index.js"></script>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" type="text/css" href="../css/boot.css">
+        <link rel="stylesheet" type="text/css" href="../css/input.css">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <title>ProLight</title>
+</head>
+
+<body class="reg">
+        <header>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times"></i>
+                </div>
+                <nav class="sidebar">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a onclick="goHome()" class="nav-link current">
+                                <i class="fas fa-home"></i>Menu Utama
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                                <a onclick="goSenarai()" class="nav-link">
+                                    <i class="fas fa-address-card"></i>Senarai Tugas
+                                </a>
+                            </li>
+                        <li class="nav-item">
+                            <a onclick="goStatus()" class="nav-link">
+                                <i class="fas fa-briefcase"></i>Status Laporan
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                                <a onclick="goStatistik()" class="nav-link">
+                                    <i class="fas fa-blog"></i>Statistik Tugasan
+                                </a>
+                            </li>
+        
+                            <li class="nav-item">
+                                    <a onclick="goPapan()"class="nav-link">
+                                        <i class="fas fa-envelope"></i>Papan Skor
+                                    </a>
+                                </li>
+                    </ul>
+                </nav>
+            </header>
+        
+            <main>
+                <div class="zoom-content">
+                    <section>
+    <p class="titlereg-report">Senarai Tugasan</p>
+
+    <div class="container position-tab">
+        <ul class="nav nav-tabs ">
+            <li><a onclick="tugasan()">Tugasan</a></li>
+            <li class="active"><a href="#">Sekarang</a></li>
+            <li><a onclick="tugasan3()">Selesai</a></li>
+        </ul>
+        <br>
+        <div class="timeline">
+                <div id="myBtn">
+                 <div id="timeline"></div>
+        </div>
+    
+
+</section>
+</div>
+</main>
+</body>
+
+<script type="text/javascript" src="../js/script.js"></script>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+
+    function goHome() {
+        window.location.href = "home.html";
+    }
+
+    function goSenarai() {
+        window.location.href = "tugasan.html";
+    }
+
+    function goStatus() {
+        window.location.href = "laporan.html";
+    }
+
+    function goStatistik() {
+        window.location.href = "statistik1.html";
+    }
+
+    function goPapan() {
+        window.location.href = "papanskor.html";
+    }
+    function tugasan() {
+        window.location.href = "tugasan.html";
+    }
+
+    function tugasan2() {
+        window.location.href = "tugasan2.html";
+    }
+
+    function tugasan3() {
+        window.location.href = "tugasan3.html";
+    }
+
+    var a= localStorage.getItem("id");
+
+var data = {"id":a};
+
+
+var dataString = JSON.stringify(data);
+        $.ajax({
+                    url: 'http://1.32.96.10/ProLight/mimi/tugasan2.php',
+                    data: {myData: dataString},
+                    type: 'POST',
+                    success: function(response){
+                        //alert(response);
+                        localStorage.setItem('myData', JSON.stringify(response));
+                         var myData = JSON.parse(localStorage.getItem('myData'));
+                         $("#timeline").append("<div onclick='next("+myData[0].id+")' class='container2 left'><div class='content2'> <h2 class='color-font'>"+myData[0].tarikh+"</h2> <p class='color-font'>"+myData[0].kerja+"</p><p class='color-font'>"+myData[0].lokasi+"</p><p class='color-font'>"+myData[0].ulasan +"</p></div></div>");
+                        }
+                    });
+
+                    
+</script>
+
+<script>
+  /* $(document).ready(function() {
+        
+        $.ajax({    //create an ajax request to display.php
+        type: "GET",
+        url: "http://1.32.96.10/ProLight/mimi/tugasan2.php",             
+        //dataType: "html",   //expect html to be returned                
+        success: function(response){                    
+           // $("#jeniskerja").html(response); 
+           localStorage.setItem('myData', JSON.stringify(response));
+              var myData = JSON.parse(localStorage.getItem('myData'));
+              var i;
+              var inputs = "";
+              
+                $("#tarikh").append( myData[0].tarikh +"<br>");
+                $("#masa").append( myData[0].masa+"<br>");
+                $("#kerja").append( myData[0].kerja +"<br>");
+                $("#lokasi").append( myData[0].lokasi+"<br>");
+    
+                $("#timeline").append("<div onclick='next("+myData[0].id+")' class='container2 left'><div class='content2'> <h2 class='color-font'>"+myData[0].tarikh+"</h2> <p class='color-font'>"+myData[0].kerja+"</p><p class='color-font'>"+myData[0].lokasi +"</p></div></div>");
+    
+              }
+              
+        
+           
+    });
+    }); */
+</script>
+</html>

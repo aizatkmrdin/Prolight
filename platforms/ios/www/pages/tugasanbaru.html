@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+   
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script type="text/javascript" src="../cordova.js"></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="../js/framework7.js"></script>
+        <script type="text/javascript" src="../js/framework7.min.js"></script>
+        <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
+        <script type="text/javascript" src="../js/index.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" type="text/css" href="../css/input.css">
+        <link rel="stylesheet" type="text/css" href="../css/boot.css">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>ProLight</title>
+</head>
+
+<body class="reg">
+       
+        
+            <main>
+                <div class="zoom-content">
+      
+
+</body>
+
+<script type="text/javascript" src="../js/script.js"></script>
+
+
+<script>
+
+  
+    $(document).ready(function() {
+        
+    $.ajax({    //create an ajax request to display.php
+    type: "GET",
+    url: "http://1.32.96.10/ProLight/mimi/tugasan.php",             
+    //dataType: "html",   //expect html to be returned                
+    success: function(response){                    
+       // $("#jeniskerja").html(response); 
+       localStorage.setItem('myData', JSON.stringify(response));
+          var myData = JSON.parse(localStorage.getItem('myData'));
+          var i;
+          var inputs = "";
+          for (i = 0; i < myData.length; i = i + 1) {
+            $("#tarikh").append( myData[i].tarikh +"<br>");
+            $("#masa").append( myData[i].masa+"<br>");
+            $("#kerja").append( myData[i].kerja +"<br>");
+            $("#lokasi").append( myData[i].lokasi+"<br>");
+
+            $("#timeline").append("<div onclick='next("+myData[i].id+")' class='container2 left'><div class='content2'> <h2 class='color-font'>"+myData[i].tarikh+"</h2> <p class='color-font'>"+myData[i].kerja+"</p><p class='color-font'>"+myData[i].lokasi +"</p></div></div>"+myData[i].ulasan +"</p></div></div>");
+
+          }
+          
+    }
+       
+});
+});
+
+
+</script>
+
+<script>
+var a= localStorage.getItem("id");
+
+var data = {"id":a};
+
+
+var dataString = JSON.stringify(data);
+        $.ajax({
+                    url: 'http://1.32.96.10/ProLight/mimi/tugasanbaru.php',
+                    data: {myData: dataString},
+                    type: 'POST',
+                    success: function(response){
+                       // alert(response);
+                        window.location.href = "tugasan2.html";
+                        }
+                    });
+
+                    
+               
+</script>
+
+</html>

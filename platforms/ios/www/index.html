@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="js/framework7.js"></script>
+  <script type="text/javascript" src="js/framework7.min.js"></script>
+  <script type="text/javascript" src="js/framework7.bundle.min.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+
+  <title>ProLight</title>
+</head>
+
+<body>
+  <div class="screen">
+    <div class="titlebox">
+      <p>Pro</p>
+    </div>
+    <div class="titlebox2">
+      <p>Light</p>
+    </div>
+  </div>
+
+  <p class="title">Log Masuk</p>
+
+  <form id="login">
+    <input class="text-line position" placeholder="ID Pengguna" type="text" name="username" />
+
+    <input class="text-line2 position2" placeholder="Kata Laluan" type="password" name="password" />
+    <div id="logbutton" class="radbut">
+      <p>Log Masuk</p>
+    </div>
+  </form>
+
+
+
+
+
+
+  <p class="btms" onclick="register()"><span class="word">Anda staf baru?</span><span class="green">Daftar
+      disini!</span></a>
+  </p>
+
+</body>
+
+<script>
+  document.addEventListener("deviceready", onDeviceReady, false);
+
+
+  function onOffline() {
+    console.log("Offline !!");
+    //window.location.href = "pages/loadingmenuoff.html";
+  }
+
+  function onDeviceReady() {
+    alert("klasj");
+    document.addEventListener("offline", onOffline, false);
+
+  }
+
+  function register() {
+    window.location.href = "pages/register.html";
+  }
+
+  $("#logbutton").click(function () {
+
+    var loginData = app.form.convertToData('#login');
+    //alert(loginData.uname);
+    //alert(loginData.pwd);
+    localStorage.setItem('username', loginData.username);
+
+    var dataPost = {
+      "username": loginData.username,
+      "password": loginData.password
+    };
+
+    var dataString = JSON.stringify(dataPost);
+
+    $.ajax({
+
+      url: 'http://1.32.96.10/ProLight/mimi/loginpage.php',
+      data: {
+        myData: dataString
+      },
+      type: 'POST',
+
+      success: function (response) {
+
+        if (response == 0) {
+
+          alert("Wrong Combination Username and Password ");
+        } else if (response == 1) {
+
+
+          //window.location.href = "pages/allpage.html";
+          window.location.href = "pages/home.html";
+        }
+      }
+    });
+  });
+</script>
+
+</html>

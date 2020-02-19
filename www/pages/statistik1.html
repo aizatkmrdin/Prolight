@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<style>
+    #myChart {
+        position: absolute;
+        left: -18%;
+        top: 70%;
+        width: 150%;
+        height: 400px;
+        min-height: 250px;
+    }
+
+    .zc-ref {
+        display: none;
+    }
+
+    zing-grid[loading] {
+        height: 850px;
+    }
+</style>
+
+<head>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <link rel="stylesheet" type="text/css" href="../css/input.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/boot.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <title>ProLight</title>
+</head>
+
+<body class="reg">
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" style="position: absolute; top: 5% ;right:0%;"
+            onclick="closeNav()">&times;</a>
+        <a onclick="goHome()">Menu Utama</a>
+        <a onclick="goSenarai()">Senarai Tugas</a>
+        <a onclick="goStatus()">Status Laporan</a>
+        <a onclick="goStatistik()">Statistik Tugasan</a>
+        <a onclick="goPapan()">Papan Skor</a>
+    </div>
+
+    <p class="titlereg-report">Menu Laporan</p>
+  <!-- <span style="font-size:30px;cursor:pointer;position: absolute; top: 5%; left: 2%;"
+        onclick="openNav()">&#9776;</span>-->
+    <div class="container position-tab">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#">Keseluruhan</a></li>
+            <li><a href="../pages/statistik2.html">Belum Selesai</a></li>
+            <li><a href="../pages/statistik3.html">Selesai</a></li>
+        </ul>
+        <br>
+       <div id='myChart'>
+            <table class="position-jumlah-table"
+                style="box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);">
+                <tr style="background: #25A2A2; border: 1px solid black">
+                    <th style="color: white; ">Jumlah Kerja</th>
+                </tr>
+                <tr style="background: #E4F0A9; border: 1px solid black">
+                    <th style="text-align: center"><div id="full"></div></th>
+                </tr>
+            </table>
+
+            <table class="position-belum-table"
+                style="box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);">
+                <tr style="background: #25A2A2; border: 1px solid black">
+                    <th style="color: white; ">Belum Selesai</th>
+                </tr>
+                <tr style="background: #E4F0A9; border: 1px solid black">
+                    <th style="text-align: center"><div id="belum"></div></th>
+                </tr>
+            </table>
+
+            <table class="position-selesai-table"
+                style="box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);">
+                <tr style="background: #25A2A2; border: 1px solid black">
+                    <th style="color: white; ">Sudah Selesai</th>
+                </tr>
+                <tr style="background: #E4F0A9; border: 1px solid black">
+                    <th style="text-align: center"><div id="selesai"></div></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </div>
+    <button onclick="home()" class="buttonSeterusnya position-button-back-home">HOME</button> 
+</body>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+
+    //zing chart
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "b55b025e438fa8a98e32482b5f768ff5"];
+    var myConfig = {
+        type: "pie",
+        plot: {
+            borderColor: "#2B313B",
+            borderWidth: 3,
+            // slice: 90,
+            valueBox: {
+                placement: 'out',
+                text: '%t\n%npv%',
+                fontFamily: "Open Sans"
+            },
+            tooltip: {
+                fontSize: '18',
+                fontFamily: "Open Sans",
+                padding: "5 10",
+                text: "%npv%"
+            },
+            animation: {
+                effect: 2,
+                method: 5,
+                speed: 900,
+                sequence: 1,
+                delay: 3000
+            }
+        },
+        plotarea: {
+            margin: "10 0 0 0"
+        },
+        series: [{
+                values:[selesai],
+                text: "Selesai",
+                backgroundColor: '#50ADF5',
+            },
+            {
+                values:[belum],
+                text: "Belum Selesai",
+                backgroundColor: '#FF5733',
+            }
+        ]
+    };
+
+    zingchart.render({
+        id: 'myChart',
+        data: myConfig,
+        height: '300px',
+        width: '100%'
+    });
+
+    function goHome() {
+        window.location.href = "home.html";
+    }
+
+    function goSenarai() {
+        window.location.href = "laporan.html";
+    }
+
+    function goStatus() {
+        window.location.href = "laporan.html";
+    }
+    function home() {
+        window.location.href = "home.html";
+    }
+    function goStatistik() {
+        window.location.href = "statistik1.html";
+    }
+
+    function goPapan() {
+        window.location.href = "papanskor.html";
+    }
+
+    $(document).ready(function() {
+
+$.ajax({    //create an ajax request to display.php
+  type: "GET",
+  url: "http://1.32.96.10/ProLight/mimi/stat2.php",             
+  //dataType: "html",   //expect html to be returned                
+  success: function(response){                    
+     // $("#jeniskerja").html(response); 
+     localStorage.setItem('myData', JSON.stringify(response));
+        var myData = JSON.parse(localStorage.getItem('myData'));
+        var i;
+        var inputs = "";
+        $("#selesai").append( myData[0].count +"<br>");
+       var x = document.getElementById("selesai");
+       alert(x);
+        for (i = 0; i < myData.length; i = i + 1) {
+          
+          $("#listt").append( myData[i].kerja+"<br>");
+          $("#bil").append(i+1+"<br>");
+        }
+  }
+
+
+     
+});
+});
+
+</script>
+<script>
+ $(document).ready(function() {
+
+$.ajax({    //create an ajax request to display.php
+  type: "GET",
+  url: "http://1.32.96.10/ProLight/mimi/stat3.php",             
+  //dataType: "html",   //expect html to be returned                
+  success: function(response){                    
+     // $("#jeniskerja").html(response); 
+     localStorage.setItem('myData', JSON.stringify(response));
+        var myData = JSON.parse(localStorage.getItem('myData'));
+        var i;
+        var inputs = "";
+        $("#belum").append( myData[0].kira +"<br>");
+        for (i = 0; i < myData.length; i = i + 1) {
+          
+          $("#listt").append( myData[i].kerja+"<br>");
+          $("#bil").append(i+1+"<br>");
+        }
+  }
+
+
+     
+});
+});
+
+</script>
+
+<script>
+    $(document).ready(function() {
+   
+   $.ajax({    //create an ajax request to display.php
+     type: "GET",
+     url: "http://1.32.96.10/ProLight/mimi/stat1.php",             
+     //dataType: "html",   //expect html to be returned                
+     success: function(response){                    
+        // $("#jeniskerja").html(response); 
+        localStorage.setItem('myData', JSON.stringify(response));
+           var myData = JSON.parse(localStorage.getItem('myData'));
+           var i;
+           var inputs = "";
+           $("#full").append( myData[0].rowcount +"<br>");
+           for (i = 0; i < myData.length; i = i + 1) {
+             $("#listt").append( myData[i].kerja+"<br>");
+             $("#bil").append(i+1+"<br>");
+           }
+     }
+   
+   
+        
+   });
+   });
+   
+   </script>
+
+</html>

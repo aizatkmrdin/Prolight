@@ -1,0 +1,391 @@
+.position-text1-high {
+    position: absolute;
+    top: 18%;
+    left: 15%;
+}
+
+.position-gambar-high {
+    position: absolute;
+    top: 10%;
+    left: 15%;
+}
+
+.gambar2-high {
+    position: absolute;
+    bottom:40%;
+    left: 15%;
+}
+
+.position-text2-high {
+    position: absolute;
+    top: 23%;
+    left: 15%;
+}
+
+.position-textcamera-high {
+    position: absolute;
+    top: 100%;
+  
+}
+
+.position-textpic-high {
+    position: absolute;
+    top: 10%;
+    left: 30%;
+}
+
+.position-text3-high {
+    position: absolute;
+    top: 28%;
+    left: 15%;
+}
+
+.position-text4-high {
+    position: absolute;
+    top: 33%;
+    left: 15%;
+}
+
+.position-text5-high {
+    position: absolute;
+    top: 38%;
+    left: 15%;
+}
+
+.position-text6-high {
+    position: absolute;
+    top: 43%;
+    left: 15%;
+}
+
+.position-text7-high {
+    position: absolute;
+    top: 48%;
+    left: 15%;
+}
+
+.position-text8-high {
+    position: absolute;
+    top: 53%;
+    left: 15%;
+}
+
+.position-text9-high {
+    position: absolute;
+    top: 58%;
+    left: 15%;
+}
+
+.position-text10-high {
+    position: absolute;
+    top: 63%;
+    left: 15%;
+}
+
+.position-text11-high {
+    position: absolute;
+    top: 68%;
+    left: 15%;
+}
+
+.position-text12-high {
+    position: absolute;
+    top: 73%;
+    left: 15%;
+}
+
+.position-text13-high {
+    position: absolute;
+    top: 78%;
+    left: 15%;
+}
+
+.position-text14-high {
+    position: absolute;
+    top: 83%;
+    left: 15%;
+}
+
+.position-text15-high {
+    position: absolute;
+    top: 88%;
+    left: 15%;
+}
+
+.position-text16-high {
+    position: absolute;
+    top: 93%;
+    left: 15%;
+}
+
+.position-text17-high {
+    position: absolute;
+    top: 98%;
+    left: 15%;
+}
+
+.position-button-simpan-input {
+    position: absolute;
+    bottom: -12%;
+    left: 15%;
+}
+
+.position-button-seterusnya-input {
+    position: absolute;
+    bottom: -12%;
+    right: 15%;
+}
+
+.position-button-simpan-gambar {
+    position: absolute;
+    top: 140%;
+    left: 1%;
+}
+
+.position-button-back-gambar {
+    position: absolute;
+    top: 140%;
+    right: 10%;
+}
+
+.position-button-back-camera {
+    position: absolute;
+    top: 80%;
+    right: 40%;
+}
+
+.position-button-back-home {
+    position: absolute;
+    top: 90%;
+    right: 40%;
+}
+
+
+
+#footer {
+    position: absolute;
+    bottom: -21%;
+    width: 100%;
+    height: 2.5rem;
+    /* Footer height */
+}
+
+.position-input0-ticket {
+    position: absolute;
+    top: 109%;
+    left: 10%;
+}
+
+
+.position-input1-ticket {
+    position: absolute;
+    top: 18.5%;
+    left: 55%;
+}
+
+.position-input2-ticket {
+    position: absolute;
+    top: 23.5%;
+    left: 55%;
+}
+
+.position-input3-ticket {
+    position: absolute;
+    top: 28.5%;
+    left: 55%;
+}
+
+.position-input4-ticket {
+    position: absolute;
+    top: 33.5%;
+    left: 55%;
+}
+
+.position-input5-ticket {
+    position: absolute;
+    top: 38.5%;
+    left: 55%;
+}
+
+.position-input6-ticket {
+    position: absolute;
+    top: 43.5%;
+    left: 55%;
+}
+
+.position-input7-ticket {
+    position: absolute;
+    top: 48.5%;
+    left: 55%;
+}
+
+.position-input8-ticket {
+    position: absolute;
+    top: 53.5%;
+    left: 55%;
+}
+
+.position-input9-ticket {
+    position: absolute;
+    top: 58.5%;
+    left: 55%;
+}
+
+.position-input10-ticket {
+    position: absolute;
+    top: 63.5%;
+    left: 55%;
+}
+
+.position-input11-ticket {
+    position: absolute;
+    top: 68.5%;
+    left: 55%;
+}
+
+.position-input12-ticket {
+    position: absolute;
+    top: 73.5%;
+    left: 55%;
+}
+
+.position-input13-ticket {
+    position: absolute;
+    top: 78.5%;
+    left: 55%;
+}
+
+.position-input14-ticket {
+    position: absolute;
+    top: 83.5%;
+    left: 55%;
+}
+
+.position-input15-ticket {
+    position: absolute;
+    top: 88.5%;
+    left: 55%;
+}
+
+.position-input16-ticket {
+    position: absolute;
+    top: 93.5%;
+    left: 55%;
+}
+
+.position-input17-ticket {
+    position: absolute;
+    top: 98.5%;
+    left: 55%;
+}
+
+.position-input18-ticket {
+    position: absolute;
+    top: 95%;
+    left: 15%;
+}
+
+.position-button-simpan-input2 {
+    position: absolute;
+    bottom: -20%;
+    left: 15%;
+}
+
+.position-button-seterusnya-input2 {
+    position: absolute;
+    bottom: -20%;
+    right: 15%;
+}
+
+.position-button-simpan-input3 {
+    position: absolute;
+    bottom: -29%;
+    left: 15%;
+}
+
+.position-button-seterusnya-input3 {
+    position: absolute;
+    bottom: -29%;
+    right: 15%;
+}
+
+.position-button-simpan-input4 {
+    position: absolute;
+    top: 116%;
+    left: 15%;
+}
+
+.position-button-seterusnya-input4 {
+    position: absolute;
+    top: 116%;
+    right: 15%;
+}
+
+
+
+.position-button-simpan-input-ticket1 {
+    position: absolute;
+    bottom: -27%;
+    left: 15%;
+}
+
+.position-button-simpan-aduan {
+    position: absolute;
+    bottom: 25%;
+    left: 15%;
+}
+
+.position-input13-ticket {
+    position: absolute;
+    top: 78.5%;
+    left: 55%;
+}
+
+.position-button-simpan-input-ticket2 {
+    position: absolute;
+    bottom: -12%;
+    left: 15%;
+}
+
+.position-button-seterusnya-input-ticket1 {
+    position: absolute;
+    bottom: -27%;
+    right: 15%;
+}
+
+.position-button-seterusnya-aduan {
+    position: absolute;
+    bottom: 25%;
+    right: 15%;
+}
+
+.position-button-seterusnya-input-ticket2 {
+    position: absolute;
+    bottom: -12%;
+    right: 15%;
+}
+
+
+.position-button-simpan-input-ticket20 {
+    position: absolute;
+    bottom: -25%;
+    left: 15%;
+}
+
+.position-button-seterusnya-input-ticket20 {
+    position: absolute;
+    bottom: -25%;
+    right: 15%;
+}
+
+.position-button-simpan-input-ticket20 {
+    position: absolute;
+    bottom: -35%;
+    left: 15%;
+}
+
+.position-button-seterusnya-input-ticket20 {
+    position: absolute;
+    bottom: -35%;
+    right: 15%;
+}

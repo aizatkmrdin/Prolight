@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" type="text/css" href="../css/input.css">
+       
+        <title>ProLight</title>
+</head>
+<body onload="checkTemp()">
+
+    
+       <form id="formaduan">
+                <p class="position-text-high"> <h1>Gambar Panel</h1>
+               <p class="position-gambar-high"><button id="cameraApp" name="myImage"  class="btnsscamera" >Camera<button></p>
+                <div style= "width:250px; min-height:300px; "> 
+                    <img style="max-width: 100%;" src="" id="myImage" name="myImage">
+                </div>
+               <input type="file" name="panel" class="btnssfile2"  /></p>
+           
+               <div onclick="save()" class="buttonSimpan position-button-simpan-gambar">Simpan</div>
+               <div onclick="back()" class="buttonSeterusnya position-button-back-gambar">Back</div>
+            </form>
+
+
+            <!--<div onclick="save()" class="buttonSimpan position-button-simpan-gambar">Simpan</div>
+            <div onclick="back()" class="buttonSeterusnya position-button-back-gambar">Back</div>-->
+
+<script type="text/javascript" src="../cordova.js"></script>
+<script type="text/javascript">
+document.getElementById('cameraApp').addEventListener('click',cameraApp);
+function cameraApp()
+{
+    navigator.camera.getPicture(onSuccess,onFail,{
+        quality:50,
+        saveToPhotoAlbum:true,
+        destinationType:Camera.DestinationType.DATA_URL
+
+    });
+    
+function onSuccess(imageURI) {
+    var image = document.getElementById('myImage');
+    image.src = "data:image/jpeg;base64," + imageURI;
+    
+}
+
+function onFail(message) {
+    alert('Failed because: ' + message);
+}
+}
+
+</script>
+</body>
+<script>
+    function checkTemp() {
+        getItem();
+        onLoad();
+    }
+function getItem() {
+    document.getElementById('panel').value = localStorage.getItem("panel");
+}
+
+function back() {
+     window.history.back();
+}
+
+function save() {
+    var formAset = app.form.convertToData('#camera');
+        //alert(formAset);
+
+    var formreg = formAset.panel;
+    localStorage.setItem("panel", formAset.panel);
+
+}
+
+</script>
+</html>

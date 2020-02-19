@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" type="text/css" href="../css/input.css">
+       
+        <title>ProLight</title>
+</head>
+<body onload="checkTemp()">
+
+    
+       <form id="formaduan">
+                <p class="position-text-high"> <h1>Gambar tiang</h1>
+               <p class="position-gambar-high"><button id="but_take"  class="btnsscamera" >Camera<button></p>
+                <div style= "width:250px; min-height:300px; "> 
+                    <img style="max-width: 100%;" src="" name="myImage">
+                </div>
+               <button id="but_select" class="btnssfile2" >Choose File</button></p>
+           
+            </form>
+
+            <div id="savebutton" class= "buttonSimpan position-button-simpan-gambar">Simpan</div>
+            <div id="sendbutton" class="buttonSeterusnya position-button-back-gambar">Back</div>-
+
+<script type="text/javascript" src="../cordova.js"></script>
+<script type="text/javascript">
+ $(document).ready(function()
+{
+    $('#but_take').click(function(){      
+    navigator.camera.getPicture(onSuccess,onFail,{
+        quality:50,
+        saveToPhotoAlbum:true,
+        destinationType:Camera.DestinationType.DATA_URL
+
+    });
+    });
+
+    $("#but_select").click(function(){
+                navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY, 
+                    allowEdit: true,
+                    destinationType: Camera.DestinationType.FILE_URI
+                });
+                
+            });
+    
+    
+function onSuccess(imageURI) {
+    var image = document.getElementById('myImage');
+    image.src = "data:image/jpeg;base64," + imageURI;
+    
+}
+
+function onFail(message) {
+    alert('Failed because: ' + message);
+}
+
+});
+
+</script>
+</body>
+<script>
+    
+    $("#savebutton").click(function () {
+      alert("Hi");
+      var formAset = app.form.convertToData('#camera');
+        //alert(formAset);
+
+    var formreg = formAset.gambartiang;
+    localStorage.setItem("gambartiang", formAset.gambartiang);
+    
+    
+     
+    });
+</script>
+<script>
+  
+    function checkTemp() {
+        getItem();
+        onLoad();
+    }
+function getItem() {
+    document.getElementById('gambartiang').value = localStorage.getItem("gambartiang");
+}
+
+function back() {
+     window.history.back();
+}
+
+function save() {
+    var formAset = app.form.convertToData('#camera');
+        //alert(formAset);
+
+    var formreg = formAset.gambartiang;
+    localStorage.setItem("gambartiang", formAset.gambartiang);
+
+
+}
+
+
+</script>
+</html>

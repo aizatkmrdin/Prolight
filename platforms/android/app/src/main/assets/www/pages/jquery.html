@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="js/framework7.js"></script>
+  <script type="text/javascript" src="js/framework7.min.js"></script>
+  <script type="text/javascript" src="js/framework7.bundle.min.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <title>Hello World</title>
+</head>
+<style>
+  .container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    color: white;
+  }
+
+  .centered {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .container img {
+    width: 100%;
+    height: auto;
+  }
+
+  .container .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    color: grey;
+    font-size: 16px;
+    padding: 20px 80px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    text-align: center;
+  }
+
+  .container .btn:hover {
+    background-color: white;
+  }
+
+  .container .btn2 {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    color: grey;
+    font-size: 16px;
+    padding: 20px 80px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    text-align: center;
+  }
+
+  .container .btn2:hover {
+    background-color: white;
+  }
+
+  .container .btnLogin {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #1dd6b7;
+    color: grey;
+    font-size: 16px;
+    padding: 20px 80px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    text-align: center;
+  }
+
+  .screen {
+    background-image: url(../img/bg.png);
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
+
+<body>
+  <center>
+    <div class="container">
+      <img class="screen" src="img/bg.png">
+      <form id="login">
+        <input class="btn" type="text" placeholder="Username" name="uname">
+
+        <input class="btn2" type="password" placeholder="Password" name="pwd">
+
+        <div id="logbutton" class="btnLogin">Login</div>
+      </form>
+      <div class="centered">
+        <p class="daftarbaru">Forgot Password ?<a href="pages/forgotpass.html" class="daftarsini">Sign up!</a>
+          <p>
+      </div>
+
+
+    </div>
+
+  </center>
+  <script>
+    $("#logbutton").click(function () {
+      alert("Hi");
+      var loginData = app.form.convertToData('#login');
+      //alert(loginData.uname);
+      //alert(loginData.pwd);
+      localStorage.setItem('username', loginData.uname);
+
+      var dataPost = {
+        "username": loginData.uname,
+        "pass": loginData.pwd
+      };
+
+      var dataString = JSON.stringify(dataPost);
+
+      $.ajax({
+        url: 'http://1.32.96.10/mLibraryApp/login.php',
+        data: {
+          myData: dataString
+        },
+        type: 'POST',
+
+        success: function (response) {
+          //alert(response);
+          var val = response.split("<br>");
+          if (val[0] == 0) {
+            alert("Wrong Combination Username and Password ");
+          } else if (val[0] == 1) {
+            localStorage.setItem('LibraryID', val[1]);
+            localStorage.setItem('SubID', val[0]);
+            window.location.href = "pages/allpage.html";
+          }
+        }
+      });
+
+      //window.location.href = "pages/allpage.html";
+
+    });
+    /*
+        function login() {
+          
+        }*/
+  </script>
+</body>
+
+</html>

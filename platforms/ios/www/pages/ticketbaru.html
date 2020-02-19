@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/input.css">
+    <script type="text/javascript" src="../cordova.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/framework7.js"></script>
+    <script type="text/javascript" src="../js/framework7.min.js"></script>
+    <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
+
+
+    <title>ProLight</title>
+</head>
+
+<body onload="checkTemp()">
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" style="position: absolute; top: 5% ;right:0%;"
+            onclick="closeNav()">&times;</a>
+        <a onclick="goHome()">Menu Utama</a>
+        <a onclick="goSenarai()">Senarai Tugas</a>
+        <a onclick="goStatus()">Status Laporan</a>
+        <a onclick="goStatistik()">Statistik Tugasan</a>
+        <a onclick="goPapan()">Papan Skor</a>
+    </div>
+
+    <span style="font-size:30px;cursor:pointer;position: absolute; top: 5%; left: 2%;"
+        onclick="openNav()">&#9776;</span>
+    <div class="row position-stepper-high4s">
+        <div class="col-xs-12 col-md-8 offset-md-2 block border">
+            <div class="wrapper-progressBar">
+                <ul class="progressBar">
+                    <li class="active">Jenis Kerja</li>
+                    <li class="active">Ticket</li>
+                    <li>Hantar</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <form id="formticket">
+        <p class="position-text1-high">No Tiang/No ticket</p>
+        <input class="input-box position-input1-ticket" type="text" list="noTiang" name="noTiang" id="noTiang"
+            placeholder="Nombor Tiang">
+
+        <p class="position-text2-high">Tarikh Rondaan</p>
+        <input class="input-box position-input2-ticket" type="text" name="rondaan" id="rondaan" >
+
+
+
+        <p class="position-text3-high">Lampu Rosak ?</p>
+        <div class="dropdown position-input3-ticket" name="lampu">
+            <select name="lampu" class="dropdown-select" id="lampu">
+                <option value="Y">YES</option>
+                <option value="N">NO</option>
+            </select>
+        </div>
+
+        <p class="position-text4-high">Tarikh Penukaran</p>
+        <input class="input-box position-input4-ticket" type="text" name="tarikh" id="tarikh" >
+
+        <p class="position-text5-high">Tukar Complete Set Lantern</p>
+        <input class="input-box position-input5-ticket" type="text" name="set" id="set" >
+
+    
+        <p class="position-text6-high">Tukar Pecu</p>
+        <input class="input-box position-input6-ticket" type="text" name="pecu" id="pecu">
+
+        <p class="position-text7-high">Tukar Minor Fuse</p>
+        <input class="input-box position-input7-ticket" type="text" name="fuse" id="fuse">
+
+        <p class="position-text8-high">Tukar Relay</p>
+        <input class="input-box position-input8-ticket" type="text" name="relay" id="relay">
+
+        <p class="position-text9-high">Pendawaian</p>
+        <input class="input-box position-input9-ticket" type="text" name="dawai" id="dawai">
+
+        <p class="position-text10-high">Tanggal Panel Kawalan</p>
+        <input class="input-box position-input10-ticket" type="text" name="panel" id="panel">
+
+        <p class="position-text11-high">Tanggal Lampu</p>
+        <input class="input-box position-input11-ticket" type="text" name="tlampu" id="tlampu">
+
+        <p class="position-text12-high">Tukar IPC</p>
+        <input class="input-box position-input12-ticket" type="text" name="ipc" id="ipc">
+
+        <p class="position-text13-high">Kod Warna</p>
+        <input class="input-box position-input13-ticket" type="text" name="warna" id="warna">
+
+        <p class="position-text14-high">Catatan</p>
+        <textarea class="position-text14-high" style="background: #f2f2f2" rows="3" cols="45" name="catatan">
+        </textarea>
+
+
+        <div class="footnoteticket1">
+            <p class="">Muat Naik Gambar Tiang</p>
+            <div class="upload-btn-wrapper position-upload-ticket1-1">
+                <button class="btnss" name="tiang" id="tiang">Gambar Tiang</button>
+                <input type="file" name="rtiang" />
+            </div>
+            <div class="upload-btn-wrapper position-upload-ticket1-2">
+                <button class="btnss1" name="sebelum" id="tiang">Gambar Sebelum Mula Kerja</button>
+                <input type="file" name="sebelum" />
+            </div>
+            <div class="upload-btn-wrapper position-upload-ticket1-3">
+                <button class="btnss1" name="selepas" id="tiang">Gambar Selepas Buat Kerja</button>
+                <input type="file" name="selepas" />
+            </div>
+        </div>
+
+       
+
+    </form>
+    <div class="footnoteticket2"></div>
+    <div onclick="save()" class="buttonSimpan position-button-simpan-input-ticket1">Simpan</div>
+    <div onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-input-ticket1">Seterusnya</div>
+    <!--
+    <button onclick="getsave()" class="buttonSimpan position-button-simpan-input-ticket1">Simpan</button>
+    <button onclick="getpost()" class="buttonSeterusnya position-button-seterusnya-input-ticket1">Seterusnya</button>
+-->
+    </div>
+    <footer id="footer"></footer>
+
+</body>
+
+<script>
+    function checkTemp() {
+        var cond = localStorage.getItem("edit");
+        if (cond == 1) {
+            getItem();
+
+        } else {
+            startTime();
+            neaws();
+        }
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        // add a zero in front of numbers<10
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('time').value = h + ":" + m + ":" + s;
+        /*t = setTimeout(function () {
+            startTime()
+        }, 500);*/
+    }
+
+
+    function neaws() {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        localStorage.setItem("dateT", dd + '/' + mm + '/' + yyyy);
+
+
+    }
+
+    function getItem() {
+        document.getElementById('noTiang').value = localStorage.getItem("noTiang");
+        document.getElementById('rondaan').value = localStorage.getItem("rondaan");
+        document.getElementById('lampu').value = localStorage.getItem("lampu");
+        document.getElementById('tarikh').value = localStorage.getItem("tarikh");
+        document.getElementById('set').value = localStorage.getItem("set");
+        document.getElementById('pecu').value = localStorage.getItem("pecu");
+        document.getElementById('fuse').value = localStorage.getItem("fuse");
+        document.getElementById('relay').value = localStorage.getItem("relay");
+        document.getElementById('dawai').value = localStorage.getItem("dawai");
+        document.getElementById('panel').value = localStorage.getItem("panel");
+        document.getElementById('tlampu').value = localStorage.getItem("tlampu");
+        document.getElementById('ipc').value = localStorage.getItem("ipc");
+        document.getElementById('warna').value = localStorage.getItem("warna");
+        document.getElementById('catatan').value = localStorage.getItem("catatan");
+        document.getElementById('tiang').value = localStorage.getItem("tiang");
+        document.getElementById('sebelum').value = localStorage.getItem("sebelum");
+        document.getElementById('selepas').value = localStorage.getItem("selepas");
+    }
+
+
+
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+
+    function goHome() {
+        window.location.href = "home.html";
+    }
+
+    function goSenarai() {
+        window.location.href = "laporan.html";
+    }
+
+    function goStatus() {
+        window.location.href = "laporan.html";
+    }
+
+    function goStatistik() {
+        window.location.href = "statistik1.html";
+    }
+
+    function goPapan() {
+        window.location.href = "papanskor.html";
+    }
+
+    function save() {
+        var formData = app.form.convertToData('#formticket');
+
+        //store localstorage
+        localStorage.setItem("noTiang", formData.noTiang);
+        localStorage.setItem("rondaan", formData.rondaan);
+        localStorage.setItem("lampu", formData.lampu);
+        localStorage.setItem("set", formData.set);
+        localStorage.setItem("tarikh", formData.tarikh);
+        localStorage.setItem("pecu", formData.pecu);
+        localStorage.setItem("fuse", formData.fuse);
+        localStorage.setItem("relay", formData.relay);
+        localStorage.setItem("dawai", formData.dawai);
+        localStorage.setItem("panel", formData.panel);
+        localStorage.setItem("tlampu", formData.tlampu);
+        localStorage.setItem("ipc", formData.ipc);
+        localStorage.setItem("warna", formData.warna);
+        localStorage.setItem("catatan", formData.catatan);
+        localStorage.setItem("tiang", formData.tiang);
+        localStorage.setItem("sebelum", formData.sebelum);
+        localStorage.setItem("selepas", formData.selepas);
+
+        var formtic1 = formData.noTiang;
+        var formtic2 = formData.rondaan;
+        var formtic3 = formData.lampu;
+        var formtic4 = formData.tarikh;
+        var formtic5 = formData.set;
+        var formtic6 = formData.pecu;
+        var formtic7 = formData.fuse;
+        var formtic8 = formData.relay;
+        var formtic9 = formData.dawai;
+        var formtic10 = formData.panel;
+        var formtic11 = formData.tlampu;
+        var formtic12 = formData.ipc;
+        var formtic13 = formData.warna;
+        var formtic14 = formData.catatan;
+        var formtic15 = formData.tiang;
+        var formtic16 = formData.sebelum;
+        var formtic17 = formData.selepas;
+
+        var dataFormTic = {
+            "noTiang": formtic1,
+            "rondaan": formtic2,
+            "lampu": formtic3,
+            "tarikh": formtic4,
+            "set": formtic5,
+            "pecu": formtic6,
+            "fuse": formtic7,
+            "relay": formtic8,
+            "dawai": formtic9,
+            "panel": formtic10,
+            "lampu": formtic11,
+            "ipc": formtic12,
+            "warna": formtic13,
+            "catatan": formtic14,
+            "tiang": formtic15,
+            "sebelum": formtic16,
+            "selepas": formtic17
+        };
+
+        //alert(dataFormTic);
+        window.location.href = "laporan2.html";
+    }
+
+    function nextPage() {
+        var formData = app.form.convertToData('#formticket');
+
+          //store localstorage
+          localStorage.setItem("noTiang", formData.noTiang);
+        localStorage.setItem("rondaan", formData.rondaan);
+        localStorage.setItem("lampu", formData.lampu);
+        localStorage.setItem("set", formData.set);
+        localStorage.setItem("tarikh", formData.tarikh);
+        localStorage.setItem("pecu", formData.pecu);
+        localStorage.setItem("fuse", formData.fuse);
+        localStorage.setItem("relay", formData.relay);
+        localStorage.setItem("dawai", formData.dawai);
+        localStorage.setItem("panel", formData.panel);
+        localStorage.setItem("tlampu", formData.tlampu);
+        localStorage.setItem("ipc", formData.ipc);
+        localStorage.setItem("warna", formData.warna);
+        localStorage.setItem("catatan", formData.catatan);
+        localStorage.setItem("tiang", formData.tiang);
+        localStorage.setItem("sebelum", formData.sebelum);
+        localStorage.setItem("selepas", formData.selepas);
+
+        var formtic1 = formData.noTiang;
+        var formtic2 = formData.rondaan;
+        var formtic3 = formData.lampu;
+        var formtic4 = formData.tarikh;
+        var formtic5 = formData.set;
+        var formtic6 = formData.pecu;
+        var formtic7 = formData.fuse;
+        var formtic8 = formData.relay;
+        var formtic9 = formData.dawai;
+        var formtic10 = formData.panel;
+        var formtic11 = formData.tlampu;
+        var formtic12 = formData.ipc;
+        var formtic13 = formData.warna;
+        var formtic14 = formData.catatan;
+        var formtic15 = formData.tiang;
+        var formtic16 = formData.sebelum;
+        var formtic17 = formData.selepas;
+
+        var dataFormTic = {
+            "noTiang": formtic1,
+            "rondaan": formtic2,
+            "lampu": formtic3,
+            "tarikh": formtic4,
+            "set": formtic5,
+            "pecu": formtic6,
+            "fuse": formtic7,
+            "relay": formtic8,
+            "dawai": formtic9,
+            "panel": formtic10,
+            "lampu": formtic11,
+            "ipc": formtic12,
+            "warna": formtic13,
+            "catatan": formtic14,
+            "tiang": formtic15,
+            "sebelum": formtic16,
+            "selepas": formtic17
+        };
+
+        var dataString = JSON.stringify(dataFormTic);
+        $.ajax({
+            url: 'http://1.32.96.10/ProLight/mimi/ticketbaru.php',
+            data: {
+                myData: dataString
+            },
+            type: 'POST',
+            success: function (response) {
+                alert(response);
+                window.location.href = "laporan3.html";
+            }
+        });
+    }
+
+    function checkTemp() {
+        getItem();
+    }
+</script>
+
+<!--
+<script>
+    function getsave(){
+    var formData = app.form.convertToData('#formticket');
+    localStorage.setItem("tiang", formData.tiang);
+
+    
+    
+    alert(formData.getData);
+ 
+    var formreg = formData.noTiang;   
+    var formreg2 = formData.masa;
+    var formreg3 = formData.ipc;
+    var formreg4 = formData.pecu;
+    var formreg5 = formData.pecuqty;   
+    var formreg6 = formData.ipclantern;
+    var formreg7 = formData.lantern;
+    var formreg8 = formData.fuse;
+    var formreg9 = formData.contactor;   
+    var formreg10 = formData.link;
+    var formreg11 = formData.dawailampu;
+    var formreg12 = formData.dawaipanel;
+    var formreg13= formData.cout;   
+    var formreg14= formData.rombaklampu;
+    var formreg15= formData.bracket;
+    var formreg16= formData.rombakpanel;
+    
+ 
+    //alert (formreg);
+    var dataFormreg = {"tiang": formreg, "team":formreg2, "myfile":formreg3 ,"catatan":formreg4,"tiang": formreg5,"tiang": formreg6, "team":formreg7, "myfile":formreg8 ,"catatan":formreg9 ,"tiang": formreg10, "team":formreg11, "myfile":formreg12 ,"catatan":formreg13,"tiang": formreg14, "team":formreg15, "myfile":formreg16 };
+     alert(dataFormreg);
+     var dataString = JSON.stringify(dataFormreg);
+     $.ajax({
+                 url: 'http://1.32.96.10/ProLight/mimi/Rondaan.php',
+                 data: {myData: dataString},
+                 type: 'POST',
+                 success: function(response){
+                     alert(response);
+                     }
+                 });
+    }
+    </script>
+-->
+
+</html>

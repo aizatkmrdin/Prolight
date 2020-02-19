@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <title>ProLight</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+    <!--script-->
+    <script type="text/javascript" src="../cordova.js"></script>
+    <script type="text/javascript" src="../js/framework7.js"></script>
+    <script type="text/javascript" src="../js/framework7.min.js"></script>
+    <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
+
+</head>
+
+<body class="reg">
+        
+    <div class="screenreg"> </div>
+
+    <p class="titlereg">Daftar Masuk</p>
+    <p class="description">Ikuti Langkah Mudah Dibawah</p>
+
+    <form id="formId">
+    <input class="text-line3 position3" placeholder="ID Pengguna"  name="id" type="text" />
+    </form>
+    <form id="formPass">
+    <input class="text-line4 position4" placeholder="Kata Laluan" id="pass" name= "pass" type="password" />
+    </form>
+    <form id="formEmail">
+    <input class="text-line5 position5" placeholder="Email" id="email" name="email" type="email" />   
+    </form>
+    <form id="formNo">
+    <input class="text-line6 position6" placeholder="Nombor Telefon" id="no" name="no" type="number" />    
+    </form>
+    <form id="formRole">
+        <input class="text-line7 position7" placeholder="Roles" id="role" name="role" type="text" />    
+    </form>
+
+    <button class="radbutreg" onclick="getRegister()"><p>Log Masuk</p></button>
+   
+
+   
+
+    <div class="input_container">
+
+    </div>
+
+   <script>
+   function getRegister(){
+   var formData = app.form.convertToData('#formId');
+   var formData2 = app.form.convertToData('#formPass');
+   var formData3 = app.form.convertToData('#formEmail');
+   var formData4 = app.form.convertToData('#formNo');
+   var formData5 = app.form.convertToData('#formRole');
+   //alert(formData.id);
+
+   var formreg = formData.id;
+   var formreg2 = formData2.pass;
+   var formreg3 = formData3.email;
+   var formreg4 = formData4.no;
+   var formreg5 = formData5.role;
+   //alert (formreg);
+   var dataFormreg = {"id": formreg, "pass":formreg2, "email":formreg3 ,"no":formreg4,"role":formreg5};
+
+    var dataString = JSON.stringify(dataFormreg);
+    $.ajax({
+                url: 'http://1.32.96.10/ProLight/mimi/register.php',
+                data: {myData: dataString},
+                type: 'POST',
+                success: function(response){
+                    alert(response);
+                    }
+                });
+
+  /*  $.ajax({
+                type: "POST",
+                url: "http://1.32.96.10/ProLight/mimi/register.php",
+                data : {
+                    myData: dataString
+                },
+
+                success: function(data){
+                    if(data == 'success'){
+                        window.location.replace("../pages/home.html");
+                    }
+                    else{
+                        alert("unsuccess!!");
+                    }
+                }
+            });*/
+   }
+   </script>
+   <script>    
+      
+               
+       
+            
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script type="text/javascript" src="../cordova.js"></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="../js/framework7.js"></script>
+        <script type="text/javascript" src="../js/framework7.min.js"></script>
+        <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
+        <script type="text/javascript" src="../js/index.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" type="text/css" href="../css/input.css">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>ProLight</title>
+</head>
+
+<body onload="checkTemp()">
+        <header>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times"></i>
+                </div>
+                <nav class="sidebar">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a onclick="goHome()" class="nav-link current">
+                                <i class="fas fa-home"></i>Menu Utama
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                                <a onclick="goSenarai()" class="nav-link">
+                                    <i class="fas fa-address-card"></i>Senarai Tugas
+                                </a>
+                            </li>
+                        <li class="nav-item">
+                            <a onclick="goStatus()" class="nav-link">
+                                <i class="fas fa-briefcase"></i>Status Laporan
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                                <a onclick="goStatistik()" class="nav-link">
+                                    <i class="fas fa-blog"></i>Statistik Tugasan
+                                </a>
+                            </li>
+        
+                            <li class="nav-item">
+                                    <a onclick="goPapan()"class="nav-link">
+                                        <i class="fas fa-envelope"></i>Papan Skor
+                                    </a>
+                                </li>
+                    </ul>
+                </nav>
+            </header>
+        
+            <main>
+                <div class="zoom-content">
+                    <section>
+    <div class="row position-stepper-high">
+        <div class="col-xs-12 col-md-8 offset-md-2 block border">
+            <div class="wrapper-progressBar">
+                <ul class="progressBar">
+                    <li class="active">Jenis Kerja</li>
+                    <li class="active">Imbangan Barang</li>
+                    <li>Imbangan Barang2</li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<from id="formimbangan">
+    <p class="position-text1-high">LANTERN SET 100W</p>
+    <input class="input-box position-input1-ticket" type="number" id="lan100w" name="lan100w">
+
+ 
+    <p class="position-text2-high">LANTERN SET 150W</p>
+    <input class="input-box position-input2-ticket" type="number" id="lan150w" name="lan150w">
+
+    <p class="position-text3-high">LANTERN SET 250W</p>
+    <input class="input-box position-input3-ticket" type="number" id="lan250w" name="lan250w">
+    /s
+    <p class="position-text4-high">PECU/PHOTOCELL</p>
+    <input class="input-box position-input4-ticket" type="number" id="pecu" name="pecu">
+    
+    <p class="position-text5-high">IPC 120-185/16-25MM</p>
+    <input class="input-box position-input5-ticket" type="number" id="ipc120" name="ipc120">
+
+    <p class="position-text6-high">IPC 16-95/16-25MM</p>
+    <input class="input-box position-input6-ticket" type="number" id="ipc16" name="ipc16">
+
+    <p class="position-text7-high">IPC 70-120/1.5-6MM</p>
+    <input class="input-box position-input7-ticket" type="number" id="ipc70" name="ipc70">
+
+    <p class="position-text8-high">IPC 16-25/1.5-6MM </p>
+    <input class="input-box position-input8-ticket" type="number" id="ipc25" name="ipc25">
+
+    <p class="position-text9-high">IPC 16-95/4-35MM</p>
+    <input class="input-box position-input9-ticket" type="number" id="ip169" name="ipc169">
+
+    <p class="position-text10-high">BRACKET</p>
+    <input class="input-box position-input10-ticket" type="number" id="bracket" name="bracket">
+
+    <p class="position-text11-high">WIRE 2.5mm PVC-PVC </p >
+    <input class="input-box position-input11-ticket" type="number" id="wire25" name="wire25">
+
+    <p class="position-text12-high">CONTACTOR</p>
+    <input class="input-box position-input12-ticket" type="number" id="contactor" name="contactor">
+
+    <p class="position-text13-high">FUSE LV DIN 100A</p>
+    <input class="input-box position-input13-ticket" type="number" id="fuse" name="fuse">
+ 
+   
+</from>
+
+    <div onclick="save()" class="buttonSimpan position-button-simpan-input2">Simpan</div>
+    <div onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-input2">Seterusnya</div>
+    <footer id="footer"></footer>
+    <div class="input_container">
+
+
+    </div>
+
+</section>
+</div>
+</main>
+</body>
+
+<script type="text/javascript" src="../js/script.js"></script>
+
+<script>
+
+    function checkTemp() {
+        var cond = localStorage.getItem("editimbangan");
+        if (cond == 1) {
+            getItem();
+
+        } else {
+            startTime();
+            neaws();
+        }
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        // add a zero in front of numbers<10
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('time').value = h + ":" + m + ":" + s;
+        /*t = setTimeout(function () {
+            startTime()
+        }, 500);*/
+    }
+
+
+    function neaws() {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        localStorage.setItem("dateT", dd + '/' + mm + '/' + yyyy);
+
+
+    }
+
+    function getItem() {
+        document.getElementById('lan100w').value = localStorage.getItem("lan100w");
+        document.getElementById('lan150w').value = localStorage.getItem("lan150w");
+        document.getElementById('lan250w').value = localStorage.getItem("lan250w");
+        document.getElementById('pecu').value = localStorage.getItem("pecu");
+        document.getElementById('ipc120').value = localStorage.getItem("ipc120");
+        document.getElementById('ipc16').value = localStorage.getItem("ipc16");
+        document.getElementById('ipc70').value = localStorage.getItem("ipc70");
+        document.getElementById('ipc25').value = localStorage.getItem("ipc25");
+        document.getElementById('ipc169').value = localStorage.getItem("ipc169");
+        document.getElementById('bracket').value = localStorage.getItem("bracket");
+        document.getElementById('wire25').value = localStorage.getItem("wire25");
+        document.getElementById('contactor').value = localStorage.getItem("contactor");
+        document.getElementById('fuse').value = localStorage.getItem("fuse");
+    }
+
+    
+    function imbangan() {
+        window.location.href = "imbangan.html";
+    }
+
+    function imbanganguna2() {
+        window.location.href = "imbanganguna2.html";
+    }
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+
+    function nextPage() {
+        var formData = app.form.convertToData('#formimbangan');
+        //alert(formData);
+
+    //store localstorage
+    localStorage.setItem("lan100w", formData.lan100w);
+    localStorage.setItem("lan150w", formData.lan150w);
+    localStorage.setItem("lan250w", formData.lan250w);
+    localStorage.setItem("pecu", formData.pecu);
+    localStorage.setItem("ipc120", formData.ipc120);
+    localStorage.setItem("ipc16", formData.ipc16);
+    localStorage.setItem("ipc70", formData.ipc70);
+    localStorage.setItem("ipc25", formData.ipc25);
+    localStorage.setItem("ipc25", formData.ipc69);
+    localStorage.setItem("bracket", formData.bracket);
+    localStorage.setItem("wire25", formData.wire25);
+    localStorage.setItem("contactor", formData.contactor);
+    localStorage.setItem("fuse", formData.fuse);
+    localStorage.setItem("editguna", "1");
+   
+
+    var formreg = formData.lan100w;
+    var formreg2 = formData.lan150w;
+    var formreg3 = formData.lan250w;
+    var formreg4 = formData.pecu;
+    var formreg6 = formData.ipc120;
+    var formreg7 = formData.ipc16;
+    var formreg8 = formData.ipc70;
+    var formreg9 = formData.ipc25;
+    var formreg10 = formData.ipc169;
+    var formreg11 = formData.bracket;
+    var formreg12 = formData.wire25;
+    var formreg13 = formData.contactor;
+    var formreg14 = formData.fuse;
+    
+
+    var dataFormreg = {"lan100w": formreg,"lan150w":formreg2, "lan250w":formreg3 ,
+    "pecu":formreg4 , "ipc120": formreg6,"ipc16" : formreg7,
+    "ipc70":formreg8 , "ipc25":formreg9, "ipc169":formreg10,"bracket":formreg11, "wire25":formreg12 ,"contactor":formreg13, "fuse":formreg14 };
+
+        window.location.href = "imbanganguna2.html";
+    }
+
+    function goHome() {
+        window.location.href = "home.html";
+    }
+
+    function goSenarai() {
+        window.location.href = "tugasan.html";
+    }
+
+    function goStatus() {
+        window.location.href = "laporan.html";
+    }
+
+    function goStatistik() {
+        window.location.href = "statistik1.html";
+    }
+
+    function goPapan() {
+        window.location.href = "papanskor.html";
+    }
+
+    function post() {
+        window.location.href = "laporan3.html";
+    }
+
+    function save() {
+        var formData = app.form.convertToData('#formimbangan');
+        //alert(formData);
+ //store localstorage
+ 
+    //store localstorage
+    localStorage.setItem("lan100w", formData.lan100w);
+    localStorage.setItem("lan150w", formData.lan150w);
+    localStorage.setItem("lan250w", formData.lan250w);
+    localStorage.setItem("pecu", formData.pecu);
+    localStorage.setItem("ipc120", formData.ipc120);
+    localStorage.setItem("ipc16", formData.ipc16);
+    localStorage.setItem("ipc70", formData.ipc70);
+    localStorage.setItem("ipc25", formData.ipc25);
+    localStorage.setItem("ipc25", formData.ipc69);
+    localStorage.setItem("bracket", formData.bracket);
+    localStorage.setItem("wire25", formData.wire25);
+    localStorage.setItem("contactor", formData.contactor);
+    localStorage.setItem("fuse", formData.fuse);
+    localStorage.setItem("editguna", "1");
+   
+
+    var formreg = formData.lan100w;
+    var formreg2 = formData.lan150w;
+    var formreg3 = formData.lan250w;
+    var formreg4 = formData.pecu;
+    var formreg6 = formData.ipc120;
+    var formreg7 = formData.ipc16;
+    var formreg8 = formData.ipc70;
+    var formreg9 = formData.ipc25;
+    var formreg10 = formData.ipc169;
+    var formreg11 = formData.bracket;
+    var formreg12 = formData.wire25;
+    var formreg13 = formData.contactor;
+    var formreg14 = formData.fuse;
+    
+
+    var dataFormreg = {"lan100w": formreg,"lan150w":formreg2, "lan250w":formreg3 ,
+    "pecu":formreg4 , "ipc120": formreg6,"ipc16" : formreg7,
+    "ipc70":formreg8 , "ipc25":formreg9, "ipc169":formreg10,"bracket":formreg11, "wire25":formreg12 ,"contactor":formreg13, "fuse":formreg14 };
+
+    
+                window.location.href = "laporan2.html";
+        }
+
+</script>
+
+</html>

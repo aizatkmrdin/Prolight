@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/input.css">
+    <script type="text/javascript" src="../cordova.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/framework7.js"></script>
+    <script type="text/javascript" src="../js/framework7.min.js"></script>
+    <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
+    
+    <title>ProLight</title>
+</head>
+
+<body class="reg">
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" style="position: absolute; top: 5% ;right:0%;"
+            onclick="closeNav()">&times;</a>
+        <a onclick="goHome()">Menu Utama</a>
+        <a onclick="goSenarai()">Senarai Tugas</a>
+        <a onclick="goStatus()">Status Laporan</a>
+        <a onclick="goStatistik()">Statistik Tugasan</a>
+        <a onclick="goPapan()">Papan Skor</a>
+    </div>
+
+    <span style="font-size:30px;cursor:pointer;position: absolute; top: 5%; left: 2%;"
+        onclick="openNav()">&#9776;</span>
+    <div class="row position-stepper-high4s">
+        <div class="col-xs-12 col-md-10 offset-md-12 block border">
+            <div class="wrapper-progressBar">
+                <ul class="progressBar">
+                    <li class="active">Jenis Kerja</li>
+                    <li class="active">Aduan</li>
+                    <li>Aduan2</li>
+                    <li>Hantar</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <form id="formaduan">
+        <p class="position-text1-high">No Tiang</p>
+        <input class="input-box position-input1-ticket" type="text" name="notiang" id="notiang">
+    </form>
+
+    <form id="formRombak">
+        <p class="position-text2-high">Rombak Lampu</p>
+        <input class="input-box position-input2-ticket" type="text" name="rombak" id="rombak">
+    </form>
+
+    <form id="formIPCtype">
+        <p class="position-text3-high">Ipc</p>
+        <div class="dropdown position-input3-ticket" id="ipctype" name="ipctype">
+            <select name="ipctype" class="dropdown-select">
+                <option value="IPC 120-185/1635mm">IPC 120-185/1635mm</option>
+                <option value="IPC 16-95/1635mm">IPC 16-95/1635mm</option>
+                <option value="IPC 70-120/1.5-6mm">IPC 70-120/1.5-6mm</option>
+                <option value="IPC 16-25/1.5-6mm">IPC 16-25/1.5-6mm</option>
+                <option value="IPC 16-95/4-35mm">IPC 16-95/4-35mm</option>
+            </select>
+        </div>
+    </form>
+    <form id="formIPCqty">
+        <input class="input-box position-input4-ticket" type="number" name="ipcqty" id="ipcqty">
+    </form>
+
+    <form id="formPecu">
+    <p class="position-text5-high">Pecu</p>
+        <div class="dropdown position-input5-ticket" >
+            <select name="pecu" class="dropdown-select">
+                <option value="Lantern">Lantern</option>
+                <option value="Panel">Panel</option>
+            </select>
+        </div> 
+    </form>
+
+    <form id="formPECUqty">
+        <input class="input-box position-input6-ticket" type="number" name="pecuqty" id="pecuqty">
+    </form>
+
+    <form id="formIPClantern">
+        <p class="position-text7-high">Ipc Lantern</p>
+        <input class="input-box position-input7-ticket" type="text" name="ipclantern" id="ipclantern" placeholder="IPC Lantern">
+    </form>
+
+    <form id="formLantern">
+        <p class="position-text8-high">Lantern</p>
+        <input class="input-box position-input8-ticket" type="text" name="lantern" id="lantern">
+    </form>
+
+    <form id="formBox">
+        <p class="position-text9-high">Black Box</p>
+        <input class="input-box position-input9-ticket" type="text" name="box" id="box">
+    </form>
+
+    <form id="formMinorFuse">
+        <p class="position-text10-high"> Minor Fuse</p>
+        <input class="input-box position-input10-ticket" type="text" name="fuse" id="fuse">
+    </form>
+
+    <form id="formContactor">
+        <p class="position-text11-high"> Contactor</p>
+        <input class="input-box position-input11-ticket" type="text" name="contactor" id="contactor">
+    </form>
+
+    <form id="formLink">
+        <p class="position-text12-high">N Link</p>
+        <input class="input-box position-input12-ticket" type="text" name="link" id="link">
+    </form>
+
+    <form id="formDawaiLampu">
+        <p class="position-text13-high">Pendawaian Lampu</p>
+        <input class="input-box position-input13-ticket" type="number" name="dawailampu" id="dawailampu">
+    </form>
+
+    <form id="formDawaiPanel">
+        <p class="position-text14-high">Pendawaian Panel</p>
+        <input class="input-box position-input14-ticket" type="number" name="dawaipanel" id="dawaipanel">
+    </form>
+
+    <form id="formcout">
+        <p class="position-text15-high">C Out</p>
+        <input class="input-box position-input15-ticket" type="number" name="cout" id="cout">
+    </form>
+    
+    <button onclick="getsave()" class="buttonSimpan position-button-simpan-input">Simpan</button>
+    <a onclick="nextPage()"><button class="buttonSeterusnya position-button-seterusnya-input">Seterusnya</button>
+    </a>
+    <footer id="footer"></footer>
+    <div class="input_container">
+
+
+    </div>
+</body>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+
+    function nextPage() {
+        window.location.href = "rondaan2.html";
+    }
+
+    function goHome() {
+        window.location.href = "home.html";
+    }
+
+    function goSenarai() {
+        window.location.href = "laporan.html";
+    }
+
+    function goStatus() {
+        window.location.href = "laporan.html";
+    }
+
+    function goStatistik() {
+        window.location.href = "statistik1.html";
+    }
+
+    function goPapan() {
+        window.location.href = "papanskor.html";
+    }
+
+    function post() {
+        window.location.href = "laporan3.html";
+    }
+
+    function save() {
+        window.location.href = "laporan2.html";
+    }
+</script>
+
+
+<script>
+        function getsave(){
+
+        var formData = app.form.convertToData('#formaduan');
+        localStorage.setItem("notiang", formData.notiang);
+
+        var formData2 = app.form.convertToData('#formRombak');
+        localStorage.setItem("rombak", formData2.rombak);
+
+        var formData3 = app.form.convertToData('#formIPCtype');
+        localStorage.setItem("ipctype", formData3.ipctype);
+
+        var formData4 = app.form.convertToData('#formIPCqty');
+        localStorage.setItem("ipcqty", formData4.ipcqty);
+
+        var formData5 = app.form.convertToData('#formPecu');
+        localStorage.setItem("pecu", formData5.pecu);
+
+        var formData6 = app.form.convertToData('#formPECUqty');
+        localStorage.setItem("pecuqty", formData6.pecuqty);
+
+        var formData7 = app.form.convertToData('#formIPClantern');
+        localStorage.setItem("ipclantern", formData7.ipclantern);
+
+        var formData8 = app.form.convertToData('#formLantern');
+        localStorage.setItem("lantern", formData8.lantern);
+
+        var formData9 = app.form.convertToData('#formBox');
+        localStorage.setItem("box", formData9.box);
+
+        var formData10 = app.form.convertToData('#formMinorFuse');
+        localStorage.setItem("fuse", formData10.fuse);
+
+        var formData11 = app.form.convertToData('#formContactor');
+        localStorage.setItem("contactor", formData11.contactor);
+
+        var formData12 = app.form.convertToData('#formLink');
+        localStorage.setItem("link", formData12.link);
+
+        var formData13 = app.form.convertToData('#formDawaiLampu');
+        localStorage.setItem("dawailampu", formData13.dawailampu);
+
+        var formData14 = app.form.convertToData('#formDawaiPanel');
+        localStorage.setItem("dawaipanel", formData14.dawaipanel);
+
+        var formData15 = app.form.convertToData('#formcout');
+        localStorage.setItem("cout", formData15.cout);
+
+        
+        //alert(formData.pecu);
+     
+        var formreg = formData.notiang;
+        var formreg2 = formData2.rombak;
+        var formreg3 = formData3.ipctype;
+        var formreg4 = formData4.ipcqty;
+        var formreg5 = formData5.pecu;
+        var formreg6 = formData6.peculantern;
+        var formreg7 = formData7.lantern;
+        var formreg8 = formData8.box;
+        var formreg9 = formData9.fuse;
+        var formreg10 = formData10.contactor;
+        var formreg11 = formData11.email;
+        var formreg12 = formData12.link;
+        var formreg13 = formData13.dawailampu;
+        var formreg14 = formData14.dawaipanel;
+        var formreg15 = formData15.cout;
+     
+        //alert (formreg);
+       var dataFormreg = {"notiang": formreg, "rombak":formreg2, "ipctype":formreg3 ,"ipcqty":formreg4, "pecu": formreg5, "pecuqty":formreg6, "ipclantern":formreg7 ,"lantern":formreg8, "box": formreg9, "fuse":formreg10, "contactor":formreg11 ,"link":formreg12, "dawailampu": formreg13, "dawaipanel":formreg14, "cout":formreg15};
+         alert(dataFormreg);
+         var dataString = JSON.stringify(dataFormreg);
+        $.ajax({
+                     url: 'http://1.32.96.10/ProLight/mimi/Rondaan.php',
+                     data: {myData: dataString},
+                     type: 'POST',
+                     success: function(response){
+                         alert(response);
+                         }
+                     });
+        }
+        </script>
+
+</html>

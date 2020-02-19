@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script type="text/javascript" src="../cordova.js"></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="../js/framework7.js"></script>
+        <script type="text/javascript" src="../js/framework7.min.js"></script>
+        <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
+        <script type="text/javascript" src="../js/index.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/table.css">
+        <link rel="stylesheet" type="text/css" href="../css/boot.css">
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" type="text/css" href="../css/input.css">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>ProLight</title>
+</head>
+
+<body onload="first()">
+        <header>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times"></i>
+                </div>
+                <nav class="sidebar">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a onclick="goHome()" class="nav-link current">
+                                <i class="fas fa-home"></i>Menu Utama
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                                <a onclick="goSenarai()" class="nav-link">
+                                    <i class="fas fa-address-card"></i>Senarai Tugas
+                                </a>
+                            </li>
+                        <li class="nav-item">
+                            <a onclick="goStatus()" class="nav-link">
+                                <i class="fas fa-briefcase"></i>Status Laporan
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                                <a onclick="goStatistik()" class="nav-link">
+                                    <i class="fas fa-blog"></i>Statistik Tugasan
+                                </a>
+                            </li>
+        
+                            <li class="nav-item">
+                                    <a onclick="goPapan()"class="nav-link">
+                                        <i class="fas fa-envelope"></i>Papan Skor
+                                    </a>
+                                </li>
+                    </ul>
+                </nav>
+            </header>
+        
+            <main>
+                <div class="zoom-content">
+                    <section>
+    <p class="titlereg-report">Menu Laporan</p>
+    <div class="container position-tab">
+            <ul class="nav nav-tabs ">
+                    <li class="active"><a onclick="laporan()">Selesai</a></li>
+                    <li class="active"><a href="#">Belum Selesai</a></li>
+                    <li><a onclick="laporan3()">Dalam Proses</a></li>
+            </ul>
+        <br>
+        <center>
+            <table>
+                <tr>
+                    <th>
+                        <p style="text-align: center">Bil</p>
+                    </th>
+                    <th>
+                        <p style="text-align: center">Tarikh</p>
+                    </th>
+                    <th>
+                        <p style="text-align: center">Nombor Tiang</p>
+                    </th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td style="padding: 10px 10px;">
+                        <div id="nocount"></div>
+                    </td>
+                    <td>
+                        <div id="date"></div>
+                    </td>
+                    <td>
+                        <div id="noTiang"></div>
+                    </td>
+                    <td>
+                        <div id="clicks"></div>
+                    </td>
+                </tr>
+
+
+            </table>
+        </center>
+    </div>
+
+</section>
+</div>
+</main>
+</body>
+
+<script type="text/javascript" src="../js/script.js"></script>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+
+    function first() {
+      
+        var jeniskerja = localStorage.getItem("jenisKerja");
+         if ((jeniskerja.localeCompare("Ticket")) == 0) 
+         {
+                ticket();
+            
+        } else if ((jeniskerja.localeCompare("Rondaan")) == 0) 
+        {
+            
+                rondaan();
+           
+        } else if ((jeniskerja.localeCompare("Rondaan Khas")) == 0) 
+        {
+           rondaankhas();
+           
+        } else if ((jeniskerja.localeCompare("LED")) == 0) 
+        {
+            led();
+            
+        }else if ((jeniskerja.localeCompare("Panel")) == 0) 
+        {
+            panel();
+           
+        } else if ((jeniskerja.localeCompare("Daftar Aset")) == 0) 
+        {
+            
+           daftaraset();
+
+        } else if ((jeniskerja.localeCompare("Senarai Semak")) == 0) 
+        {
+            
+            senaraisemak();
+        }
+
+    }
+
+
+
+    function ticket()
+    {
+        var val = localStorage.getItem("edit");
+        if (val === "") {
+            document.getElementById('date').innerHTML = none;
+            document.getElementById('noTiang').innerHTML = none;
+            document.getElementById('nocount').innerHTML = none;
+            document.getElementById('clicks').innerHTML = none;
+        } else {
+            document.getElementById('date').innerHTML = localStorage.getItem("dateT");
+            document.getElementById('noTiang').innerHTML = localStorage.getItem("notiang");
+            document.getElementById('nocount').innerHTML = 1;
+            input = "<a onclick='edit()'>Ubah</a>";
+            document.getElementById('clicks').innerHTML = input;
+        }
+    }
+
+    
+    function panel() 
+    {
+        
+        var val = localStorage.getItem("editpanel");
+        if (val === "") {
+            document.getElementById('date').innerHTML = none;
+            document.getElementById('noTiang').innerHTML = none;
+            document.getElementById('nocount').innerHTML = none;
+            document.getElementById('clicks').innerHTML = none;
+        } else {
+            document.getElementById('date').innerHTML = localStorage.getItem("dateT");
+            document.getElementById('noTiang').innerHTML = localStorage.getItem("notiang");
+            document.getElementById('nocount').innerHTML = 1;
+            input = "<a onclick='editpanel()'>Ubah</a>";
+            document.getElementById('clicks').innerHTML = input;
+        }
+    }
+
+         
+    function led() 
+    {
+        
+        var val = localStorage.getItem("editled");
+        
+        if (val === "") {
+            document.getElementById('date').innerHTML = none;
+            document.getElementById('noTiang').innerHTML = none;
+            document.getElementById('nocount').innerHTML = none;
+            document.getElementById('clicks').innerHTML = none;
+        } else {
+            
+            document.getElementById('date').innerHTML = localStorage.getItem("dateT");
+            document.getElementById('noTiang').innerHTML = localStorage.getItem("notiang");
+            var x=localStorage.getItem("notiang");
+           
+            document.getElementById('nocount').innerHTML = 1;
+            input = "<a onclick='editled()'>Ubah</a>";
+            document.getElementById('clicks').innerHTML = input;
+        }
+
+    }
+
+    function rondaan()
+    {
+        
+        var val = localStorage.getItem("editrondaan");
+        if (val === "") {
+            document.getElementById('date').innerHTML = none;
+            document.getElementById('noTiang').innerHTML = none;
+            document.getElementById('nocount').innerHTML = none;
+            document.getElementById('clicks').innerHTML = none;
+        } else {
+            document.getElementById('date').innerHTML = localStorage.getItem("dateT");
+            document.getElementById('noTiang').innerHTML = localStorage.getItem("notiang");
+            document.getElementById('nocount').innerHTML = 1;
+            input = "<a onclick='editrondaan()'>Ubah</a>";
+            document.getElementById('clicks').innerHTML = input;
+        }
+    }
+
+    function imbangan()
+    {
+        
+        var val = localStorage.getItem("editimbangan");
+        if (val === "") {
+            document.getElementById('date').innerHTML = none;
+            document.getElementById('noTiang').innerHTML = none;
+            document.getElementById('nocount').innerHTML = none;
+            document.getElementById('clicks').innerHTML = none;
+        } else {
+            document.getElementById('date').innerHTML = localStorage.getItem("dateT");
+            document.getElementById('noTiang').innerHTML = localStorage.getItem("lan100w");
+            document.getElementById('nocount').innerHTML = 1;
+            input = "<a onclick='editimbangan()'>Ubah</a>";
+            document.getElementById('clicks').innerHTML = input;
+        }
+    }
+
+    function rondaankhas()
+    {
+        
+        var val = localStorage.getItem("editrondaankhas");
+        if (val === "") {
+            document.getElementById('date').innerHTML = none;
+            document.getElementById('noTiang').innerHTML = none;
+            document.getElementById('nocount').innerHTML = none;
+            document.getElementById('clicks').innerHTML = none;
+        } else {
+            document.getElementById('date').innerHTML = localStorage.getItem("dateT");
+            document.getElementById('noTiang').innerHTML = localStorage.getItem("notiang");
+            document.getElementById('nocount').innerHTML = 1;
+            input = "<a onclick='editrondaankhas()'>Ubah</a>";
+            document.getElementById('clicks').innerHTML = input;
+        }
+    }
+
+    function aduan()
+    {
+        
+        var val = localStorage.getItem("editaduan");
+        if (val === "") {
+            document.getElementById('date').innerHTML = none;
+            document.getElementById('noTiang').innerHTML = none;
+            document.getElementById('nocount').innerHTML = none;
+            document.getElementById('clicks').innerHTML = none;
+        } else {
+            document.getElementById('date').innerHTML = localStorage.getItem("dateT");
+            document.getElementById('noTiang').innerHTML = localStorage.getItem("notiang");
+            document.getElementById('nocount').innerHTML = 1;
+            input = "<a onclick='editaduan()'>Ubah</a>";
+            document.getElementById('clicks').innerHTML = input;
+        }
+    }
+
+    function edit() 
+    {
+        var val = localStorage.getItem("edit");
+        if (val == 1) {
+            window.location.href = "ticket.html";
+        } else if (val == 2) {
+            window.location.href = "ticket2.html";
+        }
+
+    }
+
+    function editpanel() 
+    {
+        var val = localStorage.getItem("editpanel");
+        if (val == 1) {
+            window.location.href = "panel.html";
+        } else if (val == 2) {
+            window.location.href = "panel2.html";
+        }
+
+    }
+
+    function editled() 
+    {
+        var val = localStorage.getItem("editled");
+        if (val == 1) {
+            window.location.href = "led.html";
+        } else if (val == 2) {
+            window.location.href = "led2.html";
+        }
+
+    }
+
+    function editrondaan() 
+    {
+        var val = localStorage.getItem("editrondaan");
+        if (val == 1) {
+            window.location.href = "rondaan.html";
+        } else if (val == 2) {
+            window.location.href = "rondaan2.html";
+        }
+
+    }
+
+    function editimbangan() 
+    {
+        var val = localStorage.getItem("editimbangan");
+        if (val == 1) {
+            window.location.href = "imbangan.html";
+        } else if (val == 2) {
+            window.location.href = "imbangan2.html";
+        }
+
+    }
+
+    function editrondaankhas() 
+    {
+        var val = localStorage.getItem("editrondaankhas");
+        if (val == 1) {
+            window.location.href = "rondaankhas.html";
+        } else if (val == 2) {
+            window.location.href = "rondaankhas2.html";
+        }
+
+    }
+
+    function editaduan() 
+    {
+        var val = localStorage.getItem("editaduan");
+        if (val == 1) {
+            window.location.href = "aduan.html";
+        } else if (val == 2) {
+            window.location.href = "aduan2.html";
+        }
+
+    }
+
+
+
+    function goHome() {
+        window.location.href = "home.html";
+    }
+
+    function goSenarai() {
+        window.location.href = "tugasan.html";
+    }
+
+    function goStatus() {
+        window.location.href = "laporan.html";
+    }
+
+    function goStatistik() {
+        window.location.href = "statistik1.html";
+    }
+
+    function goPapan() {
+        window.location.href = "papanskor.html";
+    }
+    
+    function laporan() {
+        window.location.href = "laporan.html";
+    }
+
+    function laporan2() {
+        window.location.href = "laporan2.html";
+    }
+
+    function laporan3() {
+        window.location.href = "laporan3.html";
+    }
+</script>
+
+</html>

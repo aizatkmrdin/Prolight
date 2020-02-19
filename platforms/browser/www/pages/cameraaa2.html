@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'" />
+        <title>PhoneGap app</title>
+
+        <!-- Script -->
+        <script type="text/javascript" src="../cordova.js"></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+        <script type='text/javascript'>
+
+        $(document).ready(function(){
+
+            // take picture from camera
+            $('#but_take').click(function(){      
+                navigator.camera.getPicture(onSuccess, onFail, { quality: 20,
+                    destinationType: Camera.DestinationType.FILE_URL ,
+                    saveToPhotoAlbum: true 
+                    
+                });
+            });
+
+            // upload select 
+            $("#but_select").click(function(){
+                navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY, 
+                    allowEdit: true,
+                    destinationType: Camera.DestinationType.FILE_URI
+                });
+                
+            });
+
+   
+
+            function onSuccess(imageURI) {
+                // Set image source
+                var image = document.getElementById('gambartiang');
+                image.src = imageURI  + '?' + Math.random();
+                
+              //  localStorage.setItem("gambartiang", imageURI);
+
+               //  atau buat macam ni :
+
+                
+                    window.resolveLocalFileSystemURL(cordova.file.cacheDirectory, function success(dirEntry) {
+
+                        // JPEG file
+                        dirEntry.getFile("tempFile.jpeg", { create: true, exclusive: false }, function (fileEntry) {
+
+                            // Do something with it, like write to it, upload it, etc.
+                            writeFile(fileEntry, imgUri);
+
+                            localStorage.setItem("img", fileEntry);
+                            //console.log("got file: " + fileEntry.fullPath);
+                            // displayFileData(fileEntry.fullPath, "File copied to");
+
+                        }, onErrorCreateFile);
+
+                    }, onErrorResolveUrl);
+                
+
+              
+            }
+
+            function onFail(message) {
+                alert('Failed because: ' + message);
+            }
+
+        });
+
+        function back() {
+            window.history.back();
+        }
+
+
+        
+        </script>
+    </head>
+    <body>
+       <h1 align="center">GAMBAR TIANG</h1>
+		<div style="margin:0 auto;text-align: center;">
+			<img src="gambartiang" id='gambartiang' style="width: 250px; height: 300px;">
+        </div><br/>
+        <div style="width:100%; text-align:center; padding:10px;"></div>
+
+            <button id='but_take'  class="btnsscamera" >Take photo</button>
+            <button id='but_select'>Select photo from Gallery</button>
+           
+        </div>
+
+        <button onclick="back()" class="buttonSeterusnya position-button-back-gambar">Back</button> 
+        
+    </body>
+</html>

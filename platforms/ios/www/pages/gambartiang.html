@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'" />
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" type="text/css" href="../css/input.css">
+        <title>PhoneGap app</title>
+
+        <!-- Script -->
+        <script type="text/javascript" src="../cordova.js"></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+        <script type='text/javascript'>
+
+        $(document).ready(function(){
+
+            // take picture from camera
+            $('#but_take').click(function(){      
+                navigator.camera.getPicture(onSuccess, onFail, { quality: 20,
+                    destinationType: Camera.DestinationType.FILE_URL ,
+                    saveToPhotoAlbum: true 
+                });
+
+            });
+
+            // upload select 
+            $("#but_select").click(function(){
+                navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+                    sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM, 
+                    allowEdit: true,
+                    destinationType: Camera.DestinationType.FILE_URI
+
+                    
+                });
+            });
+
+            $("#but_send").click(function(){
+                var options = new FileUploadOptions();
+                options.fileKey = "file";
+                options.fileName = sPicData.substr(sPicData.lastIndexOf('/') + 1);
+                options.mimeType = "image/jpeg";
+                options.chunkedMode = false;
+
+                var params = new Object();
+                params.fileKey = "file";
+                options.params = {unik_id}; // eig = params, if we need to send parameters to the server request
+
+                ft = new FileTransfer();
+                ft.upload(sPicData, "http://1.32.96.10/ProLight/test.php", win, fail, options); 
+            });
+
+            function win(){
+                alert("image uploaded scuccesfuly");
+            }
+
+            function fail(){
+                alert("image upload has been failed");
+            }
+                    });
+
+            function onSuccess(imageURI) {
+                // Set image source
+                var image = document.getElementById('gambartiang');
+                image.src = imageURI;
+                sPicData  = imageURI;
+            }
+
+            
+            function onFail(message) {
+                alert('Failed because: ' + message);
+            }
+
+        
+
+        
+
+        function back() {
+            //localStorage.setItem("gambartiang", formAset.gambartiang);
+            window.history.back();
+            
+        }
+
+        
+
+
+
+        
+        </script>
+    </head>
+    <body>
+        <br>
+       <h1 align="center">GAMBAR TIANG</h1>
+       <br><br><br>
+		<div style="margin:0 auto;text-align: center;">
+			<img src="gambartiang" id='gambartiang' style="width: 250px; height: 300px;">
+        </div><br/>
+        <div style="width:100%; text-align:center; padding:10px;"></div>
+
+            <button id='but_take'  class="btnsscamera99"  >Take photo</button>
+            <button id='but_select' class="btnssfile99" >Select photo from Gallery</button>
+            <button id='but_send' class="btnssfile88" >Send Picture</button>
+
+           
+        </div>
+
+        <button onclick="back()" class="buttonSeterusnya position-button-back-camera">Back</button> 
+        
+    </body>
+</html>

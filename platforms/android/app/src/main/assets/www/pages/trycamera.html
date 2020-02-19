@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script type="text/javascript" src="../cordova.js"></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="../js/framework7.js"></script>
+        <script type="text/javascript" src="../js/framework7.min.js"></script>
+        <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
+        <script type="text/javascript" src="../js/index.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" type="text/css" href="../css/input.css">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>ProLight</title>
+</head>
+
+<body onload="checkTemp()">
+        <header>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times"></i>
+                </div>
+                <nav class="sidebar">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a onclick="goHome()" class="nav-link current">
+                                <i class="fas fa-home"></i>Menu Utama
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                                <a onclick="goSenarai()" class="nav-link">
+                                    <i class="fas fa-address-card"></i>Senarai Tugas
+                                </a>
+                            </li>
+                        <li class="nav-item">
+                            <a onclick="goStatus()" class="nav-link">
+                                <i class="fas fa-briefcase"></i>Status Laporan
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                                <a onclick="goStatistik()" class="nav-link">
+                                    <i class="fas fa-blog"></i>Statistik Tugasan
+                                </a>
+                            </li>
+        
+                            <li class="nav-item">
+                                    <a onclick="goPapan()"class="nav-link">
+                                        <i class="fas fa-envelope"></i>Papan Skor
+                                    </a>
+                                </li>
+                    </ul>
+                </nav>
+            </header>
+        
+            <main>
+                <div class="zoom-content">
+                    <section>
+    <div class="row position-stepper-high4s">
+        <div class="col-xs-12 col-md-8 offset-md-2 block border">
+            <div class="wrapper-progressBar">
+                <ul class="progressBar">
+                    <li class="active">Jenis Kerja</li>
+                    <li class="active">Ticket</li>
+                    <li>Ticket 2</li>
+                    <li>Hantar</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <form id="formticket">
+            <form id="formaduan">
+                    <p class="position-text1-high"><button id="cameraApp" class="btnsscamera" name="gambarsebelum">Gambar Sebelum<button></p>
+                        <div style= "width:150px; min-height:200px; border: 1px; ">
+                        <img style="max-width: 100%;" src="" id="myImage">
+                        </div>
+                
+                    <p class="position-textcamera-high"> <input type="file" class="btnss" name="gambarsebelum" /></p>
+                </form>
+    
+    
+    </form>
+
+   
+   <!--  <div onclick="save()" class="buttonSimpan position-button-simpan-input-ticket1">Simpan</div>
+    <div onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-input-ticket1">Seterusnya</div>
+   
+    <button onclick="getsave()" class="buttonSimpan position-button-simpan-input-ticket1">Simpan</button>
+    <button onclick="getpost()" class="buttonSeterusnya position-button-seterusnya-input-ticket1">Seterusnya</button>
+-->
+    </div>
+    <footer id="footer"></footer>
+    <script type="text/javascript">
+        document.getElementById('cameraApp').addEventListener('click',cameraApp);
+        function cameraApp()
+        {
+            navigator.camera.getPicture(onSuccess,onFail,{
+                quality:50,
+                saveToPhotoAlbum:true,
+                destinationType:Camera.DestinationType.DATA_URL
+        
+            });
+            
+        function onSuccess(imageURI) {
+            var image = document.getElementById('myImage');
+            image.src = "data:image/jpeg;base64," + imageURI;
+            
+        }
+        
+        function onFail(message) {
+            alert('Failed because: ' + message);
+        }
+        }
+        
+        </script>
+
+</section>
+</div>
+</main>
+</body>
+
+<script type="text/javascript" src="../js/script.js"></script>
+
+<script>
+
+    function checkTemp() {
+        var cond = localStorage.getItem("edit");
+        if (cond == 1) {
+            getItem();
+
+        } else {
+            startTime();
+            neaws();
+        }
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        // add a zero in front of numbers<10
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('time').value =yyyy + '-' + mm + '-' + dd +" "+ h + ":" + m + ":" + s  ;
+        /*t = setTimeout(function () {
+            startTime()
+        }, 500);*/
+    }
+
+
+    function neaws() {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        localStorage.setItem("dateT", dd + '/' + mm + '/' + yyyy);
+
+
+    }
+
+    function getItem() {
+        document.getElementById('noTiang').value = localStorage.getItem("notiang");
+        document.getElementById('time').value = localStorage.getItem("masa");
+        document.getElementById('ipc').value = localStorage.getItem("ipc");
+        document.getElementById('pecu').value = localStorage.getItem("pecu");
+        document.getElementById('pecuqty').value = localStorage.getItem("pecuqty");
+        document.getElementById('ipclantern').value = localStorage.getItem("ipclantern");
+        document.getElementById('lantern').value = localStorage.getItem("lantern");
+        document.getElementById('blackbox').value = localStorage.getItem("blackbox");
+        document.getElementById('fuse').value = localStorage.getItem("fuse");
+        document.getElementById('contractor').value = localStorage.getItem("contractor");
+        document.getElementById('link').value = localStorage.getItem("link");
+        document.getElementById('dawailampu').value = localStorage.getItem("dawailampu");
+        document.getElementById('dawaipanel').value = localStorage.getItem("dawaipanel");
+        document.getElementById('cout').value = localStorage.getItem("cout");
+        document.getElementById('rombaklampu').value = localStorage.getItem("rombaklampu");
+        document.getElementById('bracket').value = localStorage.getItem("bracket");
+        document.getElementById('rombakpanel').value = localStorage.getItem("rombakpanel");
+    }
+
+
+
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+
+    function goHome() {
+        window.location.href = "home.html";
+    }
+
+    function goSenarai() {
+        window.location.href = "tugasan.html";
+    }
+
+    function goStatus() {
+        window.location.href = "laporan.html";
+    }
+
+    function goStatistik() {
+        window.location.href = "statistik1.html";
+    }
+
+    function goPapan() {
+        window.location.href = "papanskor.html";
+    }
+
+    function save() {
+        var formData = app.form.convertToData('#formticket');
+
+        //store localstorage
+        localStorage.setItem("notiang", formData.noTiang);
+        localStorage.setItem("masa", formData.masa);
+        localStorage.setItem("ipc", formData.ipc);
+        localStorage.setItem("pecu", formData.pecu);
+        localStorage.setItem("pecuqty", formData.pecuqty);
+        localStorage.setItem("ipclantern", formData.ipclantern);
+        localStorage.setItem("lantern", formData.lantern);
+        localStorage.setItem("blackbox", formData.blackbox);
+        localStorage.setItem("fuse", formData.fuse);
+        localStorage.setItem("contractor", formData.contractor);
+        localStorage.setItem("link", formData.link);
+        localStorage.setItem("dawailampu", formData.dawailampu);
+        localStorage.setItem("dawaipanel", formData.dawaipanel);
+        localStorage.setItem("cout", formData.cout);
+        localStorage.setItem("rombaklampu", formData.rombaklampu);
+        localStorage.setItem("bracket", formData.bracket);
+        localStorage.setItem("rombakpanel", formData.rombakpanel);
+        localStorage.setItem("gambartiang", formData.gambartiang);
+        localStorage.setItem("gambarsebelum", formData.gambarsebelum);
+        localStorage.setItem("edit", "1");
+
+        var formtic1 = formData.noTiang;
+        var formtic2 = formData.masa;
+        var formtic3 = formData.ipc;
+        var formtic4 = formData.pecu;
+        var formtic5 = formData.pecuqty;
+        var formtic6 = formData.ipclantern;
+        var formtic7 = formData.lantern;
+        var formtic8 = formData.blackbox;
+        var formtic9 = formData.fuse;
+        var formtic10 = formData.contractor;
+        var formtic11 = formData.link;
+        var formtic12 = formData.dawailampu;
+        var formtic13 = formData.dawaipanel;
+        var formtic14 = formData.cout;
+        var formtic15 = formData.rombaklampu;
+        var formtic16 = formData.bracket;
+        var formtic17 = formData.rombakpanel;
+        var formtic18 = formData.gambartiang;
+        var formtic19 = formData.gambarsebelum;
+
+        var dataFormTic = {
+            "noTiang": formtic1,
+            "masa": formtic2,
+            "ipc": formtic3,
+            "pecu": formtic4,
+            "pecuqty": formtic5,
+            "ipclantern": formtic6,
+            "lantern": formtic7,
+            "blackbox": formtic8,
+            "fuse": formtic9,
+            "contractor": formtic10,
+            "link": formtic11,
+            "dawailampu": formtic12,
+            "dawaipanel": formtic13,
+            "cout": formtic14,
+            "rombaklampu": formtic15,
+            "bracket": formtic16,
+            "rombakpanel": formtic17,
+            "gambartiang": formtic18,
+            "gambarselepas": formtic19
+        };
+
+        //alert(dataFormTic);
+        window.location.href = "laporan2.html";
+    }
+
+    function nextPage() {
+        var formData = app.form.convertToData('#formticket');
+
+        //store localstorage
+        localStorage.setItem("notiang", formData.noTiang);
+        localStorage.setItem("masa", formData.masa);
+        localStorage.setItem("ipc", formData.ipc);
+        localStorage.setItem("pecu", formData.pecu);
+        localStorage.setItem("pecuqty", formData.pecuqty);
+        localStorage.setItem("ipclantern", formData.ipclantern);
+        localStorage.setItem("lantern", formData.lantern);
+        localStorage.setItem("blackbox", formData.blackbox);
+        localStorage.setItem("fuse", formData.fuse);
+        localStorage.setItem("contractor", formData.contractor);
+        localStorage.setItem("link", formData.link);
+        localStorage.setItem("dawailampu", formData.dawailampu);
+        localStorage.setItem("dawaipanel", formData.dawaipanel);
+        localStorage.setItem("cout", formData.cout);
+        localStorage.setItem("rombaklampu", formData.rombaklampu);
+        localStorage.setItem("bracket", formData.bracket);
+        localStorage.setItem("rombakpanel", formData.rombakpanel);
+        localStorage.setItem("gambartiang", formData.gambartiang);
+        localStorage.setItem("gambarsebelum", formData.gambarsebelum);
+
+
+        var formtic1 = formData.noTiang;
+        var formtic2 = formData.masa;
+        var formtic3 = formData.ipc;
+        var formtic4 = formData.pecu;
+        var formtic5 = formData.pecuqty;
+        var formtic6 = formData.ipclantern;
+        var formtic7 = formData.lantern;
+        var formtic8 = formData.blackbox;
+        var formtic9 = formData.fuse;
+        var formtic10 = formData.contractor;
+        var formtic11 = formData.link;
+        var formtic12 = formData.dawailampu;
+        var formtic13 = formData.dawaipanel;
+        var formtic14 = formData.cout;
+        var formtic15 = formData.rombaklampu;
+        var formtic16 = formData.bracket;
+        var formtic17 = formData.rombakpanel;
+        var formtic18 = formData.gambartiang;
+        var formtic19 = formData.gambarsebelum;
+
+
+        var dataFormTic = {
+            "noTiang": formtic1,
+            "masa": formtic2,
+            "ipc": formtic3,
+            "pecu": formtic4,
+            "pecuqty": formtic5,
+            "ipclantern": formtic6,
+            "lantern": formtic7,
+            "blackbox": formtic8,
+            "fuse": formtic9,
+            "contractor": formtic10,
+            "link": formtic11,
+            "dawailampu": formtic12,
+            "dawaipanel": formtic13,
+            "cout": formtic14,
+            "rombaklampu": formtic15,
+            "bracket": formtic16,
+            "rombakpanel": formtic17,
+            "gambartiang": formtic18,
+            "gambarselepas": formtic19
+        };
+
+        window.location.href = "ticket2.html";
+    }
+</script>
+
+</html>

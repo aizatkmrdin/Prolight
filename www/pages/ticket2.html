@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script type="text/javascript" src="../cordova.js"></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="../js/framework7.js"></script>
+        <script type="text/javascript" src="../js/framework7.min.js"></script>
+        <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
+        <script type="text/javascript" src="../js/index.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" type="text/css" href="../css/input.css">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>ProLight</title>
+</head>
+
+<body onload="checkTemp()">
+        <header>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times"></i>
+                </div>
+                <nav class="sidebar">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a onclick="goHome()" class="nav-link current">
+                                <i class="fas fa-home"></i>Menu Utama
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                                <a onclick="goSenarai()" class="nav-link">
+                                    <i class="fas fa-address-card"></i>Senarai Tugas
+                                </a>
+                            </li>
+                        <li class="nav-item">
+                            <a onclick="goStatus()" class="nav-link">
+                                <i class="fas fa-briefcase"></i>Status Laporan
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                                <a onclick="goStatistik()" class="nav-link">
+                                    <i class="fas fa-blog"></i>Statistik Tugasan
+                                </a>
+                            </li>
+        
+                            <li class="nav-item">
+                                    <a onclick="goPapan()"class="nav-link">
+                                        <i class="fas fa-envelope"></i>Papan Skor
+                                    </a>
+                                </li>
+                    </ul>
+                </nav>
+            </header>
+        
+            <main>
+                <div class="zoom-content">
+                    <section>
+    <div class="row position-stepper-high4s">
+        <div class="col-xs-12 col-md-8 offset-md-2 block border">
+            <div class="wrapper-progressBar">
+                <ul class="progressBar">
+                    <li class="active">Jenis Kerja</li>
+                    <li class="active">Ticket</li>
+                    <li class="active">Ticket 2</li>
+                    <li>Hantar</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <form id="formticket2">
+        <p class="position-text1-high">S Clamp</p>
+        <div class="dropdown position-input1-ticket" id="clamp">
+            <select name="clamp" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+
+            </select>
+        </div>
+
+        <p class="position-text2-high">Rentis</p>
+        <div class="dropdown position-input2-ticket" id="rentis">
+            <select name="rentis" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+
+            </select>
+        </div>
+
+        <p class="position-text3-high">Dead End CL</p>
+        <div class="dropdown position-input3-ticket" id="dead">
+            <select name="dead" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+
+            </select>
+        </div>
+
+        <p class="position-text4-high">Cable 1x16</p>
+        <div class="dropdown position-input4-ticket" id="cable">
+            <select name="cable" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+
+            </select>
+        </div>
+
+        <p class="position-text5-high">Mini Isolator</p>
+        <div class="dropdown position-input5-ticket" id="mini">
+            <select name="mini" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+
+            </select>
+        </div>
+
+        <p class="position-text6-high">Pusing Lampu</p>
+        <div class="dropdown position-input6-ticket" id="pusing">
+            <select name="pusing" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+
+            </select>
+        </div>
+
+        <p class="position-text7-high">Jumper Lantern</p>
+        <div class="dropdown position-input7-ticket" id="jumperlantern">
+            <select name="jumperlantern" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+
+            </select>
+        </div>
+
+        <p class="position-text8-high">Jumper Service</p>
+        <div class="dropdown position-input8-ticket" id="jumperservice">
+            <select name="jumperservice" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+
+            </select>
+        </div>
+
+        <p class="position-text9-high">J hook</p>
+        <div class="dropdown position-input9-ticket" id="hook">
+            <select name="hook" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+
+            </select>
+        </div>
+
+        <p class="position-text10-high">Creepers</p>
+        <div class="dropdown position-input10-ticket" id="creepers">
+            <select name="creepers" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+
+            </select>
+        </div>
+
+
+        <p class="position-text11-high">Lantern Waranty</p>
+        <input class="input-box position-input11-ticket" type="text" name="lanternwarranty" id="lanternwarranty">
+
+        
+    <p class="position-text12-high">Warna Kod</p>
+    <div class="dropdown position-input12-ticket" id="colorcode">
+        <select name="colorcode" class="dropdown-select">
+                <option value="merah">merah</option>
+                <option value="kuning">kuning</option>
+                <option value="hijau">hijau</option>
+                <option value="biru">biru</option>
+                <option value="pink">pink</option>
+                <option value="hitam">hitam</option>
+                <option value="putih">putih</option>
+        </select>
+    </div>
+
+        
+        <p class="position-text13-high">Tarikh Penukaran</p>
+        <input class="input-box position-input13-ticket" type="text" name="tarikhtukar" id="tarikhtukar">
+
+
+        <p class="position-text14-high">Tukar Set Lantern </p>
+        <input class="input-box position-input14-ticket" type="text" name="setlantern" id="setlantern">
+
+        <p class="position-text15-high">Tukar IPC</p>
+        <div class="dropdown position-input15-ticket" id="tukaripc">
+            <select name="tukaripc" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+
+            </select>
+        </div>
+
+        <p class="position-text16-high">Lampu Rosak</p>
+        <div class="dropdown position-input16-ticket" id="lampurosak">
+            <select name="lampurosak" class="dropdown-select">
+                    <option value="YA">YA</option>
+                    <option value="TIDAK">TIDAK</option>
+            </select>
+        </div>
+
+        <p class="position-text17-high">Category</p>
+        <div class="dropdown position-input17-ticket" id="category" name="category">
+            <select name="category" class="dropdown-select">
+                    <option value="baik">Kredit/Baik</option>
+                    <option value="rosak">Kredit/Rosak</option>
+                    <option value="skrap">Skrap</option>
+            </select>
+        </div>
+
+        <div class="upload-btn-wrapper position-upload10">
+           <!--<button class="btnss" name="gambarselepas" id="after">Gambar Selepas Kerja</button>
+            <input type="file" name="gambarselepas" />-->
+            <a onclick="goCamera3()" class="btnss" name="gambarselepas" id="gambarselepas">Gambar Selepas</a>
+        </div>
+
+
+
+
+
+        <!--<div class="footnoteticket1">
+        <p class="">Muat Naik Gambar Tiang</p>
+        <div class="upload-btn-wrapper position-upload-ticket1-1">
+            <button class="btnss" name="tiang" id="tiang">Gambar Tiang</button>
+            <input type="file" name="myfile" />
+        </div>
+        <div class="upload-btn-wrapper position-upload-ticket1-2">
+            <button class="btnss1" name="tiang" id="tiang">Gambar Sebelum Mula Kerja</button>
+            <input type="file" name="myfile" />
+        </div>    
+        </div>-->
+
+    </form>
+    <div class="footnoteticket2"></div>
+    <div onclick="save()" class="buttonSimpan position-button-simpan-input-ticket1">Simpan</div>
+    <div onclick="post()" class="buttonSeterusnya position-button-seterusnya-input-ticket1">Seterusnya</div>
+</div>
+
+    </section>
+</div>
+</main>
+</body>
+
+<script type="text/javascript" src="../js/script.js"></script>
+
+<script>
+    function checkTemp() {
+        getItem();
+    }
+
+    function getItem() {
+        document.getElementById('clamp').value = localStorage.getItem("clamp");
+        document.getElementById('rentis').value = localStorage.getItem("rentis");
+        document.getElementById('dead').value = localStorage.getItem("dead");
+        document.getElementById('cable').value = localStorage.getItem("cable");
+        document.getElementById('mini').value = localStorage.getItem("mini");
+        document.getElementById('pusing').value = localStorage.getItem("pusing");
+        document.getElementById('jumperlantern').value = localStorage.getItem("jumperlantern");
+        document.getElementById('jumperservice').value = localStorage.getItem("jumperservice");
+        document.getElementById('hook').value = localStorage.getItem("hook");
+        document.getElementById('creepers').value = localStorage.getItem("creepers");
+        document.getElementById('colorcode').value = localStorage.getItem("colorcode");
+        document.getElementById('lanternwarranty').value = localStorage.getItem("lanternwarranty");
+        document.getElementById('tarikhtukar').value = localStorage.getItem("tarikhtukar");
+        document.getElementById('setlantern').value = localStorage.getItem("setlantern");
+        document.getElementById('tukaripc').value = localStorage.getItem("tukaripc");
+        document.getElementById('lampurosak').value = localStorage.getItem("lampurosak");
+        document.getElementById('category').value = localStorage.getItem("category");
+        document.getElementById('gambarselepas').value = localStorage.getItem("gambarselepas");
+    }
+
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+    function goCamera3() {
+        window.location.href = "tiangselepas.html";
+    }
+
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+
+    function goHome() {
+        window.location.href = "home.html";
+    }
+
+    function goSenarai() {
+        window.location.href = "tugasan.html";
+    }
+
+    function goStatus() {
+        window.location.href = "laporan.html";
+    }
+
+    function goStatistik() {
+        window.location.href = "statistik1.html";
+    }
+
+    function goPapan() {
+        window.location.href = "papanskor.html";
+    }
+
+    function save() {
+        var formData = app.form.convertToData('#formticket2');
+
+        //store localstorage
+        localStorage.setItem("clamp", formData.clamp);
+        localStorage.setItem("rentis", formData.rentis);
+        localStorage.setItem("dead", formData.dead);
+        localStorage.setItem("cable", formData.cable);
+        localStorage.setItem("mini", formData.mini);
+        localStorage.setItem("pusing", formData.pusing);
+        localStorage.setItem("jumperlantern", formData.jumperlantern);
+        localStorage.setItem("jumperservice", formData.jumperservice);
+        localStorage.setItem("hook", formData.hook);
+        localStorage.setItem("creepers", formData.creepers);
+        localStorage.setItem("lanternwarranty", formData.lanternwarranty);
+        localStorage.setItem("colorcode", formData.colorcode);
+        localStorage.setItem("tarikhtukar", formData.tarikhtukar);
+        localStorage.setItem("lantern", formData.setlantern);
+        localStorage.setItem("tukaripc", formData.tukaripc);
+        localStorage.setItem("lampurosak", formData.lampurosak);
+        localStorage.setItem("category", formData.category);
+        localStorage.setItem("edit", "2");
+
+    
+       
+        window.location.href = "laporan2.html";
+
+    }
+
+    function post() {
+        localStorage.setItem("edit", "");
+        var formData = app.form.convertToData('#formticket2');
+       
+
+       
+        //store localstorage
+        localStorage.setItem("clamp", formData.clamp);
+        localStorage.setItem("rentis", formData.rentis);
+        localStorage.setItem("dead", formData.dead);
+        localStorage.setItem("cable", formData.cable);
+        localStorage.setItem("mini", formData.mini);
+        localStorage.setItem("pusing", formData.pusing);
+        localStorage.setItem("jumperlantern", formData.jumperlantern);
+        localStorage.setItem("jumperservice", formData.jumperservice);
+        localStorage.setItem("hook", formData.hook);
+        localStorage.setItem("creepers", formData.creepers);
+        localStorage.setItem("lanternwarranty", formData.lanternwarranty);
+        localStorage.setItem("colorcode", formData.colorcode);
+        localStorage.setItem("tarikhtukar", formData.tarikhtukar);
+        localStorage.setItem("setlantern", formData.setlantern);
+        localStorage.setItem("tukaripc", formData.tukaripc);
+        localStorage.setItem("lampurosak", formData.lampurosak);
+        localStorage.setItem("category", formData.category);
+      
+        localStorage.setItem("edit", "2");
+
+        window.location.href = "ticket3.html";
+    }
+</script>
+
+
+
+
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script type="text/javascript" src="../cordova.js"></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="../js/framework7.js"></script>
+        <script type="text/javascript" src="../js/framework7.min.js"></script>
+        <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
+        <script type="text/javascript" src="../js/index.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" type="text/css" href="../css/input.css">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>ProLight</title>
+</head>
+
+<body onload="checkTemp()">
+        <header>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times"></i>
+                </div>
+                <nav class="sidebar">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a onclick="goHome()" class="nav-link current">
+                                <i class="fas fa-home"></i>Menu Utama
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                                <a onclick="goSenarai()" class="nav-link">
+                                    <i class="fas fa-address-card"></i>Senarai Tugas
+                                </a>
+                            </li>
+                        <li class="nav-item">
+                            <a onclick="goStatus()" class="nav-link">
+                                <i class="fas fa-briefcase"></i>Status Laporan
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                                <a onclick="goStatistik()" class="nav-link">
+                                    <i class="fas fa-blog"></i>Statistik Tugasan
+                                </a>
+                            </li>
+        
+                            <li class="nav-item">
+                                    <a onclick="goPapan()"class="nav-link">
+                                        <i class="fas fa-envelope"></i>Papan Skor
+                                    </a>
+                                </li>
+                    </ul>
+                </nav>
+            </header>
+        
+            <main>
+                <div class="zoom-content">
+                    <section>
+    <div class="row position-stepper-high4s">
+        <div class="col-xs-12 col-md-8 offset-md-2 block border">
+            <div class="wrapper-progressBar">
+                <ul class="progressBar">
+                    <li class="active" >Jenis Kerja</li>
+                    <li class="active" onclick="rondaan()">Rondaan</li>
+                    <li class="active" onclick="rondaan2()">Rondaan 2</li>
+                    <li class="active" onclick="rondaan3()">Rondaan 3</li>
+                    <li>Hantar</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <form id="formrondaan3">
+        <p class="position-text1-high">Jenis Lampu</p>
+        <div class="dropdown position-input1-ticket" id="jenislampu" name="jenislampu">
+            <select name="jenislampu" class="dropdown-select">
+                    <option value="led">LED</option>
+                    <option value="sodium">Sodium</option>
+            </select>
+        </div>
+    
+        <p class="position-text2-high">Chargeman</p>
+        <input class="input-box position-input2-ticket" type="text" name="chargeman" id="chargeman">
+    
+        <p class="position-text3-high">Helper</p>
+        <input class="input-box position-input3-ticket" type="text" name="helper" id="helper">
+   
+        <p class="position-text4-high">Driver</p>
+        <input class="input-box position-input4-ticket" type="text" name="driver" id="driver">
+
+        <p class="position-text5-high">Shift</p>
+        <input class="input-box position-input5-ticket" type="text" name="shift" id="shift">
+
+        <p class="position-text6-high">Zon</p>
+        <div class="dropdown position-input6-ticket" id="zon" name="zon">
+            <select name="zon" class="dropdown-select">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+            </select>
+        </div>
+    
+        <p class="position-text7-high">Punca Bekalan PE</p>
+        <input class="input-box position-input7-ticket" type="text" name="bekalan" id="bekalan">
+   
+        <p class="position-text8-high">Nama Jalan</p>
+        <input class="input-box position-input8-ticket" type="text" name="jalan" id="jalan">
+
+        <p class="position-text9-high">Lokasi Kawalan Masa</p>
+        <input class="input-box position-input9-ticket" type="text" name="lokasi" id="Lokasi">
+
+        <p class="position-text10-high">Jenama</p>
+        <div class="dropdown position-input10-ticket" id="jenama" name="jenama">
+            <select name="jenama" class="dropdown-select">
+                <option value="AMAT SINAR ">AMAT SINAR </option>
+            <option value="MUAR LITE ">MUAR LITE </option>
+            <option value="PRIMELUX ">PRIMELUX </option>
+            <option value="NIKKON ">NIKKON </option>
+            <option value="PHILIP ">PHILIP </option>
+            <option value="KINGSON ">KINGSON </option>
+            <option value="MILAN ">MILAN</option>
+            </select>
+        </div>
+
+        <p class="position-text11-high">Size</p>
+        <div class="dropdown position-input11-ticket" id="size" name="size">
+            <select name="size" class="dropdown-select">
+                <option value="100W">100W</option>
+            <option value="70W">70W</option>
+            <option value="75W">75W</option>
+            <option value="80W">80W</option>
+            <option value="90W">90W</option>
+            <option value="120W">120W</option>
+            <option value="150W">150W</option>
+            <option value="250W">250W</option>
+            </select>
+        </div>
+
+        <p class="position-text13-high">Ipc 120-185 Abc</p>
+        <div class="dropdown position-input13-ticket" id="ipc120185">
+            <select name="ipc120185" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+            </select>
+        </div>
+
+        <p class="position-text14-high">Ipc 16-95 ABC</p>
+        <div class="dropdown position-input14-ticket" id="ipc1695">
+            <select name="ipc1695" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+            </select>
+        </div>
+
+        <p class="position-text15-high">Ipc 70-185 Abc</p>
+        <div class="dropdown position-input15-ticket" id="ipc20185">
+            <select name="ipc20185" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+            </select>
+        </div>
+
+        <p class="position-text16-high">Ipc 16-70 ABC</p>
+        <div class="dropdown position-input16-ticket" id="ipc1670">
+            <select name="ipc1670" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+            </select>
+        </div>
+
+        <p class="position-text17-high">Ipc 25-50 to 16-70 BARE</p>
+        <div class="dropdown position-input17-ticket" id="ipc2550">
+            <select name="ipc2550" class="dropdown-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+            </select>
+        </div>
+    
+        <p class="position-text19-high">Catatan</p>
+        <textarea class="position-text19-high" style="background: #f2f2f2" rows="3" cols="45" name="catatan" id="catatan">
+        </textarea>
+  
+       
+    </form>
+    <div onclick="save()" class="buttonSimpan position-button-simpan-input3">Simpan</div>
+    <div onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-input3">Hantar</div>
+    <footer id="footer"></footer>
+    <div class="input_container">
+    </div>
+
+</section>
+</div>
+</main>
+</body>
+
+<script type="text/javascript" src="../js/script.js"></script>
+
+<script>
+
+function checkTemp() {
+        getItem();
+    }
+
+    function getItem() {
+
+        
+        document.getElementById('jenislampu').value = localStorage.getItem("jenislampu");
+        document.getElementById('chargeman').value = localStorage.getItem("chargeman");
+        document.getElementById('helper').value = localStorage.getItem("helper");
+        document.getElementById('driver').value = localStorage.getItem("driver");
+        document.getElementById('shift').value = localStorage.getItem("shift");
+        document.getElementById('zon').value = localStorage.getItem("zon");
+        document.getElementById('bekalan').value = localStorage.getItem("bekalan");
+        document.getElementById('jalan').value = localStorage.getItem("jalan");
+        document.getElementById('lokasi').value = localStorage.getItem("lokasi");
+        document.getElementById('jenama').value = localStorage.getItem("jenama");
+        document.getElementById('size').value = localStorage.getItem("size");
+        document.getElementById('ipc120185').value = localStorage.getItem("ipc120185");
+        document.getElementById('ipc1695').value = localStorage.getItem("ipc1695");
+        document.getElementById('ipc20185').value = localStorage.getItem("ipc20185");
+        document.getElementById('ipc1670').value = localStorage.getItem("ipc1670");
+        document.getElementById('ipc2550').value = localStorage.getItem("ipc2550");
+        document.getElementById('catatan').value = localStorage.getItem("catatan");
+     
+    }
+
+    function rondaan() {
+        window.location.href = "rondaan.html";
+    }
+    function rondaan2() {
+        window.location.href = "rondaan2.html";
+    }
+
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+
+    function nextPage() {
+        
+        localStorage.setItem("editrondaan", "");
+        var formData = app.form.convertToData('#formrondaan3');
+       
+
+    var formreg = formData.jenislampu;
+    var formreg2 = formData.chargeman;
+    var formreg3 = formData.helper;
+    var formreg4 = formData.driver;
+    var formreg5 = formData.shift;
+    var formreg6 = formData.zon;
+    var formreg7 = formData.bekalan;
+    var formreg8 = formData.jalan;
+    var formreg9 = formData.lokasi;
+    var formreg10 = formData.jenama;
+    var formreg11 = formData.size;
+    var formrega = formData.ipc120185;
+        var formregb = formData.ipc1695;
+        var formregc = formData.ipc20185;
+        var formregd = formData.ipc1670;
+        var formrege = formData.ipc2550;
+    var formreg12 = formData.catatan;
+
+    localStorage.setItem("jenislampu", formData.jenislampu);
+    localStorage.setItem("chargeman", formData.chargeman);
+    localStorage.setItem("helper", formData.helper);
+    localStorage.setItem("driver", formData.driver);
+    localStorage.setItem("shift", formData.shift);
+    localStorage.setItem("zon", formData.zon);
+    localStorage.setItem("bekalan", formData.bekalan);
+    localStorage.setItem("jalan", formData.jalan);
+    localStorage.setItem("lokasi", formData.lokasi);
+    localStorage.setItem("jenama", formData.jenama);
+    localStorage.setItem("size", formData.size);
+    localStorage.setItem("ipc120185", formData.ipc120185);
+        localStorage.setItem("ipc1695", formData.ipc1695);
+        localStorage.setItem("ipc20185", formData.ipc20185);
+        localStorage.setItem("pipc1670", formData.ipc1670);
+        localStorage.setItem("ipc2550", formData.ipc2550);
+    localStorage.setItem("catatan", formData.catatan);
+    localStorage.setItem("editrondaan", "3");
+    
+
+    //get from localstorage value from jeniskerja.html page
+    var drh= localStorage.getItem("daerah");
+    var kmpln= localStorage.getItem("kumpulan");
+    var jkerja= localStorage.getItem("jenisKerja");
+    var latitude= localStorage.getItem("latitude");
+    var longitude= localStorage.getItem("longitude");
+    var output= localStorage.getItem("output");
+
+        //get from localstorage value from 1st page rondaan.html
+    var a = localStorage.getItem("notiang");
+	var b = localStorage.getItem("rombak");
+    var c = localStorage.getItem("ipctype");
+    var d = localStorage.getItem("ipcqty");
+    var e = localStorage.getItem("pecu");
+    var f = localStorage.getItem("pecuqty");
+    var g = localStorage.getItem("ipclantern");
+    var h = localStorage.getItem("lantern");
+    var i = localStorage.getItem("box");
+    var j = localStorage.getItem("fuse");
+    var k = localStorage.getItem("contactor");
+    var l = localStorage.getItem("link");
+    var m = localStorage.getItem("dawailampu");
+    var n = localStorage.getItem("dawaipanel");
+    var o = localStorage.getItem("masa");
+    var p = localStorage.getItem("lampurosak");
+    var q = localStorage.getItem("tarikhpenukaran");
+    var r = localStorage.getItem("gambartiang");
+    var s = localStorage.getItem("gambarsebelum")
+
+    //get from localstorage value from 2nd page rondaan2.html
+
+    var sa =localStorage.getItem("bracket");
+    var sb =localStorage.getItem("rombakpnl");
+    var sc =localStorage.getItem("clamp");
+    var sd =localStorage.getItem("rentis");
+    var se =localStorage.getItem("dead");
+    var sf =localStorage.getItem("cable");
+    var sg =localStorage.getItem("mini");
+    var sh =localStorage.getItem("pusing");
+    var si =localStorage.getItem("jumper");
+    var sj =localStorage.getItem("hook");
+    var sk =localStorage.getItem("creeper");
+    var sl =localStorage.getItem("setlantern");
+    var sm =localStorage.getItem("warna");
+    var so =localStorage.getItem("cout");
+    var gg =localStorage.getItem("category");
+    var sp =localStorage.getItem("catatan");
+    var sq =localStorage.getItem("gambarselepas");
+
+        
+        
+    var dataFormreg = {"daerah":drh,"kumpulan":kmpln,"jenisKerja":jkerja,"latitude":latitude,"longitude":longitude,
+    "output":output,
+
+    "notiang": a, "rombak":b, "ipctype":c,"ipcqty":d, "pecu": e,
+	"pecuqty":f, "ipclantern":g,"lantern":h, "box": i, "fuse":j, "contactor":k ,"link":l,
+	"dawailampu":m, "dawaipanel":n, "masa":o,"lampurosak":p, "tarikhpenukaran":q, 
+    "gambartiang":r, "gambarsebelum":s,
+
+	"bracket": sa, "rombakpnl":sb, "clamp":sc ,"rentis":sd,
+	"dead": se, "cable":sf, "mini":sg ,"pusing":sh, "jumper": si,
+	"hook":sj, "creeper":sk ,"setlantern":sl,"warna":sm,
+    "cout":so,"category":gg,"catatan":sp,"gambarselepas":sq,
+
+    "jenislampu":formreg, "chargeman": formreg2,"helper":formreg3,
+    "driver":formreg4,"shift":formreg5,"zon":formreg6,
+    "bekalan": formreg7,"jalan":formreg8, "lokasi":formreg9,"jenama":formreg10,
+    "size":formreg11,"ipc120185": formrega, "ipc1695":formregb, "ipc20185":formregc ,
+        "ipc1670":formregd,"ipc2550": formrege,"catatan":formreg12};
+
+        //alert(dataFormreg);
+        var dataString = JSON.stringify(dataFormreg);
+        $.ajax({
+                    url: 'http://1.32.96.10/ProLight/mimi/rondaan2.php',
+                    data: {myData: dataString},
+                    type: 'POST',
+                    success: function(response){
+                        alert(response);
+                        window.location.href = "laporan3.html";
+                        }
+                    });
+                   // window.location.replace("laporan3.html");
+        
+    }
+
+    function getPembumian() {
+        var pembumian = app.form.convertToData('#pembumian');
+        var passPembumian = pembumian.pembumian;
+        return passPembumian;
+    }
+
+
+    function goHome() {
+        window.location.href = "home.html";
+    }
+
+    function goSenarai() {
+        window.location.href = "tugasan.html";
+    }
+
+    function goStatus() {
+        window.location.href = "laporan.html";
+    }
+
+    function goStatistik() {
+        window.location.href = "statistik1.html";
+    }
+
+    function goPapan() {
+        window.location.href = "papanskor.html";
+    }
+
+    function post() {
+        window.location.href = "laporan3.html";
+    }
+
+    function save() {
+
+        
+        var formData = app.form.convertToData('#formrondaan2');
+       
+
+    var formreg = formData.jenislampu;
+    var formreg2 = formData.chargeman;
+    var formreg3 = formData.helper;
+    var formreg4 = formData.driver;
+    var formreg5 = formData.shift;
+    var formreg6 = formData.catatan;
+
+    localStorage.setItem("jenislampu", formData.jenislampu);
+    localStorage.setItem("chargeman", formData.chargeman);
+    localStorage.setItem("helper", formData.helper);
+    localStorage.setItem("driver", formData.driver);
+    localStorage.setItem("shift", formData.shift);
+    localStorage.setItem("ipc120185", formData.ipc120185);
+        localStorage.setItem("ipc1695", formData.ipc1695);
+        localStorage.setItem("ipc20185", formData.ipc20185);
+        localStorage.setItem("pipc1670", formData.ipc1670);
+        localStorage.setItem("ipc2550", formData.ipc2550);
+    localStorage.setItem("catatan", formData.catatan);
+    localStorage.setItem("editrondaan", "3");
+    
+
+    //get from localstorage value from jeniskerja.html page
+    var drh= localStorage.getItem("daerah");
+    var kmpln= localStorage.getItem("kumpulan");
+    var jkerja= localStorage.getItem("jenisKerja");
+    var latitude= localStorage.getItem("latitude");
+    var longitude= localStorage.getItem("longitude");
+
+        //get from localstorage value from 1st page rondaan.html
+    var a = localStorage.getItem("notiang");
+	var b = localStorage.getItem("rombak");
+    var c = localStorage.getItem("ipctype");
+    var d = localStorage.getItem("ipcqty");
+    var e = localStorage.getItem("pecu");
+    var f = localStorage.getItem("pecuqty");
+    var g = localStorage.getItem("ipclantern");
+    var h = localStorage.getItem("lantern");
+    var i = localStorage.getItem("box");
+    var j = localStorage.getItem("fuse");
+    var k = localStorage.getItem("contactor");
+    var l = localStorage.getItem("link");
+    var m = localStorage.getItem("dawailampu");
+    var n = localStorage.getItem("dawaipanel");
+    var o = localStorage.getItem("masa");
+    var p = localStorage.getItem("lampurosak");
+    var q = localStorage.getItem("tarikhpenukaran");
+    var r = localStorage.getItem("gambartiang");
+    var s = localStorage.getItem("gambarsebelum")
+
+    //get from localstorage value from 2nd page rondaan2.html
+
+    var sa =localStorage.getItem("bracket");
+    var sb =localStorage.getItem("rombakpnl");
+    var sc =localStorage.getItem("clamp");
+    var sd =localStorage.getItem("rentis");
+    var se =localStorage.getItem("dead");
+    var sf =localStorage.getItem("cable");
+    var sg =localStorage.getItem("mini");
+    var sh =localStorage.getItem("pusing");
+    var si =localStorage.getItem("jumper");
+    var sj =localStorage.getItem("hook");
+    var sk =localStorage.getItem("creeper");
+    var sl =localStorage.getItem("setlantern");
+    var so =localStorage.getItem("cout");
+    var sp =localStorage.getItem("catatan");
+    var sq =localStorage.getItem("gambarselepas");
+
+ 
+
+        window.location.href = "laporan2.html";
+
+    }
+</script>
+
+
+</html>
