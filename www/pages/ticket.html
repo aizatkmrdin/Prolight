@@ -2,312 +2,331 @@
 <html>
 
 <head>
-   
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <script type="text/javascript" src="../cordova.js"></script>
-        <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="../js/framework7.js"></script>
-        <script type="text/javascript" src="../js/framework7.min.js"></script>
-        <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
-        <script type="text/javascript" src="../js/index.js"></script>
-        <link rel="stylesheet" type="text/css" href="../css/index.css">
-        <link rel="stylesheet" type="text/css" href="../css/input.css">
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
-        <link rel="stylesheet" type="text/css" href="../css/index.css">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>ProLight</title>
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../cordova.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/framework7.js"></script>
+    <script type="text/javascript" src="../js/framework7.min.js"></script>
+    <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/input.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>ProLight</title>
 </head>
 
 
-<body onload="checkTemp()">
-       
-        <header>
-                <div class="hamburger">
-                    <i class="fas fa-bars"></i>
-                    <i class="fas fa-times"></i>
+<body>
+
+    <header>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times"></i>
+        </div>
+        <nav class="sidebar">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a onclick="goHome()" class="nav-link current">
+                        <i class="fas fa-home"></i>Menu Utama
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a onclick="goSenarai()" class="nav-link">
+                        <i class="fas fa-address-card"></i>Senarai Tugas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a onclick="goStatus()" class="nav-link">
+                        <i class="fas fa-briefcase"></i>Status Laporan
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a onclick="goStatistik()" class="nav-link">
+                        <i class="fas fa-blog"></i>Statistik Tugasan
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a onclick="goPapan()" class="nav-link">
+                        <i class="fas fa-envelope"></i>Papan Skor
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="zoom-content">
+            <section>
+                <div class="row position-stepper-high4s">
+                    <div class="col-xs-12 col-md-8 offset-md-2 block border">
+                        <div class="wrapper-progressBar">
+                            <ul class="progressBar">
+                                <li class="active">Jenis Kerja</li>
+                                <li class="active">Ticket</li>
+                                <li>Ticket 2</li>
+                                <li>Hantar</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <nav class="sidebar">
-                    <ul class="nav-list">
-                        <li class="nav-item">
-                            <a onclick="goHome()" class="nav-link current">
-                                <i class="fas fa-home"></i>Menu Utama
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item">
-                                <a onclick="goSenarai()" class="nav-link">
-                                    <i class="fas fa-address-card"></i>Senarai Tugas
-                                </a>
-                            </li>
-                        <li class="nav-item">
-                            <a onclick="goStatus()" class="nav-link">
-                                <i class="fas fa-briefcase"></i>Status Laporan
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item">
-                                <a onclick="goStatistik()" class="nav-link">
-                                    <i class="fas fa-blog"></i>Statistik Tugasan
-                                </a>
-                            </li>
-        
-                            <li class="nav-item">
-                                    <a onclick="goPapan()"class="nav-link">
-                                        <i class="fas fa-envelope"></i>Papan Skor
-                                    </a>
-                                </li>
-                    </ul>
-                </nav>
-            </header>
-        
-            <main>
-                   
-                <div class="zoom-content">
-                    <section>
-    <div class="row position-stepper-high4s">
-        <div class="col-xs-12 col-md-8 offset-md-2 block border">
-            <div class="wrapper-progressBar">
-                <ul class="progressBar">
-                    <li class="active">Jenis Kerja</li>
-                    <li class="active">Ticket</li>
-                    <li>Ticket 2</li>
-                    <li>Hantar</li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
-    <form id="formticket">
-        <p class="position-text1-high">No Tiang</p>
-        <input class="input-box position-input1-ticket" type="text" list="noTiang" name="noTiang" id="noTiang"
-            placeholder="Nombor Tiang">
+                <form id="formticket">
+                    <p class="position-text1-high">No Tiang</p>
+                    <input class="input-box position-input1-ticket" type="text" list="noTiang" name="noTiang"
+                        id="noTiang" placeholder="Nombor Tiang">
 
-        <p class="position-text2-high">Masa</p>
-        <input class="input-box position-input2-ticket" type="text" name="masa" id="time" readonly>
+                    <p class="position-text2-high">Masa</p>
+                    <input class="input-box position-input2-ticket" type="text" name="masa" id="time" readonly>
 
 
 
-        <p class="position-text3-high">Pecu Type</p>
-        <div class="dropdown position-input3-ticket" name="pecu">
-            <select name="pecu" class="dropdown-select" id="pecu">
-                <option value="Lantern">Lantern</option>
-                <option value="Panel">Panel</option>
+                    <p class="position-text3-high">Pecu Type</p>
+                    <div class="dropdown position-input3-ticket" name="pecu">
+                        <select name="pecu" class="dropdown-select" id="pecu">
+                            <option value="Lantern">Lantern</option>
+                            <option value="Panel">Panel</option>
 
-            </select>
-        </div>
-        <p class="position-text4-high">Tukar Pecu</p>
-        <div class="dropdown position-input4-ticket" id="pecuqty">
-            <select name="pecuqty" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                        </select>
+                    </div>
+                    <p class="position-text4-high">Tukar Pecu</p>
+                    <div class="dropdown position-input4-ticket" id="pecuqty">
+                        <select name="pecuqty" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
 
-            </select>
-        </div>
+                        </select>
+                    </div>
 
 
 
-        <p class="position-text5-high">Lantern</p>
-        <div class="dropdown position-input5-ticket" id="lantern">
-            <select name="lantern" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                    <p class="position-text5-high">Lantern</p>
+                    <div class="dropdown position-input5-ticket" id="lantern">
+                        <select name="lantern" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
 
-            </select>
-        </div>
+                        </select>
+                    </div>
 
-        <p class="position-text6-high">Black Box</p>
-        <div class="dropdown position-input6-ticket" id="blackbox">
-            <select name="blackbox" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                    <p class="position-text6-high">Black Box</p>
+                    <div class="dropdown position-input6-ticket" id="blackbox">
+                        <select name="blackbox" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
 
-            </select>
-        </div>
+                        </select>
+                    </div>
 
-        <p class="position-text7-high">Tukar Minor Fuse</p>
-        <div class="dropdown position-input7-ticket" id="fuse">
-            <select name="fuse" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                    <p class="position-text7-high">Tukar Minor Fuse</p>
+                    <div class="dropdown position-input7-ticket" id="fuse">
+                        <select name="fuse" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
 
-            </select>
-        </div>
+                        </select>
+                    </div>
 
-        <p class="position-text8-high">Tukar Contactor</p>
-        <div class="dropdown position-input8-ticket" id="contractor">
-            <select name="contractor" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                    <p class="position-text8-high">Tukar Contactor</p>
+                    <div class="dropdown position-input8-ticket" id="contractor">
+                        <select name="contractor" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
 
-            </select>
-        </div>
+                        </select>
+                    </div>
 
-        <p class="position-text9-high">N Link</p>
-        <div class="dropdown position-input9-ticket" id="link">
-            <select name="link" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                    <p class="position-text9-high">N Link</p>
+                    <div class="dropdown position-input9-ticket" id="link">
+                        <select name="link" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
 
-            </select>
-        </div>
+                        </select>
+                    </div>
 
-        <p class="position-text10-high">Pendawaian Lampu</p>
-        <div class="dropdown position-input10-ticket" id="dawailampu">
-            <select name="dawailampu" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                    <p class="position-text10-high">Pendawaian Lampu</p>
+                    <div class="dropdown position-input10-ticket" id="dawailampu">
+                        <select name="dawailampu" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
 
-            </select>
-        </div>
+                        </select>
+                    </div>
 
-        <p class="position-text11-high">Pendawaian Panel</p>
-        <div class="dropdown position-input11-ticket" id="dawaipanel">
-            <select name="dawaipanel" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                    <p class="position-text11-high">Pendawaian Panel</p>
+                    <div class="dropdown position-input11-ticket" id="dawaipanel">
+                        <select name="dawaipanel" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
 
-            </select>
-        </div>
+                        </select>
+                    </div>
 
-        <p class="position-text12-high">C Out</p>
-        <div class="dropdown position-input12-ticket" id="cout">
-            <select name="cout" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                    <p class="position-text12-high">C Out</p>
+                    <div class="dropdown position-input12-ticket" id="cout">
+                        <select name="cout" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
 
-            </select>
-        </div>
+                        </select>
+                    </div>
 
-        <p class="position-text13-high">Rombak Lampu</p>
-        <div class="dropdown position-input13-ticket" id="rombaklampu">
-            <select name="rombaklampu" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                    <p class="position-text13-high">Rombak Lampu</p>
+                    <div class="dropdown position-input13-ticket" id="rombaklampu">
+                        <select name="rombaklampu" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
 
-            </select>
-        </div>
+                        </select>
+                    </div>
 
-        <p class="position-text14-high">Bracket</p>
-        <div class="dropdown position-input14-ticket" id="bracket">
-            <select name="bracket" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                    <p class="position-text14-high">Bracket</p>
+                    <div class="dropdown position-input14-ticket" id="bracket">
+                        <select name="bracket" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
 
-            </select>
-        </div>
+                        </select>
+                    </div>
 
-        <p class="position-text15-high">Rombak Panel</p>
-        <div class="dropdown position-input15-ticket" id="rombakpanel">
-            <select name="rombakpanel" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                    <p class="position-text15-high">Rombak Panel</p>
+                    <div class="dropdown position-input15-ticket" id="rombakpanel">
+                        <select name="rombakpanel" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
 
-            </select>
-        </div>
+                        </select>
+                    </div>
 
-     <div class="footnoteticket1">
-            <p class="">Muat Naik Gambar Tiang</p>
-            <div class="upload-btn-wrapper position-upload-ticket1-1">
-               <!--<button class="btnss" name="gambartiang" id="tiang">Gambar Tiang</button>
+                    <div class="footnoteticket1">
+                        <p class="">Muat Naik Gambar Tiang</p>
+                        <div class="upload-btn-wrapper position-upload-ticket1-1">
+                            <!--<button class="btnss" name="gambartiang" id="tiang">Gambar Tiang</button>
                 <input type="file" name="gambartiang" /> -->
-                <a onclick="goCamera()" class="btnss" name="gambartiang" id="gambartiang">Gambar Tiang</a>
-            </div>
-            <div class="upload-btn-wrapper position-upload-ticket1-2">
-               <!-- <button class="btnss1" name="gambarsebelum" id="tiang">Gambar Sebelum Mula Kerja</button>
+                            <a onclick="goCamera()" class="btnss" name="gambartiang" id="gambartiang">Gambar Tiang</a>
+                        </div>
+                        <div class="upload-btn-wrapper position-upload-ticket1-2">
+                            <!-- <button class="btnss1" name="gambarsebelum" id="tiang">Gambar Sebelum Mula Kerja</button>
                 <input type="file" name="gambarsebelum" />-->
-                <a onclick="goCamera2()" class="btnss" name="gambarsebelum" id="gambarsebelum">Gambar Sebelum</a>
-            </div>
+                            <a onclick="goCamera2()" class="btnss" name="gambarsebelum" id="gambarsebelum">Gambar
+                                Sebelum</a>
+                        </div>
+                    </div>
+
+                </form>
+                <div class="footnoteticket2"></div>
+                <div onclick="save()" class="buttonSimpan position-button-simpan-input-ticket1">Simpan</div>
+                <div onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-input-ticket1">Seterusnya
+                </div>
         </div>
 
-    </form>
-    <div class="footnoteticket2"></div>
-    <div onclick="save()" class="buttonSimpan position-button-simpan-input-ticket1">Simpan</div>
-    <div onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-input-ticket1">Seterusnya</div>
-</div>
-
-    <!--
+        <!--
     <button onclick="getsave()" class="buttonSimpan position-button-simpan-input-ticket1">Simpan</button>
     <button onclick="getpost()" class="buttonSeterusnya position-button-seterusnya-input-ticket1">Seterusnya</button>
 -->
 
 
-</section>
-</div>
-</main>
+        </section>
+        </div>
+    </main>
 </body>
 
 <script type="text/javascript" src="../js/script.js"></script>
 
 <script>
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+        document.addEventListener("online", onOnline, false);
+        document.addEventListener("offline", onOffline, false);
+        checkTemp();
 
 
+    }
+
+    function onOffline() {
+        //offline session
+        alert("You In Offline Mode");
+        localStorage.setItem("InternetStat", "offline");
+    }
+
+    function onOnline() {
+        localStorage.setItem("InternetStat", "online");
+    }
 
     function checkTemp() {
         var cond = localStorage.getItem("edit");
@@ -338,7 +357,7 @@
         // add a zero in front of numbers<10
         m = checkTime(m);
         s = checkTime(s);
-        document.getElementById('time').value =yyyy + '-' + mm + '-' + dd +" "+ h + ":" + m + ":" + s  ;
+        document.getElementById('time').value = yyyy + '-' + mm + '-' + dd + " " + h + ":" + m + ":" + s;
         /*t = setTimeout(function () {
             startTime()
         }, 500);*/
@@ -382,6 +401,7 @@
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
+
     function goCamera() {
         window.location.href = "tiang.html";
     }
@@ -411,7 +431,49 @@
     }
 
     function save() {
-        var formData = app.form.convertToData('#formticket');
+        var gambarsebelum = localStorage.getItem("gambarsebelum");
+        //get gamber tiang name in local storage
+        var gambartiang = localStorage.getItem("gambartiang");
+        var InternetStat = localStorage.getItem("InternetStat");
+        //alert(InternetStat);
+        //condition of no picture selected 
+        //both null
+        if ((gambartiang == null || gambartiang == '') && (gambarsebelum == null || gambarsebelum == '')) {
+            alert("gambar sebelum & tiang is null");
+            // one of it null
+        } else if ((gambartiang == null || gambartiang == '') || (gambarsebelum == null || gambarsebelum == '')) {
+            if (gambarsebelum == null || gambarsebelum == '') {
+                alert("gambar sebelum is null");
+            } else if (gambartiang == null || gambartiang == '') {
+                alert("gambar tiang is null");
+            }
+            //both not null
+        } else if ((gambartiang != null || gambartiang != '') && (gambarsebelum != null || gambarsebelum != '')) {
+
+            var formData = app.form.convertToData('#formticket');
+            localStorage.setItem("notiang", formData.noTiang);
+            localStorage.setItem("masa", formData.masa);
+            localStorage.setItem("pecu", formData.pecu);
+            localStorage.setItem("pecuqty", formData.pecuqty);
+            localStorage.setItem("lantern", formData.lantern);
+            localStorage.setItem("blackbox", formData.blackbox);
+            localStorage.setItem("fuse", formData.fuse);
+            localStorage.setItem("contractor", formData.contractor);
+            localStorage.setItem("link", formData.link);
+            localStorage.setItem("dawailampu", formData.dawailampu);
+            localStorage.setItem("dawaipanel", formData.dawaipanel);
+            localStorage.setItem("cout", formData.cout);
+            localStorage.setItem("rombaklampu", formData.rombaklampu);
+            localStorage.setItem("bracket", formData.bracket);
+            localStorage.setItem("rombakpanel", formData.rombakpanel);
+
+            localStorage.setItem("edit", "1");
+
+            window.location.href = "laporan2.html";
+        } else {
+            alert("error somewhere");
+        }
+        /*var formData = app.form.convertToData('#formticket');
 
         //store localstorage
         localStorage.setItem("notiang", formData.noTiang);
@@ -429,52 +491,59 @@
         localStorage.setItem("rombaklampu", formData.rombaklampu);
         localStorage.setItem("bracket", formData.bracket);
         localStorage.setItem("rombakpanel", formData.rombakpanel);
-      
+
         localStorage.setItem("edit", "1");
-
-        var formtic1 = formData.noTiang;
-        var formtic2 = formData.masa;
-        var formtic4 = formData.pecu;
-        var formtic5 = formData.pecuqty;
-        var formtic7 = formData.lantern;
-        var formtic8 = formData.blackbox;
-        var formtic9 = formData.fuse;
-        var formtic10 = formData.contractor;
-        var formtic11 = formData.link;
-        var formtic12 = formData.dawailampu;
-        var formtic13 = formData.dawaipanel;
-        var formtic14 = formData.cout;
-        var formtic15 = formData.rombaklampu;
-        var formtic16 = formData.bracket;
-        var formtic17 = formData.rombakpanel;
-   
-
-   
         //alert(dataFormTic);
-        window.location.href = "laporan2.html";
+        window.location.href = "laporan2.html";*/
     }
 
     function nextPage() {
-        var formData = app.form.convertToData('#formticket');
+        //var gambarselepas = localStorage.getItem("gambarselepas");
 
-        //store localstorage
-        localStorage.setItem("notiang", formData.noTiang);
-        localStorage.setItem("masa", formData.masa);
-        localStorage.setItem("pecu", formData.pecu);
-        localStorage.setItem("pecuqty", formData.pecuqty);
-        localStorage.setItem("lantern", formData.lantern);
-        localStorage.setItem("blackbox", formData.blackbox);
-        localStorage.setItem("fuse", formData.fuse);
-        localStorage.setItem("contractor", formData.contractor);
-        localStorage.setItem("link", formData.link);
-        localStorage.setItem("dawailampu", formData.dawailampu);
-        localStorage.setItem("dawaipanel", formData.dawaipanel);
-        localStorage.setItem("cout", formData.cout);
-        localStorage.setItem("rombaklampu", formData.rombaklampu);
-        localStorage.setItem("bracket", formData.bracket);
-        localStorage.setItem("rombakpanel", formData.rombakpanel);
+        //get gambar sebelum name in local storage
+        var gambarsebelum = localStorage.getItem("gambarsebelum");
+        //get gamber tiang name in local storage
+        var gambartiang = localStorage.getItem("gambartiang");
+        var InternetStat = localStorage.getItem("InternetStat");
+        //alert(InternetStat);
+        //condition of no picture selected 
+        //both null
+        if ((gambartiang == null || gambartiang == '') && (gambarsebelum == null || gambarsebelum == '')) {
+            alert("gambar sebelum & tiang is null");
+            // one of it null
+        } else if ((gambartiang == null || gambartiang == '') || (gambarsebelum == null || gambarsebelum == '')) {
+            if (gambarsebelum == null || gambarsebelum == '') {
+                alert("gambar sebelum is null");
+            } else if (gambartiang == null || gambartiang == '') {
+                alert("gambar tiang is null");
+            }
+            //both not null
+        } else if ((gambartiang != null || gambartiang != '') && (gambarsebelum != null || gambarsebelum != '')) {
 
+            var formData = app.form.convertToData('#formticket');
+            localStorage.setItem("notiang", formData.noTiang);
+            localStorage.setItem("masa", formData.masa);
+            localStorage.setItem("pecu", formData.pecu);
+            localStorage.setItem("pecuqty", formData.pecuqty);
+            localStorage.setItem("lantern", formData.lantern);
+            localStorage.setItem("blackbox", formData.blackbox);
+            localStorage.setItem("fuse", formData.fuse);
+            localStorage.setItem("contractor", formData.contractor);
+            localStorage.setItem("link", formData.link);
+            localStorage.setItem("dawailampu", formData.dawailampu);
+            localStorage.setItem("dawaipanel", formData.dawaipanel);
+            localStorage.setItem("cout", formData.cout);
+            localStorage.setItem("rombaklampu", formData.rombaklampu);
+            localStorage.setItem("bracket", formData.bracket);
+            localStorage.setItem("rombakpanel", formData.rombakpanel);
 
+            localStorage.setItem("edit", "1");
+
+            window.location.href = "ticket2.html";
+        } else {
+            alert("error somewhere");
+        }
+        /*var formData = app.form.convertToData('#formticket');
 
         var formtic1 = formData.noTiang;
         var formtic2 = formData.masa;
@@ -491,7 +560,7 @@
         var formtic15 = formData.rombaklampu;
         var formtic16 = formData.bracket;
         var formtic17 = formData.rombakpanel;
-      
+
 
 
         var dataFormTic = {
@@ -510,10 +579,36 @@
             "rombaklampu": formtic15,
             "bracket": formtic16,
             "rombakpanel": formtic17
-           
+
         };
 
-        window.location.href = "ticket2.html";
+        window.location.href = "ticket2.html";*/
+        //alert("online");
+
+
+
+        /*
+
+        //store localstorage
+        localStorage.setItem("notiang", formData.noTiang);
+        localStorage.setItem("masa", formData.masa);
+        localStorage.setItem("pecu", formData.pecu);
+        localStorage.setItem("pecuqty", formData.pecuqty);
+        localStorage.setItem("lantern", formData.lantern);
+        localStorage.setItem("blackbox", formData.blackbox);
+        localStorage.setItem("fuse", formData.fuse);
+        localStorage.setItem("contractor", formData.contractor);
+        localStorage.setItem("link", formData.link);
+        localStorage.setItem("dawailampu", formData.dawailampu);
+        localStorage.setItem("dawaipanel", formData.dawaipanel);
+        localStorage.setItem("cout", formData.cout);
+        localStorage.setItem("rombaklampu", formData.rombaklampu);
+        localStorage.setItem("bracket", formData.bracket);
+        localStorage.setItem("rombakpanel", formData.rombakpanel);
+
+
+
+        */
     }
 </script>
 

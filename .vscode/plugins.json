@@ -1,0 +1,1 @@
+{"plugins":["cordova-plugin-whitelist","cordova-plugin-geolocation","cordova-plugin-camera","cordova-plugin-save-image","cordova-plugin-file","cordova-plugin-sslsupport","cordova-plugin-file-transfer","cordova-plugin-network-information"]}

@@ -56,7 +56,8 @@
 
   function onOffline() {
     //offline session
-    alert("You In Offline Mode")
+    alert("You In Offline Mode");
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
     var onSuccess = function (position) {
       alert('Latitude: ' + position.coords.latitude + '\n' +
         'Longitude: ' + position.coords.longitude + '\n' +
@@ -75,7 +76,7 @@
         'message: ' + error.message + '\n');
     }
 
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
     var username = localStorage.getItem("username");
     var password = localStorage.getItem("password");
 
