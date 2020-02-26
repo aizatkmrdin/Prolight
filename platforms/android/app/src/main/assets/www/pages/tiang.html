@@ -11,6 +11,26 @@
     <script type="text/javascript" src="../cordova.js"></script>
     <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
     <script type='text/javascript'>
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        function onDeviceReady() {
+            document.addEventListener("online", onOnline, false);
+            document.addEventListener("offline", onOffline, false);
+            checkTemp();
+        }
+
+        function onOffline() {
+            //offline session
+            alert("You In Offline Mode");
+            localStorage.setItem("InternetStat", "offline");
+        }
+
+        function onOnline() {
+            //online session
+            alert("You In online Mode");
+            localStorage.setItem("InternetStat", "online");
+        }
+
         $(document).ready(function () {
 
             // take picture from camera
@@ -34,7 +54,23 @@
 
             // Change image source and upload photo to server
             function onSuccess(imageURI) {
-                // Set image source
+                localStorage.setItem("gambartiangURI", imageURI);
+                window.history.back();
+            }
+
+            function onFail(message) {
+                alert('Failed because: ' + message);
+            }
+        });
+
+        function back() {
+            window.history.back();
+        }
+
+        function sends() {
+            var imageURI = localStorage.getItem("URIURI");
+            var InternetStat = localStorage.getItem("InternetStat");
+            if (InternetStat == "online") {
                 var image = document.getElementById('gambartiang');
                 image.src = imageURI + '?' + Math.random();
 
@@ -57,15 +93,9 @@
                 }, function (error) {
                     alert('error : ' + JSON.stringify(error));
                 }, options);
+            } else {
+                alert("offline");
             }
-
-            function onFail(message) {
-                alert('Failed because: ' + message);
-            }
-        });
-
-        function back() {
-            window.history.back();
         }
     </script>
 </head>
@@ -83,7 +113,6 @@
     </div>
 
     <button onclick="back()" class="buttonSeterusnya position-button-back-gambar">Back</button>
-
 </body>
 
 </html>

@@ -396,12 +396,12 @@
 
     function save() {
 
-        var gambarselepas = localStorage.getItem("gambarselepas");
+        var gambarselepasURI = localStorage.getItem("gambarselepasURI");
 
-        if (gambarselepas == null || gambarselepas == '') {
+        if (gambarselepasURI == null || gambarselepasURI == '') {
             alert("Please select gambar for gambar selepas!!");
             window.location.href = "tiangselepas.html";
-        } else if (gambarselepas != null || gambarselepas != '') {
+        } else if (gambarselepasURI != null || gambarselepasURI != '') {
             var formData = app.form.convertToData('#formticket2');
 
             //store localstorage
@@ -433,12 +433,12 @@
     }
 
     function post() {
-        var gambarselepas = localStorage.getItem("gambarselepas");
+        var gambarselepasURI = localStorage.getItem("gambarselepasURI");
 
-        if (gambarselepas == null || gambarselepas == '') {
+        if (gambarselepasURI == null || gambarselepasURI == '') {
             alert("Please select gambar for gambar selepas!!");
             window.location.href = "tiangselepas.html";
-        } else if (gambarselepas != null || gambarselepas != '') {
+        } else if (gambarselepasURI != null || gambarselepasURI != '') {
             var formData = app.form.convertToData('#formticket2');
 
             //store localstorage

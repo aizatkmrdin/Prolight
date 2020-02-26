@@ -431,24 +431,25 @@
     }
 
     function save() {
-        var gambarsebelum = localStorage.getItem("gambarsebelum");
+        var gambarsebelumURI = localStorage.getItem("gambarsebelumURI");
         //get gamber tiang name in local storage
-        var gambartiang = localStorage.getItem("gambartiang");
+        var gambartiangURI = localStorage.getItem("gambartiangURI");
         var InternetStat = localStorage.getItem("InternetStat");
-        //alert(InternetStat);
         //condition of no picture selected 
         //both null
-        if ((gambartiang == null || gambartiang == '') && (gambarsebelum == null || gambarsebelum == '')) {
+        if ((gambartiangURI == null || gambartiangURI == '') && (gambarsebelumURI == null || gambarsebelumURI == '')) {
             alert("gambar sebelum & tiang is null");
             // one of it null
-        } else if ((gambartiang == null || gambartiang == '') || (gambarsebelum == null || gambarsebelum == '')) {
-            if (gambarsebelum == null || gambarsebelum == '') {
+        } else if ((gambartiangURI == null || gambartiangURI == '') || (gambarsebelumURI == null || gambarsebelumURI ==
+                '')) {
+            if (gambarsebelumURI == null || gambarsebelumURI == '') {
                 alert("gambar sebelum is null");
-            } else if (gambartiang == null || gambartiang == '') {
+            } else if (gambartiangURI == null || gambartiangURI == '') {
                 alert("gambar tiang is null");
             }
             //both not null
-        } else if ((gambartiang != null || gambartiang != '') && (gambarsebelum != null || gambarsebelum != '')) {
+        } else if ((gambartiangURI != null || gambartiangURI != '') && (gambarsebelumURI != null || gambarsebelumURI !=
+                '')) {
 
             var formData = app.form.convertToData('#formticket');
             localStorage.setItem("notiang", formData.noTiang);
@@ -473,52 +474,32 @@
         } else {
             alert("error somewhere");
         }
-        /*var formData = app.form.convertToData('#formticket');
-
-        //store localstorage
-        localStorage.setItem("notiang", formData.noTiang);
-        localStorage.setItem("masa", formData.masa);
-        localStorage.setItem("pecu", formData.pecu);
-        localStorage.setItem("pecuqty", formData.pecuqty);
-        localStorage.setItem("lantern", formData.lantern);
-        localStorage.setItem("blackbox", formData.blackbox);
-        localStorage.setItem("fuse", formData.fuse);
-        localStorage.setItem("contractor", formData.contractor);
-        localStorage.setItem("link", formData.link);
-        localStorage.setItem("dawailampu", formData.dawailampu);
-        localStorage.setItem("dawaipanel", formData.dawaipanel);
-        localStorage.setItem("cout", formData.cout);
-        localStorage.setItem("rombaklampu", formData.rombaklampu);
-        localStorage.setItem("bracket", formData.bracket);
-        localStorage.setItem("rombakpanel", formData.rombakpanel);
-
-        localStorage.setItem("edit", "1");
-        //alert(dataFormTic);
-        window.location.href = "laporan2.html";*/
     }
 
     function nextPage() {
-        //var gambarselepas = localStorage.getItem("gambarselepas");
-
         //get gambar sebelum name in local storage
-        var gambarsebelum = localStorage.getItem("gambarsebelum");
+        var gambarsebelumURI = localStorage.getItem("gambarsebelumURI");
         //get gamber tiang name in local storage
-        var gambartiang = localStorage.getItem("gambartiang");
+        var gambartiangURI = localStorage.getItem("gambartiangURI");
         var InternetStat = localStorage.getItem("InternetStat");
-        //alert(InternetStat);
+
         //condition of no picture selected 
         //both null
-        if ((gambartiang == null || gambartiang == '') && (gambarsebelum == null || gambarsebelum == '')) {
+        if ((gambartiangURI == null || gambartiangURI == '') && (gambarsebelumURI == null || gambarsebelumURI == '')) {
             alert("gambar sebelum & tiang is null");
             // one of it null
-        } else if ((gambartiang == null || gambartiang == '') || (gambarsebelum == null || gambarsebelum == '')) {
-            if (gambarsebelum == null || gambarsebelum == '') {
+        } else if ((gambartiangURI == null || gambartiangURI == '') || (gambarsebelumURI == null || gambarsebelumURI ==
+                '')) {
+            if (gambarsebelumURI == null || gambarsebelumURI == '') {
                 alert("gambar sebelum is null");
-            } else if (gambartiang == null || gambartiang == '') {
+                window.location.href = "tiangsebelum.html";
+            } else if (gambartiangURI == null || gambartiangURI == '') {
                 alert("gambar tiang is null");
+                window.location.href = "tiang.html";
             }
             //both not null
-        } else if ((gambartiang != null || gambartiang != '') && (gambarsebelum != null || gambarsebelum != '')) {
+        } else if ((gambartiangURI != null || gambartiangURI != '') && (gambarsebelumURI != null || gambarsebelumURI !=
+                '')) {
 
             var formData = app.form.convertToData('#formticket');
             localStorage.setItem("notiang", formData.noTiang);
@@ -543,72 +524,6 @@
         } else {
             alert("error somewhere");
         }
-        /*var formData = app.form.convertToData('#formticket');
-
-        var formtic1 = formData.noTiang;
-        var formtic2 = formData.masa;
-        var formtic4 = formData.pecu;
-        var formtic5 = formData.pecuqty;
-        var formtic7 = formData.lantern;
-        var formtic8 = formData.blackbox;
-        var formtic9 = formData.fuse;
-        var formtic10 = formData.contractor;
-        var formtic11 = formData.link;
-        var formtic12 = formData.dawailampu;
-        var formtic13 = formData.dawaipanel;
-        var formtic14 = formData.cout;
-        var formtic15 = formData.rombaklampu;
-        var formtic16 = formData.bracket;
-        var formtic17 = formData.rombakpanel;
-
-
-
-        var dataFormTic = {
-            "noTiang": formtic1,
-            "masa": formtic2,
-            "pecu": formtic4,
-            "pecuqty": formtic5,
-            "lantern": formtic7,
-            "blackbox": formtic8,
-            "fuse": formtic9,
-            "contractor": formtic10,
-            "link": formtic11,
-            "dawailampu": formtic12,
-            "dawaipanel": formtic13,
-            "cout": formtic14,
-            "rombaklampu": formtic15,
-            "bracket": formtic16,
-            "rombakpanel": formtic17
-
-        };
-
-        window.location.href = "ticket2.html";*/
-        //alert("online");
-
-
-
-        /*
-
-        //store localstorage
-        localStorage.setItem("notiang", formData.noTiang);
-        localStorage.setItem("masa", formData.masa);
-        localStorage.setItem("pecu", formData.pecu);
-        localStorage.setItem("pecuqty", formData.pecuqty);
-        localStorage.setItem("lantern", formData.lantern);
-        localStorage.setItem("blackbox", formData.blackbox);
-        localStorage.setItem("fuse", formData.fuse);
-        localStorage.setItem("contractor", formData.contractor);
-        localStorage.setItem("link", formData.link);
-        localStorage.setItem("dawailampu", formData.dawailampu);
-        localStorage.setItem("dawaipanel", formData.dawaipanel);
-        localStorage.setItem("cout", formData.cout);
-        localStorage.setItem("rombaklampu", formData.rombaklampu);
-        localStorage.setItem("bracket", formData.bracket);
-        localStorage.setItem("rombakpanel", formData.rombakpanel);
-
-
-
-        */
     }
 </script>
 
