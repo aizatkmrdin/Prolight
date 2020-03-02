@@ -123,43 +123,18 @@
         var y = 0;
         input +=
             "<table><tr><th><p style='text-align: center'>Bil</p></th><th><p style='text-align: center'>Tarikh</p></th><th><p style='text-align: center'>Nombor Tiang</p></th><th></th></tr>";
-        /*for (i = 0; i < sizeOfList; i++) {
+        for (i = 0; i < sizeOfList; i++) {
 
-            if (listPending[i] == undefined) {} else {
+            if (listPending[i] == undefined) {
+                sizeOfList = sizeOfList + 1;
+                continue;
+            } else {
                 input +=
                     "<tr><td style='padding: 10px 10px;'>" + (x + 1) +
                     "</td><td>" + listPending[i].Masa + "</td><td>" + listPending[i].NoTiang +
-                    "</td><td><a onclick='edit(" + i + ")'>edit</a>  <a onclick='send(" + i +
-                    ")'>send</a></td></tr>";
-                x++
-            }
-
-
-
-            /*input +=
-                "<tr><td style='padding: 10px 10px;'>" + (i + 1) +
-                "</td><td>asd</td><td>asda</td><td><a onclick='edit(" + i + ")'>edit</a>  <a onclick='send(" + i +
-                ")'>send</a></td></tr>";
-
-
-
-        }*/
-        alert(sizeOfList);
-        alert(x + "= x");
-        var i = 0;
-
-
-        for (i = 0; i < sizeOfList; i++) {}
-
-        while (i < sizeOfList) {
-            if (listPending[i] == undefined) {} else {
-                input +=
-                    "<tr><td style='padding: 10px 10px;'>" + (x + 1) +
-                    "</td><td>" + listPending[i].Masa + "</td><td>" + listPending[i].NoTiang +
-                    "</td><td><a onclick='edit(" + i + ")'>edit</a>  <a onclick='send(" + i +
+                    "</td><td><a onclick='edit(" + i + ")'>Delete</a>  <a onclick='send(" + i +
                     ")'>send</a></td></tr>";
                 x++;
-                i++;
             }
 
         }
@@ -171,11 +146,7 @@
     function edit(i) {
 
         var listPending = JSON.parse(localStorage.getItem('listPending'));
-        alert(i);
         delete listPending[i];
-        //unset(listPending[i]);
-        //listPending.splice(i, 1);
-        //var listPendingTemp = array_values(listPending);
         localStorage.setItem('listPending', JSON.stringify(listPending));
         var listPending = JSON.parse(localStorage.getItem('listPending'));
         var sizeOfList = Object.objsize(listPending);
