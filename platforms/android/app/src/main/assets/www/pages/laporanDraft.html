@@ -27,6 +27,148 @@
     <title>ProLight</title>
 </head>
 
+<style>
+    .button {
+        background-color: #008CBA;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 8px 16px;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .loading {
+        position: fixed;
+        z-index: 999;
+        height: 2em;
+        width: 2em;
+        overflow: visible;
+        margin: auto;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    /* Transparent Overlay */
+    .loading:before {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    /* :not(:required) hides these rules from IE9 and below */
+    .loading:not(:required) {
+        /* hide "loading..." text */
+        font: 0/0 a;
+        color: transparent;
+        text-shadow: none;
+        background-color: transparent;
+        border: 0;
+    }
+
+    .loading:not(:required):after {
+        content: '';
+        display: block;
+        font-size: 10px;
+        width: 1em;
+        height: 1em;
+        margin-top: -0.5em;
+        -webkit-animation: spinner 1500ms infinite linear;
+        -moz-animation: spinner 1500ms infinite linear;
+        -ms-animation: spinner 1500ms infinite linear;
+        -o-animation: spinner 1500ms infinite linear;
+        animation: spinner 1500ms infinite linear;
+        border-radius: 0.5em;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+        box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+    }
+
+    /* Animation */
+
+    @-webkit-keyframes spinner {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    @-moz-keyframes spinner {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    @-o-keyframes spinner {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spinner {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+
 <body>
     <header>
         <div class="hamburger">
@@ -68,12 +210,16 @@
     </header>
 
     <main>
+        <div id="load"></div>
         <div class="zoom-content">
             <section>
                 <p class="titlereg-report">Draft</p>
                 <div class="container position-tab">
                     <ul class="nav nav-tabs ">
-                        <li class="active"><a onclick="laporan()">Selesai</a></li>
+                        <li class="active"><a onclick="laporan()">Draf</a></li>
+                    </ul>
+                    <ul class="nav nav-tabs ">
+                        <li><a onclick="laporan()">Selesai</a></li>
                     </ul>
                     <br>
                     <center>
@@ -109,31 +255,40 @@
         var sizeOfList = Object.objsize(listPending);
         //var sizeOfList = 3;
         //var listPending = JSON.parse(localStorage.getItem('listPending'));
-        var unData = [];
+        /*var unData = [];
         for (i = 0; i < sizeOfList; i++) {
             if (listPending[i] == undefined) {
                 unData[i] = {
                     "undifined2": i
                 };
-            }
-        }
-
-        var sizeOfList2 = Object.objsize(unData);
-        var x = 0;
         var y = 0;
+            }
+        var sizeOfList2 = Object.objsize(unData);
+        }*/
+
+        var x = 0;
         input +=
-            "<table><tr><th><p style='text-align: center'>Bil</p></th><th><p style='text-align: center'>Tarikh</p></th><th><p style='text-align: center'>Nombor Tiang</p></th><th></th></tr>";
+            "<table width='400'><tr><th><p style='text-align: center'>Bil</p></th><th><p style='text-align: center'>Tarikh</p></th><th><p style='text-align: center'>Nombor Tiang</p></th><th style='text-align: center' colspan='2'>Tindakan</th></tr>";
         for (i = 0; i < sizeOfList; i++) {
 
             if (listPending[i] == undefined) {
                 sizeOfList = sizeOfList + 1;
                 continue;
             } else {
-                input +=
-                    "<tr><td style='padding: 10px 10px;'>" + (x + 1) +
-                    "</td><td>" + listPending[i].Masa + "</td><td>" + listPending[i].NoTiang +
-                    "</td><td><a onclick='edit(" + i + ")'>edit</a>  <a onclick='send(" + i +
-                    ")'>send</a></td></tr>";
+                if (listPending[i].Done == 0) {
+                    input +=
+                        "<tr><td style='padding: 10px 10px;'>" + (x + 1) +
+                        "</td><td>" + listPending[i].Masa + "</td><td>" + listPending[i].NoTiang +
+                        "</td><td><div class='button' onclick='edit(" + i +
+                        ")'>Delete</div></td><td>  <div class='button' onclick='send(" + i +
+                        ")'> send </div></td></tr>";
+
+                } else if (listPending[i].Done == 1) {
+                    input +=
+                        "<tr><td style='padding: 10px 10px;'>" + (x + 1) +
+                        "</td><td>" + listPending[i].Masa + "</td><td>" + listPending[i].NoTiang +
+                        "</td><td>Selesai</td></tr>";
+                }
                 x++;
             }
 
@@ -144,13 +299,10 @@
     }
 
     function edit(i) {
-
+        //TODO edit function
+        //TODO redirect to page 
         var listPending = JSON.parse(localStorage.getItem('listPending'));
-        alert(i);
         delete listPending[i];
-        //unset(listPending[i]);
-        //listPending.splice(i, 1);
-        //var listPendingTemp = array_values(listPending);
         localStorage.setItem('listPending', JSON.stringify(listPending));
         var listPending = JSON.parse(localStorage.getItem('listPending'));
         var sizeOfList = Object.objsize(listPending);
@@ -158,7 +310,308 @@
     }
 
     function send(i) {
-        alert(i);
+        //document.getElementById("load").innerHTML = "<div class='loading'>Loading&#8230;</div>";
+        var GambarTiangFlag,
+            GambarSebelumFlag,
+            GambarSelepasFlag,
+            GambarTiangVal,
+            GambarSebelumVal,
+            GambarSelepasVal;
+        var listPending = JSON.parse(localStorage.getItem('listPending'));
+
+        //gambar sebelum
+        var GambarSebelumURI = listPending[i].GambarSebelumURI;
+        //image.src = GambarSebelumURI + '?' + Math.random();
+
+        var options = new FileUploadOptions();
+        options.fileKey = "file";
+        options.fileName = GambarSebelumURI.substr(GambarSebelumURI.lastIndexOf('/') + 1);
+        options.mimeType = "image/jpeg";
+
+        var params = {};
+        params.value1 = "test";
+        params.value2 = "param";
+
+        options.params = params;
+        options.chunkedMode = false;
+
+        var ft = new FileTransfer();
+        ft.upload(GambarSebelumURI, "http://1.32.96.10/ProLight/mimi/test2.php", function (result) {
+            //alert('successfully uploaded ' + result.response);
+            GambarSebelumFlag = 1;
+            GambarSebelumVal = result.response;
+            // masukkan nama file yg dihantar ke localstorage utk dirujuk semula
+            //localStorage.setItem("gambarsebelum", result.response);
+        }, function (error) {
+            alert('error : ' + JSON.stringify(error));
+        }, options);
+
+        //gambar tiang
+        var GambarTiangURI = listPending[i].GambarTiangURI;
+
+        var options = new FileUploadOptions();
+        options.fileKey = "file";
+        options.fileName = GambarTiangURI.substr(GambarTiangURI.lastIndexOf('/') + 1);
+        options.mimeType = "image/jpeg";
+
+        var params = {};
+        params.value1 = "test";
+        params.value2 = "param";
+
+        options.params = params;
+        options.chunkedMode = false;
+
+        var ft = new FileTransfer();
+        ft.upload(GambarTiangURI, "http://1.32.96.10/ProLight/mimi/test.php", function (result) {
+            //alert('successfully uploaded ' + result.response);
+            GambarTiangFlag = 1;
+            GambarTiangVal = result.response;
+            // masukkan nama file yg dihantar ke localstorage utk dirujuk semula
+            //localStorage.setItem("gambarsebelum", result.response);
+        }, function (error) {
+            alert('error : ' + JSON.stringify(error));
+        }, options);
+
+        //gambar selepas
+        var GambarSelepasURI = listPending[i].GambarSelepasURI;
+
+        var options = new FileUploadOptions();
+        options.fileKey = "file";
+        options.fileName = GambarSelepasURI.substr(GambarSelepasURI.lastIndexOf('/') + 1);
+        options.mimeType = "image/jpeg";
+
+        var params = {};
+        params.value1 = "test";
+        params.value2 = "param";
+
+        options.params = params;
+        options.chunkedMode = false;
+
+        var ft = new FileTransfer();
+        ft.upload(GambarSelepasURI, "http://1.32.96.10/ProLight/mimi/test3.php", function (result) {
+            //alert('successfully uploaded ' + result.response);
+            GambarSelepasFlag = 1;
+            GambarSelepasVal = result.response;
+
+            // masukkan nama file yg dihantar ke localstorage utk dirujuk semula
+            //localStorage.setItem("gambarselepas", result.response);
+            if (GambarSebelumFlag == 1 && GambarTiangFlag == 1 && GambarSelepasFlag == 1) {
+                var dataFormreg = {
+                    "daerah": listPending[i].Daerah,
+                    "kumpulan": listPending[i].Kumpulan,
+                    "jenisKerja": listPending[i].JenisKerja,
+                    "latitude": listPending[i].Latitude,
+                    "longitude": listPending[i].Longitude,
+                    "noTiang": listPending[i].NoTiang,
+                    "masa": listPending[i].Masa,
+                    "ipc": listPending[i].IPC,
+                    "pecu": listPending[i].Pecu,
+                    "pecuqty": listPending[i].PecuQty,
+                    "ipclantern": listPending[i].IPCLantern,
+                    "lantern": listPending[i].Lantern,
+                    "blackbox": listPending[i].Blackbox,
+                    "fuse": listPending[i].Fuse,
+                    "contractor": listPending[i].Contractor,
+                    "link": listPending[i].Link,
+                    "dawailampu": listPending[i].DawaiLampu,
+                    "dawaipanel": listPending[i].DawaiPanel,
+                    "cout": listPending[i].Cout,
+                    "rombaklampu": listPending[i].RombakLampu,
+                    "bracket": listPending[i].Bracket,
+                    "rombakpanel": listPending[i].RombakPanel,
+                    "gambartiang": listPending[i].GambarTiang,
+                    "gambarsebelum": listPending[i].GambarSebelum,
+                    "output": listPending[i].Output,
+                    "clamp": listPending[i].Clamp,
+                    "rentis": listPending[i].Rentis,
+                    "dead": listPending[i].Dead,
+                    "cable": listPending[i].Cable,
+                    "mini": listPending[i].Mini,
+                    "pusing": listPending[i].Pusing,
+                    "jumperlantern": listPending[i].JumperLantern,
+                    "jumperservice": listPending[i].JumperService,
+                    "hook": listPending[i].Hook,
+                    "creepers": listPending[i].Creepers,
+                    "lanternwarranty": listPending[i].LanternWarranty,
+                    "colorcode": listPending[i].ColorCode,
+                    "tarikhtukar": listPending[i].TarikhTukar,
+                    "setlantern": listPending[i].SetLantern,
+                    "tukaripc": listPending[i].TukarIPC,
+                    "lampurosak": listPending[i].LampuRosak,
+                    "category": listPending[i].Category,
+                    "gambarselepas": listPending[i].GambarSelepas,
+                    "jenislampu": listPending[i].JenisLampu,
+                    "chargeman": listPending[i].Chargeman,
+                    "helper": listPending[i].Helper,
+                    "driver": listPending[i].Driver,
+                    "shift": listPending[i].Shift,
+                    "ticket": listPending[i].Ticket,
+                    "zon": listPending[i].Zon,
+                    "bekalan": listPending[i].Bekalan,
+                    "jalan": listPending[i].Jalan,
+                    "lokasi": listPending[i].Lokasi,
+                    "jenama": listPending[i].Jenama,
+                    "size": listPending[i].Size,
+                    "ipc120185": listPending[i].IPC120185,
+                    "ipc1695": listPending[i].IPC1695,
+                    "ipc20185": listPending[i].IPC20185,
+                    "ipc1670": listPending[i].IPC1670,
+                    "ipc2550": listPending[i].IPC2550,
+                    "catatan": listPending[i].Catatan
+                };
+
+                localStorage.setItem("Flag", i);
+                var dataString = JSON.stringify(dataFormreg);
+                $.ajax({
+                    url: 'http://1.32.96.10/ProLight/mimi/ticket.php',
+                    data: {
+                        myData: dataString
+                    },
+                    type: 'POST',
+                    success: function (response) {
+                        //TODO loading interface 
+                        if (response == 1) {
+                            var flagT = localStorage.getItem("Flag");
+                            remove(flagT);
+                        } else if (response == 0) {
+                            alert("Kesilapan ketika memuatnaik data !!");
+                        }
+
+
+                    }
+                });
+            } else if (GambarSebelumFlag == 1 || GambarTiangFlag == 1 || GambarSelepasFlag == 1) {
+                //001
+                if (GambarSebelumFlag == 0 && GambarTiangFlag == 0 && GambarSelepasFlag == 1) {
+                    alert("Aplikasi mempunyai masalah untuk menuatnaik fail gambar sebelum & gambar tiang !!");
+                }
+                // 010
+                else if (GambarSebelumFlag == 0 && GambarTiangFlag == 1 && GambarSelepasFlag == 0) {
+                    alert("Aplikasi mempunyai masalah untuk muatnaik fail gambar sebelum & gambar selepas !!");
+                }
+                //011
+                else if (GambarSebelumFlag == 0 && GambarTiangFlag == 1 && GambarSelepasFlag == 1) {
+                    alert("Aplikasi mempunyai masalah untuk muatnaik fail gambar sebelum !!");
+                }
+                //100
+                else if (GambarSebelumFlag == 1 && GambarTiangFlag == 0 && GambarSelepasFlag == 0) {
+                    alert("Aplikasi mempunyai masalah untuk muatnaik fail gambar tiang & gambar selepas !!");
+                }
+                //101
+                else if (GambarSebelumFlag == 1 && GambarTiangFlag == 0 && GambarSelepasFlag == 1) {
+                    alert("Aplikasi mempunyai masalah untuk muatnaik fail gambar tiang !!");
+                }
+                //110
+                else if (GambarSebelumFlag == 0 && GambarTiangFlag == 1 && GambarSelepasFlag == 0) {
+                    alert("Aplikasi mempunyai masalah untuk muatnaik fail gambar selepas !!");
+                }
+            } else {
+                alert(" Aplikasi mempunyai masalah untuk muatnaik kesemua gamber !!");
+            }
+        }, function (error) {
+            alert('error : ' + JSON.stringify(error));
+        }, options);
+
+        //ajax send
+
+
+        //ANCHOR REMOVE FUNCTION
+        function remove(i) {
+            alert(i);
+            //NOTE function untuk hantar object ke page lain
+            var data = {};
+            //NOTE todayDone object baru untuk digunakan untuk list yang dah settle hanter ke server
+            var todayDone = JSON.parse(localStorage.getItem('todayDone'));
+            //NOTE check size of todayDone if 0 --> todayDone is empty else todayDone dah ada value yang que dalam tu
+            var sizeOfList = Object.objsize(todayDone);
+
+            //NOTE get all pending list to send
+            var listPending = JSON.parse(localStorage.getItem('listPending'));
+
+            // NOTE the data will move to new object before delete
+            //NOTE "i" represent which object is selected to send to another object
+            data[sizeOfList] = {
+                "Daerah": listPending[i].Daerah,
+                "Kumpulan": listPending[i].Kumpulan,
+                "JenisKerja": listPending[i].JenisKerja,
+                "Latitude": listPending[i].Latitude,
+                "Longitude": listPending[i].Longitude,
+                "NoTiang": listPending[i].NoTiang,
+                "Masa": listPending[i].Masa,
+                "IPC": listPending[i].ipc,
+                "Pecu": listPending[i].Pecu,
+                "PecuQty": listPending[i].PecuQty,
+                "IPCLantern": listPending[i].IPCLantern,
+                "Lantern": listPending[i].Lantern,
+                "Blackbox": listPending[i].Blackbox,
+                "Fuse": listPending[i].Fuse,
+                "Contractor": listPending[i].Contractor,
+                "Link": listPending[i].Link,
+                "DawaiLampu": listPending[i].DawaiLampu,
+                "DawaiPanel": listPending[i].DawaiPanel,
+                "Cout": listPending[i].Cout,
+                "RombakLampu": listPending[i].RombakLampu,
+                "Bracket": listPending[i].Bracket,
+                "RombakPanel": listPending[i].RombakPanel,
+                "Output": listPending[i].Output,
+                "Clamp": listPending[i].Clamp,
+                "Rentis": listPending[i].Rentis,
+                "Dead": listPending[i].Dead,
+                "Cable": listPending[i].Cable,
+                "Mini": listPending[i].Mini,
+                "Pusing": listPending[i].Pusing,
+                "JumperLantern": listPending[i].JumperLantern,
+                "JumperService": listPending[i].JumperService,
+                "Hook": listPending[i].Hook,
+                "Creepers": listPending[i].Creepers,
+                "LanternWarranty": listPending[i].LanternWarranty,
+                "ColorCode": listPending[i].ColorCode,
+                "TarikhTukar": listPending[i].TarikhTukar,
+                "SetLantern": listPending[i].SetLantern,
+                "TukarIPC": listPending[i].TukarIPC,
+                "LampuRosak": listPending[i].LampuRosak,
+                "Category": listPending[i].Category,
+                "JenisLampu": listPending[i].JenisLampu,
+                "Chargeman": listPending[i].Chargeman,
+                "Helper": listPending[i].Helper,
+                "Driver": listPending[i].Driver,
+                "Shift": listPending[i].Shift,
+                "Ticket": listPending[i].Ticket,
+                "Zon": listPending[i].Zon,
+                "Bekalan": listPending[i].Bekalan,
+                "Jalan": listPending[i].Jalan,
+                "Lokasi": listPending[i].Lokasi,
+                "Jenama": listPending[i].Jenama,
+                "Size": listPending[i].Size,
+                "IPC120185": listPending[i].IPC120185,
+                "IPC1695": listPending[i].IPC1695,
+                "IPC20185": listPending[i].IPC20185,
+                "IPC1670": listPending[i].IPC1670,
+                "IPC2550": listPending[i].IPC2550,
+                "Catatan": listPending[i].Catatan,
+                "GambarSelepasURI": listPending[i].GambarSelepasURI,
+                "GambarSebelumURI": listPending[i].GambarSebelumURI,
+                "GambarTiangURI": listPending[i].GambarTiangURI,
+                "GambarSelepas": listPending[i].GambarSelepas,
+                "GambarSebelum": listPending[i].GambarSebelum,
+                "GambarTiang": listPending[i].GambarTiang,
+                "Done": "0"
+            };
+            //NOTE all data duplicate to todayDone before remove from listPending
+            localStorage.setItem('todayDone', JSON.stringify(data));
+
+            var listPending = JSON.parse(localStorage.getItem('listPending'));
+            delete listPending[i];
+            localStorage.setItem('listPending', JSON.stringify(listPending));
+            var listPending = JSON.parse(localStorage.getItem('listPending'));
+            var sizeOfList = Object.objsize(listPending);
+            //document.getElementById("load").innerHTML = "<div class='hidden'></div>";
+            location.reload();
+            alert("Berjaya !!");
+        }
+
+        //process after send
+
     }
 </script>
 

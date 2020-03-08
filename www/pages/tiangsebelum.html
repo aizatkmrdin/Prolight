@@ -38,12 +38,12 @@
                 localStorage.setItem("gambarsebelumURI", imageURI);
                 window.history.back();
                 // Set image source
-                /*var image = document.getElementById('gambarsebelum');
-                image.src = imageURI + '?' + Math.random();
-
+                //var image = document.getElementById('gambarsebelum');
+                //image.src = imageURI + '?' + Math.random();
+                /*var newss = imageURI;
                 var options = new FileUploadOptions();
                 options.fileKey = "file";
-                options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+                options.fileName = newss.substr(newss.lastIndexOf('/') + 1);
                 options.mimeType = "image/jpeg";
 
                 var params = {};
@@ -54,7 +54,7 @@
                 options.chunkedMode = false;
 
                 var ft = new FileTransfer();
-                ft.upload(imageURI, "http://1.32.96.10/ProLight/mimi/test2.php", function (result) {
+                ft.upload(newss, "http://1.32.96.10/ProLight/mimi/test2.php", function (result) {
                     alert('successfully uploaded ' + result.response);
 
                     // masukkan nama file yg dihantar ke localstorage utk dirujuk semula
@@ -88,7 +88,6 @@
     </div>
 
     <button onclick="back()" class="buttonSeterusnya position-button-back-gambar">Back</button>
-
 </body>
 
 </html>

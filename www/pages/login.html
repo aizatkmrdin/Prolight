@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/framework7.js"></script>
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <script type="text/javascript" src="js/framework7.bundle.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+
+    <title>ProLight</title>
+</head>
+
+<body>
+    <div class="screen">
+        <div class="titlebox">
+            <p>Pro</p>
+        </div>
+        <div class="titlebox2">
+            <p>Light</p>
+        </div>
+    </div>
+
+    <p class="title">Log Masuk</p>
+
+    <form id="login">
+        <input class="text-line position" placeholder="ID Pengguna" type="text" name="username" />
+
+        <input class="text-line2 position2" placeholder="Kata Laluan" type="password" name="password" />
+        <div id="logbutton" class="radbut">
+            <p>Log Masuk</p>
+        </div>
+    </form>
+
+
+
+
+
+
+    <p class="btms" onclick="register()"><span class="word">Anda staf baru?</span><span class="green">Daftar
+            disini!</span></a>
+    </p>
+
+</body>
+
+<script>
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+
+    function onOffline() {
+        //offline session
+        alert("You In Offline Mode");
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        var onSuccess = function (position) {
+            alert('Latitude: ' + position.coords.latitude + '\n' +
+                'Longitude: ' + position.coords.longitude + '\n' +
+                'Altitude: ' + position.coords.altitude + '\n' +
+                'Accuracy: ' + position.coords.accuracy + '\n' +
+                'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
+                'Heading: ' + position.coords.heading + '\n' +
+                'Speed: ' + position.coords.speed + '\n' +
+                'Timestamp: ' + position.timestamp + '\n');
+        };
+
+        // onError Callback receives a PositionError object
+        //
+        function onError(error) {
+            alert('code: ' + error.code + '\n' +
+                'message: ' + error.message + '\n');
+        }
+
+
+        var username = localStorage.getItem("username");
+        var password = localStorage.getItem("password");
+
+        if (username != '' && password != '') {
+            window.location.href = "pages/home.html";
+        } else {
+            alert("Wrong Combination Username and Password. Login Again!");
+        }
+    }
+
+    function onDeviceReady() {
+        document.addEventListener("offline", onOffline, false);
+
+    }
+
+    function register() {
+        window.location.href = "pages/register.html";
+    }
+
+    $("#logbutton").click(function () {
+
+        var loginData = app.form.convertToData('#login');
+        //alert(loginData.uname);
+        //alert(loginData.pwd);
+        localStorage.setItem('username', loginData.username);
+        localStorage.setItem('password', loginData.password);
+
+        var dataPost = {
+            "username": loginData.username,
+            "password": loginData.password
+        };
+
+        var dataString = JSON.stringify(dataPost);
+
+        $.ajax({
+
+            url: 'http://1.32.96.10/ProLight/mimi/loginpage.php',
+            data: {
+                myData: dataString
+            },
+            type: 'POST',
+
+            success: function (response) {
+
+                if (response == 0) {
+
+                    alert("Wrong Combination Username and Password ");
+                } else if (response == 1) {
+
+
+                    //window.location.href = "pages/allpage.html";
+                    window.location.href = "pages/home.html";
+                }
+            }
+        });
+    });
+</script>
+
+</html>
