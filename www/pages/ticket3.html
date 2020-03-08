@@ -511,7 +511,6 @@
             var dataTemp = {};
             for (i = 0; i < sizeOfList; i++) {
                 if (listPending[i] == undefined) {
-                    //FIXME duplicate if more than 1 undifined
                     var listPending = JSON.parse(localStorage.getItem('listPendingTemp'));
                     //alert(listPending[0].NoTiang);
                     var ipc120185 = "listPending[0].IPC120185";
