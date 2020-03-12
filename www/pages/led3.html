@@ -2,238 +2,239 @@
 <html>
 
 <head>
-   
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <script type="text/javascript" src="../cordova.js"></script>
-        <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="../js/framework7.js"></script>
-        <script type="text/javascript" src="../js/framework7.min.js"></script>
-        <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
-        <script type="text/javascript" src="../js/index.js"></script>
-        <link rel="stylesheet" type="text/css" href="../css/index.css">
-        <link rel="stylesheet" type="text/css" href="../css/input.css">
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
-        <link rel="stylesheet" type="text/css" href="../css/index.css">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>ProLight</title>
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../cordova.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/framework7.js"></script>
+    <script type="text/javascript" src="../js/framework7.min.js"></script>
+    <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/input.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>ProLight</title>
 </head>
 
 
 <body onload="checkTemp()">
-        <header>
-                <div class="hamburger">
-                    <i class="fas fa-bars"></i>
-                    <i class="fas fa-times"></i>
+    <header>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times"></i>
+        </div>
+        <nav class="sidebar">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a onclick="goHome()" class="nav-link current">
+                        <i class="fas fa-home"></i>Menu Utama
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a onclick="goSenarai()" class="nav-link">
+                        <i class="fas fa-address-card"></i>Senarai Tugas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a onclick="goStatus()" class="nav-link">
+                        <i class="fas fa-briefcase"></i>Status Laporan
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a onclick="goStatistik()" class="nav-link">
+                        <i class="fas fa-blog"></i>Statistik Tugasan
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a onclick="goPapan()" class="nav-link">
+                        <i class="fas fa-envelope"></i>Papan Skor
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="zoom-content">
+            <section>
+                <div class="row position-stepper-high4">
+                    <div class="col-xs-12 col-md-8 offset-md-2 block border">
+                        <div class="wrapper-progressBar">
+                            <ul class="progressBar">
+                                <li class="active">Jenis Kerja</li>
+                                <li class="active" onclick="goLed()">LED</li>
+                                <li class="active" onclick="goLed2()">LED 2</li>
+                                <li class="active" onclick="goLed3()">LED 3</li>
+                                <li>Hantar</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <nav class="sidebar">
-                    <ul class="nav-list">
-                        <li class="nav-item">
-                            <a onclick="goHome()" class="nav-link current">
-                                <i class="fas fa-home"></i>Menu Utama
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item">
-                                <a onclick="goSenarai()" class="nav-link">
-                                    <i class="fas fa-address-card"></i>Senarai Tugas
-                                </a>
-                            </li>
-                        <li class="nav-item">
-                            <a onclick="goStatus()" class="nav-link">
-                                <i class="fas fa-briefcase"></i>Status Laporan
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item">
-                                <a onclick="goStatistik()" class="nav-link">
-                                    <i class="fas fa-blog"></i>Statistik Tugasan
-                                </a>
-                            </li>
-        
-                            <li class="nav-item">
-                                    <a onclick="goPapan()"class="nav-link">
-                                        <i class="fas fa-envelope"></i>Papan Skor
-                                    </a>
-                                </li>
-                    </ul>
-                </nav>
-            </header>
-        
-            <main>
-                <div class="zoom-content">
-                    <section>
-    <div class="row position-stepper-high4">
-        <div class="col-xs-12 col-md-8 offset-md-2 block border">
-            <div class="wrapper-progressBar">
-                <ul class="progressBar">
-                    <li class="active">Jenis Kerja</li>
-                    <li class="active"onclick="goLed()">LED</li>
-                    <li class="active"onclick="goLed2()">LED 2</li>
-                    <li class="active"onclick="goLed3()">LED 3</li>
-                    <li>Hantar</li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
-    <form id="led2">
-    <p class="position-text1-high">Bacaan beban Sebelum</p>
-    <input class="input-box position-input1-ticket" type="text"  name="bacaansebelum" id="bacaansebelum">
+                <form id="led2">
+                    <p class="position-text1-high">Bacaan beban Sebelum</p>
+                    <input class="input-box position-input1-ticket" type="text" name="bacaansebelum" id="bacaansebelum">
 
-    <p class="position-text2-high">Bacaan Beban Selepas</p>
-    <input class="input-box position-input2-ticket" type="text"  name="bacaanselepas" id="bacaanselepas">
+                    <p class="position-text2-high">Bacaan Beban Selepas</p>
+                    <input class="input-box position-input2-ticket" type="text" name="bacaanselepas" id="bacaanselepas">
 
-    <p class="position-text3-high">Number Meter</p>
-    <input class="input-box position-input3-ticket" type="text"  name="nometer" id="nometer">
+                    <p class="position-text3-high">Number Meter</p>
+                    <input class="input-box position-input3-ticket" type="text" name="nometer" id="nometer">
 
-    
-    <p class="position-text4-high">Pembaikan Earthing</p>
-    <div class="dropdown position-input4-ticket" id="pembaikan" name="pembaikan" id="pembaikan">
-        <select name="pembaikan" class="dropdown-select">
-            <option value="Y">YES</option>
-            <option value="N">NO</option>
-        </select>
-    </div>
 
-    <p class="position-text5-high">Jenis Lampu</p>
-    <div class="dropdown position-input5-ticket" id="jenislampu">
-        <select name="jenislampu" class="dropdown-select">
-                <option value="LED">LED</option>
-                <option value="Sodium">Sodium</option>
-        </select>
-    </div>
+                    <p class="position-text4-high">Pembaikan Earthing</p>
+                    <div class="dropdown position-input4-ticket" id="pembaikan" name="pembaikan" id="pembaikan">
+                        <select name="pembaikan" class="dropdown-select">
+                            <option value="Y">YES</option>
+                            <option value="N">NO</option>
+                        </select>
+                    </div>
 
-    <p class="position-text6-high">Category</p>
-    <div class="dropdown position-input6-ticket" id="category">
-        <select name="category" class="dropdown-select">
-                <option value="baik">Kredit/Baik</option>
-                <option value="rosak">Kredit/Rosak</option>
-                <option value="skrap">Skrap</option>
-        </select>
-    </div>
+                    <p class="position-text5-high">Jenis Lampu</p>
+                    <div class="dropdown position-input5-ticket" id="jenislampu">
+                        <select name="jenislampu" class="dropdown-select">
+                            <option value="LED">LED</option>
+                            <option value="Sodium">Sodium</option>
+                        </select>
+                    </div>
 
-    
-        <p class="position-text7-high">Ipc 120-185 Abc</p>
-        <div class="dropdown position-input7-ticket" id="ipc120185">
-            <select name="ipc120185" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
+                    <p class="position-text6-high">Category</p>
+                    <div class="dropdown position-input6-ticket" id="category">
+                        <select name="category" class="dropdown-select">
+                            <option value="baik">Kredit/Baik</option>
+                            <option value="rosak">Kredit/Rosak</option>
+                            <option value="skrap">Skrap</option>
+                        </select>
+                    </div>
 
-        <p class="position-text8-high">Ipc 16-95 ABC</p>
-        <div class="dropdown position-input8-ticket" id="ipc1695">
-            <select name="ipc1695" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
 
-        <p class="position-text9-high">Ipc 70-185 Abc</p>
-        <div class="dropdown position-input9-ticket" id="ipc20185">
-            <select name="ipc20185" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
+                    <p class="position-text7-high">Ipc 120-185 Abc</p>
+                    <div class="dropdown position-input7-ticket" id="ipc120185">
+                        <select name="ipc120185" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
 
-        <p class="position-text10-high">Ipc 16-70 ABC</p>
-        <div class="dropdown position-input10-ticket" id="ipc1670">
-            <select name="ipc1670" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
+                    <p class="position-text8-high">Ipc 16-95 ABC</p>
+                    <div class="dropdown position-input8-ticket" id="ipc1695">
+                        <select name="ipc1695" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
 
-        <p class="position-text11-high">Ipc 25-50 to 16-70 BARE</p>
-        <div class="dropdown position-input11-ticket" id="ipc2550">
-            <select name="ipc2550" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
+                    <p class="position-text9-high">Ipc 70-185 Abc</p>
+                    <div class="dropdown position-input9-ticket" id="ipc20185">
+                        <select name="ipc20185" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
 
-        <p class="position-text12-high">Pendawaian lampu</p>
-        <div class="dropdown position-input12-ticket" id="dawailampu">
-            <select name="dawailampu" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
-    
-    <p class="position-text14-high">Catatan</p>
-    <textarea class="position-text14-high" style="background: #f2f2f2" rows="3" cols="45" name="catatan" id="catatan">
+                    <p class="position-text10-high">Ipc 16-70 ABC</p>
+                    <div class="dropdown position-input10-ticket" id="ipc1670">
+                        <select name="ipc1670" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+
+                    <p class="position-text11-high">Ipc 25-50 to 16-70 BARE</p>
+                    <div class="dropdown position-input11-ticket" id="ipc2550">
+                        <select name="ipc2550" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+
+                    <p class="position-text12-high">Pendawaian lampu</p>
+                    <div class="dropdown position-input12-ticket" id="dawailampu">
+                        <select name="dawailampu" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+
+                    <p class="position-text14-high">Catatan</p>
+                    <textarea class="position-text14-high" style="background: #f2f2f2" rows="3" cols="45" name="catatan"
+                        id="catatan">
     </textarea>
 
-    <div class="upload-btn-wrapper position-upload1-camera">
-      <!--  <button class="btnss" name="gambarearthing" id="gambarearthing">Gambar Earthing Baru</button>
+                    <div class="upload-btn-wrapper position-upload1-camera">
+                        <!--  <button class="btnss" name="gambarearthing" id="gambarearthing">Gambar Earthing Baru</button>
         <input type="file" name="gambarearthing" />-->
-        <a onclick="goCameraEarthing()" class="btnss" name="gambarearthing" id="gambarearthing">Gambar Earthing</a>
-    </div>
+                        <a onclick="goCameraEarthing()" class="btnss" name="gambarearthing" id="gambarearthing">Gambar
+                            Earthing</a>
+                    </div>
 
-    <div class="upload-btn-wrapper position-upload1-3">
-        <a onclick="goCameraIPC()" class="btnss" name="gambaripc" id="gambaripc">Gambar IPC</a>
-    </div>
+                    <div class="upload-btn-wrapper position-upload1-3">
+                        <a onclick="goCameraIPC()" class="btnss" name="gambaripc" id="gambaripc">Gambar IPC</a>
+                    </div>
 
-    <div class="upload-btn-wrapper position-upload1-camera2">
-       <!--<button class="btnss" name="gambarselepas" id="gambarselepas">Gambar Selepas</button>
+                    <div class="upload-btn-wrapper position-upload1-camera2">
+                        <!--<button class="btnss" name="gambarselepas" id="gambarselepas">Gambar Selepas</button>
         <input type="file" name="gambarselepas" />-->
-        <a onclick="goCamera3()" class="btnss" name="gambarselepas" id="gambarselepas">Gambar Selepas</a>
-    </div>
-</form>
-   
+                        <a onclick="goCamera3()" class="btnss" name="gambarselepas" id="gambarselepas">Gambar
+                            Selepas</a>
+                    </div>
+                </form>
 
 
-    <div onclick="save()" class="buttonSimpan position-button-simpan-input2">Simpan</div>
-    <div onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-input2">Hantar</div>
-    <footer id="footer"></footer>
-    <div class="input_container">
+
+                <div onclick="save()" class="buttonSimpan position-button-simpan-input2">Simpan</div>
+                <div onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-input2">Hantar</div>
+                <footer id="footer"></footer>
+                <div class="input_container">
 
 
-    </div>
+                </div>
 </body>
 
 <script>
-
-    
-function checkTemp() {
+    function checkTemp() {
         getItem();
     }
 
@@ -242,18 +243,18 @@ function checkTemp() {
         document.getElementById('bacaanselepas').value = localStorage.getItem("merombakgantifius");
         document.getElementById('nometer').value = localStorage.getItem("nometer");
         document.getElementById('pembaikan').value = localStorage.getItem("pembaikan");
-        document.getElementById('jenislampu').value = localStorage.getItem("jenislampu"); 
+        document.getElementById('jenislampu').value = localStorage.getItem("jenislampu");
         document.getElementById('category').value = localStorage.getItem("category");
-        document.getElementById('catatan').value = localStorage.getItem("catatan");  
+        document.getElementById('catatan').value = localStorage.getItem("catatan");
         document.getElementById('ipc120185').value = localStorage.getItem("ipc120185");
         document.getElementById('ipc1695').value = localStorage.getItem("ipc1695");
         document.getElementById('ipc20185').value = localStorage.getItem("ipc20185");
         document.getElementById('ipc1670').value = localStorage.getItem("ipc1670");
-        document.getElementById('ipc2550').value = localStorage.getItem("ipc2550"); 
-        document.getElementById('dawailampu').value = localStorage.getItem("dawailampu"); 
+        document.getElementById('ipc2550').value = localStorage.getItem("ipc2550");
+        document.getElementById('dawailampu').value = localStorage.getItem("dawailampu");
         document.getElementById('gambaripc').value = localStorage.getItem("gambaripc");
-        document.getElementById('gambarearthing').value = localStorage.getItem("gambarearthing"); 
-        document.getElementById('gambarselepas').value = localStorage.getItem("gambarselepas");  
+        document.getElementById('gambarearthing').value = localStorage.getItem("gambarearthing");
+        document.getElementById('gambarselepas').value = localStorage.getItem("gambarselepas");
     }
 
     function openNav() {
@@ -275,6 +276,7 @@ function checkTemp() {
     function goLaporan3() {
         window.location.href = "laporan3.html";
     }
+
     function goCamera3() {
         window.location.href = "tiangselepas.html";
     }
@@ -287,58 +289,105 @@ function checkTemp() {
         window.location.href = "tiangipc.html";
     }
 
+    Object.objsize = function (obj) {
+        var size = 0,
+            key;
+
+        for (key in obj) {
+            if (obj.hasOwnProperty(key))
+                size++;
+        }
+
+        return size;
+
+    };
+
     function nextPage() {
-        
-        localStorage.setItem("editled", "");
-        var formData = app.form.convertToData('#led2');
-       
-        //store localstorage
-        localStorage.setItem("bacaansebelum", formData.bacaansebelum);
-        localStorage.setItem("bacaanselepas", formData.bacaanselepas);
-        localStorage.setItem("nometer", formData.nometer);
-        localStorage.setItem("pembaikan", formData.pembaikan);
-        localStorage.setItem("jenislampu", formData.jenislampu);
-        localStorage.setItem("category", formData.category);
-        localStorage.setItem("ipc120185", formData.ipc120185);
-        localStorage.setItem("ipc1695", formData.ipc1695);
-        localStorage.setItem("ipc20185", formData.ipc20185);
-        localStorage.setItem("pipc1670", formData.ipc1670);
-        localStorage.setItem("ipc2550", formData.ipc2550);
-        localStorage.setItem("dawailampu", formData.dawailampu);
-        localStorage.setItem("catatan", formData.catatan);
-        localStorage.setItem("editled", "2");
+
+        var gambarselepasURI = localStorage.getItem("gambarselepasURI");
+        var gambarearthingURI = localStorage.getItem("gambarearthingURI");
+        var gambartiangipcURI = localStorage.getItem("gambartiangipcURI");
+
+        //000
+        if ((gambarselepasURI == null || gambarselepasURI == '') && (gambarearthingURI == null || gambarearthingURI ==
+                '') && (gambartiangipcURI == null || gambartiangipcURI == '')) {
+            alert("gambar selepas, earthing dan tiang ipc is null");
+            //001
+        } else if ((gambarselepasURI == null || gambarselepasURI == '') && (gambarearthingURI == null ||
+                gambarearthingURI == '') && (gambartiangipcURI != null || gambartiangipcURI != '')) {
+            alert("gambar selepas dan earthing is null");
+            //010
+        } else if ((gambarselepasURI == null || gambarselepasURI == '') && (gambarearthingURI != null ||
+                gambarearthingURI != '') && (gambartiangipcURI == null || gambartiangipcURI == '')) {
+            alert("gambar selepas dan tiang ipc is null");
+            //011
+        } else if ((gambarselepasURI == null || gambarselepasURI == '') && (gambarearthingURI != null ||
+                gambarearthingURI != '') && (gambartiangipcURI != null || gambartiangipcURI != '')) {
+            alert("gambar selepas is null");
+            //100
+        } else if ((gambarselepasURI != null || gambarselepasURI != '') && (gambarearthingURI == null ||
+                gambarearthingURI == '') && (gambartiangipcURI == null || gambartiangipcURI == '')) {
+            alert("gambar earthing dan tiang ipc is null");
+            //101
+        } else if ((gambarselepasURI != null || gambarselepasURI != '') && (gambarearthingURI == null ||
+                gambarearthingURI == '') && (gambartiangipcURI != null || gambartiangipcURI != '')) {
+            alert("gambar earthing is null");
+            //110
+        } else if ((gambarselepasURI != null || gambarselepasURI != '') && (gambarearthingURI != null ||
+                gambarearthingURI != '') && (gambartiangipcURI == null || gambartiangipcURI == '')) {
+            alert("gambar tiang ipc is null");
+            //111
+        } else if ((gambarselepasURI != null || gambarselepasURI != '') && (gambarearthingURI != null ||
+                gambarearthingURI != '') && (gambartiangipcURI != null || gambartiangipcURI != '')) {
+            var formData = app.form.convertToData('#led2');
+
+            //store localstorage
+            localStorage.setItem("bacaansebelum", formData.bacaansebelum);
+            localStorage.setItem("bacaanselepas", formData.bacaanselepas);
+            localStorage.setItem("nometer", formData.nometer);
+            localStorage.setItem("pembaikan", formData.pembaikan);
+            localStorage.setItem("jenislampu", formData.jenislampu);
+            localStorage.setItem("category", formData.category);
+            localStorage.setItem("ipc120185", formData.ipc120185);
+            localStorage.setItem("ipc1695", formData.ipc1695);
+            localStorage.setItem("ipc20185", formData.ipc20185);
+            localStorage.setItem("pipc1670", formData.ipc1670);
+            localStorage.setItem("ipc2550", formData.ipc2550);
+            localStorage.setItem("dawailampu", formData.dawailampu);
+            localStorage.setItem("catatan", formData.catatan);
+            localStorage.setItem("editled", "2");
 
 
-        var formreg = formData.bacaansebelum;
-        var formreg2 = formData.bacaanselepas;
-        var formreg3 = formData.nometer;
-        var formreg4 = formData.pembaikan;
-        var formreg5 = formData.jenislampu;
-        var formrega = formData.ipc120185;
-        var formregb = formData.ipc1695;
-        var formregc = formData.ipc20185;
-        var formregd = formData.ipc1670;
-        var formrege = formData.ipc2550;
-        var formregf = formData.dawailampu;
-        var formreg6 = formData.catatan;
-        var formreggg =formData.category;
-     
-
-        
-     //get from localstorage value from jeniskerja.html page
-    var drh= localStorage.getItem("daerah");
-    var kmpln= localStorage.getItem("kumpulan");
-    var jkerja= localStorage.getItem("jenisKerja");
-    var latitude= localStorage.getItem("latitude");
-    var longitude= localStorage.getItem("longitude");
-    var output= localStorage.getItem("output");
-    var gipc= localStorage.getItem("gambaripc");
-    var gear= localStorage.getItem("gambarearthing");
-    var gslps= localStorage.getItem("gambarselepas");
+            var formreg = formData.bacaansebelum;
+            var formreg2 = formData.bacaanselepas;
+            var formreg3 = formData.nometer;
+            var formreg4 = formData.pembaikan;
+            var formreg5 = formData.jenislampu;
+            var formrega = formData.ipc120185;
+            var formregb = formData.ipc1695;
+            var formregc = formData.ipc20185;
+            var formregd = formData.ipc1670;
+            var formrege = formData.ipc2550;
+            var formregf = formData.dawailampu;
+            var formreg6 = formData.catatan;
+            var formreggg = formData.category;
 
 
-        
-     //get from localstorage value from 1st page led.html
+
+            //get from localstorage value from jeniskerja.html page
+            var drh = localStorage.getItem("daerah");
+            var kmpln = localStorage.getItem("kumpulan");
+            var jkerja = localStorage.getItem("jenisKerja");
+            var latitude = localStorage.getItem("latitude");
+            var longitude = localStorage.getItem("longitude");
+            var output = localStorage.getItem("output");
+            var gipc = localStorage.getItem("gambaripc");
+            var gear = localStorage.getItem("gambarearthing");
+            var gslps = localStorage.getItem("gambarselepas");
+
+
+
+            //get from localstorage value from 1st page led.html
             var a = localStorage.getItem("notiang");
             var b = localStorage.getItem("ballast");
             var c = localStorage.getItem("lanternbaru");
@@ -360,8 +409,8 @@ function checkTemp() {
             var r = localStorage.getItem("gambartiang");
             var s = localStorage.getItem("gambarsebelum");
 
-             //get from localstorage value from 2nd page led2.html
-             var ab = localStorage.getItem("noAkaun");
+            //get from localstorage value from 2nd page led2.html
+            var ab = localStorage.getItem("noAkaun");
             var bc = localStorage.getItem("namaAkaun");
             var cd = localStorage.getItem("jnsAkaun");
             var de = localStorage.getItem("zon");
@@ -377,46 +426,393 @@ function checkTemp() {
             var no = localStorage.getItem("earthingbaru");
             var op = localStorage.getItem("selenggara");
             var pq = localStorage.getItem("mini");
-           
-           
-          
- 
-    var dataFormled = {"daerah":drh,"kumpulan":kmpln,"jenisKerja":jkerja,
-                        "latitude":latitude,"longitude":longitude,"output":output,
-                        "gambaripc": gipc, "gambarearthing":gear,
-        "gambarselepas":gslps,
-        
-    "notiang": a,"ballast":b,"lanternbaru":c,"bracket":d,"dawaipanel": e,
-     "mini":f,"ipc":g,"ipcqty":h,"tiadaearthing":i,"kodwarna":j,"lokasi":k,
-    "serahtugas":l,"masa":m,"man":n,"helper":o, "driver":p,
-    "shift":q,"tukarlampu":q20,"gambartiang":r,"gambarsebelum":s,
 
-    "noAkaun": ab,"namaAkaun":bc,"jnsAkaun":cd,"zon":de,"jalan": ef,
-     "bekalan":fg,"jenama":gh,"size":hi,"model":ij,"pemula":jk,"kawalan":kl,
-    "pendaftar":lm,"pEarthing":mn,"earthingbaru":no,"selenggara":op,"mini":pq,
-        
-        "bacaansebelum": formreg, "bacaanselepas":formreg2, "nometer":formreg3 ,"pembaikan":formreg4,
-        "jenislampu":formreg5, "category": formreggg,"ipc120185": formrega, "ipc1695":formregb, "ipc20185":formregc ,
-        "ipc1670":formregd,"ipc2550": formrege,"dawailampu": formregf,"catatan":formreg6};
-        
-   
+            var gs1 = localStorage.getItem("gambarselepasURI");
+            var gs2 = localStorage.getItem("gambarsebelumURI");
+            var gs3 = localStorage.getItem("gambartiangURI");
+            var gs4 = localStorage.getItem("gambarselepas");
+            var gs5 = localStorage.getItem("gambarsebelum");
+            var gs6 = localStorage.getItem("gambartiang");
+
+            var gs7 = localStorage.getItem("gambarearthing");
+            var gs8 = localStorage.getItem("gambartiangipc");
+            var gs9 = localStorage.getItem("gambarearthingURI");
+            var gs10 = localStorage.getItem("gambartiangipcURI");
+
+            var data = {};
+            data[0] = {
+                "Daerah": drh,
+                "Kumpulan": kmpln,
+                "JenisKerja": jkerja,
+                "Latitude": latitude,
+                "Longitude": longitude,
+                "Output": output,
+                "NoTiang": a,
+                "Ballast": b,
+                "LanternBaru": c,
+                "Bracket": d,
+                "DawaiPanel": e,
+                "Mini": f,
+                "IPC": g,
+                "IPCQty": h,
+                "TiadaEarthing": i,
+                "KodWarna": j,
+                "Lokasi": k,
+                "SerahTugas": l,
+                "Masa": m,
+                "Man": n,
+                "Helper": o,
+                "Driver": p,
+                "Shift": q,
+                "TukarLampu": q20,
+                "NoAkaun": ab,
+                "JenisAkaun": bc,
+                "Zon": de,
+                "Jalan": ef,
+                "Bekalan": fg,
+                "Jenama": gh,
+                "Size": hi,
+                "Model": ij,
+                "Pemula": jk,
+                "Kawalan": kl,
+                "Pendaftar": lm,
+                "PEarthing": mn,
+                "EarthingBaru": no,
+                "Selenggara": op,
+                "Mini": pq,
+                "BacaanSebelum": formreg,
+                "BacaanSelepas": formreg2,
+                "NoMeter": formreg3,
+                "Pembaikan": formreg4,
+                "JenisLampu": formreg5,
+                "Category": formreggg,
+                "IPC120185": formrega,
+                "IPC1695": formregb,
+                "IPC20185": formregc,
+                "IPC1670": formregd,
+                "IPC2550": formrege,
+                "DawaiLampu": formregf,
+                "Catatan": formreg6,
+                "GambarSelepasURI": gs1,
+                "GambarSebelumURI": gs2,
+                "GambarTiangURI": gs3,
+                "GambarSelepas": gs4,
+                "GambarSebelum": gs5,
+                "GambarTiang": gs6,
+                "GambarEarthing": gs7,
+                "GambarTiangIPC": gs8,
+                "GambarEarthingURI": gs9,
+                "GambarTiangIPCURI": g10
+            };
+            localStorage.setItem('listPendingTemp', JSON.stringify(data));
+
+            var listPending = JSON.parse(localStorage.getItem('listPending'));
+            var sizeOfList = Object.objsize(listPending);
+            if (sizeOfList == 0) {
+                localStorage.setItem('listPending', JSON.stringify(data));
+            } else if (sizeOfList > 0) {
+                var dataTemp = {};
+                for (i = 0; i < sizeOfList; i++) {
+                    if (listPending[i] == undefined) {
+                        var listPending = JSON.parse(localStorage.getItem('listPendingTemp'));
+                        dataTemp[i] = {
+                            "Daerah": listPending[0].Daerah,
+                            "Kumpulan": listPending[0].Kumpulan,
+                            "JenisKerja": listPending[0].JenisKerja,
+                            "Latitude": listPending[0].Latitude,
+                            "Longitude": listPending[0].Longitude,
+                            "Output": listPending[0].Output,
+                            "NoTiang": listPending[0].NoTiang,
+                            "Ballast": listPending[0].Ballast,
+                            "LanternBaru": listPending[0].LanternBaru,
+                            "Bracket": listPending[0].Bracket,
+                            "DawaiPanel": listPending[0].DawaiPanel,
+                            "Mini": listPending[0].Mini,
+                            "IPC": listPending[0].IPC,
+                            "IPCQty": listPending[0].IPCQty,
+                            "TiadaEarthing": listPending[0].TiadaEarthing,
+                            "KodWarna": listPending[0].KodWarna,
+                            "Lokasi": listPending[0].Lokasi,
+                            "SerahTugas": listPending[0].SerahTugas,
+                            "Masa": listPending[0].Masa,
+                            "Man": listPending[0].Man,
+                            "Helper": listPending[0].Helper,
+                            "Driver": listPending[0].Driver,
+                            "Shift": listPending[0].Shift,
+                            "TukarLampu": listPending[0].TukarLampu,
+                            "NoAkaun": listPending[0].NoAkaun,
+                            "JenisAkaun": listPending[0].JenisAkaun,
+                            "Zon": listPending[0].Zon,
+                            "Jalan": listPending[0].Jalan,
+                            "Bekalan": listPending[0].Bekalan,
+                            "Jenama": listPending[0].Jenama,
+                            "Size": listPending[0].Size,
+                            "Model": listPending[0].Model,
+                            "Pemula": listPending[0].Pemula,
+                            "Kawalan": listPending[0].Kawalan,
+                            "Pendaftar": listPending[0].Pendaftar,
+                            "PEarthing": listPending[0].PEarthing,
+                            "EarthingBaru": listPending[0].EarthingBaru,
+                            "Selenggara": listPending[0].Selenggara,
+                            "Mini": listPending[0].Mini,
+                            "BacaanSebelum": listPending[0].BacaanSebelum,
+                            "BacaanSelepas": listPending[0].BacaanSelepas,
+                            "NoMeter": listPending[0].NoMeter,
+                            "Pembaikan": listPending[0].Pembaikan,
+                            "JenisLampu": listPending[0].JenisLampu,
+                            "Category": listPending[0].Category,
+                            "IPC120185": listPending[0].IPC120185,
+                            "IPC1695": listPending[0].IPC1695,
+                            "IPC20185": listPending[i].IPC20185,
+                            "IPC1670": listPending[0].IPC1670,
+                            "IPC2550": listPending[0].IPC2550,
+                            "DawaiLampu": listPending[0].DawaiLampu,
+                            "Catatan": listPending[0].Catatan,
+                            "GambarSelepasURI": listPending[0].GambarSelepasURI,
+                            "GambarSebelumURI": listPending[0].GambarSebelumURI,
+                            "GambarTiangURI": listPending[0].GambarTiangURI,
+                            "GambarSelepas": listPending[0].GambarSelepas,
+                            "GambarSebelum": listPending[0].GambarSebelum,
+                            "GambarTiang": listPending[0].GambarTiang,
+                            "GambarEarthing": listPending[0].GambarEarthing,
+                            "GambarTiangIPC": listPending[0].GambarTiangIPC,
+                            "GambarEarthingURI": listPending[0].GambarEarthingURI,
+                            "GambarTiangIPCURI": listPending[0].GambarTiangIPCURI
+                        };
+                        break;
+                    } else {
+                        dataTemp[i] = {
+                            "Daerah": listPending[0].Daerah,
+                            "Kumpulan": listPending[0].Kumpulan,
+                            "JenisKerja": listPending[0].JenisKerja,
+                            "Latitude": listPending[0].Latitude,
+                            "Longitude": listPending[0].Longitude,
+                            "Output": listPending[0].Output,
+                            "NoTiang": listPending[0].NoTiang,
+                            "Ballast": listPending[0].Ballast,
+                            "LanternBaru": listPending[0].LanternBaru,
+                            "Bracket": listPending[0].Bracket,
+                            "DawaiPanel": listPending[0].DawaiPanel,
+                            "Mini": listPending[0].Mini,
+                            "IPC": listPending[0].IPC,
+                            "IPCQty": listPending[0].IPCQty,
+                            "TiadaEarthing": listPending[0].TiadaEarthing,
+                            "KodWarna": listPending[0].KodWarna,
+                            "Lokasi": listPending[0].Lokasi,
+                            "SerahTugas": listPending[0].SerahTugas,
+                            "Masa": listPending[0].Masa,
+                            "Man": listPending[0].Man,
+                            "Helper": listPending[0].Helper,
+                            "Driver": listPending[0].Driver,
+                            "Shift": listPending[0].Shift,
+                            "TukarLampu": listPending[0].TukarLampu,
+                            "NoAkaun": listPending[0].NoAkaun,
+                            "JenisAkaun": listPending[0].JenisAkaun,
+                            "Zon": listPending[0].Zon,
+                            "Jalan": listPending[0].Jalan,
+                            "Bekalan": listPending[0].Bekalan,
+                            "Jenama": listPending[0].Jenama,
+                            "Size": listPending[0].Size,
+                            "Model": listPending[0].Model,
+                            "Pemula": listPending[0].Pemula,
+                            "Kawalan": listPending[0].Kawalan,
+                            "Pendaftar": listPending[0].Pendaftar,
+                            "PEarthing": listPending[0].PEarthing,
+                            "EarthingBaru": listPending[0].EarthingBaru,
+                            "Selenggara": listPending[0].Selenggara,
+                            "Mini": listPending[0].Mini,
+                            "BacaanSebelum": listPending[0].BacaanSebelum,
+                            "BacaanSelepas": listPending[0].BacaanSelepas,
+                            "NoMeter": listPending[0].NoMeter,
+                            "Pembaikan": listPending[0].Pembaikan,
+                            "JenisLampu": listPending[0].JenisLampu,
+                            "Category": listPending[0].Category,
+                            "IPC120185": listPending[0].IPC120185,
+                            "IPC1695": listPending[0].IPC1695,
+                            "IPC20185": listPending[i].IPC20185,
+                            "IPC1670": listPending[0].IPC1670,
+                            "IPC2550": listPending[0].IPC2550,
+                            "DawaiLampu": listPending[0].DawaiLampu,
+                            "Catatan": listPending[0].Catatan,
+                            "GambarSelepasURI": listPending[0].GambarSelepasURI,
+                            "GambarSebelumURI": listPending[0].GambarSebelumURI,
+                            "GambarTiangURI": listPending[0].GambarTiangURI,
+                            "GambarSelepas": listPending[0].GambarSelepas,
+                            "GambarSebelum": listPending[0].GambarSebelum,
+                            "GambarTiang": listPending[0].GambarTiang,
+                            "GambarEarthing": listPending[0].GambarEarthing,
+                            "GambarTiangIPC": listPending[0].GambarTiangIPC,
+                            "GambarEarthingURI": listPending[0].GambarEarthingURI,
+                            "GambarTiangIPCURI": listPending[0].GambarTiangIPCURI
+                        };
+                    }
+                    /*;*/
+
+                }
+                var i = sizeOfList;
+                //var listPending = JSON.parse(localStorage.getItem('listPendingTemp'));
+
+                dataTemp[i] = {
+                    "Daerah": drh,
+                    "Kumpulan": kmpln,
+                    "JenisKerja": jkerja,
+                    "Latitude": latitude,
+                    "Longitude": longitude,
+                    "Output": output,
+                    "NoTiang": a,
+                    "Ballast": b,
+                    "LanternBaru": c,
+                    "Bracket": d,
+                    "DawaiPanel": e,
+                    "Mini": f,
+                    "IPC": g,
+                    "IPCQty": h,
+                    "TiadaEarthing": i,
+                    "KodWarna": j,
+                    "Lokasi": k,
+                    "SerahTugas": l,
+                    "Masa": m,
+                    "Man": n,
+                    "Helper": o,
+                    "Driver": p,
+                    "Shift": q,
+                    "TukarLampu": q20,
+                    "NoAkaun": ab,
+                    "JenisAkaun": bc,
+                    "Zon": de,
+                    "Jalan": ef,
+                    "Bekalan": fg,
+                    "Jenama": gh,
+                    "Size": hi,
+                    "Model": ij,
+                    "Pemula": jk,
+                    "Kawalan": kl,
+                    "Pendaftar": lm,
+                    "PEarthing": mn,
+                    "EarthingBaru": no,
+                    "Selenggara": op,
+                    "Mini": pq,
+                    "BacaanSebelum": formreg,
+                    "BacaanSelepas": formreg2,
+                    "NoMeter": formreg3,
+                    "Pembaikan": formreg4,
+                    "JenisLampu": formreg5,
+                    "Category": formreggg,
+                    "IPC120185": formrega,
+                    "IPC1695": formregb,
+                    "IPC20185": formregc,
+                    "IPC1670": formregd,
+                    "IPC2550": formrege,
+                    "DawaiLampu": formregf,
+                    "Catatan": formreg6,
+                    "GambarSelepasURI": gs1,
+                    "GambarSebelumURI": gs2,
+                    "GambarTiangURI": gs3,
+                    "GambarSelepas": gs4,
+                    "GambarSebelum": gs5,
+                    "GambarTiang": gs6,
+                    "GambarEarthing": gs7,
+                    "GambarTiangIPC": gs8,
+                    "GambarEarthingURI": gs9,
+                    "GambarTiangIPCURI": g10
+                };
+
+                localStorage.setItem('listPending', JSON.stringify(dataTemp));
+
+            }
+            localStorage.removeItem("NumberOfObject");
+            window.location.href = "laporanDraft.html";
+        }
+
+
+
+
+
+
+        /*var dataFormled = {
+            "daerah": drh,
+            "kumpulan": kmpln,
+            "jenisKerja": jkerja,
+            "latitude": latitude,
+            "longitude": longitude,
+            "output": output,
+            "gambaripc": gipc,
+            "gambarearthing": gear,
+            "gambarselepas": gslps,
+
+            "notiang": a,
+            "ballast": b,
+            "lanternbaru": c,
+            "bracket": d,
+            "dawaipanel": e,
+            "mini": f,
+            "ipc": g,
+            "ipcqty": h,
+            "tiadaearthing": i,
+            "kodwarna": j,
+            "lokasi": k,
+            "serahtugas": l,
+            "masa": m,
+            "man": n,
+            "helper": o,
+            "driver": p,
+            "shift": q,
+            "tukarlampu": q20,
+            "gambartiang": r,
+            "gambarsebelum": s,
+
+            "noAkaun": ab,
+            "namaAkaun": bc,
+            "jnsAkaun": cd,
+            "zon": de,
+            "jalan": ef,
+            "bekalan": fg,
+            "jenama": gh,
+            "size": hi,
+            "model": ij,
+            "pemula": jk,
+            "kawalan": kl,
+            "pendaftar": lm,
+            "pEarthing": mn,
+            "earthingbaru": no,
+            "selenggara": op,
+            "mini": pq,
+
+            "bacaansebelum": formreg,
+            "bacaanselepas": formreg2,
+            "nometer": formreg3,
+            "pembaikan": formreg4,
+            "jenislampu": formreg5,
+            "category": formreggg,
+            "ipc120185": formrega,
+            "ipc1695": formregb,
+            "ipc20185": formregc,
+            "ipc1670": formregd,
+            "ipc2550": formrege,
+            "dawailampu": formregf,
+            "catatan": formreg6
+        };
+
+
         var dataString = JSON.stringify(dataFormled);
         $.ajax({
-                    url: 'http://1.32.96.10/ProLight/mimi/led.php',
-                    data: {myData: dataString},
-                    type: 'POST',
-                    success: function(response){
-                       alert(response);
-                        goLaporan3();
-                        }
-                    });
-                    
-        }
-        
-    
+            url: 'http://1.32.96.10/ProLight/mimi/led.php',
+            data: {
+                myData: dataString
+            },
+            type: 'POST',
+            success: function (response) {
+                alert(response);
+                goLaporan3();
+            }
+        });*/
 
-   
-        function checkTime(i) {
+    }
+
+
+
+
+    function checkTime(i) {
         if (i < 10) {
             i = "0" + i;
         }
@@ -506,13 +902,13 @@ function checkTemp() {
         window.location.href = "laporan3.html";
     }
 
-    function save(){
+    function save() {
 
-    var formData = app.form.convertToData('#led2');
+        var formData = app.form.convertToData('#led2');
 
 
 
-      
+
         //store localstorage
         localStorage.setItem("bacaansebelum", formData.bacaansebelum);
         localStorage.setItem("bacaanselepas", formData.bacaanselepas);
@@ -534,41 +930,41 @@ function checkTemp() {
         var formreg4 = formData.pembaikan;
         var formreg5 = formData.jenislampu;
         var formreg6 = formData.catatan;
-    
-
-        
-     //get from localstorage value from jeniskerja.html page
-    var drh= localStorage.getItem("daerah");
-    var kmpln= localStorage.getItem("kumpulan");
-    var jkerja= localStorage.getItem("jenisKerja");
-    var latitude= localStorage.getItem("latitude");
-    var longitude= localStorage.getItem("longitude");
 
 
-        
-     //get from localstorage value from 1st page led.html
-            var a = localStorage.getItem("notiang");
-            var b = localStorage.getItem("ballast");
-            var c = localStorage.getItem("lanternbaru");
-            var d = localStorage.getItem("bracket");
-            var e = localStorage.getItem("dawaipanel");
-            var f = localStorage.getItem("mini");
-            var i = localStorage.getItem("tiadaearthing");
-            var j = localStorage.getItem("kodwarna");
-            var k = localStorage.getItem("lokasi");
-            var l = localStorage.getItem("serahtugas");
-            var m = localStorage.getItem("masa");
-            var n = localStorage.getItem("chargeman");
-            var o = localStorage.getItem("helper");
-            var p = localStorage.getItem("driver");
-            var q = localStorage.getItem("shift");
-            var r = localStorage.getItem("gambartiang");
-            var s = localStorage.getItem("gambarsebelum");
-           
-    
-            window.location.href = "laporan2.html";
-        
+
+        //get from localstorage value from jeniskerja.html page
+        var drh = localStorage.getItem("daerah");
+        var kmpln = localStorage.getItem("kumpulan");
+        var jkerja = localStorage.getItem("jenisKerja");
+        var latitude = localStorage.getItem("latitude");
+        var longitude = localStorage.getItem("longitude");
+
+
+
+        //get from localstorage value from 1st page led.html
+        var a = localStorage.getItem("notiang");
+        var b = localStorage.getItem("ballast");
+        var c = localStorage.getItem("lanternbaru");
+        var d = localStorage.getItem("bracket");
+        var e = localStorage.getItem("dawaipanel");
+        var f = localStorage.getItem("mini");
+        var i = localStorage.getItem("tiadaearthing");
+        var j = localStorage.getItem("kodwarna");
+        var k = localStorage.getItem("lokasi");
+        var l = localStorage.getItem("serahtugas");
+        var m = localStorage.getItem("masa");
+        var n = localStorage.getItem("chargeman");
+        var o = localStorage.getItem("helper");
+        var p = localStorage.getItem("driver");
+        var q = localStorage.getItem("shift");
+        var r = localStorage.getItem("gambartiang");
+        var s = localStorage.getItem("gambarsebelum");
+
+
+        window.location.href = "laporan2.html";
+
     }
-    </script>
+</script>
 
 </html>

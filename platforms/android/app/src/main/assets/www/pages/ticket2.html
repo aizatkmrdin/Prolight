@@ -322,7 +322,34 @@
     function onDeviceReady() {
         document.addEventListener("online", onOnline, false);
         document.addEventListener("offline", onOffline, false);
-        checkTemp();
+        startup();
+    }
+
+    function startup() {
+        var flag = localStorage.getItem("NumberOfObject");
+        if (flag == null || flag == undefined) {
+            checkTemp();
+        } else {
+            var listPending = JSON.parse(localStorage.getItem('listPending'));
+            document.getElementById('clamp').value = listPending[flag].Clamp;
+            document.getElementById('rentis').value = listPending[flag].Rentis;
+            document.getElementById('dead').value = listPending[flag].Dead;
+            document.getElementById('cable').value = listPending[flag].Cable;
+            document.getElementById('mini').value = listPending[flag].Mini;
+            document.getElementById('pusing').value = listPending[flag].Pusing;
+            document.getElementById('jumperlantern').value = listPending[flag].JumperLantern;
+            document.getElementById('jumperservice').value = listPending[flag].JumperService;
+            document.getElementById('hook').value = listPending[flag].Hook;
+            document.getElementById('creepers').value = listPending[flag].Creepers;
+            document.getElementById('colorcode').value = listPending[flag].ColorCode;
+            document.getElementById('lanternwarranty').value = listPending[flag].LanternWarranty;
+            document.getElementById('tarikhtukar').value = listPending[flag].TarikhTukar;
+            document.getElementById('setlantern').value = listPending[flag].SetLantern;
+            document.getElementById('tukaripc').value = listPending[flag].TukarIPC;
+            document.getElementById('lampurosak').value = listPending[flag].LampuRosak;
+            document.getElementById('category').value = listPending[flag].Category;
+            //document.getElementById('gambarselepas').value = listPending[flag].Clamp;
+        }
     }
 
     function onOffline() {

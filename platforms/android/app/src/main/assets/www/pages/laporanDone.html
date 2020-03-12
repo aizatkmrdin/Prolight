@@ -17,8 +17,6 @@
     <script type="text/javascript" src="../js/index.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/table.css">
     <link rel="stylesheet" type="text/css" href="../css/boot.css">
-    <link rel="stylesheet" type="text/css" href="../css/index.css">
-    <link rel="stylesheet" type="text/css" href="../css/input.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../css/index.css">
@@ -233,8 +231,19 @@
 <script type="text/javascript" src="../js/script.js"></script>
 
 <script>
+    var input = "";
+
+    function view(i) {
+        alert(i);
+
+    }
+
     function paging(a) {
-        alert(a);
+        if (a.localeCompare("Draf") == 0) {
+            location.href = "laporanDraft.html";
+        } else if (a.localeCompare("Selesai") == 0) {
+            location.href = "laporanDone.html";
+        }
     }
     Object.objsize = function (obj) {
         var size = 0,
@@ -249,26 +258,23 @@
 
     };
     document.addEventListener("deviceready", onDeviceReady, false);
-    var input = "";
+
 
     //SECTION ONLOAD FUNCTION
     function onDeviceReady() {
+        var x = 0;
         var todayDone = JSON.parse(localStorage.getItem('todayDone'));
         var sizeOfList = Object.objsize(todayDone);
         input +=
-            "<table width='400'><tr><th><p style='text-align: center'>Bil</p></th><th><p style='text-align: center'>Tarikh</p></th><th><p style='text-align: center'>Nombor Tiang</p></th><th style='text-align: center' colspan='2'>Tindakan</th></tr>";
+            "<table width='400'><tr><th>Bil</th><th style='text-align: center'>Tarikh</th><th style='text-align: center' >Nombor Tiang</th><th style='text-align: center' >Tindakan</th></tr>";
         for (i = 0; i < sizeOfList; i++) {
 
             input +=
                 "<tr><td style='padding: 10px 10px;'>" + (x + 1) +
-                "</td><td>" + listPending[i].Masa + "</td><td>" + listPending[i].NoTiang +
-                "</td><td><a class='button' onclick='edit(" + i +
-                ")'>Delete</a></td><td>  <a class='button' onclick='send(" + i +
-                ")'> send </a></td></tr>";
+                "</td><td>" + todayDone[i].Masa + "</td><td>" + todayDone[i].NoTiang +
+                "</td><td><div class='buttonSeterusnyatable' onclick='view(" + i + ")'>lihat</div></td></tr>";
 
             x++;
-
-
         }
         input += "</table>";
         document.getElementById('news').innerHTML = input;

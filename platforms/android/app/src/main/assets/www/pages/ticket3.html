@@ -255,7 +255,27 @@
     function onDeviceReady() {
         document.addEventListener("online", onOnline, false);
         document.addEventListener("offline", onOffline, false);
-        checkTemp();
+        startup();
+    }
+
+    function startup() {
+        var flag = localStorage.getItem("NumberOfObject");
+        if (flag == null || flag == undefined) {
+            checkTemp();
+        } else {
+            var listPending = JSON.parse(localStorage.getItem('listPending'));
+            document.getElementById('jenislampu').value = localStorage.getItem("jenislampu");
+            document.getElementById('chargeman').value = localStorage.getItem("chargeman");
+            document.getElementById('helper').value = localStorage.getItem("helper");
+            document.getElementById('driver').value = localStorage.getItem("driver");
+            document.getElementById('shift').value = localStorage.getItem("shift");
+            document.getElementById('ipc120185').value = localStorage.getItem("ipc120185");
+            document.getElementById('ipc1695').value = localStorage.getItem("ipc1695");
+            document.getElementById('ipc20185').value = localStorage.getItem("ipc20185");
+            document.getElementById('ipc1670').value = localStorage.getItem("ipc1670");
+            document.getElementById('ipc2550').value = localStorage.getItem("ipc2550");
+            document.getElementById('catatan').value = localStorage.getItem("catatan");
+        }
     }
 
     function onOffline() {
@@ -311,20 +331,20 @@
         document.getElementById("mySidenav").style.width = "0";
     }
 
-    function nextPage() {
+    Object.objsize = function (obj) {
+        var size = 0,
+            key;
 
-        Object.objsize = function (obj) {
-            var size = 0,
-                key;
+        for (key in obj) {
+            if (obj.hasOwnProperty(key))
+                size++;
+        }
 
-            for (key in obj) {
-                if (obj.hasOwnProperty(key))
-                    size++;
-            }
+        return size;
 
-            return size;
+    };
 
-        };
+    function nextthing() {
         var InternetStat = localStorage.getItem("InternetStat");
         //alert(InternetStat);
 
@@ -511,16 +531,7 @@
             var dataTemp = {};
             for (i = 0; i < sizeOfList; i++) {
                 if (listPending[i] == undefined) {
-                    //FIXME duplicate if more than 1 undifined
                     var listPending = JSON.parse(localStorage.getItem('listPendingTemp'));
-                    //alert(listPending[0].NoTiang);
-                    var ipc120185 = "listPending[0].IPC120185";
-                    var ipc1695 = "listPending[0].IPC1695";
-                    var ipc20185 = "listPending[0].IPC20185";
-                    var ipc1670 = "listPending[0].IPC1670";
-                    var ipc2550 = "listPending[0].IPC2550";
-                    var ipc = "listPending[0].IPC";
-                    var ipclantern = "listPending[0].IPCLantern";
                     dataTemp[i] = {
                         "Daerah": listPending[0].Daerah,
                         "Kumpulan": listPending[0].Kumpulan,
@@ -589,13 +600,6 @@
                     };
                     break;
                 } else {
-                    var ipc120185 = "listPending[i].IPC120185";
-                    var ipc1695 = "listPending[i].IPC1695";
-                    var ipc20185 = "listPending[i].IPC20185";
-                    var ipc1670 = "listPending[i].IPC1670";
-                    var ipc2550 = "listPending[i].IPC2550";
-                    var ipc = "listPending[i].IPC";
-                    var ipclantern = "listPending[i].IPCLantern";
                     dataTemp[i] = {
                         "Daerah": listPending[0].Daerah,
                         "Kumpulan": listPending[0].Kumpulan,
@@ -741,195 +745,22 @@
             localStorage.setItem('listPending', JSON.stringify(dataTemp));
 
         }
+        localStorage.removeItem("NumberOfObject");
         window.location.href = "laporanDraft.html";
+    }
 
-        /*
-        if (InternetStat == "offline") {
+    function nextedit(flag) {
 
-        } else if (InternetStat == "online") {
-            localStorage.setItem("editticket", "");
-            var formData = app.form.convertToData('#formticket3');
+    }
 
-            var formreg = formData.jenislampu;
-            var formreg2 = formData.chargeman;
-            var formreg3 = formData.helper;
-            var formreg4 = formData.driver;
-            var formreg5 = formData.shift;
-            var formreg13 = formData.ticket;
-            var formreg6 = formData.zon;
-            var formreg7 = formData.bekalan;
-            var formreg8 = formData.jalan;
-            var formreg9 = formData.lokasi;
-            var formreg10 = formData.jenama;
-            var formreg11 = formData.size;
-            var formrega = formData.ipc120185;
-            var formregb = formData.ipc1695;
-            var formregc = formData.ipc20185;
-            var formregd = formData.ipc1670;
-            var formrege = formData.ipc2550;
-            var formreg12 = formData.catatan;
-
-            localStorage.setItem("jenislampu", formData.jenislampu);
-            localStorage.setItem("chargeman", formData.chargeman);
-            localStorage.setItem("helper", formData.helper);
-            localStorage.setItem("driver", formData.driver);
-            localStorage.setItem("shift", formData.shift);
-            localStorage.setItem("ticket", formData.ticket);
-            localStorage.setItem("zon", formData.zon);
-            localStorage.setItem("bekalan", formData.bekalan);
-            localStorage.setItem("jalan", formData.jalan);
-            localStorage.setItem("lokasi", formData.lokasi);
-            localStorage.setItem("jenama", formData.jenama);
-            localStorage.setItem("size", formData.size);
-            localStorage.setItem("ipc120185", formData.ipc120185);
-            localStorage.setItem("ipc1695", formData.ipc1695);
-            localStorage.setItem("ipc20185", formData.ipc20185);
-            localStorage.setItem("pipc1670", formData.ipc1670);
-            localStorage.setItem("ipc2550", formData.ipc2550);
-            localStorage.setItem("catatan", formData.catatan);
-            localStorage.setItem("editticket", "3");
-
-
-            //get from localstorage value from jeniskerja.html page
-            var drh = localStorage.getItem("daerah");
-            var kmpln = localStorage.getItem("kumpulan");
-            var jkerja = localStorage.getItem("jenisKerja");
-            var latitude = localStorage.getItem("latitude");
-            var longitude = localStorage.getItem("longitude");
-
-            //get from localstorage value from 1st page rondaan.html
-            var a = localStorage.getItem("notiang");
-            var b = localStorage.getItem("masa");
-            var c = localStorage.getItem("ipc");
-            var d = localStorage.getItem("pecu");
-            var e = localStorage.getItem("pecuqty");
-            var f = localStorage.getItem("ipclantern");
-            var g = localStorage.getItem("lantern");
-            var h = localStorage.getItem("blackbox");
-            var i = localStorage.getItem("fuse");
-            var j = localStorage.getItem("contractor");
-            var k = localStorage.getItem("link");
-            var l = localStorage.getItem("dawailampu");
-            var m = localStorage.getItem("dawaipanel");
-            var n = localStorage.getItem("cout");
-            var o = localStorage.getItem("rombaklampu");
-            var p = localStorage.getItem("bracket");
-            var q = localStorage.getItem("rombakpanel");
-            var r = localStorage.getItem("gambartiang");
-            var s = localStorage.getItem("gambarsebelum")
-            var t = localStorage.getItem("output")
-
-
-            //get from localstorage value from 2nd page rondaan2.html
-
-            var sa = localStorage.getItem("clamp");
-            var sb = localStorage.getItem("rentis");
-            var sc = localStorage.getItem("dead");
-            var sd = localStorage.getItem("cable");
-            var se = localStorage.getItem("mini");
-            var sf = localStorage.getItem("pusing");
-            var sg = localStorage.getItem("jumperlantern");
-            var sh = localStorage.getItem("jumperservice");
-            var si = localStorage.getItem("hook");
-            var sj = localStorage.getItem("creepers");
-            var sk = localStorage.getItem("lanternwarranty");
-            var sl = localStorage.getItem("colorcode");
-            var sm = localStorage.getItem("tarikhtukar");
-            var so = localStorage.getItem("setlantern");
-            var sp = localStorage.getItem("tukaripc");
-            var sq = localStorage.getItem("lampurosak");
-            var sr = localStorage.getItem("category");
-            var ss = localStorage.getItem("gambarselepas");
-
-
-
-            var dataFormreg = {
-                "daerah": drh,
-                "kumpulan": kmpln,
-                "jenisKerja": jkerja,
-                "latitude": latitude,
-                "longitude": longitude,
-
-                "noTiang": a,
-                "masa": b,
-                "ipc": c,
-                "pecu": d,
-                "pecuqty": e,
-                "ipclantern": f,
-                "lantern": g,
-                "blackbox": h,
-                "fuse": i,
-                "contractor": j,
-                "link": k,
-                "dawailampu": l,
-                "dawaipanel": m,
-                "cout": n,
-                "rombaklampu": o,
-                "bracket": p,
-                "rombakpanel": q,
-                "gambartiang": r,
-                "gambarsebelum": s,
-                "output": t,
-
-                "clamp": sa,
-                "rentis": sb,
-                "dead": sc,
-                "cable": sd,
-                "mini": se,
-                "pusing": sf,
-                "jumperlantern": sg,
-                "jumperservice": sh,
-                "hook": si,
-                "creepers": sj,
-                "lanternwarranty": sk,
-                "colorcode": sl,
-                "tarikhtukar": sm,
-                "setlantern": so,
-                "tukaripc": sp,
-                "lampurosak": sq,
-                "category": sr,
-                "gambarselepas": ss,
-
-                "jenislampu": formreg,
-                "chargeman": formreg2,
-                "helper": formreg3,
-                "driver": formreg4,
-                "shift": formreg5,
-                "ticket": formreg13,
-                "zon": formreg6,
-                "bekalan": formreg7,
-                "jalan": formreg8,
-                "lokasi": formreg9,
-                "jenama": formreg10,
-                "size": formreg11,
-                "ipc120185": formrega,
-                "ipc1695": formregb,
-                "ipc20185": formregc,
-                "ipc1670": formregd,
-                "ipc2550": formrege,
-                "catatan": formreg12
-            };
-
-            //alert(dataFormreg);
-            var dataString = JSON.stringify(dataFormreg);
-            $.ajax({
-                url: 'http://1.32.96.10/ProLight/mimi/ticket.php',
-                data: {
-                    myData: dataString
-                },
-                type: 'POST',
-                success: function (response) {
-                    alert(response);
-                    window.location.href = "laporan3.html";
-                }
-            });
-
+    function nextPage() {
+        nextthing();
+        /*var flag = localStorage.getItem("NumberOfObject");
+        if (flag == null || flag == undefined) {
+            nextthing();
         } else {
-            alert("error somewhere else");
+            nextedit(flag);
         }*/
-        /*
-         */
-        // window.location.replace("laporan3.html");
 
     }
 
