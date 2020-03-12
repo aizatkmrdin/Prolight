@@ -2,302 +2,302 @@
 <html>
 
 <head>
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <script type="text/javascript" src="../cordova.js"></script>
-        <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="../js/framework7.js"></script>
-        <script type="text/javascript" src="../js/framework7.min.js"></script>
-        <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
-        <script type="text/javascript" src="../js/index.js"></script>
-        <link rel="stylesheet" type="text/css" href="../css/index.css">
-        <link rel="stylesheet" type="text/css" href="../css/input.css">
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
-        <link rel="stylesheet" type="text/css" href="../css/index.css">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>ProLight</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../cordova.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/framework7.js"></script>
+    <script type="text/javascript" src="../js/framework7.min.js"></script>
+    <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/input.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>ProLight</title>
 </head>
 
 <body onload="checkTemp()">
-        <header>
-                <div class="hamburger">
-                    <i class="fas fa-bars"></i>
-                    <i class="fas fa-times"></i>
+    <header>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times"></i>
+        </div>
+        <nav class="sidebar">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a onclick="goHome()" class="nav-link current">
+                        <i class="fas fa-home"></i>Menu Utama
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a onclick="goSenarai()" class="nav-link">
+                        <i class="fas fa-address-card"></i>Senarai Tugas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a onclick="goStatus()" class="nav-link">
+                        <i class="fas fa-briefcase"></i>Status Laporan
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a onclick="goStatistik()" class="nav-link">
+                        <i class="fas fa-blog"></i>Statistik Tugasan
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a onclick="goPapan()" class="nav-link">
+                        <i class="fas fa-envelope"></i>Papan Skor
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="zoom-content">
+            <section>
+
+                <div class="row position-stepper-high4s">
+                    <div class="col-xs-12 col-md-8 offset-md-2 block border">
+                        <div class="wrapper-progressBar">
+                            <ul class="progressBar">
+                                <li class="active">Jenis Kerja</li>
+                                <li class="active" onclick="aduan()">Aduan</li>
+                                <li class="active" onclick="aduan2()">Aduan 2</li>
+                                <li onclick="aduan3()">Aduan 3</li>
+                                <li>Hantar</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <nav class="sidebar">
-                    <ul class="nav-list">
-                        <li class="nav-item">
-                            <a onclick="goHome()" class="nav-link current">
-                                <i class="fas fa-home"></i>Menu Utama
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item">
-                                <a onclick="goSenarai()" class="nav-link">
-                                    <i class="fas fa-address-card"></i>Senarai Tugas
-                                </a>
-                            </li>
-                        <li class="nav-item">
-                            <a onclick="goStatus()" class="nav-link">
-                                <i class="fas fa-briefcase"></i>Status Laporan
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item">
-                                <a onclick="goStatistik()" class="nav-link">
-                                    <i class="fas fa-blog"></i>Statistik Tugasan
-                                </a>
-                            </li>
-        
-                            <li class="nav-item">
-                                    <a onclick="goPapan()"class="nav-link">
-                                        <i class="fas fa-envelope"></i>Papan Skor
-                                    </a>
-                                </li>
-                    </ul>
-                </nav>
-            </header>
-            <main>
-                <div class="zoom-content">
-                    <section>
 
-    <div class="row position-stepper-high4s">
-        <div class="col-xs-12 col-md-8 offset-md-2 block border">
-            <div class="wrapper-progressBar">
-                <ul class="progressBar">
-                    <li class="active">Jenis Kerja</li>
-                    <li class="active" onclick="aduan()">Aduan</li>
-                    <li class="active" onclick ="aduan2()">Aduan 2</li>
-                    <li onclick ="aduan3()">Aduan 3</li>
-                    <li>Hantar</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+                <form id="formaduan2">
+                    <p class="position-text1-high">S Clamp</p>
+                    <div class="dropdown position-input1-ticket" id="sclamp">
+                        <select name="sclamp" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
 
-    <form id="formaduan2">
-        <p class="position-text1-high">S Clamp</p>
-        <div class="dropdown position-input1-ticket" id="sclamp">
-            <select name="sclamp" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
-    
 
-        <p class="position-text2-high">Rentis</p>
-        <div class="dropdown position-input2-ticket" id="rentis">
-            <select name="rentis" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
-    
+                    <p class="position-text2-high">Rentis</p>
+                    <div class="dropdown position-input2-ticket" id="rentis">
+                        <select name="rentis" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
 
-        <p class="position-text3-high">Dead End CL</p>
-        <div class="dropdown position-input3-ticket" id="dead">
-            <select name="dead" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
-    
 
-        <p class="position-text4-high">Cable 1x16</p>
-        <div class="dropdown position-input4-ticket" id="cable">
-            <select name="cable" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
+                    <p class="position-text3-high">Dead End CL</p>
+                    <div class="dropdown position-input3-ticket" id="dead">
+                        <select name="dead" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
 
-        <p class="position-text5-high">Mini Isolator</p>
-        <div class="dropdown position-input5-ticket" id="mini">
-            <select name="mini" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
 
-        <p class="position-text6-high">Pusing Lampu</p>
-        <div class="dropdown position-input6-ticket" id="pusing">
-            <select name="pusing" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
+                    <p class="position-text4-high">Cable 1x16</p>
+                    <div class="dropdown position-input4-ticket" id="cable">
+                        <select name="cable" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
 
-        <p class="position-text7-high">Jumper Lantern</p>
-        <div class="dropdown position-input7-ticket" id="jumperlantern">
-            <select name="jumperlantern" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
+                    <p class="position-text5-high">Mini Isolator</p>
+                    <div class="dropdown position-input5-ticket" id="mini">
+                        <select name="mini" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
 
-        <p class="position-text8-high">Jumper Service</p>
-        <div class="dropdown position-input8-ticket" id="jumperservice">
-            <select name="jumperservice" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
- 
-        <p class="position-text9-high">J hook</p>
-        <div class="dropdown position-input9-ticket" id="hook">
-            <select name="hook" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
+                    <p class="position-text6-high">Pusing Lampu</p>
+                    <div class="dropdown position-input6-ticket" id="pusing">
+                        <select name="pusing" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
 
-        <p class="position-text10-high">Creepers</p>
-        <div class="dropdown position-input10-ticket" id="creepers">
-            <select name="creepers" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
+                    <p class="position-text7-high">Jumper Lantern</p>
+                    <div class="dropdown position-input7-ticket" id="jumperlantern">
+                        <select name="jumperlantern" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
 
-        <p class="position-text11-high">Color Code</p>
-        <div class="dropdown position-input11-ticket" id="color">
-            <select name="color" class="dropdown-select">
-                    <option value="merah">merah</option>
-                    <option value="kuning">kuning</option>
-                    <option value="hijau">hijau</option>
-                    <option value="biru">biru</option>
-                    <option value="pink">pink</option>
-                    <option value="hitam">hitam</option>
-                    <option value="putih">putih</option>
-            </select>
-        </div>
+                    <p class="position-text8-high">Jumper Service</p>
+                    <div class="dropdown position-input8-ticket" id="jumperservice">
+                        <select name="jumperservice" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
 
-        
-        <p class="position-text12-high">Nama Chargeman</p>
-        <input class="input-box position-input12-ticket" type="text" name="man" id="man">
+                    <p class="position-text9-high">J hook</p>
+                    <div class="dropdown position-input9-ticket" id="hook">
+                        <select name="hook" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
 
-        <p class="position-text13-high">Nama Helper</p>
-        <input class="input-box position-input13-ticket" type="text" name="helper" id="helper">
+                    <p class="position-text10-high">Creepers</p>
+                    <div class="dropdown position-input10-ticket" id="creepers">
+                        <select name="creepers" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
 
-        <p class="position-text14-high">Nama Driver</p>
-        <input class="input-box position-input14-ticket" type="text" name="driver" id="driver">
+                    <p class="position-text11-high">Color Code</p>
+                    <div class="dropdown position-input11-ticket" id="color">
+                        <select name="color" class="dropdown-select">
+                            <option value="merah">merah</option>
+                            <option value="kuning">kuning</option>
+                            <option value="hijau">hijau</option>
+                            <option value="biru">biru</option>
+                            <option value="pink">pink</option>
+                            <option value="hitam">hitam</option>
+                            <option value="putih">putih</option>
+                        </select>
+                    </div>
 
-        <p class="position-text15-high">Shift</p>
-        <div class="dropdown position-input15-ticket" id="shift">
-            <select name="shift" class="dropdown-select">
-                    <option value="pagi">Pagi</option>
-                    <option value="petang">Petang</option>
-                    <option value="weekend">Hari Minggu</option>
-            </select>
-        </div>
 
-        <p class="position-text16-high">Category</p>
-        <div class="dropdown position-input16-ticket" id="category">
-            <select name="category" class="dropdown-select">
-                    <option value="baik">Kredit/Baik</option>
-                    <option value="rosak">Kredit/Rosak</option>
-                    <option value="skrap">Skrap</option>
-            </select>
-        </div>
+                    <p class="position-text12-high">Nama Chargeman</p>
+                    <input class="input-box position-input12-ticket" type="text" name="man" id="man">
 
-    <p class="position-text17-high">Jenis Lampu</p>
-        <div class="dropdown position-input17-ticket" id="jenislampu">
-            <select name="jenislampu" class="dropdown-select">
-                <option value="AMAT SINAR ">AMAT SINAR </option>
-                <option value="MUAR LITE ">MUAR LITE </option>
-                <option value="PRIMELUX ">PRIMELUX </option>
-                <option value="NIKKON ">NIKKON </option>
-                <option value="PHILIP ">PHILIP </option>
-                <option value="KINGSON ">KINGSON </option>
-                <option value="MILAN ">MILAN</option>
-            </select>
-        </div>
+                    <p class="position-text13-high">Nama Helper</p>
+                    <input class="input-box position-input13-ticket" type="text" name="helper" id="helper">
 
-       
-        <div class="footnoteticket1">
-            
-            <div class="upload-btn-wrapper position-upload-ticket1">
-                <!--<button class="btnss" name="gambartiang" id="tiang">Gambar Tiang</button>
+                    <p class="position-text14-high">Nama Driver</p>
+                    <input class="input-box position-input14-ticket" type="text" name="driver" id="driver">
+
+                    <p class="position-text15-high">Shift</p>
+                    <div class="dropdown position-input15-ticket" id="shift">
+                        <select name="shift" class="dropdown-select">
+                            <option value="pagi">Pagi</option>
+                            <option value="petang">Petang</option>
+                            <option value="weekend">Hari Minggu</option>
+                        </select>
+                    </div>
+
+                    <p class="position-text16-high">Category</p>
+                    <div class="dropdown position-input16-ticket" id="category">
+                        <select name="category" class="dropdown-select">
+                            <option value="baik">Kredit/Baik</option>
+                            <option value="rosak">Kredit/Rosak</option>
+                            <option value="skrap">Skrap</option>
+                        </select>
+                    </div>
+
+                    <p class="position-text17-high">Jenis Lampu</p>
+                    <div class="dropdown position-input17-ticket" id="jenislampu">
+                        <select name="jenislampu" class="dropdown-select">
+                            <option value="AMAT SINAR ">AMAT SINAR </option>
+                            <option value="MUAR LITE ">MUAR LITE </option>
+                            <option value="PRIMELUX ">PRIMELUX </option>
+                            <option value="NIKKON ">NIKKON </option>
+                            <option value="PHILIP ">PHILIP </option>
+                            <option value="KINGSON ">KINGSON </option>
+                            <option value="MILAN ">MILAN</option>
+                        </select>
+                    </div>
+
+
+                    <div class="footnoteticket1">
+
+                        <div class="upload-btn-wrapper position-upload-ticket1">
+                            <!--<button class="btnss" name="gambartiang" id="tiang">Gambar Tiang</button>
                 <input type="file" name="gambartiang" />-->
-                <a onclick="goCamera3()" class="btnss" name="gambarselepas" id="gambarselepas">Gambar Selepas</a>
-            </div>
+                            <a onclick="goCamera3()" class="btnss" name="gambarselepas" id="gambarselepas">Gambar
+                                Selepas</a>
+                        </div>
+                    </div>
+
+                </form>
+                <div class="footnoteticket2"></div>
+                <div onclick="save()" class="buttonSimpan position-button-simpan-input-ticket1">Simpan</div>
+                <div onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-input-ticket1">Seterusnya
+                </div>
+                <footer id="footer"></footer>
+                <div class="input_container">
+                </div>
+            </section>
         </div>
-  
-    </form>
-    <div class="footnoteticket2"></div>
-    <div onclick="save()" class="buttonSimpan position-button-simpan-input-ticket1">Simpan</div>
-    <div onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-input-ticket1">Seterusnya</div>
-    <footer id="footer"></footer>
-    <div class="input_container">
-    </div>
-</section>
-</div>
-</main>
+    </main>
 </body>
 
 <script type="text/javascript" src="../js/script.js"></script>
 
 
 <script>
-
-    
-function checkTemp() {
+    function checkTemp() {
         getItem();
     }
 
@@ -325,6 +325,7 @@ function checkTemp() {
     function aduan() {
         window.location.href = "aduan.html";
     }
+
     function aduan2() {
         window.location.href = "aduan2.html";
     }
@@ -343,54 +344,43 @@ function checkTemp() {
 
     function nextPage() {
 
-        var formData = app.form.convertToData('#formaduan2');
+        var gambarselepasURI = localStorage.getItem("gambarselepasURI");
 
-    var formreg = formData.sclamp;   
-    var formreg2 = formData.rentis;
-    var formreg3 = formData.dead;
-    var formreg4 = formData.cable;
-    var formreg5 = formData.mini;   
-    var formreg6 = formData.pusing;
-    var formreg7 = formData.jumperlantern;
-    var formreg8 = formData.jumperservice;
-    var formreg9 = formData.hook;   
-    var formreg10 = formData.creepers;
-    var formreg11= formData.color;
-    var formreg12= formData.man;
-    var formreg13= formData.helper;
-    var formreg14 = formData.driver;
-    var formreg15 = formData.shift;
-    var formreggg =formData.category;
-    var formregii = formData.jenislampu;
+        if (gambarselepasURI == null || gambarselepasURI == '') {
+            alert("Please select gambar for gambar selepas!!");
+            window.location.href = "tiangselepas.html";
+        } else if (gambarselepasURI != null || gambarselepasURI != '') {
+            var formData = app.form.convertToData('#formaduan2');
 
-   
-
-        localStorage.setItem("sclamp", formData.sclamp);
-        localStorage.setItem("rentis", formData.rentis);
-        localStorage.setItem("dead", formData.dead);
-        localStorage.setItem("mini", formData.mini);
-        localStorage.setItem("pusing", formData.pusing);
-        localStorage.setItem("jumperlantern", formData.jumperlantern);
-        localStorage.setItem("jumperservice", formData.jumperservice);
-        localStorage.setItem("hook", formData.hook);
-        localStorage.setItem("creepers", formData.creepers);
-        localStorage.setItem("color", formData.color);
-        localStorage.setItem("man", formData.man);
-        localStorage.setItem("helper", formData.helper);
-        localStorage.setItem("driver", formData.driver);
-        localStorage.setItem("shift", formData.shift);
-        localStorage.setItem("category", formData.category);
-        localStorage.setItem("jenislampu", formData.jenislampu );
-        localStorage.setItem("editaduan", "2");
+            localStorage.setItem("sclamp", formData.sclamp);
+            localStorage.setItem("rentis", formData.rentis);
+            localStorage.setItem("dead", formData.dead);
+            localStorage.setItem("mini", formData.mini);
+            localStorage.setItem("pusing", formData.pusing);
+            localStorage.setItem("jumperlantern", formData.jumperlantern);
+            localStorage.setItem("jumperservice", formData.jumperservice);
+            localStorage.setItem("hook", formData.hook);
+            localStorage.setItem("creepers", formData.creepers);
+            localStorage.setItem("color", formData.color);
+            localStorage.setItem("man", formData.man);
+            localStorage.setItem("helper", formData.helper);
+            localStorage.setItem("driver", formData.driver);
+            localStorage.setItem("shift", formData.shift);
+            localStorage.setItem("category", formData.category);
+            localStorage.setItem("jenislampu", formData.jenislampu);
+            localStorage.setItem("editaduan", "2");
 
             window.location.href = "aduan3.html";
- 
+
+        }
+
 
     }
 
     function getPembumian() {
         var pembumian = app.form.convertToData('#pembumian');
-        var passPembumian = pembumian.pembumian;a
+        var passPembumian = pembumian.pembumian;
+        a
         return passPembumian;
     }
 
@@ -424,31 +414,31 @@ function checkTemp() {
     }
 
     function post() {
-        
-     
+
+
     }
 
     function save() {
         var formData = app.form.convertToData('#formaduan2');
 
-        var formreg = formData.sclamp;   
-    var formreg2 = formData.rentis;
-    var formreg3 = formData.dead;
-    var formreg4 = formData.cable;
-    var formreg5 = formData.mini;   
-    var formreg6 = formData.pusing;
-    var formreg7 = formData.jumperlantern;
-    var formreg8 = formData.jumperservice;
-    var formreg9 = formData.hook;   
-    var formreg10 = formData.creepers;
-    var formreg11= formData.color;
-    var formreg12= formData.man;
-    var formreg13= formData.helper;
-    var formreg14 = formData.driver;
-    var formreg15 = formData.shift;
-   
+        var formreg = formData.sclamp;
+        var formreg2 = formData.rentis;
+        var formreg3 = formData.dead;
+        var formreg4 = formData.cable;
+        var formreg5 = formData.mini;
+        var formreg6 = formData.pusing;
+        var formreg7 = formData.jumperlantern;
+        var formreg8 = formData.jumperservice;
+        var formreg9 = formData.hook;
+        var formreg10 = formData.creepers;
+        var formreg11 = formData.color;
+        var formreg12 = formData.man;
+        var formreg13 = formData.helper;
+        var formreg14 = formData.driver;
+        var formreg15 = formData.shift;
 
-    localStorage.setItem("sclamp", formData.sclamp);
+
+        localStorage.setItem("sclamp", formData.sclamp);
         localStorage.setItem("rentis", formData.rentis);
         localStorage.setItem("dead", formData.dead);
         localStorage.setItem("mini", formData.mini);
@@ -463,7 +453,7 @@ function checkTemp() {
         localStorage.setItem("driver", formData.driver);
         localStorage.setItem("shift", formData.shift);
         localStorage.setItem("category", formData.category);
-        localStorage.setItem("jenislampu", formData.jenislampu );
+        localStorage.setItem("jenislampu", formData.jenislampu);
         localStorage.setItem("editaduan", "2");
 
 
@@ -472,6 +462,6 @@ function checkTemp() {
 </script>
 
 
-    
+
 
 </html>

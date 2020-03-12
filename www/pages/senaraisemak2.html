@@ -2,204 +2,204 @@
 <html>
 
 <head>
- 
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <script type="text/javascript" src="../cordova.js"></script>
-        <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="../js/framework7.js"></script>
-        <script type="text/javascript" src="../js/framework7.min.js"></script>
-        <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
-        <script type="text/javascript" src="../js/index.js"></script>
-        <link rel="stylesheet" type="text/css" href="../css/index.css">
-        <link rel="stylesheet" type="text/css" href="../css/input.css">
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
-        <link rel="stylesheet" type="text/css" href="../css/index.css">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>ProLight</title>
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../cordova.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/framework7.js"></script>
+    <script type="text/javascript" src="../js/framework7.min.js"></script>
+    <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/input.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>ProLight</title>
 </head>
 
 <body class="reg">
-        <header>
-                <div class="hamburger">
-                    <i class="fas fa-bars"></i>
-                    <i class="fas fa-times"></i>
-                </div>
-                <nav class="sidebar">
-                    <ul class="nav-list">
-                        <li class="nav-item">
-                            <a onclick="goHome()" class="nav-link current">
-                                <i class="fas fa-home"></i>Menu Utama
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item">
-                                <a onclick="goSenarai()" class="nav-link">
-                                    <i class="fas fa-address-card"></i>Senarai Tugas
-                                </a>
-                            </li>
-                        <li class="nav-item">
-                            <a onclick="goStatus()" class="nav-link">
-                                <i class="fas fa-briefcase"></i>Status Laporan
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item">
-                                <a onclick="goStatistik()" class="nav-link">
-                                    <i class="fas fa-blog"></i>Statistik Tugasan
-                                </a>
-                            </li>
-        
-                            <li class="nav-item">
-                                    <a onclick="goPapan()"class="nav-link">
-                                        <i class="fas fa-envelope"></i>Papan Skor
-                                    </a>
-                                </li>
-                    </ul>
-                </nav>
-            </header>
-        
-            <main>
-                <div class="zoom-content">
-                    <section>
-    <div class="row position-stepper-high4">
-        <div class="col-xs-12 col-md-8 offset-md-2 block border">
-            <div class="wrapper-progressBar">
-                <ul class="progressBar">
-                    <li class="active">Jenis Kerja</li>
-                    <li class="active" onclick="senaraisemak()">Senarai Semak</li>
-                    <li class="active"onclick="senaraisemak2()">Senarai Semak 2</li>
-                    <li>Hantar</li>
-                </ul>
-            </div>
+    <header>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times"></i>
         </div>
-    </div>
+        <nav class="sidebar">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a onclick="goHome()" class="nav-link current">
+                        <i class="fas fa-home"></i>Menu Utama
+                    </a>
+                </li>
 
-    <form id="senaraisemak2">
-    <p class="position-text1-high"><b>Kotak Panel</b></p>
+                <li class="nav-item">
+                    <a onclick="goSenarai()" class="nav-link">
+                        <i class="fas fa-address-card"></i>Senarai Tugas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a onclick="goStatus()" class="nav-link">
+                        <i class="fas fa-briefcase"></i>Status Laporan
+                    </a>
+                </li>
 
-    <p class="position-text2-high">Keadaan Panel</p>
-    <div class="dropdown position-input2-ticket">
-        <select name="keadaanpanel" class="dropdown-select">
-            <option value="Rosak">Rosak</option>
-            <option value="Bersih">Bersih</option>
-            <option value="Kotor">Kotor</option>
-            <option value="Baik">Baik</option>
+                <li class="nav-item">
+                    <a onclick="goStatistik()" class="nav-link">
+                        <i class="fas fa-blog"></i>Statistik Tugasan
+                    </a>
+                </li>
 
-        </select>
-    </div>
+                <li class="nav-item">
+                    <a onclick="goPapan()" class="nav-link">
+                        <i class="fas fa-envelope"></i>Papan Skor
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-    <p class="position-text3-high">Lampu</p>
-    <div class="dropdown position-input3-ticket">
-        <select name="lampu" class="dropdown-select">
-            <option value="Ada">Ada</option>
-            <option value="Tiada">Tiada</option>
-            <option value="Baik">Baik</option>
-            <option value="Rosak">Rosak</option>
+    <main>
+        <div class="zoom-content">
+            <section>
+                <div class="row position-stepper-high4">
+                    <div class="col-xs-12 col-md-8 offset-md-2 block border">
+                        <div class="wrapper-progressBar">
+                            <ul class="progressBar">
+                                <li class="active">Jenis Kerja</li>
+                                <li class="active" onclick="senaraisemak()">Senarai Semak</li>
+                                <li class="active" onclick="senaraisemak2()">Senarai Semak 2</li>
+                                <li>Hantar</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-        </select>
-    </div>
+                <form id="senaraisemak2">
+                    <p class="position-text1-high"><b>Kotak Panel</b></p>
 
+                    <p class="position-text2-high">Keadaan Panel</p>
+                    <div class="dropdown position-input2-ticket">
+                        <select name="keadaanpanel" class="dropdown-select">
+                            <option value="Rosak">Rosak</option>
+                            <option value="Bersih">Bersih</option>
+                            <option value="Kotor">Kotor</option>
+                            <option value="Baik">Baik</option>
 
-    <p class="position-text4-high">Pembumian</p>
-    <div class="dropdown position-input4-ticket" id="pembumian">
-        <select name="pembumian" class="dropdown-select">
-            <option value="Tiada">Tiada</option>
-            <option value="Baik">Baik</option>
-        </select>
-    </div>
+                        </select>
+                    </div>
 
-    <div id="textPlace"></div>
+                    <p class="position-text3-high">Lampu</p>
+                    <div class="dropdown position-input3-ticket">
+                        <select name="lampu" class="dropdown-select">
+                            <option value="Ada">Ada</option>
+                            <option value="Tiada">Tiada</option>
+                            <option value="Baik">Baik</option>
+                            <option value="Rosak">Rosak</option>
 
-
-
-    <p class="position-text6-high"><b>Komponen Sesentuh</b></p>
-
-    <p class="position-text7-high">Pin Pivot</p>
-    <div class="dropdown position-input7-ticket">
-        <select name="pinpivot" class="dropdown-select">
-            <option value="Rosak">Rosak</option>
-            <option value="Baik">Baik</option>
-        </select>
-    </div>
-
-    <p class="position-text8-high">Pin Cotter</p>
-    <div class="dropdown position-input8-ticket">
-        <select name="pincotter" class="dropdown-select">
-            <option value="Rosak">Rosak</option>
-            <option value="Baik">Baik</option>
-        </select>
-    </div>
-
-    <p class="position-text9-high">Spring</p>
-    <div class="dropdown position-input9-ticket">
-        <select name="spring" class="dropdown-select">
-            <option value="Rosak">Rosak</option>
-            <option value="Baik">Baik</option>
-        </select>
-    </div>
-
-    <p class="position-text10-high">Lain-Lain</p>
-    <div class="dropdown position-input10-ticket">
-        <select name="lainlain" class="dropdown-select">
-            <option value="Rosak">Rosak</option>
-            <option value="Baik">Baik</option>
-        </select>
-    </div>
-
-    <p class="position-text11-high">Titik Sentuh</p>
-    <div class="dropdown position-input11-ticket">
-        <select name="titiksesentuh" class="dropdown-select">
-            <option value="Oksida">Oksida</option>
-            <option value="Baik">Baik</option>
-        </select>
-    </div>
-
-    <p class="position-text12-high">Gegelung</p>
-    <div class="dropdown position-input12-ticket">
-        <select name="gegelung" class="dropdown-select">
-            <option value="Rosak">Rosak</option>
-            <option value="Baik">Baik</option>
-        </select>
-    </div>
-
-    <p class="position-text13-high">Fius Minor</p>
-    <div class="dropdown position-input13-ticket">
-        <select name="fiusminor" class="dropdown-select">
-            <option value="5A">5A</option>
-            <option value="15A">15A</option>
-
-        </select>
-    </div>
-
-    <p class="position-text14-high">Catatan</p>
-    <input style="width: 70%; height: 14%; border: 2px solid black" class="position-text15-high" name="catatan" placeholder="Catatan">
-</form>
-
-    <button onclick="save()" class="buttonSimpan position-button-simpan-input">Simpan</button>
-    <button onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-input">Hantar</button>
-    <footer id="footer"></footer>
-    <div class="input_container">
+                        </select>
+                    </div>
 
 
-    </div>
+                    <p class="position-text4-high">Pembumian</p>
+                    <div class="dropdown position-input4-ticket" id="pembumian">
+                        <select name="pembumian" class="dropdown-select">
+                            <option value="Tiada">Tiada</option>
+                            <option value="Baik">Baik</option>
+                        </select>
+                    </div>
 
-</section>
-</div>
-</main>
+                    <div id="textPlace"></div>
+
+
+
+                    <p class="position-text6-high"><b>Komponen Sesentuh</b></p>
+
+                    <p class="position-text7-high">Pin Pivot</p>
+                    <div class="dropdown position-input7-ticket">
+                        <select name="pinpivot" class="dropdown-select">
+                            <option value="Rosak">Rosak</option>
+                            <option value="Baik">Baik</option>
+                        </select>
+                    </div>
+
+                    <p class="position-text8-high">Pin Cotter</p>
+                    <div class="dropdown position-input8-ticket">
+                        <select name="pincotter" class="dropdown-select">
+                            <option value="Rosak">Rosak</option>
+                            <option value="Baik">Baik</option>
+                        </select>
+                    </div>
+
+                    <p class="position-text9-high">Spring</p>
+                    <div class="dropdown position-input9-ticket">
+                        <select name="spring" class="dropdown-select">
+                            <option value="Rosak">Rosak</option>
+                            <option value="Baik">Baik</option>
+                        </select>
+                    </div>
+
+                    <p class="position-text10-high">Lain-Lain</p>
+                    <div class="dropdown position-input10-ticket">
+                        <select name="lainlain" class="dropdown-select">
+                            <option value="Rosak">Rosak</option>
+                            <option value="Baik">Baik</option>
+                        </select>
+                    </div>
+
+                    <p class="position-text11-high">Titik Sentuh</p>
+                    <div class="dropdown position-input11-ticket">
+                        <select name="titiksesentuh" class="dropdown-select">
+                            <option value="Oksida">Oksida</option>
+                            <option value="Baik">Baik</option>
+                        </select>
+                    </div>
+
+                    <p class="position-text12-high">Gegelung</p>
+                    <div class="dropdown position-input12-ticket">
+                        <select name="gegelung" class="dropdown-select">
+                            <option value="Rosak">Rosak</option>
+                            <option value="Baik">Baik</option>
+                        </select>
+                    </div>
+
+                    <p class="position-text13-high">Fius Minor</p>
+                    <div class="dropdown position-input13-ticket">
+                        <select name="fiusminor" class="dropdown-select">
+                            <option value="5A">5A</option>
+                            <option value="15A">15A</option>
+
+                        </select>
+                    </div>
+
+                    <p class="position-text14-high">Catatan</p>
+                    <input style="width: 70%; height: 14%; border: 2px solid black" class="position-text15-high"
+                        name="catatan" placeholder="Catatan">
+                </form>
+
+                <button onclick="save()" class="buttonSimpan position-button-simpan-input">Simpan</button>
+                <button onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-input">Hantar</button>
+                <footer id="footer"></footer>
+                <div class="input_container">
+
+
+                </div>
+
+            </section>
+        </div>
+    </main>
 </body>
 
 <script type="text/javascript" src="../js/script.js"></script>
 
 <script>
-
-function checkTemp() {
+    function checkTemp() {
         getItem();
     }
 
@@ -215,12 +215,26 @@ function checkTemp() {
         document.getElementById('gegelung').value = localStorage.getItem("gegelung");
         document.getElementById('fiusminor').value = localStorage.getItem("fiusminor");
         document.getElementById('catatan').value = localStorage.getItem("catatan");
-    
+
     }
+
+    Object.objsize = function (obj) {
+        var size = 0,
+            key;
+
+        for (key in obj) {
+            if (obj.hasOwnProperty(key))
+                size++;
+        }
+
+        return size;
+
+    };
 
     function senaraisemak() {
         window.location.href = "senaraisemak.html";
     }
+
     function senaraisemak2() {
         window.location.href = "senaraisemak2.html";
     }
@@ -236,7 +250,7 @@ function checkTemp() {
     function nextPage() {
 
         var formData = app.form.convertToData('#senaraisemak2');
-    
+
 
         var formreg = formData.keadaanpanel;
         var formreg6 = formData.lampu;
@@ -250,10 +264,10 @@ function checkTemp() {
         var formreg14 = formData.fiusminor;
         var formreg15 = formData.catatan;
 
-         //get from localstorage value from jeniskerja.html page
-         var drh= localStorage.getItem("daerah");
-        var kmpln= localStorage.getItem("kumpulan");
-        var jkerja= localStorage.getItem("jenisKerja");
+        //get from localstorage value from jeniskerja.html page
+        var drh = localStorage.getItem("daerah");
+        var kmpln = localStorage.getItem("kumpulan");
+        var jkerja = localStorage.getItem("jenisKerja");
 
 
         localStorage.setItem("keadaanpanel", formData.keadaanpanel);
@@ -278,7 +292,7 @@ function checkTemp() {
         var g = localStorage.getItem("lampu250");
         var h = localStorage.getItem("voltan");
         var i = localStorage.getItem("arus");
-        var j= localStorage.getItem("pecu");
+        var j = localStorage.getItem("pecu");
         var k = localStorage.getItem("suismasa");
         var l = localStorage.getItem("kerosakan");
         var m = localStorage.getItem("terminal");
@@ -286,32 +300,212 @@ function checkTemp() {
         var o = localStorage.getItem("sesentuh");
         var p = localStorage.getItem("gasket");
 
+        var data = {};
+        data[0] = {
+            "Daerah": drh,
+            "Kumpulan": kmpln,
+            "JenisKerja": jkerja,
+            "Stesen": a,
+            "Penyelia": b,
+            "TarikhSenggaraan": c,
+            "Tempat": d,
+            "Lampu100": e,
+            "Lampu150": f,
+            "Lampu250": g,
+            "Voltan": h,
+            "Arus": i,
+            "Pecu": j,
+            "SuisMasa": k,
+            "Kerosakan": l,
+            "Terminal": m,
+            "Fius": n,
+            "Sesentuh": o,
+            "Gasket": p,
+            "KeadaanPanel": formreg,
+            "Lampu": formreg6,
+            "Pembumian": formreg7,
+            "PinPivot": formreg8,
+            "PinCotter": formreg9,
+            "Spring": formreg10,
+            "LainLain": formreg11,
+            "TitikSesentuh": formreg12,
+            "Gegelung": formreg13,
+            "FiusMinor": formreg14,
+            "Catatan": formreg15
+        };
+        localStorage.setItem('listPendingTemp', JSON.stringify(data));
 
-        var dataFormreg = {"daerah":drh,"kumpulan":kmpln,"jenisKerja":jkerja,
-            
-            "stesen": a,"penyelia":b,"tarikhsenggaraan":c,"tempat":d,"lampu100": e,"lampu150" : f,
-        "lampu250":g , "voltan":h, "arus":i, "pecu":j ,
-        "suismasa":k, "kerosakan":l, "terminal":m,"fius":n,
-        "sesentuh":o, "gasket":p,
 
-        "keadaanpanel": formreg,"lampu": formreg6,"pembumian" : formreg7,
-        "pinpivot":formreg8 , "pincotter":formreg9, "spring":formreg10, 
-        "lainlain":formreg11 , "titiksesentuh":formreg12 , "gegelung":formreg13, 
-        "fiusminor":formreg14,"catatan":formreg15};
+        var listPending = JSON.parse(localStorage.getItem('listPending'));
+        var sizeOfList = Object.objsize(listPending);
+        if (sizeOfList == 0) {
+            localStorage.setItem('listPending', JSON.stringify(data));
+        } else if (sizeOfList > 0) {
+            var dataTemp = {};
+            for (i = 0; i < sizeOfList; i++) {
+                if (listPending[i] == undefined) {
+                    var listPending = JSON.parse(localStorage.getItem('listPendingTemp'));
+                    dataTemp[i] = {
+                        "Daerah": listPending[0].Daerah,
+                        "Kumpulan": listPending[0].Kumpulan,
+                        "JenisKerja": listPending[0].JenisKerja,
+                        "Stesen": listPending[0].Stesen,
+                        "Penyelia": listPending[0].Penyelia,
+                        "TarikhSenggaraan": listPending[0].TarikhSenggaraan,
+                        "Tempat": listPending[0].Tempat,
+                        "Lampu100": listPending[0].Lampu100,
+                        "Lampu150": listPending[0].Lampu150,
+                        "Lampu250": listPending[0].Lampu250,
+                        "Voltan": listPending[0].Voltan,
+                        "Arus": listPending[0].Arus,
+                        "Pecu": listPending[0].Pecu,
+                        "SuisMasa": listPending[0].SuisMasa,
+                        "Kerosakan": listPending[0].Kerosakan,
+                        "Terminal": listPending[0].Terminal,
+                        "Fius": listPending[0].Fius,
+                        "Sesentuh": listPending[0].Sesentuh,
+                        "Gasket": listPending[0].Gasket,
+                        "KeadaanPanel": listPending[0].KeadaanPanel,
+                        "Lampu": listPending[0].Lampu,
+                        "Pembumian": listPending[0].Pembumian,
+                        "PinPivot": listPending[0].PinPivot,
+                        "PinCotter": listPending[0].PinCotter,
+                        "Spring": listPending[0].Spring,
+                        "LainLain": listPending[0].LainLain,
+                        "TitikSesentuh": listPending[0].TitikSesentuh,
+                        "Gegelung": listPending[0].Gegelung,
+                        "FiusMinor": listPending[0].FiusMinor,
+                        "Catatan": listPending[0].Catatan
+                    };
+                    break;
+                } else {
+                    dataTemp[i] = {
+                        "Daerah": listPending[0].Daerah,
+                        "Kumpulan": listPending[0].Kumpulan,
+                        "JenisKerja": listPending[0].JenisKerja,
+                        "Stesen": listPending[0].Stesen,
+                        "Penyelia": listPending[0].Penyelia,
+                        "TarikhSenggaraan": listPending[0].TarikhSenggaraan,
+                        "Tempat": listPending[0].Tempat,
+                        "Lampu100": listPending[0].Lampu100,
+                        "Lampu150": listPending[0].Lampu150,
+                        "Lampu250": listPending[0].Lampu250,
+                        "Voltan": listPending[0].Voltan,
+                        "Arus": listPending[0].Arus,
+                        "Pecu": listPending[0].Pecu,
+                        "SuisMasa": listPending[0].SuisMasa,
+                        "Kerosakan": listPending[0].Kerosakan,
+                        "Terminal": listPending[0].Terminal,
+                        "Fius": listPending[0].Fius,
+                        "Sesentuh": listPending[0].Sesentuh,
+                        "Gasket": listPending[0].Gasket,
+                        "KeadaanPanel": listPending[0].KeadaanPanel,
+                        "Lampu": listPending[0].Lampu,
+                        "Pembumian": listPending[0].Pembumian,
+                        "PinPivot": listPending[0].PinPivot,
+                        "PinCotter": listPending[0].PinCotter,
+                        "Spring": listPending[0].Spring,
+                        "LainLain": listPending[0].LainLain,
+                        "TitikSesentuh": listPending[0].TitikSesentuh,
+                        "Gegelung": listPending[0].Gegelung,
+                        "FiusMinor": listPending[0].FiusMinor,
+                        "Catatan": listPending[0].Catatan
+                    };
+                }
+                /*;*/
+
+            }
+            var i = sizeOfList;
+            //var listPending = JSON.parse(localStorage.getItem('listPendingTemp'));
+
+            dataTemp[i] = {
+                "Daerah": drh,
+                "Kumpulan": kmpln,
+                "JenisKerja": jkerja,
+                "Stesen": a,
+                "Penyelia": b,
+                "TarikhSenggaraan": c,
+                "Tempat": d,
+                "Lampu100": e,
+                "Lampu150": f,
+                "Lampu250": g,
+                "Voltan": h,
+                "Arus": i,
+                "Pecu": j,
+                "SuisMasa": k,
+                "Kerosakan": l,
+                "Terminal": m,
+                "Fius": n,
+                "Sesentuh": o,
+                "Gasket": p,
+                "KeadaanPanel": formreg,
+                "Lampu": formreg6,
+                "Pembumian": formreg7,
+                "PinPivot": formreg8,
+                "PinCotter": formreg9,
+                "Spring": formreg10,
+                "LainLain": formreg11,
+                "TitikSesentuh": formreg12,
+                "Gegelung": formreg13,
+                "FiusMinor": formreg14,
+                "Catatan": formreg15
+            };
+
+            localStorage.setItem('listPending', JSON.stringify(dataTemp));
+
+        }
+        localStorage.removeItem("NumberOfObject");
+        window.location.href = "laporanDraft.html";
+        /*var dataFormreg = {
+            "daerah": drh,
+            "kumpulan": kmpln,
+            "jenisKerja": jkerja,
+
+            "stesen": a,
+            "penyelia": b,
+            "tarikhsenggaraan": c,
+            "tempat": d,
+            "lampu100": e,
+            "lampu150": f,
+            "lampu250": g,
+            "voltan": h,
+            "arus": i,
+            "pecu": j,
+            "suismasa": k,
+            "kerosakan": l,
+            "terminal": m,
+            "fius": n,
+            "sesentuh": o,
+            "gasket": p,
+
+            "keadaanpanel": formreg,
+            "lampu": formreg6,
+            "pembumian": formreg7,
+            "pinpivot": formreg8,
+            "pincotter": formreg9,
+            "spring": formreg10,
+            "lainlain": formreg11,
+            "titiksesentuh": formreg12,
+            "gegelung": formreg13,
+            "fiusminor": formreg14,
+            "catatan": formreg15
+        };
 
         //alert(dataFormreg);
         var dataString = JSON.stringify(dataFormreg);
         $.ajax({
-                    url: 'http://1.32.96.10/ProLight/mimi/senaraisemak.php',
-                    data: {myData: dataString},
-                    type: 'POST',
-                    success: function(response){
-                        alert(response);
-                        window.location.replace("laporan3.html");
-                        }
-                    });
-                   
-        
+            url: 'http://1.32.96.10/ProLight/mimi/senaraisemak.php',
+            data: {
+                myData: dataString
+            },
+            type: 'POST',
+            success: function (response) {
+                alert(response);
+                window.location.replace("laporan3.html");
+            }
+        });*/
+
+
 
 
     }
@@ -357,7 +551,7 @@ function checkTemp() {
 
     function save() {
 
-        
+
         var formData = app.form.convertToData('#senaraisemak2');
 
         var formreg = formData.keadaanpanel;
@@ -394,7 +588,7 @@ function checkTemp() {
         var g = localStorage.getItem("lampu250");
         var h = localStorage.getItem("voltan");
         var i = localStorage.getItem("arus");
-        var j= localStorage.getItem("pecu");
+        var j = localStorage.getItem("pecu");
         var k = localStorage.getItem("suismasa");
         var l = localStorage.getItem("kerosakan");
         var m = localStorage.getItem("terminal");
@@ -402,17 +596,38 @@ function checkTemp() {
         var o = localStorage.getItem("sesentuh");
         var p = localStorage.getItem("gasket");
 
- 
 
-        var dataFormreg = {"stesen": a,"penyelia":b,"tarikhsenggaraan":c,"tempat":d,"lampu100": e,"lampu150" : f,
-        "lampu250":g , "voltan":h, "arus":i, "pecu":j ,
-        "suismasa":k, "kerosakan":l, "terminal":m,"fius":n,
-        "sesentuh":o, "gasket":p,
 
-        "keadaanpanel": formreg,"lampu": formreg6,"pembumian" : formreg7,
-        "pinpivot":formreg8 , "pincotter":formreg9, "spring":formreg10, 
-        "lainlain":formreg11 , "titiksesentuh":formreg12 , "gegelung":formreg13, 
-        "fiusminor":formreg14,"catatan":formreg15};
+        var dataFormreg = {
+            "stesen": a,
+            "penyelia": b,
+            "tarikhsenggaraan": c,
+            "tempat": d,
+            "lampu100": e,
+            "lampu150": f,
+            "lampu250": g,
+            "voltan": h,
+            "arus": i,
+            "pecu": j,
+            "suismasa": k,
+            "kerosakan": l,
+            "terminal": m,
+            "fius": n,
+            "sesentuh": o,
+            "gasket": p,
+
+            "keadaanpanel": formreg,
+            "lampu": formreg6,
+            "pembumian": formreg7,
+            "pinpivot": formreg8,
+            "pincotter": formreg9,
+            "spring": formreg10,
+            "lainlain": formreg11,
+            "titiksesentuh": formreg12,
+            "gegelung": formreg13,
+            "fiusminor": formreg14,
+            "catatan": formreg15
+        };
         window.location.href = "laporan2.html";
     }
 </script>

@@ -1,157 +1,158 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <script type="text/javascript" src="../cordova.js"></script>
-        <script
-        src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-        crossorigin="anonymous"></script>
-        <script type="text/javascript" src="../js/framework7.js"></script>
-        <script type="text/javascript" src="../js/framework7.min.js"></script>
-        <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
-        <script type="text/javascript" src="../js/index.js"></script>
-        <link rel="stylesheet" type="text/css" href="../css/index.css">
-        <link rel="stylesheet" type="text/css" href="../css/input.css">
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
-        <link rel="stylesheet" type="text/css" href="../css/index.css">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>ProLight</title>
+
+<head>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../cordova.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/framework7.js"></script>
+    <script type="text/javascript" src="../js/framework7.min.js"></script>
+    <script type="text/javascript" src="../js/framework7.bundle.min.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/input.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>ProLight</title>
 </head>
 
 
 <body onload="checkTemp()">
-        <header>
-                <div class="hamburger">
-                    <i class="fas fa-bars"></i>
-                    <i class="fas fa-times"></i>
+    <header>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times"></i>
+        </div>
+        <nav class="sidebar">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a onclick="goHome()" class="nav-link current">
+                        <i class="fas fa-home"></i>Menu Utama
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a onclick="goSenarai()" class="nav-link">
+                        <i class="fas fa-address-card"></i>Senarai Tugas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a onclick="goStatus()" class="nav-link">
+                        <i class="fas fa-briefcase"></i>Status Laporan
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a onclick="goStatistik()" class="nav-link">
+                        <i class="fas fa-blog"></i>Statistik Tugasan
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a onclick="goPapan()" class="nav-link">
+                        <i class="fas fa-envelope"></i>Papan Skor
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="zoom-content">
+            <section>
+                <div class="row position-stepper-high4">
+                    <div class="col-xs-12 col-md-8 offset-md-2 block border">
+                        <div class="wrapper-progressBar">
+                            <ul class="progressBar">
+                                <li class="active">Jenis Kerja</li>
+                                <li class="active">Daftar Aset</li>
+                                <li class="active">Daftar Aset 2</li>
+                                <li>Hantar</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <nav class="sidebar">
-                    <ul class="nav-list">
-                        <li class="nav-item">
-                            <a onclick="goHome()" class="nav-link current">
-                                <i class="fas fa-home"></i>Menu Utama
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item">
-                                <a onclick="goSenarai()" class="nav-link">
-                                    <i class="fas fa-address-card"></i>Senarai Tugas
-                                </a>
-                            </li>
-                        <li class="nav-item">
-                            <a onclick="goStatus()" class="nav-link">
-                                <i class="fas fa-briefcase"></i>Status Laporan
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item">
-                                <a onclick="goStatistik()" class="nav-link">
-                                    <i class="fas fa-blog"></i>Statistik Tugasan
-                                </a>
-                            </li>
-        
-                            <li class="nav-item">
-                                    <a onclick="goPapan()"class="nav-link">
-                                        <i class="fas fa-envelope"></i>Papan Skor
-                                    </a>
-                                </li>
-                    </ul>
-                </nav>
-            </header>
-        
-            <main>
-                <div class="zoom-content">
-                    <section>
-    <div class="row position-stepper-high4">
-        <div class="col-xs-12 col-md-8 offset-md-2 block border">
-            <div class="wrapper-progressBar">
-                <ul class="progressBar">
-                    <li class="active">Jenis Kerja</li>
-                    <li class="active">Daftar Aset</li>
-                    <li class="active">Daftar Aset 2</li>
-                    <li>Hantar</li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
-    
-    <form id="daftaraset2">
-        <p class="position-text1-high">Nombor Tiang</p>
-        <input class="input-box position-input1-ticket" type="text" name="notiang" id="notiang">
-   
-        <p class="position-text2-high">Team</p>
-        <div class="dropdown position-input2-ticket" id="team" name="team">
-            <select name="team" class="dropdown-select">
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
-                <option value="E">E</option> 
-                <option value="Normal">Normal</option>
-            </select>
-        </div>
 
-        <p style="position: absolute; top: 32%; left: 39%;"> Muat Naik Gambar</p>
-        <div class="upload-btn-wrapper position-upload6">
-            <a onclick="goCamera()" class="btnss" name="gambartiang" id="gambartiang">Gambar Tiang</a>
-        </div>
-        
-        <p class="position-text7-high">Jadual Selenggara</p>
-        <input class="input-box position-input7-ticket" type="text" name="selenggara" id="selenggara">
+                <form id="daftaraset2">
+                    <p class="position-text1-high">Nombor Tiang</p>
+                    <input class="input-box position-input1-ticket" type="text" name="notiang" id="notiang">
 
-        <p class="position-text8-high">Bacaan Beban selepas</p>
-        <input class="input-box position-input8-ticket" type="text" name="bacaanbebanselepas" id="bacaanbebanselepas" placeholder="25.7A">
+                    <p class="position-text2-high">Team</p>
+                    <div class="dropdown position-input2-ticket" id="team" name="team">
+                        <select name="team" class="dropdown-select">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="Normal">Normal</option>
+                        </select>
+                    </div>
 
-   
-        <p class="position-text9-high">Shift</p>
-        <div class="dropdown position-input9-ticket" id="shift">
-            <select name="shift" class="dropdown-select">
-                    <option value="pagi">Pagi</option>
-                    <option value="petang">Petang</option>
-                    <option value="weekend">Hari Minggu</option>
-            </select>
-        </div>
+                    <p style="position: absolute; top: 32%; left: 39%;"> Muat Naik Gambar</p>
+                    <div class="upload-btn-wrapper position-upload6">
+                        <a onclick="goCamera()" class="btnss" name="gambartiang" id="gambartiang">Gambar Tiang</a>
+                    </div>
 
-        <p class="position-text10-high">Jenis Lampu</p>
-        <div class="dropdown position-input10-ticket" id="jenislampu">
-            <select name="jenislampu" class="dropdown-select">
-                    <option value="pagi">LED</option>
-                    <option value="petang">Sodium</option>
-            </select>
-        </div>
+                    <p class="position-text7-high">Jadual Selenggara</p>
+                    <input class="input-box position-input7-ticket" type="text" name="selenggara" id="selenggara">
 
-        <p class="position-text11-high">Catatan</p>
-        <textarea class="input-box position-input11-ticket" style="background: #f2f2f2" rows="4" cols="50" id="catatan" name="catatan">
+                    <p class="position-text8-high">Bacaan Beban selepas</p>
+                    <input class="input-box position-input8-ticket" type="text" name="bacaanbebanselepas"
+                        id="bacaanbebanselepas" placeholder="25.7A">
+
+
+                    <p class="position-text9-high">Shift</p>
+                    <div class="dropdown position-input9-ticket" id="shift">
+                        <select name="shift" class="dropdown-select">
+                            <option value="pagi">Pagi</option>
+                            <option value="petang">Petang</option>
+                            <option value="weekend">Hari Minggu</option>
+                        </select>
+                    </div>
+
+                    <p class="position-text10-high">Jenis Lampu</p>
+                    <div class="dropdown position-input10-ticket" id="jenislampu">
+                        <select name="jenislampu" class="dropdown-select">
+                            <option value="pagi">LED</option>
+                            <option value="petang">Sodium</option>
+                        </select>
+                    </div>
+
+                    <p class="position-text11-high">Catatan</p>
+                    <textarea class="input-box position-input11-ticket" style="background: #f2f2f2" rows="4" cols="50"
+                        id="catatan" name="catatan">
         </textarea>
-    </form>
+                </form>
 
 
-    <div onclick="getSave()" class="buttonSimpan position-button-simpan-input2">Simpan</div>
-    <div onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-input2">Hantar</div>
-    <footer id="footer"></footer>
-    <div class="input_container">
+                <div onclick="getSave()" class="buttonSimpan position-button-simpan-input2">Simpan</div>
+                <div onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-input2">Hantar</div>
+                <footer id="footer"></footer>
+                <div class="input_container">
 
 
-    </div>
+                </div>
 
-</section>
-</div>
-</main>
+            </section>
+        </div>
+    </main>
 </body>
 
 <script type="text/javascript" src="../js/script.js"></script>
 
 <script>
-     function checkTemp() {
+    function checkTemp() {
         getItem();
     }
 
@@ -164,8 +165,8 @@
         document.getElementById('shift').value = localStorage.getItem("shift");
         document.getElementById('jenislampu').value = localStorage.getItem("jenislampu");
         document.getElementById('catatan').value = localStorage.getItem("catatan");
-        
-   
+
+
     }
 
     function openNav() {
@@ -200,141 +201,357 @@
         window.location.href = "papanskor.html";
     }
 
+    Object.objsize = function (obj) {
+        var size = 0,
+            key;
+
+        for (key in obj) {
+            if (obj.hasOwnProperty(key))
+                size++;
+        }
+
+        return size;
+
+    };
+
     function nextPage() {
-   
-    var formAset = app.form.convertToData('#daftaraset2');
 
-    localStorage.setItem("notiang", formAset.notiang);
-    localStorage.setItem("team", formAset.team);
-    localStorage.setItem("selenggara", formAset.selenggara);
-    localStorage.setItem("bacaanbebanselepas", formAset.bacaanbebanselepas);
-    localStorage.setItem("shift", formAset.shift);
-    localStorage.setItem("jenislampu", formAset.jenislampu);
-    localStorage.setItem("catatan", formAset.catatan);
-    localStorage.setItem("editaset", "2");
-    //alert(formAset);
- 
-    var formreg = formAset.notiang;   
-    var formreg1 = formAset.team;
-    var formreg3 = formAset.selenggara;
-    var formreg4 = formAset.bacaanbebanselepas;
-    var formreg6 = formAset.shift;
-    var formreg5 = formAset.jenislampu;
-    var formreg6 = formAset.catatan;
+        var formAset = app.form.convertToData('#daftaraset2');
 
-    //get from localstorage value from jeniskerja.html page
-    var drh= localStorage.getItem("daerah");
-    var kmpln= localStorage.getItem("kumpulan");
-    var jkerja= localStorage.getItem("jenisKerja");
-    var latitude= localStorage.getItem("latitude");
-    var longitude= localStorage.getItem("longitude");
-    var output= localStorage.getItem("output");
-    var gg= localStorage.getItem("gambartiang");
+        localStorage.setItem("notiang", formAset.notiang);
+        localStorage.setItem("team", formAset.team);
+        localStorage.setItem("selenggara", formAset.selenggara);
+        localStorage.setItem("bacaanbebanselepas", formAset.bacaanbebanselepas);
+        localStorage.setItem("shift", formAset.shift);
+        localStorage.setItem("jenislampu", formAset.jenislampu);
+        localStorage.setItem("catatan", formAset.catatan);
+        localStorage.setItem("editaset", "2");
+        //alert(formAset);
 
-    //get from localstorage value from 1st page panel.html
-    var a = localStorage.getItem("masa");
-    var b = localStorage.getItem("noakaun");
-    var c = localStorage.getItem("namaakaun");
-    var d = localStorage.getItem("jenisakaun");
-    var e = localStorage.getItem("zon");
-    var f = localStorage.getItem("namajalan");
-    var g = localStorage.getItem("puncabekalan");
-    var h = localStorage.getItem("kawalanmasa");
-    var i = localStorage.getItem("jenama");
-    var j = localStorage.getItem("size");
-    var k = localStorage.getItem("unitpemula");
-    var l = localStorage.getItem("carakawalan");
-    var m = localStorage.getItem("namapendaftar");
-    var n = localStorage.getItem("warnalampu");
-    var o = localStorage.getItem("bacaanbebansebelum");
-    
- 
+        var formreg = formAset.notiang;
+        var formreg1 = formAset.team;
+        var formreg3 = formAset.selenggara;
+        var formreg4 = formAset.bacaanbebanselepas;
+        var formreg6 = formAset.shift;
+        var formreg5 = formAset.jenislampu;
+        var formreg6 = formAset.catatan;
 
-    var dataFormaset = {"daerah":drh,"kumpulan":kmpln,"jenisKerja":jkerja,"latitude":latitude,"longitude":longitude,
-    "output":output,"gg":gambartiang,
+        //get from localstorage value from jeniskerja.html page
+        var drh = localStorage.getItem("daerah");
+        var kmpln = localStorage.getItem("kumpulan");
+        var jkerja = localStorage.getItem("jenisKerja");
+        var latitude = localStorage.getItem("latitude");
+        var longitude = localStorage.getItem("longitude");
+        var output = localStorage.getItem("output");
+        var gg = localStorage.getItem("gambartiang");
 
-        "masa":a,"noakaun":b,"namaakaun":c,
-         "jenisakaun":d,"zon":e,"namajalan":f,"puncabekalan":g,"kawalanmasa":h,
-         "jenama":i,"size":j,"unitpemula":k,"carakawalan":l,"namapendaftar":m,
-         "warnalampu":n,"bacaanbebansebelum":o,
+        //get from localstorage value from 1st page panel.html
+        var a = localStorage.getItem("masa");
+        var b = localStorage.getItem("noakaun");
+        var c = localStorage.getItem("namaakaun");
+        var d = localStorage.getItem("jenisakaun");
+        var e = localStorage.getItem("zon");
+        var f = localStorage.getItem("namajalan");
+        var g = localStorage.getItem("puncabekalan");
+        var h = localStorage.getItem("kawalanmasa");
+        var i = localStorage.getItem("jenama");
+        var j = localStorage.getItem("size");
+        var k = localStorage.getItem("unitpemula");
+        var l = localStorage.getItem("carakawalan");
+        var m = localStorage.getItem("namapendaftar");
+        var n = localStorage.getItem("warnalampu");
+        var o = localStorage.getItem("bacaanbebansebelum");
 
-         "notiang": formreg, "team":formreg1,
-         "selenggara":formreg3,"bacaanbebanselepas":formreg4,
-         "shift":formreg6 ,"jenislampu":formreg5,"catatan":formreg6};
+        var gs1 = localStorage.getItem("gambartiangURI");
+        var gs2 = localStorage.getItem("gambartiang");
 
-     var dataString = JSON.stringify(dataFormaset);
-     $.ajax({
-      
-                 url: 'http://1.32.96.10/ProLight/mimi/daftaraset.php',
-                 
-                 data: {myData: dataString},
-                 type: 'POST',
-                 success: function(response){
-                     alert(response);
-                     window.location.href = "laporan3.html";
-                     }
-                     
-                 });
-                 
+        var data = {};
+        data[0] = {
+            "Daerah": drh,
+            "Kumpulan": kmpln,
+            "JenisKerja": jkerja,
+            "Latitude": latitude,
+            "Longitude": longitude,
+            "Output": output,
+            "GambarTiang": gs1,
+            "GambarTiangURI": gs2,
+            "Masa": a,
+            "NoAkaun": b,
+            "NamaAkaun": c,
+            "JenisAkaun": d,
+            "Zon": e,
+            "NamaJalan": f,
+            "PuncaBekalan": g,
+            "KawalanMasa": h,
+            "Jenama": i,
+            "Size": j,
+            "UnitPemula": k,
+            "CaraKawalan": l,
+            "NamaPendaftar": m,
+            "WarnaLampu": n,
+            "BacaanBebanSebelum": o,
+            "NoTiang": formreg,
+            "Team": formreg1,
+            "Selenggara": formreg3,
+            "BacaanBebanSelepas": formreg4,
+            "Shift": formreg6,
+            "JenisLampu": formreg5,
+            "Catatan": formreg6
+        };
+        localStorage.setItem('listPendingTemp', JSON.stringify(data));
+
+
+        var listPending = JSON.parse(localStorage.getItem('listPending'));
+        var sizeOfList = Object.objsize(listPending);
+        if (sizeOfList == 0) {
+            localStorage.setItem('listPending', JSON.stringify(data));
+        } else if (sizeOfList > 0) {
+            var dataTemp = {};
+            for (i = 0; i < sizeOfList; i++) {
+                if (listPending[i] == undefined) {
+                    var listPending = JSON.parse(localStorage.getItem('listPendingTemp'));
+                    dataTemp[i] = {
+                        "Daerah": listPending[0].Daerah,
+                        "Kumpulan": listPending[0].Kumpulan,
+                        "JenisKerja": listPending[0].JenisKerja,
+                        "Latitude": listPending[0].Latitude,
+                        "Longitude": listPending[0].Longitude,
+                        "Output": listPending[0].Output,
+                        "GambarTiang": gs1,
+                        "GambarTiangURI": gs2,
+                        "Masa": listPending[0].Masa,
+                        "NoAkaun": listPending[0].NoAkaun,
+                        "NamaAkaun": listPending[0].NamaAkaun,
+                        "JenisAkaun": dlistPending[0].JenisAkaun,
+                        "Zon": listPending[0].Zon,
+                        "NamaJalan": listPending[0].NamaJalan,
+                        "PuncaBekalan": listPending[0].PuncaBekalan,
+                        "KawalanMasa": listPending[0].KawalanMasa,
+                        "Jenama": listPending[0].Jenama,
+                        "Size": listPending[0].Size,
+                        "UnitPemula": listPending[0].UnitPemula,
+                        "CaraKawalan": listPending[0].CaraKawalan,
+                        "NamaPendaftar": listPending[0].NamaPendaftar,
+                        "WarnaLampu": listPending[0].WarnaLampu,
+                        "BacaanBebanSebelum": listPending[0].BacaanBebanSebelum,
+                        "NoTiang": listPending[0].NoTiang,
+                        "Team": listPending[0].Team,
+                        "Selenggara": listPending[0].Selenggara,
+                        "BacaanBebanSelepas": listPending[0].BacaanBebanSelepas,
+                        "Shift": listPending[0].Shift,
+                        "JenisLampu": listPending[0].JenisLampu,
+                        "Catatan": listPending[0].Catatan
+                    };
+                    break;
+                } else {
+                    dataTemp[i] = {
+                        "Daerah": listPending[0].Daerah,
+                        "Kumpulan": listPending[0].Kumpulan,
+                        "JenisKerja": listPending[0].JenisKerja,
+                        "Latitude": listPending[0].Latitude,
+                        "Longitude": listPending[0].Longitude,
+                        "Output": listPending[0].Output,
+                        "GambarTiang": gs1,
+                        "GambarTiangURI": gs2,
+                        "Masa": listPending[0].Masa,
+                        "NoAkaun": listPending[0].NoAkaun,
+                        "NamaAkaun": listPending[0].NamaAkaun,
+                        "JenisAkaun": dlistPending[0].JenisAkaun,
+                        "Zon": listPending[0].Zon,
+                        "NamaJalan": listPending[0].NamaJalan,
+                        "PuncaBekalan": listPending[0].PuncaBekalan,
+                        "KawalanMasa": listPending[0].KawalanMasa,
+                        "Jenama": listPending[0].Jenama,
+                        "Size": listPending[0].Size,
+                        "UnitPemula": listPending[0].UnitPemula,
+                        "CaraKawalan": listPending[0].CaraKawalan,
+                        "NamaPendaftar": listPending[0].NamaPendaftar,
+                        "WarnaLampu": listPending[0].WarnaLampu,
+                        "BacaanBebanSebelum": listPending[0].BacaanBebanSebelum,
+                        "NoTiang": listPending[0].NoTiang,
+                        "Team": listPending[0].Team,
+                        "Selenggara": listPending[0].Selenggara,
+                        "BacaanBebanSelepas": listPending[0].BacaanBebanSelepas,
+                        "Shift": listPending[0].Shift,
+                        "JenisLampu": listPending[0].JenisLampu,
+                        "Catatan": listPending[0].Catatan
+                    };
+                }
+                /*;*/
+
+            }
+            var i = sizeOfList;
+            //var listPending = JSON.parse(localStorage.getItem('listPendingTemp'));
+
+            dataTemp[i] = {
+                "Daerah": drh,
+                "Kumpulan": kmpln,
+                "JenisKerja": jkerja,
+                "Latitude": latitude,
+                "Longitude": longitude,
+                "Output": output,
+                "GambarTiang": gs1,
+                "GambarTiangURI": gs2,
+                "Masa": a,
+                "NoAkaun": b,
+                "NamaAkaun": c,
+                "JenisAkaun": d,
+                "Zon": e,
+                "NamaJalan": f,
+                "PuncaBekalan": g,
+                "KawalanMasa": h,
+                "Jenama": i,
+                "Size": j,
+                "UnitPemula": k,
+                "CaraKawalan": l,
+                "NamaPendaftar": m,
+                "WarnaLampu": n,
+                "BacaanBebanSebelum": o,
+                "NoTiang": formreg,
+                "Team": formreg1,
+                "Selenggara": formreg3,
+                "BacaanBebanSelepas": formreg4,
+                "Shift": formreg6,
+                "JenisLampu": formreg5,
+                "Catatan": formreg6
+            };
+
+            localStorage.setItem('listPending', JSON.stringify(dataTemp));
+
+        }
+        localStorage.removeItem("NumberOfObject");
+        window.location.href = "laporanDraft.html";
+        /*var dataFormaset = {
+            "daerah": drh,
+            "kumpulan": kmpln,
+            "jenisKerja": jkerja,
+            "latitude": latitude,
+            "longitude": longitude,
+            "output": output,
+            "gg": gambartiang,
+
+            "masa": a,
+            "noakaun": b,
+            "namaakaun": c,
+            "jenisakaun": d,
+            "zon": e,
+            "namajalan": f,
+            "puncabekalan": g,
+            "kawalanmasa": h,
+            "jenama": i,
+            "size": j,
+            "unitpemula": k,
+            "carakawalan": l,
+            "namapendaftar": m,
+            "warnalampu": n,
+            "bacaanbebansebelum": o,
+
+            "notiang": formreg,
+            "team": formreg1,
+            "selenggara": formreg3,
+            "bacaanbebanselepas": formreg4,
+            "shift": formreg6,
+            "jenislampu": formreg5,
+            "catatan": formreg6
+        };
+
+        var dataString = JSON.stringify(dataFormaset);
+        $.ajax({
+
+            url: 'http://1.32.96.10/ProLight/mimi/daftaraset.php',
+
+            data: {
+                myData: dataString
+            },
+            type: 'POST',
+            success: function (response) {
+                alert(response);
+                window.location.href = "laporan3.html";
+            }
+
+        });*/
+
     }
-     
 
-    function getSave(){
-    var formAset = app.form.convertToData('#daftaraset2');
-    
-    localStorage.setItem("notiang", formAset.notiang);
-    localStorage.setItem("team", formAset.team);
-    localStorage.setItem("selenggara", formAset.selenggara);
-    localStorage.setItem("bacaanbebanselepas", formAset.bacaanbebanselepas);
-    localStorage.setItem("shift", formAset.shift);
-    localStorage.setItem("jenislampu", formAset.jenislampu);
-    localStorage.setItem("catatan", formAset.catatan);
-    localStorage.setItem("editaset", "2");
-    //alert(formAset);
- 
-    var formreg = formAset.notiang;   
-    var formreg1 = formAset.team;
-    var formreg3 = formAset.selenggara;
-    var formreg4 = formAset.bacaanbebanselepas;
-    var formreg6 = formAset.shift;
-    var formreg5 = formAset.jenislampu;
-    var formreg6 = formAset.catatan;
 
-     //get from localstorage value from jeniskerja.html page
-    var drh= localStorage.getItem("daerah");
-    var kmpln= localStorage.getItem("kumpulan");
-    var jkerja= localStorage.getItem("jenisKerja");
+    function getSave() {
+        var formAset = app.form.convertToData('#daftaraset2');
 
-    //get from localstorage value from 1st page panel.html
-    var a = localStorage.getItem("masa");
-    var b = localStorage.getItem("noakaun");
-    var c = localStorage.getItem("namaakaun");
-    var d = localStorage.getItem("jenisakaun");
-    var e = localStorage.getItem("zon");
-    var f = localStorage.getItem("namajalan");
-    var g = localStorage.getItem("puncabekalan");
-    var h = localStorage.getItem("kawalanmasa");
-    var i = localStorage.getItem("jenama");
-    var j = localStorage.getItem("size");
-    var k = localStorage.getItem("unitpemula");
-    var l = localStorage.getItem("carakawalan");
-    var m = localStorage.getItem("namapendaftar");
-    var n = localStorage.getItem("warnalampu");
-    var o = localStorage.getItem("bacaanbebansebelum");
-    
- 
-    //alert (formreg);
-    var dataFormaset = {"daerah":drh,"kumpulan":kmpln,"jenisKerja":jkerja,"latitude":latitude,"longitude":longitude,
+        localStorage.setItem("notiang", formAset.notiang);
+        localStorage.setItem("team", formAset.team);
+        localStorage.setItem("selenggara", formAset.selenggara);
+        localStorage.setItem("bacaanbebanselepas", formAset.bacaanbebanselepas);
+        localStorage.setItem("shift", formAset.shift);
+        localStorage.setItem("jenislampu", formAset.jenislampu);
+        localStorage.setItem("catatan", formAset.catatan);
+        localStorage.setItem("editaset", "2");
+        //alert(formAset);
 
-        "masa":a,"noakaun":b,"namaakaun":c,
-         "jenisakaun":d,"zon":e,"namajalan":f,"puncabekalan":g,"kawalanmasa":h,
-         "jenama":i,"size":j,"unitpemula":k,"carakawalan":l,"namapendaftar":m,
-         "warnalampu":n,"bacaanbebansebelum":o,
+        var formreg = formAset.notiang;
+        var formreg1 = formAset.team;
+        var formreg3 = formAset.selenggara;
+        var formreg4 = formAset.bacaanbebanselepas;
+        var formreg6 = formAset.shift;
+        var formreg5 = formAset.jenislampu;
+        var formreg6 = formAset.catatan;
 
-         "notiang": formreg, "team":formreg1, "gambartiang":formreg2 ,
-         "selenggara":formreg3,"bacaanbebanselepas":formreg4,
-         "shift":formreg6 ,"jenislampu":formreg5,"catatan":formreg6};
+        //get from localstorage value from jeniskerja.html page
+        var drh = localStorage.getItem("daerah");
+        var kmpln = localStorage.getItem("kumpulan");
+        var jkerja = localStorage.getItem("jenisKerja");
+
+        //get from localstorage value from 1st page panel.html
+        var a = localStorage.getItem("masa");
+        var b = localStorage.getItem("noakaun");
+        var c = localStorage.getItem("namaakaun");
+        var d = localStorage.getItem("jenisakaun");
+        var e = localStorage.getItem("zon");
+        var f = localStorage.getItem("namajalan");
+        var g = localStorage.getItem("puncabekalan");
+        var h = localStorage.getItem("kawalanmasa");
+        var i = localStorage.getItem("jenama");
+        var j = localStorage.getItem("size");
+        var k = localStorage.getItem("unitpemula");
+        var l = localStorage.getItem("carakawalan");
+        var m = localStorage.getItem("namapendaftar");
+        var n = localStorage.getItem("warnalampu");
+        var o = localStorage.getItem("bacaanbebansebelum");
+
+
+        //alert (formreg);
+        var dataFormaset = {
+            "daerah": drh,
+            "kumpulan": kmpln,
+            "jenisKerja": jkerja,
+            "latitude": latitude,
+            "longitude": longitude,
+
+            "masa": a,
+            "noakaun": b,
+            "namaakaun": c,
+            "jenisakaun": d,
+            "zon": e,
+            "namajalan": f,
+            "puncabekalan": g,
+            "kawalanmasa": h,
+            "jenama": i,
+            "size": j,
+            "unitpemula": k,
+            "carakawalan": l,
+            "namapendaftar": m,
+            "warnalampu": n,
+            "bacaanbebansebelum": o,
+
+            "notiang": formreg,
+            "team": formreg1,
+            "gambartiang": formreg2,
+            "selenggara": formreg3,
+            "bacaanbebanselepas": formreg4,
+            "shift": formreg6,
+            "jenislampu": formreg5,
+            "catatan": formreg6
+        };
     }
-    </script>
+</script>
 
 </html>
