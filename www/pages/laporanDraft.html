@@ -1543,162 +1543,81 @@
         };
         localStorage.setItem('todayDoneTemp', JSON.stringify(data));
 
-
         if (sizeOfList == 0) {
             localStorage.setItem('todayDone', JSON.stringify(data));
         } else if (sizeOfList > 0) {
             var dataTemp = {};
             for (x = 0; x < sizeOfList; x++) {
-                if (todayDone[x] == undefined) {
-                    var listPending = JSON.parse(localStorage.getItem('todayDoneTemp'));
-                    dataTemp[x] = {
-                        "Daerah": listPending[0].Daerah,
-                        "Kumpulan": listPending[0].Kumpulan,
-                        "JenisKerja": listPending[0].JenisKerja,
-                        "Latitude": listPending[0].Latitude,
-                        "Longitude": listPending[0].Longitude,
-                        "NoTiang": listPending[0].NoTiang,
-                        "Masa": listPending[0].Masa,
-                        "IPC": listPending[0].IPC,
-                        "Pecu": listPending[0].Pecu,
-                        "PecuQty": listPending[0].PecuQty,
-                        "IPCLantern": listPending[0].IPCLantern,
-                        "Lantern": listPending[0].Lantern,
-                        "Blackbox": listPending[0].Blackbox,
-                        "Fuse": listPending[0].Fuse,
-                        "Contractor": listPending[0].Contractor,
-                        "Link": listPending[0].Link,
-                        "DawaiLampu": listPending[0].DawaiLampu,
-                        "DawaiPanel": listPending[0].DawaiPanel,
-                        "Cout": listPending[0].Cout,
-                        "RombakLampu": listPending[0].RombakLampu,
-                        "Bracket": listPending[0].Bracket,
-                        "RombakPanel": listPending[0].RombakPanel,
-                        "Output": listPending[0].Output,
-                        "Clamp": listPending[0].Clamp,
-                        "Rentis": listPending[0].Rentis,
-                        "Dead": listPending[0].Dead,
-                        "Cable": listPending[0].Cable,
-                        "Mini": listPending[0].Mini,
-                        "Pusing": listPending[0].Pusing,
-                        "JumperLantern": listPending[0].JumperLantern,
-                        "JumperService": listPending[0].JumperService,
-                        "Hook": listPending[0].Hook,
-                        "Creepers": listPending[0].Creepers,
-                        "LanternWarranty": listPending[0].LanternWarranty,
-                        "ColorCode": listPending[0].ColorCode,
-                        "TarikhTukar": listPending[0].TarikhTukar,
-                        "SetLantern": listPending[0].SetLantern,
-                        "TukarIPC": listPending[0].TukarIPC,
-                        "LampuRosak": listPending[0].LampuRosak,
-                        "Category": listPending[0].Category,
-                        "JenisLampu": listPending[0].JenisLampu,
-                        "Chargeman": listPending[0].Chargeman,
-                        "Helper": listPending[0].Helper,
-                        "Driver": listPending[0].Driver,
-                        "Shift": listPending[0].Shift,
-                        "Ticket": listPending[0].Ticket,
-                        "Zon": listPending[0].Zon,
-                        "Bekalan": listPending[0].Bekalan,
-                        "Jalan": listPending[0].Jalan,
-                        "Lokasi": listPending[0].Lokasi,
-                        "Jenama": listPending[0].Jenama,
-                        "Size": listPending[0].Size,
-                        "IPC120185": listPending[0].IPC120185,
-                        "IPC1695": listPending[0].IPC1695,
-                        "IPC20185": listPending[0].IPC20185,
-                        "IPC1670": listPending[0].IPC1670,
-                        "IPC2550": listPending[0].IPC2550,
-                        "Catatan": listPending[0].Catatan,
-                        "GambarSelepasURI": listPending[0].GambarSelepasURI,
-                        "GambarSebelumURI": listPending[0].GambarSebelumURI,
-                        "GambarTiangURI": listPending[0].GambarTiangURI,
-                        "GambarSelepas": listPending[0].GambarSelepas,
-                        "GambarSebelum": listPending[0].GambarSebelum,
-                        "GambarTiang": listPending[0].GambarTiang,
-                        "Done": "0"
-                    };
-                    break;
-                } else {
-                    dataTemp[x] = {
-                        "Daerah": listPending[0].Daerah,
-                        "Kumpulan": listPending[0].Kumpulan,
-                        "JenisKerja": listPending[0].JenisKerja,
-                        "Latitude": listPending[0].Latitude,
-                        "Longitude": listPending[0].Longitude,
-                        "NoTiang": listPending[0].NoTiang,
-                        "Masa": listPending[0].Masa,
-                        "IPC": listPending[0].IPC,
-                        "Pecu": listPending[0].Pecu,
-                        "PecuQty": listPending[0].PecuQty,
-                        "IPCLantern": listPending[0].IPCLantern,
-                        "Lantern": listPending[0].Lantern,
-                        "Blackbox": listPending[0].Blackbox,
-                        "Fuse": listPending[0].Fuse,
-                        "Contractor": listPending[0].Contractor,
-                        "Link": listPending[0].Link,
-                        "DawaiLampu": listPending[0].DawaiLampu,
-                        "DawaiPanel": listPending[0].DawaiPanel,
-                        "Cout": listPending[0].Cout,
-                        "RombakLampu": listPending[0].RombakLampu,
-                        "Bracket": listPending[0].Bracket,
-                        "RombakPanel": listPending[0].RombakPanel,
-                        "Output": listPending[0].Output,
-                        "Clamp": listPending[0].Clamp,
-                        "Rentis": listPending[0].Rentis,
-                        "Dead": listPending[0].Dead,
-                        "Cable": listPending[0].Cable,
-                        "Mini": listPending[0].Mini,
-                        "Pusing": listPending[0].Pusing,
-                        "JumperLantern": listPending[0].JumperLantern,
-                        "JumperService": listPending[0].JumperService,
-                        "Hook": listPending[0].Hook,
-                        "Creepers": listPending[0].Creepers,
-                        "LanternWarranty": listPending[0].LanternWarranty,
-                        "ColorCode": listPending[0].ColorCode,
-                        "TarikhTukar": listPending[0].TarikhTukar,
-                        "SetLantern": listPending[0].SetLantern,
-                        "TukarIPC": listPending[0].TukarIPC,
-                        "LampuRosak": listPending[0].LampuRosak,
-                        "Category": listPending[0].Category,
-                        "JenisLampu": listPending[0].JenisLampu,
-                        "Chargeman": listPending[0].Chargeman,
-                        "Helper": listPending[0].Helper,
-                        "Driver": listPending[0].Driver,
-                        "Shift": listPending[0].Shift,
-                        "Ticket": listPending[0].Ticket,
-                        "Zon": listPending[0].Zon,
-                        "Bekalan": listPending[0].Bekalan,
-                        "Jalan": listPending[0].Jalan,
-                        "Lokasi": listPending[0].Lokasi,
-                        "Jenama": listPending[0].Jenama,
-                        "Size": listPending[0].Size,
-                        "IPC120185": listPending[0].IPC120185,
-                        "IPC1695": listPending[0].IPC1695,
-                        "IPC20185": listPending[0].IPC20185,
-                        "IPC1670": listPending[0].IPC1670,
-                        "IPC2550": listPending[0].IPC2550,
-                        "Catatan": listPending[0].Catatan,
-                        "GambarSelepasURI": listPending[0].GambarSelepasURI,
-                        "GambarSebelumURI": listPending[0].GambarSebelumURI,
-                        "GambarTiangURI": listPending[0].GambarTiangURI,
-                        "GambarSelepas": listPending[0].GambarSelepas,
-                        "GambarSebelum": listPending[0].GambarSebelum,
-                        "GambarTiang": listPending[0].GambarTiang,
-                        "Done": "0"
-                    };
-                }
-                /*;*/
-
+                var listPending = JSON.parse(localStorage.getItem('todayDone'));
+                dataTemp[x] = {
+                    "Daerah": listPending[x].Daerah,
+                    "Kumpulan": listPending[x].Kumpulan,
+                    "JenisKerja": listPending[x].JenisKerja,
+                    "Latitude": listPending[x].Latitude,
+                    "Longitude": listPending[x].Longitude,
+                    "NoTiang": listPending[x].NoTiang,
+                    "Masa": listPending[x].Masa,
+                    "IPC": listPending[x].IPC,
+                    "Pecu": listPending[x].Pecu,
+                    "PecuQty": listPending[x].PecuQty,
+                    "IPCLantern": listPending[x].IPCLantern,
+                    "Lantern": listPending[x].Lantern,
+                    "Blackbox": listPending[x].Blackbox,
+                    "Fuse": listPending[x].Fuse,
+                    "Contractor": listPending[x].Contractor,
+                    "Link": listPending[x].Link,
+                    "DawaiLampu": listPending[x].DawaiLampu,
+                    "DawaiPanel": listPending[x].DawaiPanel,
+                    "Cout": listPending[x].Cout,
+                    "RombakLampu": listPending[x].RombakLampu,
+                    "Bracket": listPending[x].Bracket,
+                    "RombakPanel": listPending[x].RombakPanel,
+                    "Clamp": listPending[x].Clamp,
+                    "Rentis": listPending[x].Rentis,
+                    "Dead": listPending[x].Dead,
+                    "Cable": listPending[x].Cable,
+                    "Mini": listPending[x].Mini,
+                    "Pusing": listPending[x].Pusing,
+                    "JumperLantern": listPending[x].JumperLantern,
+                    "JumperService": listPending[x].JumperService,
+                    "Hook": listPending[x].Hook,
+                    "Creepers": listPending[x].Creepers,
+                    "LanternWarranty": listPending[x].LanternWarranty,
+                    "ColorCode": listPending[x].ColorCode,
+                    "TarikhTukar": listPending[x].TarikhTukar,
+                    "SetLantern": listPending[x].SetLantern,
+                    "TukarIPC": listPending[x].TukarIPC,
+                    "LampuRosak": listPending[x].LampuRosak,
+                    "Category": listPending[x].Category,
+                    "JenisLampu": listPending[x].JenisLampu,
+                    "Chargeman": listPending[x].Chargeman,
+                    "Helper": listPending[x].Helper,
+                    "Driver": listPending[x].Driver,
+                    "Shift": listPending[x].Shift,
+                    "Ticket": listPending[x].Ticket,
+                    "Zon": listPending[x].Zon,
+                    "Bekalan": listPending[x].Bekalan,
+                    "Jalan": listPending[x].Jalan,
+                    "Lokasi": listPending[x].Lokasi,
+                    "Jenama": listPending[x].Jenama,
+                    "Size": listPending[x].Size,
+                    "IPC120185": listPending[x].IPC120185,
+                    "IPC1695": listPending[x].IPC1695,
+                    "IPC20185": listPending[x].IPC20185,
+                    "IPC1670": listPending[x].IPC1670,
+                    "IPC2550": listPending[x].IPC2550,
+                    "Catatan": listPending[x].Catatan,
+                    "GambarSelepasURI": listPending[x].GambarSelepasURI,
+                    "GambarSebelumURI": listPending[x].GambarSebelumURI,
+                    "GambarTiangURI": listPending[x].GambarTiangURI,
+                    "GambarSelepas": listPending[x].GambarSelepas,
+                    "GambarSebelum": listPending[x].GambarSebelum,
+                    "GambarTiang": listPending[x].GambarTiang,
+                    "Done": "0"
+                };
             }
-            var v = sizeOfList;
-            //var listPending = JSON.parse(localStorage.getItem('listPendingTemp'));
-
-            //NOTE Test "i"
-
-            console.log("value i" + i);
-
-            dataTemp[v] = {
+            var listPending = JSON.parse(localStorage.getItem('todayDoneTemp'));
+            dataTemp[sizeOfList] = {
                 "Daerah": listPending[0].Daerah,
                 "Kumpulan": listPending[0].Kumpulan,
                 "JenisKerja": listPending[0].JenisKerja,
@@ -1765,10 +1684,11 @@
                 "GambarTiang": listPending[0].GambarTiang,
                 "Done": "0"
             };
+            localStorage.setItem('todayDone', JSON.stringify(dataTemp));
         }
 
         //NOTE all data duplicate to todayDone before remove from listPending
-        localStorage.setItem('todayDone', JSON.stringify(dataTemp));
+
 
         var listPending = JSON.parse(localStorage.getItem('listPending'));
         delete listPending[i];

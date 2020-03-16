@@ -234,8 +234,52 @@
     var input = "";
 
     function view(i) {
-        alert(i);
+        var flag = i;
+        var listPending = JSON.parse(localStorage.getItem('listPending'));
+        var JenisKerja = listPending[flag].JenisKerja;
 
+        //SECTION Check Jenis Kerja
+        if ((JenisKerja.localeCompare("Ticket")) == "0") {
+            localStorage.setItem("DoneView", flag);
+            window.location.href = "ticket.html";
+
+        } else if ((JenisKerja.localeCompare("Rondaan")) == "0") {
+            localStorage.setItem("DoneView", flag);
+            window.location.href = "rondaan.html";
+
+        } else if ((JenisKerja.localeCompare("Rondaan Khas")) == "0") {
+            localStorage.setItem("DoneView", flag);
+            window.location.href = "rondaankhas.html";
+
+        } else if ((JenisKerja.localeCompare("LED")) == "0") {
+            localStorage.setItem("DoneView", flag);
+            window.location.href = "led.html";
+
+        } else if ((JenisKerja.localeCompare("Panel")) == "0") {
+            localStorage.setItem("DoneView", flag);
+            window.location.href = "panel.html";
+
+        } else if ((JenisKerja.localeCompare("Daftar Aset")) == "0") {
+            localStorage.setItem("DoneView", flag);
+            window.location.href = "daftaraset.html";
+
+        } else if ((JenisKerja.localeCompare("Senarai Semak")) == "0") {
+            localStorage.setItem("DoneView", flag);
+            window.location.href = "senaraisemak.html";
+
+        } else if ((JenisKerja.localeCompare("Aduan")) == "0") {
+            localStorage.setItem("DoneView", flag);
+            window.location.href = "aduan.html";
+
+        } else if ((JenisKerja.localeCompare("Imbangan Barang")) == "0") {
+            localStorage.setItem("DoneView", flag);
+            window.location.href = "imbangan.html";
+
+        } else if ((JenisKerja.localeCompare("Imbangan Guna")) == "0") {
+            localStorage.setItem("DoneView", flag);
+            window.location.href = "imbanganguna.html";
+
+        }
     }
 
     function paging(a) {
