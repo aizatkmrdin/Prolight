@@ -184,10 +184,8 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                             <option value="6">6</option>
-
                         </select>
                     </div>
-
                     <p class="position-text10-high">Pendawaian Lampu</p>
                     <div class="dropdown position-input10-ticket" id="dawailampu">
                         <select name="dawailampu" class="dropdown-select">
@@ -198,10 +196,8 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                             <option value="6">6</option>
-
                         </select>
                     </div>
-
                     <p class="position-text11-high">Pendawaian Panel</p>
                     <div class="dropdown position-input11-ticket" id="dawaipanel">
                         <select name="dawaipanel" class="dropdown-select">
@@ -212,10 +208,8 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                             <option value="6">6</option>
-
                         </select>
                     </div>
-
                     <p class="position-text12-high">C Out</p>
                     <div class="dropdown position-input12-ticket" id="cout">
                         <select name="cout" class="dropdown-select">
@@ -226,10 +220,8 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                             <option value="6">6</option>
-
                         </select>
                     </div>
-
                     <p class="position-text13-high">Rombak Lampu</p>
                     <div class="dropdown position-input13-ticket" id="rombaklampu">
                         <select name="rombaklampu" class="dropdown-select">
@@ -240,10 +232,8 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                             <option value="6">6</option>
-
                         </select>
                     </div>
-
                     <p class="position-text14-high">Bracket</p>
                     <div class="dropdown position-input14-ticket" id="bracket">
                         <select name="bracket" class="dropdown-select">
@@ -254,10 +244,8 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                             <option value="6">6</option>
-
                         </select>
                     </div>
-
                     <p class="position-text15-high">Rombak Panel</p>
                     <div class="dropdown position-input15-ticket" id="rombakpanel">
                         <select name="rombakpanel" class="dropdown-select">
@@ -268,20 +256,14 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                             <option value="6">6</option>
-
                         </select>
                     </div>
-
                     <div class="footnoteticket1">
                         <p class="">Muat Naik Gambar Tiang</p>
                         <div class="upload-btn-wrapper position-upload-ticket1-1">
-                            <!--<button class="btnss" name="gambartiang" id="tiang">Gambar Tiang</button>
-                <input type="file" name="gambartiang" /> -->
                             <a onclick="goCamera()" class="btnss" name="gambartiang" id="gambartiang">Gambar Tiang</a>
                         </div>
                         <div class="upload-btn-wrapper position-upload-ticket1-2">
-                            <!-- <button class="btnss1" name="gambarsebelum" id="tiang">Gambar Sebelum Mula Kerja</button>
-                <input type="file" name="gambarsebelum" />-->
                             <a onclick="goCamera2()" class="btnss" name="gambarsebelum" id="gambarsebelum">Gambar
                                 Sebelum</a>
                         </div>
@@ -293,13 +275,6 @@
                 <div onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-input-ticket1">Seterusnya
                 </div>
         </div>
-
-        <!--
-    <button onclick="getsave()" class="buttonSimpan position-button-simpan-input-ticket1">Simpan</button>
-    <button onclick="getpost()" class="buttonSeterusnya position-button-seterusnya-input-ticket1">Seterusnya</button>
--->
-
-
         </section>
         </div>
     </main>
@@ -396,8 +371,6 @@
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
         localStorage.setItem("dateT", dd + '/' + mm + '/' + yyyy);
-
-
     }
 
     function getItem() {
@@ -417,8 +390,6 @@
         document.getElementById('bracket').value = localStorage.getItem("bracket");
         document.getElementById('rombakpanel').value = localStorage.getItem("rombakpanel");
     }
-
-
 
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
@@ -458,11 +429,8 @@
 
     function save() {
         var gambarsebelumURI = localStorage.getItem("gambarsebelumURI");
-        //get gamber tiang name in local storage
         var gambartiangURI = localStorage.getItem("gambartiangURI");
         var InternetStat = localStorage.getItem("InternetStat");
-        //condition of no picture selected 
-        //both null
         if ((gambartiangURI == null || gambartiangURI == '') && (gambarsebelumURI == null || gambarsebelumURI == '')) {
             alert("gambar sebelum & tiang is null");
             // one of it null
