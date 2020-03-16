@@ -325,6 +325,7 @@
             checkTemp();
         } else {
             var listPending = JSON.parse(localStorage.getItem('listPending'));
+
             document.getElementById('noTiang').value = listPending[flag].NoTiang;
             document.getElementById('time').value = listPending[flag].Masa;
             document.getElementById('pecu').value = listPending[flag].Pecu;

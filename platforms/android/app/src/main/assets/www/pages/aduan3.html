@@ -18,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../css/index.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -27,152 +27,151 @@
 
 
 <body onload="checkTemp()">
-        <header>
-                <div class="hamburger">
-                    <i class="fas fa-bars"></i>
-                    <i class="fas fa-times"></i>
-                </div>
-                <nav class="sidebar">
-                    <ul class="nav-list">
-                        <li class="nav-item">
-                            <a onclick="goHome()" class="nav-link current">
-                                <i class="fas fa-home"></i>Menu Utama
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item">
-                                <a onclick="goSenarai()" class="nav-link">
-                                    <i class="fas fa-address-card"></i>Senarai Tugas
-                                </a>
-                            </li>
-                        <li class="nav-item">
-                            <a onclick="goStatus()" class="nav-link">
-                                <i class="fas fa-briefcase"></i>Status Laporan
-                            </a>
-                        </li>
-                        
-                        <li class="nav-item">
-                                <a onclick="goStatistik()" class="nav-link">
-                                    <i class="fas fa-blog"></i>Statistik Tugasan
-                                </a>
-                            </li>
-        
-                            <li class="nav-item">
-                                    <a onclick="goPapan()"class="nav-link">
-                                        <i class="fas fa-envelope"></i>Papan Skor
-                                    </a>
+    <header>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times"></i>
+        </div>
+        <nav class="sidebar">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a onclick="goHome()" class="nav-link current">
+                        <i class="fas fa-home"></i>Menu Utama
+                    </a>
+                </li>
 
-                                </li>
-                    </ul>
-                </nav>
-            </header>
-        
-            <main>
-                <div class="zoom-content">
-                    <section>
- 
-<div class="row position-stepper-high4s">
-    <div class="col-xs-12 col-md-8 offset-md-2 block border">
-        <div class="wrapper-progressBar">
-            <ul class="progressBar">
-                <li class="active">Jenis Kerja</li>
-                <li class="active" onclick="aduan()">Aduan</li>
-                <li class="active" onclick ="aduan2()">Aduan 2</li>
-                <li class="active" onclick ="aduan3()">Aduan 3</li>
-                <li>Hantar</li>
+                <li class="nav-item">
+                    <a onclick="goSenarai()" class="nav-link">
+                        <i class="fas fa-address-card"></i>Senarai Tugas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a onclick="goStatus()" class="nav-link">
+                        <i class="fas fa-briefcase"></i>Status Laporan
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a onclick="goStatistik()" class="nav-link">
+                        <i class="fas fa-blog"></i>Statistik Tugasan
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a onclick="goPapan()" class="nav-link">
+                        <i class="fas fa-envelope"></i>Papan Skor
+                    </a>
+
+                </li>
             </ul>
-        </div>
-    </div>
-</div>
+        </nav>
+    </header>
 
-    <form id="formaduan3">
-        <p class="position-text1-high">Ipc 120-185 Abc</p>
-        <div class="dropdown position-input1-ticket" id="ipc120185">
-            <select name="ipc120185" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
+    <main>
+        <div class="zoom-content">
+            <section>
 
-        <p class="position-text2-high">Ipc 16-95 ABC</p>
-        <div class="dropdown position-input2-ticket" id="ipc1695">
-            <select name="ipc1695" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
+                <div class="row position-stepper-high4s">
+                    <div class="col-xs-12 col-md-8 offset-md-2 block border">
+                        <div class="wrapper-progressBar">
+                            <ul class="progressBar">
+                                <li class="active">Jenis Kerja</li>
+                                <li class="active" onclick="aduan()">Aduan</li>
+                                <li class="active" onclick="aduan2()">Aduan 2</li>
+                                <li class="active" onclick="aduan3()">Aduan 3</li>
+                                <li>Hantar</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-        <p class="position-text3-high">Ipc 70-185 Abc</p>
-        <div class="dropdown position-input3-ticket" id="ipc20185">
-            <select name="ipc20185" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
+                <form id="formaduan3">
+                    <p class="position-text1-high">Ipc 120-185 Abc</p>
+                    <div class="dropdown position-input1-ticket" id="ipc120185">
+                        <select name="ipc120185" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
 
-        <p class="position-text4-high">Ipc 16-70 ABC</p>
-        <div class="dropdown position-input4-ticket" id="ipc1670">
-            <select name="ipc1670" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
+                    <p class="position-text2-high">Ipc 16-95 ABC</p>
+                    <div class="dropdown position-input2-ticket" id="ipc1695">
+                        <select name="ipc1695" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
 
-        <p class="position-text5-high">Ipc 25-50 to 16-70 BARE</p>
-        <div class="dropdown position-input5-ticket" id="ipc2550">
-            <select name="ipc2550" class="dropdown-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-            </select>
-        </div>
-        <p class="position-text7-high">Catatan</p>
-        <textarea class="position-text7-high" style="background: #f2f2f2" rows="3" cols="45" name="catatan" id="catatan">
+                    <p class="position-text3-high">Ipc 70-185 Abc</p>
+                    <div class="dropdown position-input3-ticket" id="ipc20185">
+                        <select name="ipc20185" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+
+                    <p class="position-text4-high">Ipc 16-70 ABC</p>
+                    <div class="dropdown position-input4-ticket" id="ipc1670">
+                        <select name="ipc1670" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+
+                    <p class="position-text5-high">Ipc 25-50 to 16-70 BARE</p>
+                    <div class="dropdown position-input5-ticket" id="ipc2550">
+                        <select name="ipc2550" class="dropdown-select">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+                    <p class="position-text7-high">Catatan</p>
+                    <textarea class="position-text7-high" style="background: #f2f2f2" rows="3" cols="45" name="catatan"
+                        id="catatan">
         </textarea>
-       
 
-</form>
-<div class="footnoteticket2"></div>
-    <div onclick="save()" class="buttonSimpan position-button-simpan-aduan">Simpan</div>
 
-    <div onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-aduan">Hantar</div>
-</div>
+                </form>
+                <div class="footnoteticket2"></div>
+                <div onclick="save()" class="buttonSimpan position-button-simpan-aduan">Simpan</div>
 
-</section>
-</div>
-</main>
+                <div onclick="nextPage()" class="buttonSeterusnya position-button-seterusnya-aduan">Hantar</div>
+        </div>
+
+        </section>
+        </div>
+    </main>
 </body>
 
 <script type="text/javascript" src="../js/script.js"></script>
 
 <script>
-
-    
-function checkTemp() {
+    function checkTemp() {
         var cond = localStorage.getItem("editaduan");
         if (cond == 1) {
             getItem();
@@ -189,6 +188,7 @@ function checkTemp() {
         }
         return i;
     }
+
     function startTime() {
         var today = new Date();
         var h = today.getHours();
@@ -200,7 +200,7 @@ function checkTemp() {
         // add a zero in front of numbers<10
         m = checkTime(m);
         s = checkTime(s);
-        document.getElementById('time').value =yyyy + '-' + mm + '-' + dd +" "+ h + ":" + m + ":" + s  ;
+        document.getElementById('time').value = yyyy + '-' + mm + '-' + dd + " " + h + ":" + m + ":" + s;
         /*t = setTimeout(function () {
             startTime()
         }, 500);*/
@@ -226,15 +226,16 @@ function checkTemp() {
         document.getElementById('catatan').value = localStorage.getItem("catatan");
 
     }
-    
-    
-    function aduan () {
+
+
+    function aduan() {
         window.location.href = "aduan.html";
     }
 
     function aduan2() {
         window.location.href = "aduan2.html";
     }
+
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
     }
@@ -247,9 +248,9 @@ function checkTemp() {
         var formData = app.form.convertToData('#formaduan3');
         //alert(formData);
 
-    //store localstorage
+        //store localstorage
 
-       // localStorage.setItem("ipc120185", formData.ipc120185);
+        // localStorage.setItem("ipc120185", formData.ipc120185);
         localStorage.setItem("ipc120185", formData.ipc120185);
         localStorage.setItem("ipc1695", formData.ipc1695);
         localStorage.setItem("ipc20185", formData.ipc20185);
@@ -268,12 +269,12 @@ function checkTemp() {
 
 
         //get from localstorage value from jeniskerja.html page
-    var drh= localStorage.getItem("daerah");
-    var kmpln= localStorage.getItem("kumpulan");
-    var jkerja= localStorage.getItem("jenisKerja");
-    var latitude= localStorage.getItem("latitude");
-    var longitude= localStorage.getItem("longitude");
-       
+        var drh = localStorage.getItem("daerah");
+        var kmpln = localStorage.getItem("kumpulan");
+        var jkerja = localStorage.getItem("jenisKerja");
+        var latitude = localStorage.getItem("latitude");
+        var longitude = localStorage.getItem("longitude");
+
 
         //get from localstorage value from 1st page senaraisemak.html
         var a = localStorage.getItem("notiang");
@@ -284,22 +285,22 @@ function checkTemp() {
         var f = localStorage.getItem("ipclantern");
         var g = localStorage.getItem("lantern");
         var h = localStorage.getItem("fuse");
-        var i= localStorage.getItem("contactor");
+        var i = localStorage.getItem("contactor");
         var j = localStorage.getItem("link");
         var k = localStorage.getItem("dawailampu");
         var l = localStorage.getItem("dawaipanel");
         var m = localStorage.getItem("cout");
         var n = localStorage.getItem("rombaklampu");
-        var o= localStorage.getItem("bracket");
+        var o = localStorage.getItem("bracket");
         var p = localStorage.getItem("rombakpanel");
         var z = localStorage.getItem("masa");
-        var q= localStorage.getItem("gambartiang");
+        var q = localStorage.getItem("gambartiang");
         var r = localStorage.getItem("gambarsebelum");
 
-//aduan2.html
+        //aduan2.html
 
         var aa = localStorage.getItem("sclamp");
-        var bb= localStorage.getItem("rentis");
+        var bb = localStorage.getItem("rentis");
         var cc = localStorage.getItem("dead");
         var dd = localStorage.getItem("cable");
         var ee = localStorage.getItem("mini");
@@ -317,41 +318,331 @@ function checkTemp() {
         var qq = localStorage.getItem("jenislampu");
         var rr = localStorage.getItem("gambarselepas");
 
+        var gs1 = localStorage.getItem("gambarselepasURI");
+        var gs2 = localStorage.getItem("gambarsebelumURI");
+        var gs3 = localStorage.getItem("gambartiangURI");
+        var gs4 = localStorage.getItem("gambarselepas");
+        var gs5 = localStorage.getItem("gambarsebelum");
+        var gs6 = localStorage.getItem("gambartiang");
 
-        var dataFormreg = {"daerah":drh,"kumpulan":kmpln,"jenisKerja":jkerja,
-                        "latitude":latitude,"longitude":longitude,
-            
-            "notiang": a,"types":b,"ipc":c,"pecu":d,"pecuqty": e,"ipclantern" : f,
-            "lantern":g , "fuse":h, "contactor":i, "link":j ,"dawailampu":k,
-            "dawaipanel":l,"cout": m,"rombaklampu" : n, "bracket":o ,
-            "rombakpanel":p,"masa":z, "gambartiang":q , "gambarsebelum":r, 
 
-            "sclamp": aa,"rentis": bb,"dead" : cc,
-            "cable":dd , "mini":ee, "pusing":ff, 
-            "jumperlantern":gg , "jumperservice":hh ,
-            "hook":ii,"creepers":jj , "color":kk ,
-            "man":ll,"helper":mm,"driver":nn,
-            "shift":oo,"category":pp,
-            "jenislampu":qq, "gambarselepas":rr,
-            
-            
-            
-        "ipc120185": formreg, "ipc1695":formreg2, "ipc20185":formreg3 ,
-        "ipc1670":formreg4,"ipc2550": formreg5, "catatan":formreg6};
+        var data = {};
+        data[0] = {
+            "Daerah": drh,
+            "Kumpulan": kmpln,
+            "JenisKerja": jkerja,
+            "Latitude": latitude,
+            "Longitude": longitude,
+            "NoTiang": a,
+            "Types": b,
+            "IPC": c,
+            "Pecu": d,
+            "PecuQty": e,
+            "IPCLantern": f,
+            "Lantern": g,
+            "Fuse": h,
+            "Contractor": i,
+            "Link": j,
+            "DawaiLampu": k,
+            "DawaiPanel": l,
+            "Cout": m,
+            "RombakLampu": n,
+            "Bracket": o,
+            "RombakPanel": p,
+            "Masa": z,
+            "SCLamp": aa,
+            "Rentis": bb,
+            "Dead": cc,
+            "Cable": dd,
+            "Mini": ee,
+            "Pusing": ff,
+            "JumperLantern": gg,
+            "JumperService": hh,
+            "Hook": ii,
+            "Creepers": jj,
+            "Color": kk,
+            "Man": ll,
+            "Helper": mm,
+            "Driver": nn,
+            "Shift": oo,
+            "Category": pp,
+            "JenisLampu": qq,
+            "IPC120185": formreg,
+            "IPC1695": formreg2,
+            "IPC20185": formreg3,
+            "IPC1670": formreg4,
+            "IPC2550": formreg5,
+            "Catatan": formreg6,
+            "GambarSelepasURI": gs1,
+            "GambarSebelumURI": gs2,
+            "GambarTiangURI": gs3,
+            "GambarSelepas": gs4,
+            "GambarSebelum": gs5,
+            "GambarTiang": gs6,
+            "Done": "0"
 
-  
+        };
+        localStorage.setItem('listPendingTemp', JSON.stringify(data));
+
+        var listPending = JSON.parse(localStorage.getItem('listPending'));
+        var sizeOfList = Object.objsize(listPending);
+        if (sizeOfList == 0) {
+            localStorage.setItem('listPending', JSON.stringify(data));
+        } else if (sizeOfList > 0) {
+            var dataTemp = {};
+            for (i = 0; i < sizeOfList; i++) {
+                if (listPending[i] == undefined) {
+                    var listPending = JSON.parse(localStorage.getItem('listPendingTemp'));
+                    dataTemp[i] = {
+                        "Daerah": listPending[0].Daerah,
+                        "Kumpulan": listPending[0].Kumpulan,
+                        "JenisKerja": listPending[0].JenisKerja,
+                        "Latitude": listPending[0].Latitude,
+                        "Longitude": listPending[0].Longitude,
+                        "NoTiang": listPending[0].NoTiang,
+                        "Types": listPending[0].Types,
+                        "IPC": listPending[0].IPC,
+                        "Pecu": listPending[0].Pecu,
+                        "PecuQty": listPending[0].PecuQty,
+                        "IPCLantern": listPending[0].IPCLantern,
+                        "Lantern": listPending[0].Lantern,
+                        "Fuse": listPending[0].Fuse,
+                        "Contractor": listPending[0].Contractor,
+                        "Link": listPending[0].Link,
+                        "DawaiLampu": listPending[0].DawaiLampu,
+                        "DawaiPanel": listPending[0].DawaiPanel,
+                        "Cout": listPending[0].Cout,
+                        "RombakLampu": listPending[0].RombakLampu,
+                        "Bracket": listPending[0].Bracket,
+                        "RombakPanel": listPending[0].RombakPanel,
+                        "Masa": listPending[0].Masa,
+                        "SCLamp": listPending[0].SCLamp,
+                        "Rentis": listPending[0].Rentis,
+                        "Dead": listPending[0].Dead,
+                        "Cable": listPending[0].Cable,
+                        "Mini": listPending[0].Mini,
+                        "Pusing": listPending[0].Pusing,
+                        "JumperLantern": listPending[0].JumperLantern,
+                        "JumperService": listPending[0].JumperService,
+                        "Hook": listPending[0].Hook,
+                        "Creepers": listPending[0].Creepers,
+                        "Color": listPending[0].Color,
+                        "Man": listPending[0].Man,
+                        "Helper": listPending[0].Helper,
+                        "Driver": listPending[0].Driver,
+                        "Shift": listPending[0].Shift,
+                        "Category": listPending[0].Category,
+                        "JenisLampu": listPending[0].JenisLampu,
+                        "IPC120185": listPending[0].IPC120185,
+                        "IPC1695": listPending[0].IPC1695,
+                        "IPC20185": listPending[0].IPC20185,
+                        "IPC1670": listPending[0].IPC1670,
+                        "IPC2550": listPending[0].IPC2550,
+                        "Catatan": listPending[0].Catatan,
+                        "GambarSelepasURI": listPending[0].GambarSelepasURI,
+                        "GambarSebelumURI": listPending[0].GambarSebelumURI,
+                        "GambarTiangURI": listPending[0].GambarTiangURI,
+                        "GambarSelepas": listPending[0].GambarSelepas,
+                        "GambarSebelum": listPending[0].GambarSebelum,
+                        "GambarTiang": listPending[0].GambarTiang,
+                        "Done": "0"
+                    };
+                    break;
+                } else {
+                    dataTemp[i] = {
+                        "Daerah": listPending[0].Daerah,
+                        "Kumpulan": listPending[0].Kumpulan,
+                        "JenisKerja": listPending[0].JenisKerja,
+                        "Latitude": listPending[0].Latitude,
+                        "Longitude": listPending[0].Longitude,
+                        "NoTiang": listPending[0].NoTiang,
+                        "Types": listPending[0].Types,
+                        "IPC": listPending[0].IPC,
+                        "Pecu": listPending[0].Pecu,
+                        "PecuQty": listPending[0].PecuQty,
+                        "IPCLantern": listPending[0].IPCLantern,
+                        "Lantern": listPending[0].Lantern,
+                        "Fuse": listPending[0].Fuse,
+                        "Contractor": listPending[0].Contractor,
+                        "Link": listPending[0].Link,
+                        "DawaiLampu": listPending[0].DawaiLampu,
+                        "DawaiPanel": listPending[0].DawaiPanel,
+                        "Cout": listPending[0].Cout,
+                        "RombakLampu": listPending[0].RombakLampu,
+                        "Bracket": listPending[0].Bracket,
+                        "RombakPanel": listPending[0].RombakPanel,
+                        "Masa": listPending[0].Masa,
+                        "SCLamp": listPending[0].SCLamp,
+                        "Rentis": listPending[0].Rentis,
+                        "Dead": listPending[0].Dead,
+                        "Cable": listPending[0].Cable,
+                        "Mini": listPending[0].Mini,
+                        "Pusing": listPending[0].Pusing,
+                        "JumperLantern": listPending[0].JumperLantern,
+                        "JumperService": listPending[0].JumperService,
+                        "Hook": listPending[0].Hook,
+                        "Creepers": listPending[0].Creepers,
+                        "Color": listPending[0].Color,
+                        "Man": listPending[0].Man,
+                        "Helper": listPending[0].Helper,
+                        "Driver": listPending[0].Driver,
+                        "Shift": listPending[0].Shift,
+                        "Category": listPending[0].Category,
+                        "JenisLampu": listPending[0].JenisLampu,
+                        "IPC120185": listPending[0].IPC120185,
+                        "IPC1695": listPending[0].IPC1695,
+                        "IPC20185": listPending[0].IPC20185,
+                        "IPC1670": listPending[0].IPC1670,
+                        "IPC2550": listPending[0].IPC2550,
+                        "Catatan": listPending[0].Catatan,
+                        "GambarSelepasURI": listPending[0].GambarSelepasURI,
+                        "GambarSebelumURI": listPending[0].GambarSebelumURI,
+                        "GambarTiangURI": listPending[0].GambarTiangURI,
+                        "GambarSelepas": listPending[0].GambarSelepas,
+                        "GambarSebelum": listPending[0].GambarSebelum,
+                        "GambarTiang": listPending[0].GambarTiang,
+                        "Done": "0"
+                    };
+                }
+                /*;*/
+
+            }
+            var i = sizeOfList;
+            //var listPending = JSON.parse(localStorage.getItem('listPendingTemp'));
+
+            dataTemp[i] = {
+                "Daerah": drh,
+                "Kumpulan": kmpln,
+                "JenisKerja": jkerja,
+                "Latitude": latitude,
+                "Longitude": longitude,
+                "NoTiang": a,
+                "Types": b,
+                "IPC": c,
+                "Pecu": d,
+                "PecuQty": e,
+                "IPCLantern": f,
+                "Lantern": g,
+                "Fuse": h,
+                "Contractor": i,
+                "Link": j,
+                "DawaiLampu": k,
+                "DawaiPanel": l,
+                "Cout": m,
+                "RombakLampu": n,
+                "Bracket": o,
+                "RombakPanel": p,
+                "Masa": z,
+                "SCLamp": aa,
+                "Rentis": bb,
+                "Dead": cc,
+                "Cable": dd,
+                "Mini": ee,
+                "Pusing": ff,
+                "JumperLantern": gg,
+                "JumperService": hh,
+                "Hook": ii,
+                "Creepers": jj,
+                "Color": kk,
+                "Man": ll,
+                "Helper": mm,
+                "Driver": nn,
+                "Shift": oo,
+                "Category": pp,
+                "JenisLampu": qq,
+                "IPC120185": formreg,
+                "IPC1695": formreg2,
+                "IPC20185": formreg3,
+                "IPC1670": formreg4,
+                "IPC2550": formreg5,
+                "Catatan": formreg6,
+                "GambarSelepasURI": gs1,
+                "GambarSebelumURI": gs2,
+                "GambarTiangURI": gs3,
+                "GambarSelepas": gs4,
+                "GambarSebelum": gs5,
+                "GambarTiang": gs6,
+                "Done": "0"
+            };
+
+            localStorage.setItem('listPending', JSON.stringify(dataTemp));
+
+        }
+        localStorage.removeItem("NumberOfObject");
+        window.location.href = "laporanDraft.html";
+
+
+        /*var dataFormreg = {
+            "daerah": drh,
+            "kumpulan": kmpln,
+            "jenisKerja": jkerja,
+            "latitude": latitude,
+            "longitude": longitude,
+
+            "notiang": a,
+            "types": b,
+            "ipc": c,
+            "pecu": d,
+            "pecuqty": e,
+            "ipclantern": f,
+            "lantern": g,
+            "fuse": h,
+            "contactor": i,
+            "link": j,
+            "dawailampu": k,
+            "dawaipanel": l,
+            "cout": m,
+            "rombaklampu": n,
+            "bracket": o,
+            "rombakpanel": p,
+            "masa": z,
+            "gambartiang": q,
+            "gambarsebelum": r,
+
+            "sclamp": aa,
+            "rentis": bb,
+            "dead": cc,
+            "cable": dd,
+            "mini": ee,
+            "pusing": ff,
+            "jumperlantern": gg,
+            "jumperservice": hh,
+            "hook": ii,
+            "creepers": jj,
+            "color": kk,
+            "man": ll,
+            "helper": mm,
+            "driver": nn,
+            "shift": oo,
+            "category": pp,
+            "jenislampu": qq,
+            "gambarselepas": rr,
+
+
+
+            "ipc120185": formreg,
+            "ipc1695": formreg2,
+            "ipc20185": formreg3,
+            "ipc1670": formreg4,
+            "ipc2550": formreg5,
+            "catatan": formreg6
+        };
+
+
         var dataString = JSON.stringify(dataFormreg);
         $.ajax({
-                    url: 'http://1.32.96.10/ProLight/mimi/aduan3.php',
-                    data: {myData: dataString},
-                    type: 'POST',
-                    success: function(response){
-                        alert(response);
-                        window.location.replace("laporan3.html");
-        
-                        }
-                    });
-                   
+            url: 'http://1.32.96.10/ProLight/mimi/aduan3.php',
+            data: {
+                myData: dataString
+            },
+            type: 'POST',
+            success: function (response) {
+                alert(response);
+                window.location.replace("laporan3.html");
+
+            }
+        });*/
+
     }
 
     function goHome() {
@@ -373,6 +664,7 @@ function checkTemp() {
     function goPapan() {
         window.location.href = "papanskor.html";
     }
+
     function goCamera() {
         window.location.href = "tiang.html";
     }
@@ -389,7 +681,7 @@ function checkTemp() {
         var formData = app.form.convertToData('#formaduan');
         //alert(formData);
 
-    //store localstorage
+        //store localstorage
         localStorage.setItem("ipc120185", formData.ipc120185);
         localStorage.setItem("ipc1695", formData.ipc1695);
         localStorage.setItem("ipc20185", formData.ipc20185);
@@ -398,9 +690,8 @@ function checkTemp() {
         localStorage.setItem("catatan", formData.catatan);
         localStorage.setItem("editaduan", "3");
 
-                window.location.href = "laporan2.html";
-        }
-
+        window.location.href = "laporan2.html";
+    }
 </script>
 
 

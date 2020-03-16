@@ -275,7 +275,8 @@
                         "</p></td><td><p style='font-size:8px'>" + listPending[i]
                         .NoTiang +
                         "</p></td><td><div class='buttonSeterusnyatable'  onclick='deleting(" + i +
-                        ")'> Padam </div></td><td><div class='buttonSeterusnyatable' onclick='send(" + i +
+                        ")'> Padam </div></td><td><div class='buttonSeterusnyatable' onclick='edit(" + i +
+                        ")'> Ubah </div></td><td><div class='buttonSeterusnyatable' onclick='send(" + i +
                         ")'> Hantar </div></td></tr>";
 
                 } else if (listPending[i].Done == 1) {
@@ -356,13 +357,61 @@
     //SECTION send
     function send(i) {
         //document.getElementById("load").innerHTML = "<div class='loading'>Loading&#8230;</div>";
+        var listPending = JSON.parse(localStorage.getItem('listPending'));
+        var JenisKerja = listPending[i].JenisKerja;
+        if ((JenisKerja.localeCompare("Senarai Semak")) == "0") {
+            senaraiSemak();
+        } else if ((JenisKerja.localeCompare("Imbangan Barang")) == "0") {
+            imbanganBarang();
+        } else if ((JenisKerja.localeCompare("Imbangan Guna")) == "0") {
+            imbanganGuna();
+        }
+
+
+
         var GambarTiangFlag,
             GambarSebelumFlag,
             GambarSelepasFlag,
             GambarTiangVal,
             GambarSebelumVal,
+            GambarEarthingFlag,
+            GambarEarthingVal,
+            GambarTiangIPCFlag,
+            GambarTiangIPCVal,
+            GambarBlackBoxFlag,
+            GambarBlackBoxVal,
             GambarSelepasVal;
-        var listPending = JSON.parse(localStorage.getItem('listPending'));
+
+
+        //gambar tiang
+        var GambarTiangURI = listPending[i].GambarTiangURI;
+
+        var options = new FileUploadOptions();
+        options.fileKey = "file";
+        options.fileName = GambarTiangURI.substr(GambarTiangURI.lastIndexOf('/') + 1);
+        options.mimeType = "image/jpeg";
+
+        var params = {};
+        params.value1 = "test";
+        params.value2 = "param";
+
+        options.params = params;
+        options.chunkedMode = false;
+
+        var ft = new FileTransfer();
+        ft.upload(GambarTiangURI, "http://1.32.96.10/ProLight/mimi/test.php", function (result) {
+            //alert('successfully uploaded ' + result.response);
+            GambarTiangFlag = 1;
+            GambarTiangVal = result.response;
+            // masukkan nama file yg dihantar ke localstorage utk dirujuk semula
+            //localStorage.setItem("gambarsebelum", result.response);
+            var JenisKerja = listPending[i].JenisKerja;
+            if ((JenisKerja.localeCompare("Daftar Aset")) == "0") {
+                daftarAset();
+            }
+        }, function (error) {
+            alert('error : ' + JSON.stringify(error));
+        }, options);
 
         //gambar sebelum
         var GambarSebelumURI = listPending[i].GambarSebelumURI;
@@ -391,31 +440,7 @@
             alert('error : ' + JSON.stringify(error));
         }, options);
 
-        //gambar tiang
-        var GambarTiangURI = listPending[i].GambarTiangURI;
 
-        var options = new FileUploadOptions();
-        options.fileKey = "file";
-        options.fileName = GambarTiangURI.substr(GambarTiangURI.lastIndexOf('/') + 1);
-        options.mimeType = "image/jpeg";
-
-        var params = {};
-        params.value1 = "test";
-        params.value2 = "param";
-
-        options.params = params;
-        options.chunkedMode = false;
-
-        var ft = new FileTransfer();
-        ft.upload(GambarTiangURI, "http://1.32.96.10/ProLight/mimi/test.php", function (result) {
-            //alert('successfully uploaded ' + result.response);
-            GambarTiangFlag = 1;
-            GambarTiangVal = result.response;
-            // masukkan nama file yg dihantar ke localstorage utk dirujuk semula
-            //localStorage.setItem("gambarsebelum", result.response);
-        }, function (error) {
-            alert('error : ' + JSON.stringify(error));
-        }, options);
 
         //gambar selepas
         var GambarSelepasURI = listPending[i].GambarSelepasURI;
@@ -445,23 +470,14 @@
             } else if ((JenisKerja.localeCompare("Rondaan")) == "0") {
                 rondaan();
             } else if ((JenisKerja.localeCompare("Rondaan Khas")) == "0") {
-                passUrl = urlTicket;
+                rondaanKhas();
             } else if ((JenisKerja.localeCompare("LED")) == "0") {
-                passUrl = urlTicket;
+                led();
             } else if ((JenisKerja.localeCompare("Panel")) == "0") {
-                passUrl = urlTicket;
-            } else if ((JenisKerja.localeCompare("Daftar Aset")) == "0") {
-                passUrl = urlTicket;
-            } else if ((JenisKerja.localeCompare("Senarai Semak")) == "0") {
-                passUrl = urlTicket;
+                panel();
             } else if ((JenisKerja.localeCompare("Aduan")) == "0") {
-                passUrl = urlTicket;
-            } else if ((JenisKerja.localeCompare("Imbangan Barang")) == "0") {
-                passUrl = urlTicket;
-            } else if ((JenisKerja.localeCompare("Imbangan Guna")) == "0") {
-                passUrl = urlTicket;
+                aduan();
             }
-
             // masukkan nama file yg dihantar ke localstorage utk dirujuk semula
             //localStorage.setItem("gambarselepas", result.response);
         }, function (error) {
@@ -621,8 +637,8 @@
                     "masa": listPending[i].Masa,
                     "lampurosak": listPending[i].LampuRosak,
                     "tarikhpenukaran": listPending[i].TarikhPenukaran,
-                    "gambartiang": listPending[i].GambarTiang,
-                    "gambarsebelum": listPending[i].GambarSebelum,
+                    "gambartiang": GambarTiangVal,
+                    "gambarsebelum": GambarSebelumVal,
                     "bracket": listPending[i].Bracket,
                     "rombakpnl": listPending[i].RombakPanel,
                     "clamp": listPending[i].Clamp,
@@ -639,7 +655,7 @@
                     "cout": listPending[i].Cout,
                     "category": listPending[i].Category,
                     "catatan": listPending[i].Catatan,
-                    "gambarselepas": listPending[i].GambarSelepas,
+                    "gambarselepas": GambarSelepasVal,
                     "jenislampu": listPending[i].JenisLampu,
                     "chargeman": listPending[i].Chargeman,
                     "helper": listPending[i].Helper,
@@ -713,77 +729,715 @@
                 alert(" Aplikasi mempunyai masalah untuk muatnaik kesemua gamber !!");
             }
         }
+        //SECTION Jenis Kerja Rondaan Khas
+        //NOTE DONE
+        function rondaanKhas() {
+            if (GambarSebelumFlag == 1 && GambarTiangFlag == 1 && GambarSelepasFlag == 1) {
+                var dataFormreg = {
+                    "daerah": listPending[i].Daerah,
+                    "kumpulan": listPending[i].Kumpulan,
+                    "jenisKerja": listPending[i].JenisKerja,
+                    "latitude": listPending[i].Latitude,
+                    "longitude": listPending[i].Longitude,
+                    "output": listPending[i].Output,
+                    "notiang": listPending[i].NoTiang,
+                    "rombak": listPending[i].Rombak,
+                    "ipcqty": listPending[i].IPCQty,
+                    "pecu": listPending[i].Pecu,
+                    "pecuqty": listPending[i].PecuQty,
+                    "ipclantern": listPending[i].IPCLantern,
+                    "lantern": listPending[i].Lantern,
+                    "box": listPending[i].Box,
+                    "fuse": listPending[i].Fuse,
+                    "contactor": listPending[i].Contactor,
+                    "link": listPending[i].Link,
+                    "dawailampu": listPending[i].DawaiLampu,
+                    "dawaipanel": listPending[i].DawaiPanel,
+                    "masa": listPending[i].Masa,
+                    "lampurosak": listPending[i].LampuRosak,
+                    "tarikhpenukaran": listPending[i].TarikhPenukaran,
+                    "gambartiang": GambarTiangVal,
+                    "gambarsebelum": GambarSebelumVal,
+                    "bracket": listPending[i].Bracket,
+                    "rombakpnl": listPending[i].RombakPanel,
+                    "clamp": listPending[i].Clamp,
+                    "rentis": listPending[i].Rentis,
+                    "dead": listPending[i].Dead,
+                    "cable": listPending[i].Cable,
+                    "mini": listPending[i].Mini,
+                    "pusing": listPending[i].Pusing,
+                    "jumper": listPending[i].Jumper,
+                    "hook": listPending[i].Hook,
+                    "creeper": listPending[i].Creepers,
+                    "setlantern": listPending[i].SetLantern,
+                    "warna": listPending[i].Warna,
+                    "category": listPending[i].Category,
+                    "cout": listPending[i].Cout,
+                    "catatan": listPending[i].Catatan,
+                    "gambarselepas": GambarSelepasVal,
+                    "jenislampu": listPending[i].JenisLampu,
+                    "chargeman": listPending[i].Chargeman,
+                    "helper": listPending[i].Helper,
+                    "driver": listPending[i].Driver,
+                    "shift": listPending[i].Shift,
+                    "zon": listPending[i].Zon,
+                    "bekalan": listPending[i].Bekalan,
+                    "jalan": listPending[i].Jalan,
+                    "lokasi": listPending[i].Lokasi,
+                    "jenama": listPending[i].Jenama,
+                    "size": listPending[i].Size,
+                    "catatan": listPending[i].Catatan
+                };
+
+                localStorage.setItem("Flag", i);
+
+                var dataString = JSON.stringify(dataFormreg);
+                $.ajax({
+                    url: 'http://1.32.96.10/ProLight/mimi/rondaankhas.php',
+                    data: {
+                        myData: dataString
+                    },
+                    type: 'POST',
+                    success: function (response) {
+                        //TODO loading interface 
+                        if (response == 1) {
+                            var flagT = localStorage.getItem("Flag");
+                            remove(flagT);
+                        } else if (response == 0) {
+                            alert("Kesilapan ketika memuatnaik data !!");
+                        }
+
+
+                    }
+                });
+            } else if (GambarSebelumFlag == 1 || GambarTiangFlag == 1 || GambarSelepasFlag == 1) {
+                //001
+                if (GambarSebelumFlag == 0 && GambarTiangFlag == 0 && GambarSelepasFlag == 1) {
+                    alert(
+                        "Aplikasi mempunyai masalah untuk menuatnaik fail gambar sebelum & gambar tiang !!");
+                }
+                // 010
+                else if (GambarSebelumFlag == 0 && GambarTiangFlag == 1 && GambarSelepasFlag == 0) {
+                    alert(
+                        "Aplikasi mempunyai masalah untuk muatnaik fail gambar sebelum & gambar selepas !!");
+                }
+                //011
+                else if (GambarSebelumFlag == 0 && GambarTiangFlag == 1 && GambarSelepasFlag == 1) {
+                    alert("Aplikasi mempunyai masalah untuk muatnaik fail gambar sebelum !!");
+                }
+                //100
+                else if (GambarSebelumFlag == 1 && GambarTiangFlag == 0 && GambarSelepasFlag == 0) {
+                    alert(
+                        "Aplikasi mempunyai masalah untuk muatnaik fail gambar tiang & gambar selepas !!");
+                }
+                //101
+                else if (GambarSebelumFlag == 1 && GambarTiangFlag == 0 && GambarSelepasFlag == 1) {
+                    alert("Aplikasi mempunyai masalah untuk muatnaik fail gambar tiang !!");
+                }
+                //110
+                else if (GambarSebelumFlag == 0 && GambarTiangFlag == 1 && GambarSelepasFlag == 0) {
+                    alert("Aplikasi mempunyai masalah untuk muatnaik fail gambar selepas !!");
+                }
+            } else {
+                alert(" Aplikasi mempunyai masalah untuk muatnaik kesemua gamber !!");
+            }
+        }
+        //SECTION Jenis Kerja LED
+        //NOTE DONE
+        function led() {
+            var GambarEarthingURI = listPending[i].GambarEarthingURI;
+            //image.src = GambarSebelumURI + '?' + Math.random();
+
+            var options = new FileUploadOptions();
+            options.fileKey = "file";
+            options.fileName = GambarEarthingURI.substr(GambarEarthingURI.lastIndexOf('/') + 1);
+            options.mimeType = "image/jpeg";
+
+            var params = {};
+            params.value1 = "test";
+            params.value2 = "param";
+
+            options.params = params;
+            options.chunkedMode = false;
+
+            var ft = new FileTransfer();
+            ft.upload(GambarEarthingURI, "http://1.32.96.10/ProLight/mimi/gambarearthing.php", function (result) {
+                //alert('successfully uploaded ' + result.response);
+                GambarEarthingFlag = 1;
+                GambarEarthingVal = result.response;
+                // masukkan nama file yg dihantar ke localstorage utk dirujuk semula
+                //localStorage.setItem("gambarsebelum", result.response);
+            }, function (error) {
+                alert('error : ' + JSON.stringify(error));
+            }, options);
+
+
+            var GambarTiangIPCURI = listPending[i].GambarTiangIPCURI;
+            //image.src = GambarSebelumURI + '?' + Math.random();
+
+            var options = new FileUploadOptions();
+            options.fileKey = "file";
+            options.fileName = GambarTiangIPCURI.substr(GambarTiangIPCURI.lastIndexOf('/') + 1);
+            options.mimeType = "image/jpeg";
+
+            var params = {};
+            params.value1 = "test";
+            params.value2 = "param";
+
+            options.params = params;
+            options.chunkedMode = false;
+
+            var ft = new FileTransfer();
+            ft.upload(GambarTiangIPCURI, "http://1.32.96.10/ProLight/mimi/gambarearthing.php", function (result) {
+                //alert('successfully uploaded ' + result.response);
+                GambarTiangIPCFlag = 1;
+                GambarTiangIPCVal = result.response;
+                // masukkan nama file yg dihantar ke localstorage utk dirujuk semula
+                //localStorage.setItem("gambarsebelum", result.response);
+                if (GambarEarthingFlag == 1 && GambarTiangIPCFlag == 1) {
+
+                    var dataFormreg = {
+                        "daerah": listPending[i].Daerah,
+                        "kumpulan": listPending[i].Kumpulan,
+                        "jenisKerja": listPending[i].JenisKerja,
+                        "latitude": listPending[i].Latitude,
+                        "longitude": listPending[i].Longitude,
+                        "output": listPending[i].Output,
+                        "gambaripc": GambarTiangIPCVal,
+                        "gambarearthing": GambarEarthingVal,
+                        "gambarselepas": GambarSelepasVal,
+                        "notiang": listPending[i].NoTiang,
+                        "ballast": listPending[i].Ballast,
+                        "lanternbaru": listPending[i].LanternBaru,
+                        "bracket": listPending[i].Bracket,
+                        "dawaipanel": listPending[i].DawaiPanel,
+                        "mini": listPending[i].Mini,
+                        "ipc": listPending[i].IPC,
+                        "ipcqty": listPending[i].IPCQty,
+                        "tiadaearthing": listPending[i].TiadaEarthing,
+                        "kodwarna": listPending[i].KodWarna,
+                        "lokasi": listPending[i].Lokasi,
+                        "serahtugas": listPending[i].SerahTugas,
+                        "masa": listPending[i].Masa,
+                        "man": listPending[i].Man,
+                        "helper": listPending[i].Helper,
+                        "driver": listPending[i].Driver,
+                        "shift": listPending[i].Shift,
+                        "tukarlampu": listPending[i].TukarLampu,
+                        "gambartiang": GambarTiangVal,
+                        "gambarsebelum": GambarSebelumVal,
+                        "noAkaun": listPending[i].NoAkuan,
+                        "namaAkaun": listPending[i].NamaAkaun,
+                        "jnsAkaun": listPending[i].JenisAkaun,
+                        "zon": listPending[i].Zon,
+                        "jalan": listPending[i].Jalan,
+                        "bekalan": listPending[i].Bekalan,
+                        "jenama": listPending[i].Jenama,
+                        "size": listPending[i].Size,
+                        "model": listPending[i].Model,
+                        "pemula": listPending[i].Pemula,
+                        "kawalan": listPending[i].Kawalan,
+                        "pendaftar": listPending[i].Pendaftar,
+                        "pEarthing": listPending[i].PEarthing,
+                        "earthingbaru": listPending[i].EarthingBaru,
+                        "selenggara": listPending[i].Selenggara,
+                        "mini": listPending[i].Mini,
+                        "bacaansebelum": listPending[i].BacaanSebelum,
+                        "bacaanselepas": listPending[i].BacaanSelepas,
+                        "nometer": listPending[i].NoMeter,
+                        "pembaikan": listPending[i].Pembaikan,
+                        "jenislampu": listPending[i].JenisLampu,
+                        "category": listPending[i].Category,
+                        "ipc120185": listPending[i].IPC120185,
+                        "ipc1695": listPending[i].IPC1695,
+                        "ipc20185": listPending[i].IPC120185,
+                        "ipc1670": listPending[i].IPC1670,
+                        "ipc2550": listPending[i].IPC2550,
+                        "dawailampu": listPending[i].DawaiLampu,
+                        "catatan": listPending[i].Catatan
+                    };
+
+                    localStorage.setItem("Flag", i);
+
+                    var dataString = JSON.stringify(dataFormreg);
+                    $.ajax({
+                        url: 'http://1.32.96.10/ProLight/mimi/led.php',
+                        data: {
+                            myData: dataString
+                        },
+                        type: 'POST',
+                        success: function (response) {
+                            //TODO loading interface 
+                            if (response == 1) {
+                                var flagT = localStorage.getItem("Flag");
+                                remove(flagT);
+                            } else if (response == 0) {
+                                alert("Kesilapan ketika memuatnaik data !!");
+                            }
+
+
+                        }
+                    });
+
+                } else if (GambarEarthingFlag == 1 || GambarTiangIPCFlag == 1) {
+                    if (GambarEarthingFlag == 0) {
+                        alert(
+                            "Aplikasi mempunyai masalah untuk menuatnaik fail gambar earthing !!");
+                    } else if (GambarTiangIPCFlag == 0) {
+                        alert(
+                            "Aplikasi mempunyai masalah untuk menuatnaik fail gambar tiang !!");
+                    }
+                } else {
+                    alert(" Aplikasi mempunyai masalah untuk muatnaik gamber gambar tiang & earthing!!");
+                }
+            }, function (error) {
+                alert('error : ' + JSON.stringify(error));
+            }, options);
+
+
+
+        }
+        //SECTION Jenis Kerja Panel
+        //NOTE DONE
+        function panel() {
+            var GambarBlackBoxURI = listPending[i].GambarBlackBoxURI;
+            //image.src = GambarSebelumURI + '?' + Math.random();
+
+            var options = new FileUploadOptions();
+            options.fileKey = "file";
+            options.fileName = GambarBlackBoxURI.substr(GambarBlackBoxURI.lastIndexOf('/') + 1);
+            options.mimeType = "image/jpeg";
+
+            var params = {};
+            params.value1 = "test";
+            params.value2 = "param";
+
+            options.params = params;
+            options.chunkedMode = false;
+
+            var ft = new FileTransfer();
+            ft.upload(GambarBlackBoxURI, "http://1.32.96.10/ProLight/mimi/test2.php", function (result) {
+                //alert('successfully uploaded ' + result.response);
+                GambarBlackBoxFlag = 1;
+                GambarBlackBoxVal = result.response;
+                // masukkan nama file yg dihantar ke localstorage utk dirujuk semula
+                //localStorage.setItem("gambarsebelum", result.response);
+                if (GambarSebelumFlag == 1) {
+
+                    var dataFormreg = {
+                        "daerah": listPending[i].Daerah,
+                        "kumpulan": listPending[i].Kumpulan,
+                        "jenisKerja": listPending[i].JenisKerja,
+                        "latitude": listPending[i].Latitude,
+                        "longitude": listPending[i].Longitude,
+                        "output": listPending[i].Output,
+
+                        "notiang": listPending[i].NoTiang,
+                        "shift": listPending[i].Shift,
+                        "aduan": listPending[i].Aduan,
+                        "lokasi": listPending[i].Lokasi,
+                        "nometer": listPending[i].NoMeter,
+                        "mengecatpanel": listPending[i].MengecatPanel,
+                        "monkeypanel1": listPending[i].MonkeyPanel1,
+                        "monkeypanel3": listPending[i].MonkeyPanel3,
+                        "merombakpanel": listPending[i].MerombakPanel,
+                        "pvc": listPending[i].PVC,
+                        "mengecatpanelmeter": listPending[i].MengecatPanelMeter,
+                        "pecuqty": listPending[i].PecuQty,
+                        "contractor": listPending[i].Contractor,
+                        "fius": listPending[i].Fius,
+                        "masa": listPending[i].Masa,
+                        "category": listPending[i].Category,
+                        "gambartiang": GambarTiangVal,
+                        "gambarsebelum": GambarSebelumVal,
+                        "gambarselepas": GambarSelepasVal,
+
+                        "pendawaian": listPending[i].Pendawaian,
+                        "man": listPending[i].Man,
+                        "helper": listPending[i].Helper,
+                        "driver": listPending[i].Driver,
+                        "merombakgantifius": listPending[i].MerombakGantiFius,
+                        "ganti_1setfuse": listPending[i].Ganti1SetFuse,
+                        "jalan": listPending[i].Jalan,
+                        "pecu": listPending[i].Pecu,
+                        "ipc120185": listPending[i].IPC120185,
+                        "ipc1695": listPending[i].IPC1695,
+                        "ipc20185": listPending[i].IPC20185,
+                        "ipc1670": listPending[i].IPC1670,
+                        "ipc2550": listPending[i].IPC2550,
+                        "cable": listPending[i].Cable,
+                        "catatan": listPending[i].Catatan,
+                        "gambarblackbox": GambarBlackBoxVal,
+                        "panel": listPending[i].Panel,
+                        "overall": listPending[i].Overall
+                    };
+
+                    localStorage.setItem("Flag", i);
+
+                    var dataString = JSON.stringify(dataFormreg);
+                    $.ajax({
+                        url: 'http://1.32.96.10/ProLight/mimi/panel.php',
+                        data: {
+                            myData: dataString
+                        },
+                        type: 'POST',
+                        success: function (response) {
+                            //TODO loading interface 
+                            alert(response);
+                            if (response == 1) {
+                                var flagT = localStorage.getItem("Flag");
+                                remove(flagT);
+                            } else if (response == 0) {
+                                alert("Kesilapan ketika memuatnaik data !!");
+                            }
+
+
+                        }
+                    });
+
+                } else {
+                    alert(" Aplikasi mempunyai masalah untuk muatnaik gamber blackbox!!");
+                }
+
+            }, function (error) {
+                alert('error : ' + JSON.stringify(error));
+            }, options);
+        }
+        //SECTION Jenis Kerja Aduan
+        //NOTE UNDONE
+        function aduan() {
+            if (GambarSebelumFlag == 1 && GambarTiangFlag == 1 && GambarSelepasFlag == 1) {
+                var dataFormreg = {
+                    "daerah": listPending[i].Daerah,
+                    "kumpulan": listPending[i].Kumpulan,
+                    "jenisKerja": listPending[i].JenisKerja,
+                    "latitude": listPending[i].Latitude,
+                    "longitude": listPending[i].Longitude,
+                    "noTiang": listPending[i].NoTiang,
+                    "types": listPending[i].Types,
+                    "ipc": listPending[i].IPC,
+                    "pecu": listPending[i].Pecu,
+                    "pecuqty": listPending[i].PecuQty,
+                    "ipclantern": listPending[i].IPCLantern,
+                    "lantern": listPending[i].Lantern,
+                    "fuse": listPending[i].Fuse,
+                    "contractor": listPending[i].Contractor,
+                    "link": listPending[i].Link,
+                    "dawailampu": listPending[i].DawaiLampu,
+                    "dawaipanel": listPending[i].DawaiPanel,
+                    "cout": listPending[i].Cout,
+                    "rombaklampu": listPending[i].RombakLampu,
+                    "bracket": listPending[i].Bracket,
+                    "rombakpanel": listPending[i].RombakPanel,
+                    "masa": listPending[i].Masa,
+                    "gambartiang": GambarTiangVal,
+                    "gambarsebelum": GambarSebelumVal,
+                    "sclamp": listPending[i].SCLamp,
+                    "rentis": listPending[i].Rentis,
+                    "dead": listPending[i].Dead,
+                    "cable": listPending[i].Cable,
+                    "mini": listPending[i].Mini,
+                    "pusing": listPending[i].Pusing,
+                    "jumperlantern": listPending[i].JumperLantern,
+                    "jumperservice": listPending[i].JumperService,
+                    "hook": listPending[i].Hook,
+                    "creepers": listPending[i].Creepers,
+                    "color": kk,
+                    "man": ll,
+                    "helper": listPending[i].Helper,
+                    "driver": listPending[i].Driver,
+                    "shift": listPending[i].Shift,
+                    "category": listPending[i].Category,
+                    "jenislampu": listPending[i].JenisLampu,
+                    "gambarselepas": GambarSelepasVal,
+                    "ipc120185": listPending[i].IPC120185,
+                    "ipc1695": listPending[i].IPC1695,
+                    "ipc20185": listPending[i].IPC20185,
+                    "ipc1670": listPending[i].IPC1670,
+                    "ipc2550": listPending[i].IPC2550,
+                    "catatan": listPending[i].Catatan
+
+                };
+
+                localStorage.setItem("Flag", i);
+
+                var dataString = JSON.stringify(dataFormreg);
+                $.ajax({
+                    url: 'http://1.32.96.10/ProLight/mimi/aduan3.php',
+                    data: {
+                        myData: dataString
+                    },
+                    type: 'POST',
+                    success: function (response) {
+                        //TODO loading interface 
+                        if (response == 1) {
+                            var flagT = localStorage.getItem("Flag");
+                            remove(flagT);
+                        } else if (response == 0) {
+                            alert("Kesilapan ketika memuatnaik data !!");
+                        }
+
+
+                    }
+                });
+            } else if (GambarSebelumFlag == 1 || GambarTiangFlag == 1 || GambarSelepasFlag == 1) {
+                //001
+                if (GambarSebelumFlag == 0 && GambarTiangFlag == 0 && GambarSelepasFlag == 1) {
+                    alert(
+                        "Aplikasi mempunyai masalah untuk menuatnaik fail gambar sebelum & gambar tiang !!");
+                }
+                // 010
+                else if (GambarSebelumFlag == 0 && GambarTiangFlag == 1 && GambarSelepasFlag == 0) {
+                    alert(
+                        "Aplikasi mempunyai masalah untuk muatnaik fail gambar sebelum & gambar selepas !!");
+                }
+                //011
+                else if (GambarSebelumFlag == 0 && GambarTiangFlag == 1 && GambarSelepasFlag == 1) {
+                    alert("Aplikasi mempunyai masalah untuk muatnaik fail gambar sebelum !!");
+                }
+                //100
+                else if (GambarSebelumFlag == 1 && GambarTiangFlag == 0 && GambarSelepasFlag == 0) {
+                    alert(
+                        "Aplikasi mempunyai masalah untuk muatnaik fail gambar tiang & gambar selepas !!");
+                }
+                //101
+                else if (GambarSebelumFlag == 1 && GambarTiangFlag == 0 && GambarSelepasFlag == 1) {
+                    alert("Aplikasi mempunyai masalah untuk muatnaik fail gambar tiang !!");
+                }
+                //110
+                else if (GambarSebelumFlag == 0 && GambarTiangFlag == 1 && GambarSelepasFlag == 0) {
+                    alert("Aplikasi mempunyai masalah untuk muatnaik fail gambar selepas !!");
+                }
+            } else {
+                alert(" Aplikasi mempunyai masalah untuk muatnaik kesemua gamber !!");
+            }
+        }
+        //SECTION Jenis Kerja Imbangan Barang
+        //NOTE UNDONE
+
+        //SECTION Jenis Kerja Imbangan Guna
+        //NOTE UNDONE
+
     }
 
-    function rondaanKhas() {
-        if (GambarSebelumFlag == 1 && GambarTiangFlag == 1 && GambarSelepasFlag == 1) {
+    function imbanganGuna() {
+        var dataFormreg = {
+            "daerah": listPending[i].Daerah,
+            "kumpulan": listPending[i].Kumpulan,
+            "jenisKerja": listPending[i].JenisKerja,
+            "lan100w": listPending[i].Lan100w,
+            "lan150w": listPending[i].Lan150w,
+            "lan250w": listPending[i].Lan250w,
+            "pecu": listPending[i].Pecu,
+            "ipc120": listPending[i].IPC120,
+            "ipc16": listPending[i].IPC16,
+            "ipc70": listPending[i].IPC70,
+            "ipc25": listPending[i].IPC25,
+            "ipc169": listPending[i].IPC169,
+            "bracket": listPending[i].Bracket,
+            "wire25": listPending[i].Wire25,
+            "contactor": listPending[i].Contactor,
+            "fuse": listPending[i].Fuse,
+            "panel": listPending[i].Panel,
+            "fuseswitch": listPending[i].FuseSwitch,
+            "bend": listPending[i].Bend,
+            "cooper": listPending[i].Cooper,
+            "wire1c": listPending[i].Wire1c,
+            "mini": listPending[i].Mini,
+            "chargeman": listPending[i].Chargeman,
+            "helper": listPending[i].Helper,
+            "driver": listPending[i].Driver,
+            "shift": listPending[i].Shift,
+            "lainlain": listPending[i].LainLain
+        };
+
+        localStorage.setItem("Flag", i);
+
+        var dataString = JSON.stringify(dataFormreg);
+        $.ajax({
+            url: 'http://1.32.96.10/ProLight/mimi/imbanganguna.php',
+            data: {
+                myData: dataString
+            },
+            type: 'POST',
+            success: function (response) {
+                //TODO loading interface 
+                alert(response);
+                if (response == 1) {
+                    var flagT = localStorage.getItem("Flag");
+                    remove(flagT);
+                } else if (response == 0) {
+                    alert("Kesilapan ketika memuatnaik data !!");
+                }
+
+
+            }
+        });
+    }
+
+    function imbanganBarang() {
+        var dataFormreg = {
+            "daerah": listPending[i].Daerah,
+            "kumpulan": listPending[i].Kumpulan,
+            "jenisKerja": listPending[i].JenisKerja,
+            "lan100w": listPending[i].Lan100w,
+            "lan150w": listPending[i].Lan150w,
+            "lan250w": listPending[i].Lan250w,
+            "pecu": listPending[i].Pecu,
+            "ipc120": listPending[i].IPC120,
+            "ipc16": listPending[i].IPC16,
+            "ipc70": listPending[i].IPC70,
+            "ipc25": listPending[i].IPC25,
+            "ipc169": listPending[i].IPC169,
+            "bracket": listPending[i].Bracket,
+            "wire25": listPending[i].Wire25,
+            "contactor": listPending[i].Contactor,
+            "fuse": listPending[i].Fuse,
+            "panel": listPending[i].Panel,
+            "fuseswitch": listPending[i].FuseSwitch,
+            "bend": listPending[i].Bend,
+            "cooper": listPending[i].Cooper,
+            "wire1c": listPending[i].Wire1c,
+            "mini": listPending[i].Mini,
+            "chargeman": listPending[i].Chargeman,
+            "helper": listPending[i].Helper,
+            "driver": listPending[i].Driver,
+            "shift": listPending[i].Shift,
+            "lainlain": listPending[i].LainLain
+        };
+
+        localStorage.setItem("Flag", i);
+
+        var dataString = JSON.stringify(dataFormreg);
+        $.ajax({
+            url: 'http://1.32.96.10/ProLight/mimi/imbangan.php',
+            data: {
+                myData: dataString
+            },
+            type: 'POST',
+            success: function (response) {
+                //TODO loading interface 
+                alert(response);
+                if (response == 1) {
+                    var flagT = localStorage.getItem("Flag");
+                    remove(flagT);
+                } else if (response == 0) {
+                    alert("Kesilapan ketika memuatnaik data !!");
+                }
+
+
+            }
+        });
+    }
+
+    function senaraiSemak() {
+        var dataFormreg = {
+            "daerah": listPending[i].Daerah,
+            "kumpulan": listPending[i].Kumpulan,
+            "jenisKerja": listPending[i].JenisKerja,
+
+            "stesen": listPending[i].Stesen,
+            "penyelia": listPending[i].Penyelia,
+            "tarikhsenggaraan": listPending[i].TarikhSenggaraan,
+            "tempat": listPending[i].Tempat,
+            "lampu100": listPending[i].Lampu100,
+            "lampu150": listPending[i].Lampu150,
+            "lampu250": listPending[i].Lampu250,
+            "voltan": listPending[i].Voltan,
+            "arus": listPending[i].Arus,
+            "pecu": listPending[i].Pecu,
+            "suismasa": listPending[i].SuisMasa,
+            "kerosakan": listPending[i].Kerosakan,
+            "terminal": listPending[i].Terminal,
+            "fius": listPending[i].Fius,
+            "sesentuh": listPending[i].Sesentuh,
+            "gasket": listPending[i].Gasket,
+
+            "keadaanpanel": listPending[i].KeadaanPanel,
+            "lampu": listPending[i].Lampu,
+            "pembumian": listPending[i].Pembumian,
+            "pinpivot": listPending[i].PinPivot,
+            "pincotter": listPending[i].PinCotter,
+            "spring": formlistPending[i].Spring,
+            "lainlain": listPending[i].LainLain,
+            "titiksesentuh": listPending[i].TitikSesentuh,
+            "gegelung": listPending[i].Gegelung,
+            "fiusminor": listPending[i].FiusMinor,
+            "catatan": listPending[i].Catatan
+        };
+
+        localStorage.setItem("Flag", i);
+
+        var dataString = JSON.stringify(dataFormreg);
+        $.ajax({
+            url: 'http://1.32.96.10/ProLight/mimi/senaraisemak.php',
+            data: {
+                myData: dataString
+            },
+            type: 'POST',
+            success: function (response) {
+                //TODO loading interface 
+                alert(response);
+                if (response == 1) {
+                    var flagT = localStorage.getItem("Flag");
+                    remove(flagT);
+                } else if (response == 0) {
+                    alert("Kesilapan ketika memuatnaik data !!");
+                }
+
+
+            }
+        });
+    }
+
+    function daftarAset() {
+        if (GambarSebelumFlag == 1) {
+
             var dataFormreg = {
-                "daerah": drh,
-                "kumpulan": kmpln,
-                "jenisKerja": jkerja,
-                "latitude": latitude,
-                "longitude": longitude,
-                "output": output,
-                "notiang": a,
-                "rombak": b,
-                "ipcqty": d,
-                "pecu": e,
-                "pecuqty": f,
-                "ipclantern": g,
-                "lantern": h,
-                "box": i,
-                "fuse": j,
-                "contactor": k,
-                "link": l,
-                "dawailampu": m,
-                "dawaipanel": n,
-                "masa": o,
-                "lampurosak": p,
-                "tarikhpenukaran": q,
-                "gambartiang": r,
-                "gambarsebelum": s,
-                "bracket": sa,
-                "rombakpnl": sb,
-                "clamp": sc,
-                "rentis": sd,
-                "dead": se,
-                "cable": sf,
-                "mini": sg,
-                "pusing": sh,
-                "jumper": si,
-                "hook": sj,
-                "creeper": sk,
-                "setlantern": sl,
-                "warna": sm,
-                "category": gg,
-                "cout": so,
-                "catatan": sp,
-                "gambarselepas": sq,
-                "jenislampu": formreg,
-                "chargeman": formreg2,
-                "helper": formreg3,
-                "driver": formreg4,
-                "shift": formreg5,
-                "zon": formreg6,
-                "bekalan": formreg7,
-                "jalan": formreg8,
-                "lokasi": formreg9,
-                "jenama": formreg10,
-                "size": formreg11,
-                "catatan": formreg12
+                "daerah": listPending[i].Daerah,
+                "kumpulan": listPending[i].Kumpulan,
+                "jenisKerja": listPending[i].JenisKerja,
+                "latitude": listPending[i].Latitude,
+                "longitude": listPending[i].Longitude,
+                "output": listPending[i].Output,
+                "gg": gambartiang,
+                "masa": listPending[i].Masa,
+                "noakaun": listPending[i].noAkaun,
+                "namaakaun": listPending[i].NamaAkaun,
+                "jenisakaun": listPending[i].JenisAkaun,
+                "zon": listPending[i].Zon,
+                "namajalan": listPending[i].NamaJalan,
+                "puncabekalan": listPending[i].PuncaBekalan,
+                "kawalanmasa": listPending[i].KawalanMasa,
+                "jenama": listPending[i].Jenama,
+                "size": listPending[i].Size,
+                "unitpemula": listPending[i].UnitPemula,
+                "carakawalan": listPending[i].CaraKawalan,
+                "namapendaftar": listPending[i].NamaPendaftar,
+                "warnalampu": listPending[i].WarnaLampu,
+                "bacaanbebansebelum": listPending[i].BacaanBebanSebelum,
+                "notiang": listPending[i].NoTiang,
+                "team": listPending[i].Team,
+                "selenggara": listPending[i].Selenggara,
+                "bacaanbebanselepas": listPending[i].BacaanBebanSelepas,
+                "shift": listPending[i].Shift,
+                "jenislampu": listPending[i].JenisLampu,
+                "catatan": listPending[i].Catatan
+
             };
 
             localStorage.setItem("Flag", i);
 
             var dataString = JSON.stringify(dataFormreg);
             $.ajax({
-                url: 'http://1.32.96.10/ProLight/mimi/rondaankhas.php',
+                url: 'http://1.32.96.10/ProLight/mimi/daftaraset.php',
                 data: {
                     myData: dataString
                 },
                 type: 'POST',
                 success: function (response) {
                     //TODO loading interface 
+                    alert(response);
                     if (response == 1) {
                         var flagT = localStorage.getItem("Flag");
                         remove(flagT);
@@ -794,36 +1448,9 @@
 
                 }
             });
-        } else if (GambarSebelumFlag == 1 || GambarTiangFlag == 1 || GambarSelepasFlag == 1) {
-            //001
-            if (GambarSebelumFlag == 0 && GambarTiangFlag == 0 && GambarSelepasFlag == 1) {
-                alert(
-                    "Aplikasi mempunyai masalah untuk menuatnaik fail gambar sebelum & gambar tiang !!");
-            }
-            // 010
-            else if (GambarSebelumFlag == 0 && GambarTiangFlag == 1 && GambarSelepasFlag == 0) {
-                alert(
-                    "Aplikasi mempunyai masalah untuk muatnaik fail gambar sebelum & gambar selepas !!");
-            }
-            //011
-            else if (GambarSebelumFlag == 0 && GambarTiangFlag == 1 && GambarSelepasFlag == 1) {
-                alert("Aplikasi mempunyai masalah untuk muatnaik fail gambar sebelum !!");
-            }
-            //100
-            else if (GambarSebelumFlag == 1 && GambarTiangFlag == 0 && GambarSelepasFlag == 0) {
-                alert(
-                    "Aplikasi mempunyai masalah untuk muatnaik fail gambar tiang & gambar selepas !!");
-            }
-            //101
-            else if (GambarSebelumFlag == 1 && GambarTiangFlag == 0 && GambarSelepasFlag == 1) {
-                alert("Aplikasi mempunyai masalah untuk muatnaik fail gambar tiang !!");
-            }
-            //110
-            else if (GambarSebelumFlag == 0 && GambarTiangFlag == 1 && GambarSelepasFlag == 0) {
-                alert("Aplikasi mempunyai masalah untuk muatnaik fail gambar selepas !!");
-            }
+
         } else {
-            alert(" Aplikasi mempunyai masalah untuk muatnaik kesemua gamber !!");
+            alert(" Aplikasi mempunyai masalah untuk muatnaik gamber blackbox!!");
         }
     }
 

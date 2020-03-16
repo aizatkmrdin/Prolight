@@ -287,6 +287,19 @@
         document.getElementById("mySidenav").style.width = "0";
     }
 
+    Object.objsize = function (obj) {
+        var size = 0,
+            key;
+
+        for (key in obj) {
+            if (obj.hasOwnProperty(key))
+                size++;
+        }
+
+        return size;
+
+    };
+
     function nextPage() {
 
         localStorage.setItem("editrondaankhas", "");
@@ -374,9 +387,308 @@
         var sp = localStorage.getItem("catatan");
         var sq = localStorage.getItem("gambarselepas");
 
+        var gs1 = localStorage.getItem("gambarselepasURI");
+        var gs2 = localStorage.getItem("gambarsebelumURI");
+        var gs3 = localStorage.getItem("gambartiangURI");
+        var gs4 = localStorage.getItem("gambarselepas");
+        var gs5 = localStorage.getItem("gambarsebelum");
+        var gs6 = localStorage.getItem("gambartiang");
 
 
-        var dataFormreg = {
+        var data = {};
+        data[0] = {
+            "Daerah": drh,
+            "Kumpulan": kmpln,
+            "JenisKerja": jkerja,
+            "Latitude": latitude,
+            "Longitude": longitude,
+            "Output": output,
+            "NoTiang": a,
+            "Rombak": b,
+            "IPCType": c,
+            "IPCQty": d,
+            "Pecu": e,
+            "PecuQTY": f,
+            "IPCLantern": g,
+            "Lantern": h,
+            "Box": i,
+            "Fuse": j,
+            "Contractor": k,
+            "Link": l,
+            "DawaiLampu": m,
+            "DawaiPanel": n,
+            "Masa": o,
+            "LampuRosak": p,
+            "TarikhPenukaran": q,
+            "Bracket": sa,
+            "RombakPanel": sb,
+            "Clamp": sc,
+            "Rentis": sd,
+            "Dead": se,
+            "Cable": sf,
+            "Mini": sg,
+            "Pusing": sh,
+            "Jumper": si,
+            "Hook": sj,
+            "Creeper": sk,
+            "SetLantern": sl,
+            "Warna": sm,
+            "Cout": so,
+            "Category": gg,
+            "Catatan": formData.catatan,
+            "JenisLampu": formData.jenislampu,
+            "Chargeman": formData.chargeman,
+            "Helper": formData.helper,
+            "Driver": formData.driver,
+            "Shift": formData.shift,
+            "Zon": formData.zon,
+            "Bekalan": formData.bekalan,
+            "Jalan": formData.jalan,
+            "Lokasi": formData.lokasi,
+            "Jenama": formData.jenama,
+            "Size": formData.size,
+            "IPC120185": formData.ipc120185,
+            "IPC1695": formData.ipc1695,
+            "IPC20185": formData.ipc20185,
+            "IPC1670": formData.ipc1670,
+            "IPC2550": formData.ipc2550,
+            "GambarSelepasURI": gs1,
+            "GambarSebelumURI": gs2,
+            "GambarTiangURI": gs3,
+            "GambarSelepas": gs4,
+            "GambarSebelum": gs5,
+            "GambarTiang": gs6,
+            "Done": "0"
+
+        };
+        localStorage.setItem('listPendingTemp', JSON.stringify(data));
+
+        var listPending = JSON.parse(localStorage.getItem('listPending'));
+        var sizeOfList = Object.objsize(listPending);
+        if (sizeOfList == 0) {
+            localStorage.setItem('listPending', JSON.stringify(data));
+        } else if (sizeOfList > 0) {
+            var dataTemp = {};
+            for (i = 0; i < sizeOfList; i++) {
+                if (listPending[i] == undefined) {
+                    var listPending = JSON.parse(localStorage.getItem('listPendingTemp'));
+                    dataTemp[i] = {
+                        "Daerah": listPending[0].Daerah,
+                        "Kumpulan": listPending[0].Kumpulan,
+                        "JenisKerja": listPending[0].JenisKerja,
+                        "Latitude": listPending[0].Latitude,
+                        "Longitude": listPending[0].Longitude,
+                        "Output": listPending[0].Output,
+                        "NoTiang": listPending[0].NoTiang,
+                        "Rombak": listPending[0].Rombak,
+                        "IPCType": listPending[0].IPCType,
+                        "IPCQty": listPending[0].IPCQty,
+                        "Pecu": listPending[0].Pecu,
+                        "PecuQty": listPending[0].PecuQty,
+                        "IPCLantern": listPending[0].IPCLantern,
+                        "Lantern": listPending[0].Lantern,
+                        "Box": listPending[0].Box,
+                        "Fuse": listPending[0].Fuse,
+                        "Contractor": listPending[0].Contractor,
+                        "Link": listPending[0].Link,
+                        "DawaiLampu": listPending[0].DawaiLampu,
+                        "DawaiPanel": listPending[0].DawaiPanel,
+                        "Masa": listPending[0].Masa,
+                        "LampuRosak": listPending[0].LampuRosak,
+                        "TarikhPenukaran": listPending[0].TarikhPenukaran,
+                        "GambarTiang": listPending[0].GambarTiang,
+                        "GambarSebelum": listPending[0].GambarSebelum,
+                        "Bracket": listPending[0].Bracket,
+                        "RombakPanel": listPending[0].RombakPanel,
+                        "Clamp": listPending[0].Clamp,
+                        "Rentis": listPending[0].Rentis,
+                        "Dead": listPending[0].Dead,
+                        "Cable": listPending[0].Cable,
+                        "Mini": listPending[0].Mini,
+                        "Pusing": listPending[0].Pusing,
+                        "Jumper": listPending[0].Jumper,
+                        "Hook": listPending[0].Hook,
+                        "Creepers": listPending[0].Creepers,
+                        "SetLantern": listPending[0].SetLantern,
+                        "Warna": listPending[0].Warna,
+                        "Cout": listPending[0].Cout,
+                        "Category": listPending[0].Category,
+                        "Catatan": listPending[0].Catatan,
+                        "GambarSelepas": listPending[0].GambarSelepas,
+                        "JenisLampu": listPending[0].JenisLampu,
+                        "Chargeman": listPending[0].Chargeman,
+                        "Helper": listPending[0].Helper,
+                        "Driver": listPending[0].Driver,
+                        "Shift": listPending[0].Shift,
+                        "Ticket": listPending[0].Ticket,
+                        "Zon": listPending[0].Zon,
+                        "Bekalan": listPending[0].Bekalan,
+                        "Jalan": listPending[0].Jalan,
+                        "Lokasi": listPending[0].Lokasi,
+                        "Jenama": listPending[0].Jenama,
+                        "Size": listPending[0].Size,
+                        "IPC120185": listPending[0].IPC120185,
+                        "IPC1695": listPending[0].IPC1695,
+                        "IPC20185": listPending[0].IPC20185,
+                        "IPC1670": listPending[0].IPC1670,
+                        "IPC2550": listPending[0].IPC2550,
+                        "GambarSelepasURI": listPending[0].GambarSelepasURI,
+                        "GambarSebelumURI": listPending[0].GambarSebelumURI,
+                        "GambarTiangURI": listPending[0].GambarTiangURI,
+                        "GambarSelepas": listPending[0].GambarSelepas,
+                        "GambarSebelum": listPending[0].GambarSebelum,
+                        "GambarTiang": listPending[0].GambarTiang,
+                        "Done": "0"
+                    };
+                    break;
+                } else {
+                    dataTemp[i] = {
+                        "Daerah": listPending[0].Daerah,
+                        "Kumpulan": listPending[0].Kumpulan,
+                        "JenisKerja": listPending[0].JenisKerja,
+                        "Latitude": listPending[0].Latitude,
+                        "Longitude": listPending[0].Longitude,
+                        "Output": listPending[0].Output,
+                        "NoTiang": listPending[0].NoTiang,
+                        "Rombak": listPending[0].Rombak,
+                        "IPCType": listPending[0].IPCType,
+                        "IPCQty": listPending[0].IPCQty,
+                        "Pecu": listPending[0].Pecu,
+                        "PecuQty": listPending[0].PecuQty,
+                        "IPCLantern": listPending[0].IPCLantern,
+                        "Lantern": listPending[0].Lantern,
+                        "Box": listPending[0].Box,
+                        "Fuse": listPending[0].Fuse,
+                        "Contractor": listPending[0].Contractor,
+                        "Link": listPending[0].Link,
+                        "DawaiLampu": listPending[0].DawaiLampu,
+                        "DawaiPanel": listPending[0].DawaiPanel,
+                        "Masa": listPending[0].Masa,
+                        "LampuRosak": listPending[0].LampuRosak,
+                        "TarikhPenukaran": listPending[0].TarikhPenukaran,
+                        "GambarTiang": listPending[0].GambarTiang,
+                        "GambarSebelum": listPending[0].GambarSebelum,
+                        "Bracket": listPending[0].Bracket,
+                        "RombakPanel": listPending[0].RombakPanel,
+                        "Clamp": listPending[0].Clamp,
+                        "Rentis": listPending[0].Rentis,
+                        "Dead": listPending[0].Dead,
+                        "Cable": listPending[0].Cable,
+                        "Mini": listPending[0].Mini,
+                        "Pusing": listPending[0].Pusing,
+                        "Jumper": listPending[0].Jumper,
+                        "Hook": listPending[0].Hook,
+                        "Creepers": listPending[0].Creepers,
+                        "SetLantern": listPending[0].SetLantern,
+                        "Warna": listPending[0].Warna,
+                        "Cout": listPending[0].Cout,
+                        "Category": listPending[0].Category,
+                        "Catatan": listPending[0].Catatan,
+                        "GambarSelepas": listPending[0].GambarSelepas,
+                        "JenisLampu": listPending[0].JenisLampu,
+                        "Chargeman": listPending[0].Chargeman,
+                        "Helper": listPending[0].Helper,
+                        "Driver": listPending[0].Driver,
+                        "Shift": listPending[0].Shift,
+                        "Ticket": listPending[0].Ticket,
+                        "Zon": listPending[0].Zon,
+                        "Bekalan": listPending[0].Bekalan,
+                        "Jalan": listPending[0].Jalan,
+                        "Lokasi": listPending[0].Lokasi,
+                        "Jenama": listPending[0].Jenama,
+                        "Size": listPending[0].Size,
+                        "IPC120185": listPending[0].IPC120185,
+                        "IPC1695": listPending[0].IPC1695,
+                        "IPC20185": listPending[0].IPC20185,
+                        "IPC1670": listPending[0].IPC1670,
+                        "IPC2550": listPending[0].IPC2550,
+                        "GambarSelepasURI": listPending[0].GambarSelepasURI,
+                        "GambarSebelumURI": listPending[0].GambarSebelumURI,
+                        "GambarTiangURI": listPending[0].GambarTiangURI,
+                        "GambarSelepas": listPending[0].GambarSelepas,
+                        "GambarSebelum": listPending[0].GambarSebelum,
+                        "GambarTiang": listPending[0].GambarTiang,
+                        "Done": "0"
+                    };
+                }
+                /*;*/
+
+            }
+            var i = sizeOfList;
+            //var listPending = JSON.parse(localStorage.getItem('listPendingTemp'));
+
+            dataTemp[i] = {
+                "Daerah": drh,
+                "Kumpulan": kmpln,
+                "JenisKerja": jkerja,
+                "Latitude": latitude,
+                "Longitude": longitude,
+                "Output": output,
+                "NoTiang": a,
+                "Rombak": b,
+                "IPCType": c,
+                "IPCQty": d,
+                "Pecu": e,
+                "PecuQTY": f,
+                "IPCLantern": g,
+                "Lantern": h,
+                "Box": i,
+                "Fuse": j,
+                "Contractor": k,
+                "Link": l,
+                "DawaiLampu": m,
+                "DawaiPanel": n,
+                "Masa": o,
+                "LampuRosak": p,
+                "TarikhPenukaran": q,
+                "Bracket": sa,
+                "RombakPanel": sb,
+                "Clamp": sc,
+                "Rentis": sd,
+                "Dead": se,
+                "Cable": sf,
+                "Mini": sg,
+                "Pusing": sh,
+                "Jumper": si,
+                "Hook": sj,
+                "Creeper": sk,
+                "SetLantern": sl,
+                "Warna": sm,
+                "Cout": so,
+                "Category": gg,
+                "Catatan": formData.catatan,
+                "JenisLampu": formData.jenislampu,
+                "Chargeman": formData.chargeman,
+                "Helper": formData.helper,
+                "Driver": formData.driver,
+                "Shift": formData.shift,
+                "Zon": formData.zon,
+                "Bekalan": formData.bekalan,
+                "Jalan": formData.jalan,
+                "Lokasi": formData.lokasi,
+                "Jenama": formData.jenama,
+                "Size": formData.size,
+                "IPC120185": formData.ipc120185,
+                "IPC1695": formData.ipc1695,
+                "IPC20185": formData.ipc20185,
+                "IPC1670": formData.ipc1670,
+                "IPC2550": formData.ipc2550,
+                "GambarSelepasURI": gs1,
+                "GambarSebelumURI": gs2,
+                "GambarTiangURI": gs3,
+                "GambarSelepas": gs4,
+                "GambarSebelum": gs5,
+                "GambarTiang": gs6,
+                "Done": "0"
+            };
+
+            localStorage.setItem('listPending', JSON.stringify(dataTemp));
+
+        }
+        localStorage.removeItem("NumberOfObject");
+        window.location.href = "laporanDraft.html";
+
+        /*var dataFormreg = {
             "daerah": drh,
             "kumpulan": kmpln,
             "jenisKerja": jkerja,
@@ -433,10 +745,10 @@
             "jenama": formreg10,
             "size": formreg11,
             "catatan": formreg12
-        };
+        };*/
 
         //alert(dataFormreg);
-        var dataString = JSON.stringify(dataFormreg);
+        /*var dataString = JSON.stringify(dataFormreg);
         $.ajax({
             url: 'http://1.32.96.10/ProLight/mimi/rondaankhas.php',
             data: {
@@ -447,7 +759,7 @@
                 alert(response);
                 window.location.href = "laporan3.html";
             }
-        });
+        });*/
         // window.location.replace("laporan3.html");
 
     }

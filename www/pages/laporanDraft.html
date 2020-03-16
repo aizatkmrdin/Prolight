@@ -275,7 +275,8 @@
                         "</p></td><td><p style='font-size:8px'>" + listPending[i]
                         .NoTiang +
                         "</p></td><td><div class='buttonSeterusnyatable'  onclick='deleting(" + i +
-                        ")'> Padam </div></td><td><div class='buttonSeterusnyatable' onclick='send(" + i +
+                        ")'> Padam </div></td><td><div class='buttonSeterusnyatable' onclick='edit(" + i +
+                        ")'> Ubah </div></td><td><div class='buttonSeterusnyatable' onclick='send(" + i +
                         ")'> Hantar </div></td></tr>";
 
                 } else if (listPending[i].Done == 1) {
@@ -356,7 +357,8 @@
     //SECTION send
     function send(i) {
         //document.getElementById("load").innerHTML = "<div class='loading'>Loading&#8230;</div>";
-        var JenisKerja = listPending[flag].JenisKerja;
+        var listPending = JSON.parse(localStorage.getItem('listPending'));
+        var JenisKerja = listPending[i].JenisKerja;
         if ((JenisKerja.localeCompare("Senarai Semak")) == "0") {
             senaraiSemak();
         } else if ((JenisKerja.localeCompare("Imbangan Barang")) == "0") {
@@ -379,7 +381,7 @@
             GambarBlackBoxFlag,
             GambarBlackBoxVal,
             GambarSelepasVal;
-        var listPending = JSON.parse(localStorage.getItem('listPending'));
+
 
         //gambar tiang
         var GambarTiangURI = listPending[i].GambarTiangURI;
@@ -403,7 +405,7 @@
             GambarTiangVal = result.response;
             // masukkan nama file yg dihantar ke localstorage utk dirujuk semula
             //localStorage.setItem("gambarsebelum", result.response);
-            var JenisKerja = listPending[flag].JenisKerja;
+            var JenisKerja = listPending[i].JenisKerja;
             if ((JenisKerja.localeCompare("Daftar Aset")) == "0") {
                 daftarAset();
             }
