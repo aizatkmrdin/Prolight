@@ -244,6 +244,19 @@
         document.getElementById("mySidenav").style.width = "0";
     }
 
+    Object.objsize = function (obj) {
+        var size = 0,
+            key;
+
+        for (key in obj) {
+            if (obj.hasOwnProperty(key))
+                size++;
+        }
+
+        return size;
+
+    };
+
     function nextPage() {
         var formData = app.form.convertToData('#formaduan3');
         //alert(formData);

@@ -25,7 +25,7 @@
     <title>ProLight</title>
 </head>
 
-<body onload="checkTemp()">
+<body>
     <header>
         <div class="hamburger">
             <i class="fas fa-bars"></i>
@@ -116,7 +116,7 @@
                     </div>
 
                     <p class="position-text4-high">Pecu Type</p>
-                    <div class="dropdown position-input4-ticket">
+                    <div class="dropdown position-input4-ticket" id="pecu">
                         <select name="pecu" class="dropdown-select">
                             <option value="Lantern">Lantern</option>
                             <option value="Panel">Panel</option>
@@ -252,7 +252,7 @@
                     <p class="position-text14-high">Masa</p>
                     <input class="input-box position-input14-ticket" type="text" name="masa" id="time" readonly>
 
-                    <p class="position-text15-high">Lampu Rosak?</p>
+                    <p class="position-text15-high">Lampu Rosak</p>
                     <div class="dropdown position-input15-ticket" id="lampurosak">
                         <select name="lampurosak" class="dropdown-select">
                             <option value="YA">YA</option>
@@ -296,6 +296,59 @@
 <script type="text/javascript" src="../js/script.js"></script>
 
 <script>
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+        startup();
+    }
+
+    function startup() {
+        var flag = localStorage.getItem("NumberOfObject");
+        var stat = localStorage.getItem("statPage");
+        if (flag == null || flag == undefined) {
+            checkTemp();
+        } else {
+            var listPending = JSON.parse(localStorage.getItem('listPending'));
+            document.getElementById('notiang').value = localStorage.getItem("notiang");
+            document.getElementById('rombak').value = localStorage.getItem("rombak");
+            document.getElementById('ipctype').value = localStorage.getItem("ipctype");
+            document.getElementById('ipcqty').value = localStorage.getItem("ipcqty");
+            document.getElementById('pecu').value = localStorage.getItem("pecu");
+            document.getElementById('pecuqty').value = localStorage.getItem("pecuqty");
+            document.getElementById('ipclantern').value = localStorage.getItem("ipclantern");
+            document.getElementById('lantern').value = localStorage.getItem("lantern");
+            document.getElementById('box').value = localStorage.getItem("box");
+            document.getElementById('fuse').value = localStorage.getItem("fuse");
+            document.getElementById('contractor').value = localStorage.getItem("contractor");
+            document.getElementById('link').value = localStorage.getItem("link");
+            document.getElementById('dawailampu').value = localStorage.getItem("dawailampu");
+            document.getElementById('dawaipanel').value = localStorage.getItem("dawaipanel");
+            document.getElementById('time').value = localStorage.getItem("masa");
+            document.getElementById('lampurosak').value = localStorage.getItem("lampurosak");
+            document.getElementById('tarikhpenukaran').value = localStorage.getItem("tarikhpenukaran");
+            document.getElementById('gambartiang').value = localStorage.getItem("gambartiang");
+            document.getElementById('gambarsebelum').value = localStorage.getItem("gambarsebelum");
+            /*if ((stat.localeCompare("EDIT") == 0)) {
+                document.getElementById('noTiang').readOnly = true;
+                document.getElementById('time').readOnly = true;
+                document.getElementById('pecu').readOnly = true;
+                document.getElementById('pecuqty').readOnly = true;
+                document.getElementById('lantern').readOnly = true;
+                document.getElementById('blackbox').readOnly = true;
+                document.getElementById('fuse').readOnly = true;
+                document.getElementById('contractor').readOnly = true;
+                document.getElementById('link').readOnly = true;
+                document.getElementById('dawailampu').readOnly = true;
+                document.getElementById('dawaipanel').readOnly = true;
+                document.getElementById('cout').readOnly = true;
+                document.getElementById('rombaklampu').readOnly = true;
+                document.getElementById('bracket').readOnly = true;
+                document.getElementById('rombakpanel').readOnly = true;
+            }*/
+
+        }
+    }
+
     function checkTemp() {
         var cond = localStorage.getItem("editrondaankhas");
         if (cond == 1) {
@@ -326,9 +379,6 @@
         m = checkTime(m);
         s = checkTime(s);
         document.getElementById('time').value = yyyy + '-' + mm + '-' + dd + " " + h + ":" + m + ":" + s;
-        /*t = setTimeout(function () {
-            startTime()
-        }, 500);*/
     }
 
 
@@ -382,17 +432,11 @@
     }
 
     function nextPage() {
-
         var gambarsebelumURI = localStorage.getItem("gambarsebelumURI");
-        //get gamber tiang name in local storage
         var gambartiangURI = localStorage.getItem("gambartiangURI");
         var InternetStat = localStorage.getItem("InternetStat");
-
-        //condition of no picture selected 
-        //both null
         if ((gambartiangURI == null || gambartiangURI == '') && (gambarsebelumURI == null || gambarsebelumURI == '')) {
             alert("gambar sebelum & tiang is null");
-            // one of it null
         } else if ((gambartiangURI == null || gambartiangURI == '') || (gambarsebelumURI == null || gambarsebelumURI ==
                 '')) {
             if (gambarsebelumURI == null || gambarsebelumURI == '') {
@@ -402,7 +446,6 @@
                 alert("gambar tiang is null");
                 window.location.href = "tiang.html";
             }
-            //both not null
         } else if ((gambartiangURI != null || gambartiangURI != '') && (gambarsebelumURI != null || gambarsebelumURI !=
                 '')) {
 
@@ -430,17 +473,10 @@
 
 
             window.location.href = "rondaankhas2.html";
+        } else {
+            alert("error somewhere");
         }
-    } else {
-        alert("error somewhere");
     }
-
-
-
-
-    //store localstorage
-
-
     function goHome() {
         window.location.href = "home.html";
     }

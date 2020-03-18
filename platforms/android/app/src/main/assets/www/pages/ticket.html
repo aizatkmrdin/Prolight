@@ -289,16 +289,16 @@
         document.addEventListener("online", onOnline, false);
         document.addEventListener("offline", onOffline, false);
         startup();
-
-
-
     }
 
     function startup() {
+
         var flag = localStorage.getItem("NumberOfObject");
+        var stat = localStorage.getItem("statPage");
         if (flag == null || flag == undefined) {
             checkTemp();
         } else {
+
             var listPending = JSON.parse(localStorage.getItem('listPending'));
 
             document.getElementById('noTiang').value = listPending[flag].NoTiang;
@@ -316,11 +316,28 @@
             document.getElementById('rombaklampu').value = listPending[flag].RombakLampu;
             document.getElementById('bracket').value = listPending[flag].Bracket;
             document.getElementById('rombakpanel').value = listPending[flag].RombakPanel;
+            if ((stat.localeCompare("EDIT") == 0)) {
+                document.getElementById('noTiang').readOnly = true;
+                document.getElementById('time').readOnly = true;
+                document.getElementById('pecu').readOnly = true;
+                document.getElementById('pecuqty').readOnly = true;
+                document.getElementById('lantern').readOnly = true;
+                document.getElementById('blackbox').readOnly = true;
+                document.getElementById('fuse').readOnly = true;
+                document.getElementById('contractor').readOnly = true;
+                document.getElementById('link').readOnly = true;
+                document.getElementById('dawailampu').readOnly = true;
+                document.getElementById('dawaipanel').readOnly = true;
+                document.getElementById('cout').readOnly = true;
+                document.getElementById('rombaklampu').readOnly = true;
+                document.getElementById('bracket').readOnly = true;
+                document.getElementById('rombakpanel').readOnly = true;
+            }
+
         }
     }
 
     function onOffline() {
-        //offline session
         alert("You In Offline Mode");
         localStorage.setItem("InternetStat", "offline");
     }
@@ -431,10 +448,12 @@
         var gambarsebelumURI = localStorage.getItem("gambarsebelumURI");
         var gambartiangURI = localStorage.getItem("gambartiangURI");
         var InternetStat = localStorage.getItem("InternetStat");
-        if ((gambartiangURI == null || gambartiangURI == '') && (gambarsebelumURI == null || gambarsebelumURI == '')) {
+        if ((gambartiangURI == null || gambartiangURI == '') && (gambarsebelumURI == null || gambarsebelumURI ==
+                '')) {
             alert("gambar sebelum & tiang is null");
             // one of it null
-        } else if ((gambartiangURI == null || gambartiangURI == '') || (gambarsebelumURI == null || gambarsebelumURI ==
+        } else if ((gambartiangURI == null || gambartiangURI == '') || (gambarsebelumURI == null ||
+                gambarsebelumURI ==
                 '')) {
             if (gambarsebelumURI == null || gambarsebelumURI == '') {
                 alert("gambar sebelum is null");
@@ -442,7 +461,8 @@
                 alert("gambar tiang is null");
             }
             //both not null
-        } else if ((gambartiangURI != null || gambartiangURI != '') && (gambarsebelumURI != null || gambarsebelumURI !=
+        } else if ((gambartiangURI != null || gambartiangURI != '') && (gambarsebelumURI != null ||
+                gambarsebelumURI !=
                 '')) {
 
             var formData = app.form.convertToData('#formticket');
@@ -479,10 +499,12 @@
 
         //condition of no picture selected 
         //both null
-        if ((gambartiangURI == null || gambartiangURI == '') && (gambarsebelumURI == null || gambarsebelumURI == '')) {
+        if ((gambartiangURI == null || gambartiangURI == '') && (gambarsebelumURI == null || gambarsebelumURI ==
+                '')) {
             alert("gambar sebelum & tiang is null");
             // one of it null
-        } else if ((gambartiangURI == null || gambartiangURI == '') || (gambarsebelumURI == null || gambarsebelumURI ==
+        } else if ((gambartiangURI == null || gambartiangURI == '') || (gambarsebelumURI == null ||
+                gambarsebelumURI ==
                 '')) {
             if (gambarsebelumURI == null || gambarsebelumURI == '') {
                 alert("gambar sebelum is null");
@@ -492,7 +514,8 @@
                 window.location.href = "tiang.html";
             }
             //both not null
-        } else if ((gambartiangURI != null || gambartiangURI != '') && (gambarsebelumURI != null || gambarsebelumURI !=
+        } else if ((gambartiangURI != null || gambartiangURI != '') && (gambarsebelumURI != null ||
+                gambarsebelumURI !=
                 '')) {
 
             var formData = app.form.convertToData('#formticket');

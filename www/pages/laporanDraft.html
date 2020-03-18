@@ -268,23 +268,17 @@
                 sizeOfList = sizeOfList + 1;
                 continue;
             } else {
-                if (listPending[i].Done == 0) {
-                    input +=
-                        "<tr><td style='padding: 10px 10px;font-size:8px;'>" + (x + 1) +
-                        "</td><td><p style='font-size:8px'>" + listPending[i].Masa +
-                        "</p></td><td><p style='font-size:8px'>" + listPending[i]
-                        .NoTiang +
-                        "</p></td><td><div class='buttonSeterusnyatable'  onclick='deleting(" + i +
-                        ")'> Padam </div></td><td><div class='buttonSeterusnyatable' onclick='edit(" + i +
-                        ")'> Ubah </div></td><td><div class='buttonSeterusnyatable' onclick='send(" + i +
-                        ")'> Hantar </div></td></tr>";
+                input +=
+                    "<tr><td style='padding: 10px 10px;font-size:8px;'>" + (x + 1) +
+                    "</td><td><p style='font-size:8px'>" + listPending[i].Masa +
+                    "</p></td><td><p style='font-size:8px'>" + listPending[i]
+                    .NoTiang +
+                    "</p></td><td><div class='buttonSeterusnyatable'  onclick='deleting(" + i +
+                    ")'> Padam </div></td><td><div class='buttonSeterusnyatable' onclick='edit(" + i +
+                    ")'> Ubah </div></td><td><div class='buttonSeterusnyatable' onclick='send(" + i +
+                    ")'> Hantar </div></td></tr>";
 
-                } else if (listPending[i].Done == 1) {
-                    input +=
-                        "<tr><td style='padding: 10px 10px;'>" + (x + 1) +
-                        "</td><td>" + listPending[i].Masa + "</td><td>" + listPending[i].NoTiang +
-                        "</td><td>Selesai</td></tr>";
-                }
+
                 x++;
             }
 
@@ -313,42 +307,52 @@
         //SECTION Check Jenis Kerja
         if ((JenisKerja.localeCompare("Ticket")) == "0") {
             localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "EDIT");
             window.location.href = "ticket.html";
 
         } else if ((JenisKerja.localeCompare("Rondaan")) == "0") {
             localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "EDIT");
             window.location.href = "rondaan.html";
 
         } else if ((JenisKerja.localeCompare("Rondaan Khas")) == "0") {
             localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "EDIT");
             window.location.href = "rondaankhas.html";
 
         } else if ((JenisKerja.localeCompare("LED")) == "0") {
             localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "EDIT");
             window.location.href = "led.html";
 
         } else if ((JenisKerja.localeCompare("Panel")) == "0") {
             localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "EDIT");
             window.location.href = "panel.html";
 
         } else if ((JenisKerja.localeCompare("Daftar Aset")) == "0") {
             localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "EDIT");
             window.location.href = "daftaraset.html";
 
         } else if ((JenisKerja.localeCompare("Senarai Semak")) == "0") {
             localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "EDIT");
             window.location.href = "senaraisemak.html";
 
         } else if ((JenisKerja.localeCompare("Aduan")) == "0") {
             localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "EDIT");
             window.location.href = "aduan.html";
 
         } else if ((JenisKerja.localeCompare("Imbangan Barang")) == "0") {
             localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "EDIT");
             window.location.href = "imbangan.html";
 
         } else if ((JenisKerja.localeCompare("Imbangan Guna")) == "0") {
             localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "EDIT");
             window.location.href = "imbanganguna.html";
 
         }
@@ -367,8 +371,6 @@
             imbanganGuna();
         }
 
-
-
         var GambarTiangFlag,
             GambarSebelumFlag,
             GambarSelepasFlag,
@@ -381,7 +383,6 @@
             GambarBlackBoxFlag,
             GambarBlackBoxVal,
             GambarSelepasVal;
-
 
         //gambar tiang
         var GambarTiangURI = listPending[i].GambarTiangURI;
@@ -407,7 +408,7 @@
             //localStorage.setItem("gambarsebelum", result.response);
             var JenisKerja = listPending[i].JenisKerja;
             if ((JenisKerja.localeCompare("Daftar Aset")) == "0") {
-                daftarAset();
+                daftarAset(GambarTiangFlag, i, GambarTiangVal);
             }
         }, function (error) {
             alert('error : ' + JSON.stringify(error));
@@ -800,7 +801,7 @@
                     type: 'POST',
                     success: function (response) {
                         //TODO loading interface 
-                        if (response == 1) {
+                        if (response.includes("1") == true) {
                             var flagT = localStorage.getItem("Flag");
                             remove(flagT);
                         } else if (response == 0) {
@@ -1083,7 +1084,7 @@
                         type: 'POST',
                         success: function (response) {
                             //TODO loading interface 
-                            alert(response);
+                            //alert(response);
                             if (response == 1) {
                                 var flagT = localStorage.getItem("Flag");
                                 remove(flagT);
@@ -1142,8 +1143,8 @@
                     "jumperservice": listPending[i].JumperService,
                     "hook": listPending[i].Hook,
                     "creepers": listPending[i].Creepers,
-                    "color": kk,
-                    "man": ll,
+                    "color": listPending[i].Color,
+                    "man": listPending[i].Man,
                     "helper": listPending[i].Helper,
                     "driver": listPending[i].Driver,
                     "shift": listPending[i].Shift,
@@ -1335,7 +1336,6 @@
             "daerah": listPending[i].Daerah,
             "kumpulan": listPending[i].Kumpulan,
             "jenisKerja": listPending[i].JenisKerja,
-
             "stesen": listPending[i].Stesen,
             "penyelia": listPending[i].Penyelia,
             "tarikhsenggaraan": listPending[i].TarikhSenggaraan,
@@ -1390,9 +1390,9 @@
         });
     }
 
-    function daftarAset() {
-        if (GambarSebelumFlag == 1) {
-
+    function daftarAset(GambarTiangFlag, i, gambartiang) {
+        if (GambarTiangFlag == 1) {
+            var listPending = JSON.parse(localStorage.getItem('listPending'));
             var dataFormreg = {
                 "daerah": listPending[i].Daerah,
                 "kumpulan": listPending[i].Kumpulan,
@@ -1437,15 +1437,13 @@
                 type: 'POST',
                 success: function (response) {
                     //TODO loading interface 
-                    alert(response);
+                    //alert(response);
                     if (response == 1) {
                         var flagT = localStorage.getItem("Flag");
                         remove(flagT);
                     } else if (response == 0) {
                         alert("Kesilapan ketika memuatnaik data !!");
                     }
-
-
                 }
             });
 

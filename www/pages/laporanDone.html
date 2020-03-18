@@ -211,11 +211,14 @@
         <div id="load"></div>
         <div class="zoom-content">
             <section>
-                <p class="titlereg-report">Draft</p>
+                <p class="titlereg-report">Selesai <div id="count"></div>
+                </p>
+
                 <div class="container position-tab">
                     <ul class="nav nav-tabs ">
                         <li><a onclick="paging('Draf')">Draf</a></li>
                         <li class="active"><a onclick="paging('Selesai')">Selesai</a></li>
+                        <li><a onclick="paging('Home')">Home</a></li>
                     </ul>
                     <br>
                     <center>
@@ -240,43 +243,53 @@
 
         //SECTION Check Jenis Kerja
         if ((JenisKerja.localeCompare("Ticket")) == "0") {
-            localStorage.setItem("DoneView", flag);
+            localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "VIEW");
             window.location.href = "ticket.html";
 
         } else if ((JenisKerja.localeCompare("Rondaan")) == "0") {
-            localStorage.setItem("DoneView", flag);
+            localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "VIEW");
             window.location.href = "rondaan.html";
 
         } else if ((JenisKerja.localeCompare("Rondaan Khas")) == "0") {
-            localStorage.setItem("DoneView", flag);
+            localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "VIEW");
             window.location.href = "rondaankhas.html";
 
         } else if ((JenisKerja.localeCompare("LED")) == "0") {
-            localStorage.setItem("DoneView", flag);
+            localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "VIEW");
             window.location.href = "led.html";
 
         } else if ((JenisKerja.localeCompare("Panel")) == "0") {
-            localStorage.setItem("DoneView", flag);
+            localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "VIEW");
             window.location.href = "panel.html";
 
         } else if ((JenisKerja.localeCompare("Daftar Aset")) == "0") {
-            localStorage.setItem("DoneView", flag);
+            localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "VIEW");
             window.location.href = "daftaraset.html";
 
         } else if ((JenisKerja.localeCompare("Senarai Semak")) == "0") {
-            localStorage.setItem("DoneView", flag);
+            localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "VIEW");
             window.location.href = "senaraisemak.html";
 
         } else if ((JenisKerja.localeCompare("Aduan")) == "0") {
-            localStorage.setItem("DoneView", flag);
+            localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "VIEW");
             window.location.href = "aduan.html";
 
         } else if ((JenisKerja.localeCompare("Imbangan Barang")) == "0") {
-            localStorage.setItem("DoneView", flag);
+            localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "VIEW");
             window.location.href = "imbangan.html";
 
         } else if ((JenisKerja.localeCompare("Imbangan Guna")) == "0") {
-            localStorage.setItem("DoneView", flag);
+            localStorage.setItem("NumberOfObject", flag);
+            localStorage.setItem("statPage", "VIEW");
             window.location.href = "imbanganguna.html";
 
         }
@@ -287,6 +300,8 @@
             location.href = "laporanDraft.html";
         } else if (a.localeCompare("Selesai") == 0) {
             location.href = "laporanDone.html";
+        } else if (a.localeCompare("Home") == 0) {
+            location.href = "home.html";
         }
     }
     Object.objsize = function (obj) {
@@ -303,10 +318,17 @@
     };
     document.addEventListener("deviceready", onDeviceReady, false);
 
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
 
     //SECTION ONLOAD FUNCTION
     function onDeviceReady() {
         var x = 0;
+        var v = 0;
         var todayDone = JSON.parse(localStorage.getItem('todayDone'));
         var sizeOfList = Object.objsize(todayDone);
         input +=
@@ -319,10 +341,36 @@
                 "</td><td><div class='buttonSeterusnyatable' onclick='view(" + i + ")'>lihat</div></td></tr>";
 
             x++;
+            var todayDate = todayDone[i].Masa;
+            var res = todayDate.split(" ");
+
+            if (res[0].localeCompare(startTime()) == "0") {
+                v++
+            }
         }
         input += "</table>";
         document.getElementById('news').innerHTML = input;
+        document.getElementById('count').innerHTML = v;
+        localStorage.setItem("CountComp", v);
+    }
 
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        // add a zero in front of numbers<10
+        m = checkTime(m);
+        s = checkTime(s);
+        var tim = yyyy + '-' + mm + '-' + dd;
+
+        return tim;
+        /*t = setTimeout(function () {
+            startTime()
+        }, 500);*/
     }
 </script>
 

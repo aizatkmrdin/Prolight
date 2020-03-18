@@ -25,7 +25,7 @@
     <title>ProLight</title>
 </head>
 
-<body onload="checkTemp()">
+<body>
     <header>
         <div class="hamburger">
             <i class="fas fa-bars"></i>
@@ -116,7 +116,7 @@
                     </div>
 
                     <p class="position-text4-high">Pecu Type</p>
-                    <div class="dropdown position-input4-ticket">
+                    <div class="dropdown position-input4-ticket" id="pecu">
                         <select name="pecu" class="dropdown-select">
                             <option value="Lantern">Lantern</option>
                             <option value="Panel">Panel</option>
@@ -252,7 +252,7 @@
                     <p class="position-text14-high">Masa</p>
                     <input class="input-box position-input14-ticket" type="text" name="masa" id="time" readonly>
 
-                    <p class="position-text15-high">Lampu Rosak?</p>
+                    <p class="position-text15-high">Lampu Rosak</p>
                     <div class="dropdown position-input15-ticket" id="lampurosak">
                         <select name="lampurosak" class="dropdown-select">
                             <option value="YA">YA</option>
@@ -296,6 +296,43 @@
 <script type="text/javascript" src="../js/script.js"></script>
 
 <script>
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+        startup();
+    }
+
+    function startup() {
+
+        var flag = localStorage.getItem("NumberOfObject");
+        var stat = localStorage.getItem("statPage");
+        if (flag == null || flag == undefined) {
+            //checkTemp();
+            alert("something wrong somewhere!");
+            location.href = "home.html";
+        } else {
+            var listPending = JSON.parse(localStorage.getItem('listPending'));
+            document.getElementById('notiang').value = listPending[flag].NoTiang;
+            document.getElementById('rombak').value = listPending[flag].Rombak;
+            document.getElementById('ipcqty').value = listPending[flag].IPCQty;
+            document.getElementById('pecu').value = listPending[flag].Pecu;
+            document.getElementById('pecuqty').value = listPending[flag].PecuQTY;
+            document.getElementById('ipclantern').value = listPending[flag].IPCLantern;
+            document.getElementById('lantern').value = listPending[flag].Lantern;
+            document.getElementById('box').value = listPending[flag].Box;
+            document.getElementById('fuse').value = listPending[flag].Fuse;
+            document.getElementById('contactor').value = listPending[flag].Contractor;
+            document.getElementById('link').value = listPending[flag].Link;
+            document.getElementById('dawailampu').value = listPending[flag].DawaiLampu;
+            document.getElementById('dawaipanel').value = listPending[flag].DawaiPanel;
+            document.getElementById('time').value = listPending[flag].Masa;
+            document.getElementById('lampurosak').value = listPending[flag].LampuRosak;
+            document.getElementById('tarikhpenukaran').value = listPending[flag].TarikhPenukaran;
+            document.getElementById('gambartiang').value = listPending[flag].GambarTiang;
+            document.getElementById('gambarsebelum').value = listPending[flag].GambarSebelum;
+        }
+    }
+
     function checkTemp() {
         var cond = localStorage.getItem("editrondaankhas");
         if (cond == 1) {
@@ -326,9 +363,6 @@
         m = checkTime(m);
         s = checkTime(s);
         document.getElementById('time').value = yyyy + '-' + mm + '-' + dd + " " + h + ":" + m + ":" + s;
-        /*t = setTimeout(function () {
-            startTime()
-        }, 500);*/
     }
 
 
@@ -382,17 +416,11 @@
     }
 
     function nextPage() {
-
         var gambarsebelumURI = localStorage.getItem("gambarsebelumURI");
-        //get gamber tiang name in local storage
         var gambartiangURI = localStorage.getItem("gambartiangURI");
         var InternetStat = localStorage.getItem("InternetStat");
-
-        //condition of no picture selected 
-        //both null
         if ((gambartiangURI == null || gambartiangURI == '') && (gambarsebelumURI == null || gambarsebelumURI == '')) {
             alert("gambar sebelum & tiang is null");
-            // one of it null
         } else if ((gambartiangURI == null || gambartiangURI == '') || (gambarsebelumURI == null || gambarsebelumURI ==
                 '')) {
             if (gambarsebelumURI == null || gambarsebelumURI == '') {
@@ -402,7 +430,6 @@
                 alert("gambar tiang is null");
                 window.location.href = "tiang.html";
             }
-            //both not null
         } else if ((gambartiangURI != null || gambartiangURI != '') && (gambarsebelumURI != null || gambarsebelumURI !=
                 '')) {
 
@@ -430,16 +457,10 @@
 
 
             window.location.href = "rondaankhas2.html";
+        } else {
+            alert("error somewhere");
         }
-    } else {
-        alert("error somewhere");
     }
-
-
-
-
-    //store localstorage
-
 
     function goHome() {
         window.location.href = "home.html";

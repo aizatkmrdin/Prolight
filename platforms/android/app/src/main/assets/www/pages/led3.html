@@ -502,7 +502,7 @@
                 "GambarEarthing": gs7,
                 "GambarTiangIPC": gs8,
                 "GambarEarthingURI": gs9,
-                "GambarTiangIPCURI": g10
+                "GambarTiangIPCURI": gs10
             };
             localStorage.setItem('listPendingTemp', JSON.stringify(data));
 
@@ -714,7 +714,7 @@
                     "GambarEarthing": gs7,
                     "GambarTiangIPC": gs8,
                     "GambarEarthingURI": gs9,
-                    "GambarTiangIPCURI": g10
+                    "GambarTiangIPCURI": gs10
                 };
 
                 localStorage.setItem('listPending', JSON.stringify(dataTemp));
@@ -832,7 +832,7 @@
             startTime()
         }, 500);
     }
-    startTime();
+    //startTime();
 
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');

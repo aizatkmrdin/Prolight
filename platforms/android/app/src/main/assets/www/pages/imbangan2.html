@@ -149,6 +149,19 @@
 <script type="text/javascript" src="../js/script.js"></script>
 
 <script>
+    Object.objsize = function (obj) {
+        var size = 0,
+            key;
+
+        for (key in obj) {
+            if (obj.hasOwnProperty(key))
+                size++;
+        }
+
+        return size;
+
+    };
+
     function nextPage() {
         var formData = app.form.convertToData('#formimbangan2');
 
