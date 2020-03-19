@@ -286,8 +286,6 @@
     document.addEventListener("deviceready", onDeviceReady, false);
 
     function onDeviceReady() {
-        document.addEventListener("online", onOnline, false);
-        document.addEventListener("offline", onOffline, false);
         startup();
     }
 
@@ -300,7 +298,6 @@
         } else {
 
             var listPending = JSON.parse(localStorage.getItem('listPending'));
-
             document.getElementById('noTiang').value = listPending[flag].NoTiang;
             document.getElementById('time').value = listPending[flag].Masa;
             document.getElementById('pecu').value = listPending[flag].Pecu;
@@ -316,7 +313,7 @@
             document.getElementById('rombaklampu').value = listPending[flag].RombakLampu;
             document.getElementById('bracket').value = listPending[flag].Bracket;
             document.getElementById('rombakpanel').value = listPending[flag].RombakPanel;
-            if ((stat.localeCompare("EDIT") == 0)) {
+            /*if ((stat.localeCompare("EDIT") == 0)) {
                 document.getElementById('noTiang').readOnly = true;
                 document.getElementById('time').readOnly = true;
                 document.getElementById('pecu').readOnly = true;
@@ -332,7 +329,7 @@
                 document.getElementById('rombaklampu').readOnly = true;
                 document.getElementById('bracket').readOnly = true;
                 document.getElementById('rombakpanel').readOnly = true;
-            }
+            }*/
 
         }
     }
@@ -349,7 +346,9 @@
     function checkTemp() {
         var cond = localStorage.getItem("edit");
         if (cond == 1) {
-            getItem();
+            //getItem();
+            startTime();
+            neaws();
 
         } else {
             startTime();
@@ -376,9 +375,6 @@
         m = checkTime(m);
         s = checkTime(s);
         document.getElementById('time').value = yyyy + '-' + mm + '-' + dd + " " + h + ":" + m + ":" + s;
-        /*t = setTimeout(function () {
-            startTime()
-        }, 500);*/
     }
 
 

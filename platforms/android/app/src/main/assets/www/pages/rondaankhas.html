@@ -303,49 +303,33 @@
     }
 
     function startup() {
+
         var flag = localStorage.getItem("NumberOfObject");
         var stat = localStorage.getItem("statPage");
         if (flag == null || flag == undefined) {
-            checkTemp();
+            //checkTemp();
+            alert("something wrong somewhere!");
+            location.href = "home.html";
         } else {
             var listPending = JSON.parse(localStorage.getItem('listPending'));
-            document.getElementById('notiang').value = localStorage.getItem("notiang");
-            document.getElementById('rombak').value = localStorage.getItem("rombak");
-            document.getElementById('ipctype').value = localStorage.getItem("ipctype");
-            document.getElementById('ipcqty').value = localStorage.getItem("ipcqty");
-            document.getElementById('pecu').value = localStorage.getItem("pecu");
-            document.getElementById('pecuqty').value = localStorage.getItem("pecuqty");
-            document.getElementById('ipclantern').value = localStorage.getItem("ipclantern");
-            document.getElementById('lantern').value = localStorage.getItem("lantern");
-            document.getElementById('box').value = localStorage.getItem("box");
-            document.getElementById('fuse').value = localStorage.getItem("fuse");
-            document.getElementById('contractor').value = localStorage.getItem("contractor");
-            document.getElementById('link').value = localStorage.getItem("link");
-            document.getElementById('dawailampu').value = localStorage.getItem("dawailampu");
-            document.getElementById('dawaipanel').value = localStorage.getItem("dawaipanel");
-            document.getElementById('time').value = localStorage.getItem("masa");
-            document.getElementById('lampurosak').value = localStorage.getItem("lampurosak");
-            document.getElementById('tarikhpenukaran').value = localStorage.getItem("tarikhpenukaran");
-            document.getElementById('gambartiang').value = localStorage.getItem("gambartiang");
-            document.getElementById('gambarsebelum').value = localStorage.getItem("gambarsebelum");
-            /*if ((stat.localeCompare("EDIT") == 0)) {
-                document.getElementById('noTiang').readOnly = true;
-                document.getElementById('time').readOnly = true;
-                document.getElementById('pecu').readOnly = true;
-                document.getElementById('pecuqty').readOnly = true;
-                document.getElementById('lantern').readOnly = true;
-                document.getElementById('blackbox').readOnly = true;
-                document.getElementById('fuse').readOnly = true;
-                document.getElementById('contractor').readOnly = true;
-                document.getElementById('link').readOnly = true;
-                document.getElementById('dawailampu').readOnly = true;
-                document.getElementById('dawaipanel').readOnly = true;
-                document.getElementById('cout').readOnly = true;
-                document.getElementById('rombaklampu').readOnly = true;
-                document.getElementById('bracket').readOnly = true;
-                document.getElementById('rombakpanel').readOnly = true;
-            }*/
-
+            document.getElementById('notiang').value = listPending[flag].NoTiang;
+            document.getElementById('rombak').value = listPending[flag].Rombak;
+            document.getElementById('ipcqty').value = listPending[flag].IPCQty;
+            document.getElementById('pecu').value = listPending[flag].Pecu;
+            document.getElementById('pecuqty').value = listPending[flag].PecuQTY;
+            document.getElementById('ipclantern').value = listPending[flag].IPCLantern;
+            document.getElementById('lantern').value = listPending[flag].Lantern;
+            document.getElementById('box').value = listPending[flag].Box;
+            document.getElementById('fuse').value = listPending[flag].Fuse;
+            document.getElementById('contactor').value = listPending[flag].Contractor;
+            document.getElementById('link').value = listPending[flag].Link;
+            document.getElementById('dawailampu').value = listPending[flag].DawaiLampu;
+            document.getElementById('dawaipanel').value = listPending[flag].DawaiPanel;
+            document.getElementById('time').value = listPending[flag].Masa;
+            document.getElementById('lampurosak').value = listPending[flag].LampuRosak;
+            document.getElementById('tarikhpenukaran').value = listPending[flag].TarikhPenukaran;
+            document.getElementById('gambartiang').value = listPending[flag].GambarTiang;
+            document.getElementById('gambarsebelum').value = listPending[flag].GambarSebelum;
         }
     }
 
@@ -477,6 +461,7 @@
             alert("error somewhere");
         }
     }
+
     function goHome() {
         window.location.href = "home.html";
     }

@@ -25,7 +25,7 @@
     <title>ProLight</title>
 </head>
 
-<body onload="checkTemp()">
+<body>
     <header>
         <div class="hamburger">
             <i class="fas fa-bars"></i>
@@ -221,6 +221,45 @@
 <script type="text/javascript" src="../js/script.js"></script>
 
 <script>
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+        startup();
+    }
+
+    function startup() {
+
+        var flag = localStorage.getItem("NumberOfObject");
+        var stat = localStorage.getItem("statPage");
+        if (flag == null || flag == undefined) {
+            //checkTemp();
+            alert("something wrong somewhere!");
+            location.href = "home.html";
+        } else {
+            var listPending = JSON.parse(localStorage.getItem('listPending'));
+            document.getElementById('notiang').value = listPending[flag].NoTiang;
+            document.getElementById('ballast').value = listPending[flag].Ballast;
+            document.getElementById('lanternbaru').value = listPending[flag].LanternBaru;
+            document.getElementById('bracket').value = listPending[flag].Bracket;
+            document.getElementById('dawaipanel').value = listPending[flag].DawaiPanel;
+            document.getElementById('mini').value = listPending[flag].Mini;
+            document.getElementById('ipc').value = listPending[flag].IPC;
+            document.getElementById('tiadaearthing').value = listPending[flag].TiadaEarthing;
+            document.getElementById('kodwarna').value = listPending[flag].KodWarna;
+            document.getElementById('lokasi').value = listPending[flag].Lokasi;
+            document.getElementById('serahtugas').value = listPending[flag].SerahTugas;
+            document.getElementById('time').value = listPending[flag].Masa;
+            document.getElementById('man').value = listPending[flag].Man;
+            document.getElementById('helper').value = listPending[flag].Helper;
+            document.getElementById('driver').value = listPending[flag].Driver;
+            document.getElementById('shift').value = listPending[flag].Shift;
+            document.getElementById('tukarlampu').value = listPending[flag].TukarLampu;
+            document.getElementById('gambartiang').value = listPending[flag].GambarTiang;
+            document.getElementById('gambarsebelum').value = listPending[flag].GambarSebelum;
+
+        }
+    }
+
     function checkTemp() {
         var cond = localStorage.getItem("editled");
         if (cond == 1) {

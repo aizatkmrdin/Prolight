@@ -24,7 +24,7 @@
     <title>ProLight</title>
 </head>
 
-<body onload="checkTemp()">
+<body>
     <header>
         <div class="hamburger">
             <i class="fas fa-bars"></i>
@@ -297,6 +297,43 @@
 
 
 <script>
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+        startup();
+    }
+
+    function startup() {
+
+        var flag = localStorage.getItem("NumberOfObject");
+        var stat = localStorage.getItem("statPage");
+        if (flag == null || flag == undefined) {
+            //checkTemp();
+            alert("something wrong somewhere!");
+            location.href = "home.html";
+        } else {
+            var listPending = JSON.parse(localStorage.getItem('listPending'));
+            document.getElementById('sclamp').value = listPending[flag].SCLamp;
+            document.getElementById('rentis').value = listPending[flag].Rentis;
+            document.getElementById('dead').value = listPending[flag].Dead;
+            document.getElementById('cable').value = listPending[flag].Cable;
+            document.getElementById('mini').value = listPending[flag].Mini;
+            document.getElementById('pusing').value = listPending[flag].Pusing;
+            document.getElementById('jumperlantern').value = listPending[flag].JumperLantern;
+            document.getElementById('jumperservice').value = listPending[flag].JumperService;
+            document.getElementById('hook').value = listPending[flag].Hook;
+            document.getElementById('creepers').value = listPending[flag].Creepers;
+            document.getElementById('color').value = listPending[flag].Color;
+            document.getElementById('man').value = listPending[flag].Man;
+            document.getElementById('helper').value = listPending[flag].Helper;
+            document.getElementById('driver').value = listPending[flag].Driver;
+            document.getElementById('shift').value = listPending[flag].Shift;
+            document.getElementById('category').value = listPending[flag].Category;
+            document.getElementById('jenislampu').value = listPending[flag].JenisLampu;
+
+        }
+    }
+
     function checkTemp() {
         getItem();
     }

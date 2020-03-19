@@ -25,7 +25,7 @@
     <title>ProLight</title>
 </head>
 
-<body onload="checkTemp()">
+<body>
     <header>
         <div class="hamburger">
             <i class="fas fa-bars"></i>
@@ -149,6 +149,37 @@
 <script type="text/javascript" src="../js/script.js"></script>
 
 <script>
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+        startup();
+    }
+
+    function startup() {
+
+        var flag = localStorage.getItem("NumberOfObject");
+        var stat = localStorage.getItem("statPage");
+        if (flag == null || flag == undefined) {
+            //checkTemp();
+            alert("something wrong somewhere!");
+            location.href = "home.html";
+        } else {
+            var listPending = JSON.parse(localStorage.getItem('listPending'));
+            document.getElementById('panel').value = listPending[flag].Panel;
+            document.getElementById('fuseswitch').value = listPending[flag].FuseSwitch;
+            document.getElementById('bend').value = listPending[flag].Bend;
+            document.getElementById('cooper').value = listPending[flag].Cooper;
+            document.getElementById('wire1c').value = listPending[flag].Wire1c;
+            document.getElementById('pusing').value = listPending[flag].Pusing;
+            document.getElementById('mini').value = listPending[flag].Mini;
+            document.getElementById('chargeman').value = listPending[flag].Chargeman;
+            document.getElementById('helper').value = listPending[flag].Helper;
+            document.getElementById('driver').value = listPending[flag].Driver;
+            document.getElementById('shift').value = listPending[flag].Shift;
+            document.getElementById('lainlain').value = listPending[flag].LainLain;
+
+        }
+    }
     Object.objsize = function (obj) {
         var size = 0,
             key;
