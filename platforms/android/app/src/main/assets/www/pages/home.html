@@ -115,14 +115,60 @@
         document.addEventListener("deviceready", onDeviceReady, false);
 
         function onDeviceReady() {
-            var countTod = localStorage.getItem("CountComp");
-            if (countTod == undefined || countTod == '') {
-                countTod = 0;
-                document.getElementById('count').innerHTML = countTod;
-            } else {
-                document.getElementById('count').innerHTML = countTod;
+            var x = 0;
+            var todayDone = JSON.parse(localStorage.getItem('todayDone'));
+            var sizeOfList = Object.objsize(todayDone);
+            for (i = 0; i < sizeOfList; i++) {
+
+                var todayDate = todayDone[i].Masa;
+                var res = todayDate.split(" ");
+
+                if (res[0].localeCompare(startTime()) == "0") {
+                    x++
+                }
             }
+            document.getElementById('count').innerHTML = x;
+
         }
+
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+            // add a zero in front of numbers<10
+            m = checkTime(m);
+            s = checkTime(s);
+            var tim = yyyy + '-' + mm + '-' + dd;
+
+            return tim;
+            /*t = setTimeout(function () {
+                startTime()
+            }, 500);*/
+        }
+
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
+        Object.objsize = function (obj) {
+            var size = 0,
+                key;
+
+            for (key in obj) {
+                if (obj.hasOwnProperty(key))
+                    size++;
+            }
+
+            return size;
+
+        };
 
 
         function openNav() {

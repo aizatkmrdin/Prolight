@@ -294,7 +294,9 @@
         var flag = localStorage.getItem("NumberOfObject");
         var stat = localStorage.getItem("statPage");
         if (flag == null || flag == undefined) {
-            checkTemp();
+            //checkTemp();
+            startTime();
+            neaws();
         } else {
 
             var listPending = JSON.parse(localStorage.getItem('listPending'));

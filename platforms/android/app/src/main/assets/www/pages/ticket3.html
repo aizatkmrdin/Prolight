@@ -244,7 +244,7 @@
     function startup() {
         var flag = localStorage.getItem("NumberOfObject");
         if (flag == null || flag == undefined) {
-            checkTemp();
+            //checkTemp();
         } else {
             var listPending = JSON.parse(localStorage.getItem('listPending'));
             document.getElementById('jenislampu').value = localStorage.getItem("jenislampu");
